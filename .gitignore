@@ -1,0 +1,8 @@
+# 測試／量測的臨時產物
+t_*.html
+L_*.png
+__pycache__/
+*.pyc
+
+# 字型構建快取（本地重建用，不進版控）
+font_cache.json
