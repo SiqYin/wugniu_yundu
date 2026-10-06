@@ -218,14 +218,14 @@ WU = {
  "sr_words": "共 {n} 字",
  "sr_close": "關閉",
 
- # ---------- 歌曲押韻查詢（同韻查詢 ＋ 近韻相押） ----------
- "btn_song": "歌曲押韻查詢",
- "sg_title": "歌曲押韻查詢",
+ # ---------- 歌詞押韻查詢（同韻查詢 ＋ 近韻相押） ----------
+ "btn_song": "歌詞押韻查詢",
+ "sg_title": "歌詞押韻查詢",
  "sg_sub": "輸入漢字，按每個讀音列出押韻的全部字；下方可勾選自己接受的近韻相押組合，結果仍按韻分列。",
  "sg_ph": "輸入漢字（最多 8 個）",
  "sg_go": "查詢",
  "sg_hint": "可輸入繁體或簡體字；簡體字會自動轉成對應的繁體字查詢，一簡對多繁時全部列出。",
- "sg_only": "歌曲押韻查詢只針對蘇滬混合腔。",
+ "sg_only": "歌詞押韻查詢只針對蘇滬混合腔。",
  "sg_near": "近韻相押",
  "sg_nearnote": "勾選的組合，查詢其中任何一韻時，都會一併列出相押韻的全部字。",
  "sg_clear": "全部清除",
@@ -498,9 +498,9 @@ EN = {
  "sr_words": "{n} characters",
  "sr_close": "Close",
 
- # ---------- Song rhyme lookup (same-rhyme lookup + near-rhyme rhyming) ----------
- "btn_song": "Song rhyme lookup",
- "sg_title": "Song rhyme lookup",
+ # ---------- Lyric rhyme lookup (same-rhyme lookup + near-rhyme rhyming) ----------
+ "btn_song": "Lyric rhyme lookup",
+ "sg_title": "Lyric rhyme lookup",
  "sg_sub": "Enter characters and this lists, reading by reading, every character that rhymes; tick "
            "the near-rhyme combinations you accept below. Results are still listed rhyme by rhyme.",
  "sg_ph": "Enter characters (up to 8)",
@@ -769,16 +769,16 @@ JA = {
  "sr_words": "計 {n} 字",
  "sr_close": "閉じる",
 
- # ---------- 歌曲押韻検索（同韻検索＋近韻相押） ----------
- "btn_song": "歌曲押韻検索",
- "sg_title": "歌曲押韻検索",
+ # ---------- 歌詞押韻検索（同韻検索＋近韻相押） ----------
+ "btn_song": "歌詞押韻検索",
+ "sg_title": "歌詞押韻検索",
  "sg_sub": "漢字を入力すると、読みごとに押韻するすべての字を一覧する。下で自分が認める"
            "近韻相押の組み合わせにチェックを入れる。結果は韻ごとに分けて表示する。",
  "sg_ph": "漢字を入力（最大 8 字）",
  "sg_go": "検索",
  "sg_hint": "繁体字・簡体字のどちらでも入力できる。簡体字は対応する繁体字に自動変換し、"
             "一対多の場合はすべて表示する。",
- "sg_only": "歌曲押韻検索は共通語のみを対象とする。",
+ "sg_only": "歌詞押韻検索は共通語のみを対象とする。",
  "sg_near": "近韻相押",
  "sg_nearnote": "チェックした組み合わせは、そのいずれかの韻を照会すると、"
                 "対になる韻も合わせて一覧する。",

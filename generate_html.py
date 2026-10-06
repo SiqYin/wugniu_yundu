@@ -221,7 +221,7 @@ footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);
  font-size:12px;color:var(--ink3);
  font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
 footer a{color:var(--yinb);text-decoration:none}
-/* ---- 語言切換（右上角）＋ 同韻查詢、歌曲押韻查詢按鈕（在它左邊） ---- */
+/* ---- 語言切換（右上角）＋ 同韻查詢、歌詞押韻查詢按鈕（在它左邊） ---- */
 .topbar{position:absolute;top:26px;right:22px;z-index:120;display:flex;gap:8px;align-items:flex-start}
 .lang-switcher{position:relative}
 .lang-btn{display:flex;align-items:center;gap:6px;font-size:12.5px;padding:5px 12px;
@@ -280,7 +280,7 @@ footer a{color:var(--yinb);text-decoration:none}
  font-family:var(--wk)}
 .srerr{padding:12px 16px;color:#c0392b;background:#fdf0f0;border:1px solid #f5c6cb;border-radius:8px;
  margin:14px 0 0;font-family:var(--ui);font-size:13px}
-/* ---- 歌曲押韻查詢：近韻相押表 ---- */
+/* ---- 歌詞押韻查詢：近韻相押表 ---- */
 #song{position:fixed;inset:0;background:rgba(26,42,58,.42);display:none;z-index:400;
  overflow:auto;padding:30px 16px 60px}
 #song.on{display:block}
@@ -1312,7 +1312,7 @@ function renderSame(raw, out){
   fixMods(out);
 }
 
-/* ---------- 歌曲押韻查詢（同韻查詢 ＋ 近韻相押） ----------
+/* ---------- 歌詞押韻查詢（同韻查詢 ＋ 近韻相押） ----------
    近韻相押：有星韻讀音接近，勒勿同人个語感裡向可能通押——有人押，有人勿押。
    前四組（八陌／打黨／麻模／資支）是固定个兩韻組合，勾一个就當伊拉相押。
    第五組「微余仙侵雲雪月」一韻一格：勾起來个韻混作一組、彼此相押；
@@ -1639,7 +1639,7 @@ function applyLang(l){
   renderAll();
   opened.forEach(function(ri){ expandRhyme(ri, true); });
   if (document.getElementById('modal').classList.contains('on')) reopenModal();
-  /* 同韻查詢、歌曲押韻查詢與音系浮窗的文字也要跟著換語言 */
+  /* 同韻查詢、歌詞押韻查詢與音系浮窗的文字也要跟著換語言 */
   renderSameChrome();
   renderSongChrome();
   if (SAME_LAST) doSame();
@@ -1653,7 +1653,11 @@ buildUnits(); assignReps();
 if (!window.__yuntuLang.ready(applyLang)) applyLang('wu');
 sync();
 
-/* 同韻查詢、歌曲押韻查詢：輸入框按 Enter 直接查；三個浮層點背景關閉 */
+/* 從「蘇滬混合腔字音查詢」的「歌詞押韻查詢」按鈕跳過來時，直接開浮層。
+   網址寫 ?song=1（或 #song）即可，不必先載入頁面再手動點按鈕。 */
+if (/[?&]song\b/i.test(location.search) || /^#song$/i.test(location.hash)) openSong();
+
+/* 同韻查詢、歌詞押韻查詢：輸入框按 Enter 直接查；三個浮層點背景關閉 */
 (function(){
   [['srInput', doSame], ['sgInput', doSong]].forEach(function(p){
     var box = document.getElementById(p[0]);

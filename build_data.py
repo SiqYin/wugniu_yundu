@@ -31,18 +31,21 @@ FINALS = ("a ua ia o io y yu i u iu ie e ue au iau eu ieu oe uoe ioe "
           "an uan ian aon uaon iaon on ion en uen in iun "
           "aeq uaeq iaeq iuaeq aq iaq eq ueq iq iuq oq ioq er n m ng").split()
 
-# 韵母音值（据字典 IPA 字段归纳；「~」示文白异读之异值）
+# 韵母音值。ian、u 從字音查询网站「蘇滬混合腔——音韻體系」的韻母表：
+#   ian[iã]；u[uᵝ~əuᵝ]——「~」示同一韻母按聲母分工之異值
+#   （脣音聲母 p ph b m f v 與零聲母後讀 uᵝ，其餘聲母後讀 əuᵝ）。
+#   其餘韻母沿用據字典 IPA 欄歸納之值。
 IPA_OF_FINAL = {
     "a": "ɑ", "ua": "uɑ", "ia": "iɑ",
     "o": "o̝", "io": "io̝",
     "y": "ɿ", "yu": "ʮ",
-    "i": "iᶽ", "u": "uᵝ", "iu": "y",
+    "i": "iᶽ", "u": "uᵝ~əuᵝ", "iu": "y",
     "ie": "i",
     "e": "ᴇ", "ue": "uᴇ",
     "au": "ɔ", "iau": "iɔ",
     "eu": "ɤ", "ieu": "iɤ",
     "oe": "ø", "uoe": "uø", "ioe": "iø",
-    "an": "ã", "uan": "uã", "ian": "iã~iɛ̃",
+    "an": "ã", "uan": "uã", "ian": "iã",
     "aon": "ɑ̃", "uaon": "uɑ̃", "iaon": "iɑ̃",
     "on": "oŋ", "ion": "ioŋ",
     "en": "ən", "uen": "uən", "in": "in", "iun": "yn",
