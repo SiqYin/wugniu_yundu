@@ -14,7 +14,7 @@
 
 | 類 | 韻（韻基） |
 |---|---|
-| 陰聲 12 | 泰 ɑ（開合齊）・麻 o̝（開齊）・灰 ᴇ（開合）・豪 ɔ（開齊）・侯 ɤ（開齊）・寒 ø（開合齊）・模 u（合）・魚 y（撮）・支 ʮ（撮）・資 ɿ（齊）・微 iᶽ（齊）・仙 i（齊） |
+| 陰聲 12 | 泰 ɑ（開合齊）・麻 o̝（開齊）・灰 ᴇ（開合）・豪 ɔ（開齊）・侯 ɤ（開齊）・寒 ø（開合齊）・模 u（合）・余 y（撮）・支 ʮ（撮）・資 ɿ（齊）・微 iᶽ（齊）・仙 i（齊） |
 | 陽聲 6 | 陽 ã（開合齊）・江 ɑ̃（開合齊）・真 ən（開合）・侵 in（齊）・雲 yn（撮）・東 oŋ（開齊） |
 | 入聲 6 | 八 aʔ（開合齊撮）・陌 ɑʔ（開齊）・質 əʔ（開合）・雪 iɪʔ（齊）・月 yɪʔ（撮）・屋 oʔ（開齊） |
 | 特例 4 | 嘸 m・唔 n・五 ng・而 er（不分開合齊撮） |
@@ -57,10 +57,15 @@ scheme.json             分韻方案與音節解析規則
 snapshot.json           離線快照（抓不到線上字音庫時使用）
 yuntu_data.json         韻圖／分韻總表用的整理資料
 i18n_data.py            漢語・English・日本語三語介面詞表
+phon_wu.html            音系簡介浮窗正文（漢語，取自字音查詢網站，逐字照抄）
+phon_en.html            音系簡介浮窗正文（English，同上）
+phon_ja.html            音系簡介浮窗正文（日本語，同上）
+s2t.json                簡→繁對照表（僅收「有變化且轉換結果在本字典查得到」的字）
 firstpaint.txt          首屏會用到的字（由 measure_firstpaint.py 實測產生）
 font_report.json        字型分片的 unicode-range 報告（由 make_font.py 產生）
 build_data.py           由字典資料產生 scheme.json／snapshot.json／yuntu_data.json
-generate_html.py        產生 index.html
+generate_html.py        產生 index.html（並內嵌三語詞表、音系浮窗正文、簡繁表）
+make_s2t.py             由字音查詢網站的 S2T.json 精簡出 s2t.json
 make_font.py            產生 fonts/ 底下的字型子集
 measure_firstpaint.py   用無頭 Chrome 實測首屏可見字，重寫 firstpaint.txt
 fonts/                  霞鶩文楷子集（自託管）
@@ -75,8 +80,49 @@ python make_font.py           # → fonts/*.woff2（輸入沒變會自動跳過�
 python measure_firstpaint.py  # 版面或介面文字改過之後，重測首屏字表
 ```
 
-`make_font.py` 依賴 `firstpaint.txt`；改了介面文字（`i18n_data.py`、頁面模板）之後，
-建議照上面的順序再跑一遍 `measure_firstpaint.py` → `make_font.py` → `generate_html.py`。
+`make_font.py` 依賴 `firstpaint.txt`，而 `measure_firstpaint.py` 是實測**磁碟上那份
+`index.html`**，所以三者有先後依賴。改了介面文字（`i18n_data.py`、頁面模板）或韻目字
+之後，正確順序是：
+
+```bash
+python build_data.py && python generate_html.py \
+  && python measure_firstpaint.py && python make_font.py && python generate_html.py
+```
+
+漏了前半段的 `generate_html.py`，新字就不會進 `firstpaint.txt`，會掉到 `wk-dict` 那片，
+首屏反而要等字典字型——這一輪改韻目「魚→余」時就踩過這個坑。
+
+## 同韻查詢
+
+頁面右上角的「同韻查詢」按鈕（在語言切換的左邊）開一個獨立查詢面板。輸入漢字
+（最多 8 個，可簡可繁），程式會：
+
+1. 拆成單字，簡體字經 `s2t.json` 展開為所有繁體對應字（一簡對多繁時全部列出，源字本身保留）；
+2. 用 `readingsOf(ch)` 取出該字在本字典**全部**的讀音格；
+3. 每個讀音各自套 `rhymeChars(ri)`，列出該韻的全部字（開合齊撮都收，跨呼位合併去重）。
+
+所以多音字會分塊呈現，每塊自帶「韻名 ・ 該讀音 ・ 共 N 字」。`s2t.json` 只在第一次
+點開面板時才下載（≈ 35 KB）。面板上固定註明「同韻查詢只針對蘇滬混合腔」。
+
+## 音系簡介
+
+標題下方那一行是導向音系浮窗的連結，**正文三語都逐字照抄字音查詢網站的原句**，
+存在 `phon_wu.html`／`phon_en.html`／`phon_ja.html`，以 `<script type="text/html">`
+內嵌進 `index.html`，執行時取 `.textContent` 再 `innerHTML` 注入。
+要改這幾句，改字音查詢網站那邊再同步過來，**不要在本頁自行改寫**。
+
+## 術語
+
+英日語的術語跟字音查詢網站對齊：
+
+| | 蘇滬混合腔的叫法 | 標題括註 |
+|---|---|---|
+| 漢語 | 蘇滬混合腔 | — |
+| English | the common language | Wu Common Language (Shanghainese-Suzhounese Mixed Wu language dialect) |
+| 日本語 | 共通語 | 呉越語共通語（蘇州語と上海語の混合アクセント） |
+
+**例外**：韻目來源（GLOSS）裡出現的「魚 虞 模」是中古韻攝名，不是本頁韻目，
+不隨韻目改名而動。
 
 ## 字音資料同步
 

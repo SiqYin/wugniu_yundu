@@ -30,6 +30,17 @@ SNAP_JSON = json.dumps(SNAP, ensure_ascii=False, separators=(",", ":"))
 I18N_JSON = json.dumps(I18N, ensure_ascii=False, separators=(",", ":"))
 GLOSS_JSON = json.dumps(GLOSS, ensure_ascii=False, separators=(",", ":"))
 
+
+def _read_file(name):
+    """讀一段原文照搬的 HTML —— 音系浮窗正文，取自字音查詢網站的同一份內容。"""
+    p = os.path.join(HERE, name)
+    return open(p, encoding="utf-8").read() if os.path.exists(p) else ""
+
+
+PHON_WU = _read_file("phon_wu.html")
+PHON_EN = _read_file("phon_en.html")
+PHON_JA = _read_file("phon_ja.html")
+
 CSS = """
 :root{--ink:#1c1f23;--ink2:#5a6470;--ink3:#8b95a1;--line:#dfe4ea;--line2:#eef1f5;
 --bg:#fbfcfd;--card:#fff;--yin:#e8f2fb;--yinb:#5b9bd5;--yang:#e9f6ee;--yangb:#4aa96c;
@@ -40,9 +51,13 @@ body{margin:0;background:var(--bg);color:var(--ink);
  font-size:14.5px;line-height:1.75}
 .wrap{max-width:1500px;margin:0 auto;padding:26px 22px 90px;position:relative}
 header.top{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:20px}
-h1{font-size:29px;margin:0 0 6px;letter-spacing:.06em;padding-right:150px}
+h1{font-size:29px;margin:0 0 6px;letter-spacing:.06em;padding-right:200px}
 h1 small{font-size:13.5px;color:var(--ink2);font-weight:400;letter-spacing:0}
-.sub{color:var(--ink2);font-size:13.5px;margin:4px 0;padding-right:150px}
+.clnote{font-size:.56em;color:var(--ink3);font-weight:400;letter-spacing:0;white-space:nowrap}
+.sub{color:var(--ink2);font-size:13.5px;margin:4px 0;padding-right:200px}
+.phonintro{margin:7px 0 3px;font-size:12.8px;color:var(--ink2);padding-right:200px}
+.phonintro a{color:var(--yinb);text-decoration:none;border-bottom:1px dotted var(--yinb)}
+.phonintro strong{color:var(--ink)}
 .sub a{color:var(--yinb);text-decoration:none;border-bottom:1px dotted var(--yinb)}
 h2{font-size:20px;margin:30px 0 12px;padding-left:10px;border-left:4px solid var(--ink);
  letter-spacing:.04em}
@@ -206,8 +221,9 @@ footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);
  font-size:12px;color:var(--ink3);
  font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
 footer a{color:var(--yinb);text-decoration:none}
-/* ---- 語言切換（右上角） ---- */
-.lang-switcher{position:absolute;top:26px;right:22px;z-index:120}
+/* ---- 語言切換（右上角）＋ 同韻查詢按鈕（在它左邊） ---- */
+.topbar{position:absolute;top:26px;right:22px;z-index:120;display:flex;gap:8px;align-items:flex-start}
+.lang-switcher{position:relative}
 .lang-btn{display:flex;align-items:center;gap:6px;font-size:12.5px;padding:5px 12px;
  border:1px solid var(--line);background:var(--card);border-radius:8px;cursor:pointer;
  color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
@@ -222,9 +238,63 @@ footer a{color:var(--yinb);text-decoration:none}
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
 .lang-menu button:hover{background:#f2f6fa}
 .lang-menu button.cur{background:#e9f2fa;font-weight:700;color:#2c5f8d}
+/* ---- 同韻查詢（全螢幕浮層） ---- */
+#same{position:fixed;inset:0;background:rgba(20,25,32,.5);display:none;z-index:400;
+ overflow:auto;padding:30px 16px 60px}
+#same.on{display:block}
+.samebox{background:#fff;border-radius:14px;max-width:1180px;margin:0 auto;
+ box-shadow:0 18px 50px rgba(0,0,0,.3);overflow:hidden}
+.samehead{display:flex;align-items:baseline;gap:12px;padding:15px 22px;
+ border-bottom:1px solid var(--line);background:#f7f9fb;flex-wrap:wrap}
+.samehead b{font-size:20px;letter-spacing:.05em}
+.samehead .ss{font-size:12.5px;color:var(--ink2);font-family:var(--ui);flex:1;min-width:220px}
+.samehead button{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:7px;
+ padding:5px 13px;cursor:pointer;font-size:12.5px;color:var(--ink2);white-space:nowrap;
+ font-family:var(--ui)}
+.samehead button:hover{background:#f0f3f7}
+.samebody{padding:22px 22px 28px}
+.sameform{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
+.sameform input{font-size:17px;padding:9px 14px;border:1px solid var(--line);border-radius:9px;
+ width:min(360px,70vw);font-family:var(--wk);letter-spacing:.08em;color:var(--ink)}
+.sameform input:focus{outline:none;border-color:var(--yinb);box-shadow:0 0 0 3px #e3eefa}
+.sameform button{font-size:14px;padding:9px 24px;border:1px solid #9fc2e2;background:#f4f8fc;
+ color:#2c5f8d;border-radius:9px;cursor:pointer;font-family:var(--ui);white-space:nowrap}
+.sameform button:hover{background:#e6f0fa}
+.samehint{text-align:center;font-size:12.5px;color:var(--ink2);margin:10px 0 0;
+ font-family:var(--ui);line-height:1.6}
+.sameonly{text-align:center;font-size:12.5px;color:#8a6d1c;background:#fdf8ef;
+ border:1px solid #eeddb0;border-radius:8px;padding:6px 12px;margin:14px auto 0;max-width:620px;
+ font-family:var(--ui)}
+#sameout{margin-top:6px}
+.srchar{border:1px solid var(--line);border-radius:11px;margin:16px 0 0;overflow:hidden}
+.srchar>h3{margin:0;padding:8px 16px;background:#f7f9fb;border-left:5px solid var(--yinb);
+ font-size:17px;letter-spacing:.05em;font-weight:700}
+.srchar>h3 small{font-weight:400;font-size:12px;color:var(--ink3);margin-left:9px;letter-spacing:0}
+.srread{padding:10px 16px 12px;border-top:1px solid var(--line2)}
+.srread .hd{font-size:12.8px;color:var(--ink2);font-family:var(--ui);margin-bottom:7px;
+ line-height:1.7}
+.srread .hd b{color:var(--ink);font-size:14.5px;letter-spacing:.04em}
+.srread .hd code{font-size:12.5px}
+.srchars{background:#fbfcfe;border:1px solid var(--line2);border-radius:8px;
+ padding:8px 11px;font-size:19px;line-height:1.95;letter-spacing:.14em;word-break:break-all;
+ font-family:var(--wk)}
+.srerr{padding:12px 16px;color:#a33;background:#fdeeea;border:1px solid #f2cdc4;border-radius:8px;
+ margin:14px 0 0;font-family:var(--ui);font-size:13px}
+/* ---- 音系浮窗（內容照字音查詢網站） ---- */
+#phon{position:fixed;inset:0;background:rgba(20,25,32,.45);display:none;z-index:500;
+ overflow:auto;padding:36px 16px 60px}
+#phon.on{display:block}
+.phon-panel{max-width:830px;margin:0 auto;background:#fff;border-radius:12px;
+ box-shadow:0 18px 50px rgba(0,0,0,.28);padding:26px 34px 30px;position:relative}
+.phon-panel h2{font-size:1.22em;color:#1a5276;margin:0 0 14px;padding:0 66px 8px 0;
+ border-left:0;border-bottom:2px solid #c8dae8;letter-spacing:0}
+.phon-panel>div{font-family:var(--ipa);color:#1a2a3a;font-size:13.5px;line-height:1.8}
+.phon-close{position:absolute;top:20px;right:28px;background:#2980b9;color:#fff;border:0;
+ border-radius:6px;padding:5px 13px;cursor:pointer;font-size:12.5px;font-family:var(--ui)}
+.phon-close:hover{background:#1a5276}
 @media (max-width:760px){
-  .lang-switcher{position:static;margin:0 0 10px}
-  h1,.sub{padding-right:0}
+  .topbar{position:static;margin:0 0 10px}
+  h1,.sub,.phonintro{padding-right:0}
   .lang-menu{right:auto;left:0}
 }
 #modal{position:fixed;inset:0;background:rgba(20,25,32,.45);display:none;
@@ -614,6 +684,8 @@ function renderChrome(){
     chars: META.chars, records: META.records, syll: META.syllables
   });
 
+  document.getElementById('btnSame').textContent = t('btn_same');
+  document.getElementById('i-phonintro').innerHTML = t('phon_intro');
   document.getElementById('btnSync').textContent = t('btn_sync');
   document.getElementById('btnAll').textContent  = ALLOPEN ? t('btn_collapse') : t('btn_expand');
   document.getElementById('btnTop').textContent  = t('btn_top');
@@ -1055,6 +1127,133 @@ function openModal(title, sub, bodyHtml, isList){
 }
 function closeModal(){ document.getElementById('modal').classList.remove('on'); }
 
+/* ---------- 音系浮窗：正文與字音查詢網站同一份，三語各一份 ---------- */
+var PHON = {};
+['wu','en','ja'].forEach(function(l){
+  var el = document.getElementById('phon-'+l);
+  if (el) PHON[l] = el.textContent;
+});
+function openPhon(){
+  document.getElementById('phonClose').textContent = t('sr_close');
+  document.getElementById('phonBody').innerHTML = PHON[LANG] || PHON.wu || '';
+  document.getElementById('phon').classList.add('on');
+  fixMods(document.getElementById('phonBody'));
+  return false;
+}
+function closePhon(){ document.getElementById('phon').classList.remove('on'); }
+
+/* ---------- 同韻查詢 ----------
+   輸入漢字 -> 逐一取其在韻圖裡的每個讀音 -> 列出該讀音所屬韻的全部字（不分呼）。
+   簡繁對照表 s2t.json 只在第一次打開時抓一次，抓不到就只支援繁體輸入。 */
+var S2T = null, S2T_DONE = false, SAME_LAST = '';
+function loadS2T(){
+  if (S2T_DONE) return;
+  S2T_DONE = true;
+  fetch('s2t.json', {cache:'force-cache'}).then(function(r){
+    if (!r.ok) throw new Error('HTTP '+r.status);
+    return r.json();
+  }).then(function(j){ S2T = j || {}; }).catch(function(){ S2T = {}; });
+}
+
+/* 一個字在韻圖裡的全部讀音（每個讀音就是一個小韻格） */
+function readingsOf(ch){
+  return CELLS.filter(function(c){ return c.chars.indexOf(ch) >= 0; });
+}
+
+/* 一個韻底下的全部字（開合齊撮都收，按字去重） */
+var RH_CHARS = [];
+function rhymeChars(ri){
+  if (RH_CHARS[ri]) return RH_CHARS[ri];
+  var seen = {}, out = [];
+  CELLS.forEach(function(c){
+    if (c.ri !== ri) return;
+    c.chars.forEach(function(x){ if (!seen[x]){ seen[x]=1; out.push(x); } });
+  });
+  RH_CHARS[ri] = out;
+  return out;
+}
+
+/* 簡體 -> 繁體候選；一簡對多繁時全部展開，來源字本身也保留 */
+function expandInput(str){
+  var out = [], seen = {};
+  Array.from(str).forEach(function(c){
+    if (!/\S/.test(c) || seen[c]) return;
+    seen[c] = 1;
+    var tg = (S2T && S2T[c]) || [];
+    if (!tg.length){ out.push({ch:c}); return; }
+    if (tg.indexOf(c) >= 0) out.push({ch:c});
+    tg.forEach(function(x){
+      if (x === c || seen[x]) return;
+      seen[x] = 1;
+      out.push({ch:x, from:c});
+    });
+  });
+  return out;
+}
+
+function renderSameChrome(){
+  document.getElementById('btnSame').textContent = t('btn_same');
+  document.getElementById('srClose').textContent = t('sr_close');
+  document.getElementById('i-sr-title').textContent = t('sr_title');
+  document.getElementById('i-sr-sub').textContent = t('sr_sub');
+  document.getElementById('srInput').placeholder = t('sr_ph');
+  document.getElementById('srGo').textContent = t('sr_go');
+  document.getElementById('i-sr-hint').textContent = t('sr_hint');
+  document.getElementById('i-sr-only').textContent = t('sr_only');
+}
+function openSame(){
+  loadS2T(); renderSameChrome();
+  document.getElementById('same').classList.add('on');
+  setTimeout(function(){
+    var i = document.getElementById('srInput');
+    if (i) i.focus();
+  }, 40);
+  return false;
+}
+function closeSame(){ document.getElementById('same').classList.remove('on'); return false; }
+
+function doSame(){
+  var raw = (document.getElementById('srInput').value || '').trim();
+  SAME_LAST = raw;
+  var out = document.getElementById('sameout');
+  var cs = Array.from(raw).filter(function(c){ return /\S/.test(c); });
+  if (!cs.length){ out.innerHTML = '<div class="srerr">'+esc(t('sr_empty'))+'</div>'; return false; }
+  if (cs.length > 8){ out.innerHTML = '<div class="srerr">'+esc(t('sr_max'))+'</div>'; return false; }
+  loadS2T();
+
+  var html = '', any = false;
+  expandInput(raw).forEach(function(item){
+    var c = item.ch, rs = readingsOf(c);
+    if (!rs.length){
+      if (!item.from) html += '<div class="srerr">'+esc(n('sr_none', {c:c}))+'</div>';
+      return;
+    }
+    any = true;
+    html += '<div class="srchar"><h3>'+esc(c)
+          + (item.from ? '<small>'+esc(n('sr_conv', {c:item.from}))+'</small>' : '')
+          + '</h3>';
+    var byR = {};
+    rs.forEach(function(cc){ (byR[cc.ri] = byR[cc.ri] || []).push(cc); });
+    Object.keys(byR).sort(function(a,b){ return a-b; }).forEach(function(k){
+      var ri = +k, group = byR[k], chs = rhymeChars(ri);
+      var seenSyl = {}, syls = [];
+      group.forEach(function(cc){
+        if (seenSyl[cc.syl]) return;
+        seenSyl[cc.syl] = 1;
+        syls.push('<code>'+esc(cc.syl)+'</code> ['+esc(plainMod(cc.ipa.join('/')))+']');
+      });
+      html += '<div class="srread"><div class="hd">'
+            + '<b>'+esc(rhName(RH[ri]))+'</b> ・ ' + syls.join(' ・ ')
+            + ' ・ ' + esc(n('sr_words', {n: chs.length}))
+            + '</div><div class="srchars">'+esc(chs.join(''))+'</div></div>';
+    });
+    html += '</div>';
+  });
+  out.innerHTML = html || '<div class="srerr">'+esc(t('sr_empty'))+'</div>';
+  fixMods(out);
+  return false;
+}
+
 document.addEventListener('click', function(e){
   var hd = e.target.closest('.rh-head');
   if (hd && !e.target.closest('button')){ toggleRhyme(+hd.dataset.ri); return; }
@@ -1089,7 +1288,9 @@ document.addEventListener('click', function(e){
   }
   if (e.target.id==='modal' || e.target.closest('#mclose')) closeModal();
 });
-document.addEventListener('keydown', function(e){ if (e.key==='Escape') closeModal(); });
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape'){ closeModal(); closeSame(); closePhon(); }
+});
 
 document.addEventListener('mouseover', function(e){
   var td = e.target.closest('td.c');
@@ -1197,6 +1398,7 @@ function liveOlderThanSnapshot(db){
 /* ---------- 渲染與語言切換 ---------- */
 function renderAll(){
   assignReps(); buildUnits();
+  RH_CHARS = [];              /* 資料源換了（線上／內建快照），韻→字的快取要重算 */
   renderChrome(); renderRhymeTable(); renderUnitTable(); renderYuntu(); renderBars();
   fixMods(document.body);
 }
@@ -1218,6 +1420,10 @@ function applyLang(l){
   renderAll();
   opened.forEach(function(ri){ expandRhyme(ri, true); });
   if (document.getElementById('modal').classList.contains('on')) reopenModal();
+  /* 同韻查詢與音系浮窗的文字也要跟著換語言 */
+  renderSameChrome();
+  if (SAME_LAST) doSame();
+  if (document.getElementById('phon').classList.contains('on')) openPhon();
 }
 
 /* 先把內建快照渲染出來，再嘗試聯網更新；語言同步判定 */
@@ -1225,6 +1431,20 @@ loadFromSnapshot();
 buildUnits(); assignReps();
 if (!window.__yuntuLang.ready(applyLang)) applyLang('wu');
 sync();
+
+/* 同韻查詢：輸入框按 Enter 直接查；兩個浮層點背景關閉 */
+(function(){
+  var box = document.getElementById('srInput');
+  if (box) box.addEventListener('keydown', function(e){
+    if (e.key === 'Enter'){ e.preventDefault(); doSame(); }
+  });
+  [['same', closeSame], ['phon', closePhon]].forEach(function(pair){
+    var el = document.getElementById(pair[0]);
+    if (el) el.addEventListener('click', function(e){
+      if (e.target === el) pair[1]();
+    });
+  });
+})();
 """
 
 HTML = """<!DOCTYPE html>
@@ -1236,6 +1456,8 @@ HTML = """<!DOCTYPE html>
 </head><body>
 <div class="wrap">
 
+<div class="topbar">
+<button class="lang-btn" id="btnSame" onclick="openSame()"></button>
 <div class="lang-switcher">
 <button class="lang-btn" id="langBtn" onclick="toggleLangMenu()" aria-haspopup="true">
 <span id="langCur">漢語</span><span class="lang-caret" aria-hidden="true">▼</span></button>
@@ -1245,9 +1467,11 @@ HTML = """<!DOCTYPE html>
 <button data-lang="ja" onclick="pickLang('ja')">日本語</button>
 </div>
 </div>
+</div>
 
 <header class="top">
 <h1 id="i-h1"></h1>
+<p class="phonintro" id="i-phonintro"></p>
 <p class="sub" id="i-based"></p>
 <div class="syncbar builtin" id="syncbar"></div>
 <div class="tools">
@@ -1308,6 +1532,32 @@ HTML = """<!DOCTYPE html>
 </div></div>
 <div id="tip"></div>
 
+<div id="same"><div class="samebox">
+<div class="samehead">
+<b id="i-sr-title"></b>
+<span class="ss" id="i-sr-sub"></span>
+<button id="srClose" onclick="closeSame()"></button>
+</div>
+<div class="samebody">
+<div class="sameform">
+<input id="srInput" type="text" maxlength="8" autocomplete="off" spellcheck="false">
+<button id="srGo" onclick="doSame()"></button>
+</div>
+<p class="samehint" id="i-sr-hint"></p>
+<p class="sameonly" id="i-sr-only"></p>
+<div id="sameout"></div>
+</div>
+</div></div>
+
+<div id="phon"><div class="phon-panel">
+<button class="phon-close" id="phonClose" onclick="closePhon()"></button>
+<div id="phonBody"></div>
+</div></div>
+
+<script id="phon-wu" type="text/html">__PHON_WU__</script>
+<script id="phon-en" type="text/html">__PHON_EN__</script>
+<script id="phon-ja" type="text/html">__PHON_JA__</script>
+
 <script id="scheme" type="application/json">__SCHEME__</script>
 <script id="snapshot" type="application/json">__SNAP__</script>
 <script id="i18n" type="application/json">__I18N__</script>
@@ -1321,6 +1571,9 @@ OUT = (HTML.replace("__CSS__", CSS)
            .replace("__SNAP__", SNAP_JSON)
            .replace("__I18N__", I18N_JSON)
            .replace("__GLOSS__", GLOSS_JSON)
+           .replace("__PHON_WU__", PHON_WU)
+           .replace("__PHON_EN__", PHON_EN)
+           .replace("__PHON_JA__", PHON_JA)
            .replace("__JS__", JS)
            .replace("__TITLE__", I18N["wu"]["page_title"]))
 

@@ -53,7 +53,7 @@ WU = {
  "ov1": "<b>分韻以今音的韻基為準。</b>韻基是這個韻的元音加韻尾。"
         "韻基不同的，就算是中古同一韻攝，也分成不同的韻；"
         "韻基相同的，就算是中古不同韻攝，也歸為同一個韻。"
-        "依此，<code>i[iᶽ]</code> 和 <code>iu[y]</code> 分成微韻和魚韻，"
+        "依此，<code>i[iᶽ]</code> 和 <code>iu[y]</code> 分成微韻和余韻，"
         "<code>y[ɿ]</code> 和 <code>yu[ʮ]</code> 分成資韻和支韻；"
         "入聲的 <code>eq[əʔ]</code>、<code>ueq[uəʔ]</code> 歸質韻，"
         "<code>iq[iɪʔ]</code> 歸雪韻，<code>iuq[yɪʔ]</code> 歸月韻。"
@@ -62,7 +62,7 @@ WU = {
         "<b>一個呼位畫一張圖</b>。全部共 <b>{units} 個呼位</b>，其中開口 {n_kai} 位、"
         "合口 {n_he} 位、齊齒 {n_qi} 位、撮口 {n_cuo} 位、特例 {n_te} 位。"
         "四個呼都齊全的只有「八」韻一個；只佔一個呼位的有十個韻——"
-        "模（合）、魚（撮）、支（撮）、資（齊）、微（齊）、仙（齊）、侵（齊）、雲（撮）、"
+        "模（合）、余（撮）、支（撮）、資（齊）、微（齊）、仙（齊）、侵（齊）、雲（撮）、"
         "雪（齊）、月（撮）。",
  "ov3": "<b>韻目代表字都經過核對。</b>每個韻的名字，都取一個本韻裡真的有這個讀音的字，"
         "而且由程式逐一驗證過。例如「談」現在讀 <code>de6</code>〔dᴇ〕，屬於灰韻，"
@@ -159,9 +159,9 @@ WU = {
        "陽讀 <code>yan2</code>〔iã〕，正好在它的齊齒位上。同樣地，「歌」現在讀 "
        "<code>ku1</code>〔kuᵝ〕，屬於模韻，所以〔o̝〕這個韻改用「<b>麻</b>」當韻目"
        "（麻讀 <code>mo2</code>），〔uᵝ〕這個韻就用「<b>模</b>」當韻目（模讀 <code>mu2</code>）。",
- "n2": "<b>二、「支」「資」各自成韻，「微」「魚」也各自成韻。</b>"
+ "n2": "<b>二、「支」「資」各自成韻，「微」「余」也各自成韻。</b>"
        "「支」讀 <code>tsyu1</code>〔tsʮ〕，「資」讀 <code>tsy1</code>〔tsɿ〕："
-       "支韻整個是撮口，資韻整個是齊齒。「微」〔iᶽ〕和「魚」〔y〕同樣各自成韻，不相統屬。",
+       "支韻整個是撮口，資韻整個是齊齒。「微」〔iᶽ〕和「余」〔y〕同樣各自成韻，不相統屬。",
  "n3": "<b>三、入聲六韻。</b>入聲單獨列出，共六個韻："
        "八〔aʔ〕、陌〔ɑʔ〕、質〔əʔ〕、雪〔iɪʔ〕、月〔yɪʔ〕、屋〔oʔ〕。"
        "<b><code>iq</code>〔iɪʔ〕是「雪」韻（整個韻都是齊齒），"
@@ -195,16 +195,38 @@ WU = {
        "正常只會下載前者（約 2 MB）。",
 
  "lang_label": "語言", "lang_wu": "漢語", "lang_en": "English", "lang_ja": "日本語",
+
+ # ---------- 同韻查詢 ----------
+ "btn_same": "同韻查詢",
+ "sr_title": "同韻查詢",
+ "sr_sub": "選一個字，按這個字有幾個音，逐個音列出該音所屬韻的全部字（開合齊撮都收）。",
+ "sr_ph": "輸入漢字（最多 8 個）",
+ "sr_go": "查詢",
+ "sr_hint": "可輸入繁體或簡體字；簡體字會自動轉成對應的繁體字查詢，一簡對多繁時全部列出。",
+ "sr_only": "同韻查詢只針對蘇滬混合腔。",
+ "sr_empty": "請先輸入漢字。",
+ "sr_max": "一次最多查 8 個字。",
+ "sr_none": "「{c}」在字音庫裡查不到讀音。",
+ "sr_conv": "（簡體「{c}」對應）",
+ "sr_loading": "正在讀取簡繁對照表……",
+ "sr_reading": "讀音",
+ "sr_rhyme": "韻",
+ "sr_words": "共 {n} 字",
+ "sr_close": "關閉",
+
+ # ---------- 音系簡介（浮窗內容與字音查詢網站一致） ----------
+ "phon_intro": "<a href=\"#\" onclick=\"openPhon();return false;\">請撳箇搭以瞭解蘇滬混合腔</a>",
+
  "list_sep": "、",
 }
 
 EN = {
- "page_title": "Su–Hu Mixed Wu Rhyme Chart",
- "h1": "Su–Hu Mixed Wu Rhyme Chart",
+ "page_title": "Wu Common Language Rhyme Chart (Shanghainese-Suzhounese Mixed Wu language dialect)",
+ "h1": "Wu Common Language Rhyme Chart <span class=\"clnote\">(Shanghainese-Suzhounese Mixed Wu language dialect)</span>",
  "tagline": "Rhymes divided by modern rhyme base · the four divisions listed slot by slot · one chart per slot",
  "based_on": "Compiled from SiqYin's {dict} and the {rime}. This page contains "
              "<b>{chars}</b> characters, <b>{records}</b> readings, and <b>{syll}</b> valid syllables (monosyllabic, tones included).",
- "link_dict": "Su–Hu Mixed Wu online dictionary",
+ "link_dict": "the common language online dictionary",
  "link_rime": "Rime input scheme",
  "btn_sync": "Re-sync the online reading database",
  "btn_expand": "Expand all rhyme charts",
@@ -242,13 +264,13 @@ EN = {
  "kind_shu": "Unchecked", "kind_ru": "Checked",
  "tone_1": "Yin Ping", "tone_2": "Yang Ping", "tone_3": "Yin Shang", "tone_5": "Yin Qu",
  "tone_6": "Yang Shang–Qu", "tone_7": "Yin Ru", "tone_8": "Yang Ru",
- "tone_note": "Su–Hu Mixed Wu does not distinguish Yang Shang from Yang Qu; the two have merged "
+ "tone_note": "The common language does not distinguish Yang Shang from Yang Qu; the two have merged "
               "into tone 6, “Yang Shang–Qu”. That leaves {total} tones in all.",
 
  "ov1": "<b>Rhymes follow the modern rhyme base.</b> The base is the rhyme's vowel plus its "
         "coda. A different base means a different rhyme even if the characters belonged to the same "
         "Middle Chinese group; the same base means one rhyme even if they came from different groups. "
-        "Thus <code>i[iᶽ]</code> and <code>iu[y]</code> split into 微 and 魚, and "
+        "Thus <code>i[iᶽ]</code> and <code>iu[y]</code> split into 微 and 余, and "
         "<code>y[ɿ]</code> and <code>yu[ʮ]</code> into 資 and 支; among the checked rhymes, "
         "<code>eq[əʔ]</code> and <code>ueq[uəʔ]</code> go to 質, <code>iq[iɪʔ]</code> to 雪, and "
         "<code>iuq[yɪʔ]</code> to 月. In total there are <b>{rhymes} rhymes</b>.",
@@ -256,7 +278,7 @@ EN = {
         "rhyme occupies, that many slots are listed, <b>one chart per slot</b>. All told there are "
         "<b>{units} slots</b>: open {n_kai}, closed {n_he}, spread {n_qi}, rounded {n_cuo}, "
         "special {n_te}. Only the 八 rhyme fills all four; ten rhymes have just one slot — "
-        "模 (closed), 魚 (rounded), 支 (rounded), 資 (spread), 微 (spread), 仙 (spread), "
+        "模 (closed), 余 (rounded), 支 (rounded), 資 (spread), 微 (spread), 仙 (spread), "
         "侵 (spread), 雲 (rounded), 雪 (spread), 月 (rounded).",
  "ov3": "<b>Every rhyme name has been checked.</b> Each rhyme takes its name from a character that "
         "genuinely has that reading in the rhyme, verified one by one by the build script. "
@@ -283,7 +305,7 @@ EN = {
         "listed after the checked rhymes.",
  "ov7": "<b>Each cell is one homophone group, that is, one legal syllable.</b> The representative "
         "character sits above and the romanization below; hovering over a cell shows every character "
-        "in that group. All <b>{syll} legal syllables</b> of Su–Hu Mixed Wu are in the charts, one "
+        "in that group. All <b>{syll} legal syllables</b> of the common language are in the charts, one "
         "syllable to a cell, never placed twice.",
  "ov8": "<b>Every division slot is labelled with a group count and a character count, and both "
         "numbers are clickable.</b> Clicking the <b>group count</b> opens the list of homophone "
@@ -360,7 +382,7 @@ EN = {
  "md_allchars_head": "All characters<small>{nchars} characters in all ({nsys} groups)</small>",
  "md_etc": " … etc.",
 
- "footer": "Su–Hu Mixed Wu Rhyme Chart · {rhymes} rhymes, {units} division slots, {finals} finals "
+ "footer": "Wu Common Language Rhyme Chart · {rhymes} rhymes, {units} division slots, {finals} finals "
            "· readings synced from {link} (SiqYin)",
 
  "n1": "<b>1. The old labels 談 and 歌 were wrong.</b> 談 was once used as the label of the −n rhyme, "
@@ -369,9 +391,9 @@ EN = {
        "陽 is <code>yan2</code> [iã], right in its spread slot. Likewise 歌 is now "
        "<code>ku1</code> [kuᵝ] and belongs to 模, so the [o̝] rhyme takes <b>麻</b> as its label "
        "(麻 is <code>mo2</code>) and the [uᵝ] rhyme takes <b>模</b> (模 is <code>mu2</code>).",
- "n2": "<b>2. 支 and 資 form separate rhymes; so do 微 and 魚.</b> 支 is <code>tsyu1</code> [tsʮ] "
+ "n2": "<b>2. 支 and 資 form separate rhymes; so do 微 and 余.</b> 支 is <code>tsyu1</code> [tsʮ] "
        "and 資 is <code>tsy1</code> [tsɿ]: the 支 rhyme is rounded throughout, the 資 rhyme spread "
-       "throughout. 微 [iᶽ] and 魚 [y] likewise form rhymes of their own that do not subsume one "
+       "throughout. 微 [iᶽ] and 余 [y] likewise form rhymes of their own that do not subsume one "
        "another.",
  "n3": "<b>3. The six checked rhymes.</b> Six checked rhymes are listed separately: "
        "八 [aʔ], 陌 [ɑʔ], 質 [əʔ], 雪 [iɪʔ], 月 [yɪʔ], 屋 [oʔ]. "
@@ -401,7 +423,7 @@ EN = {
        "velar series, for instance, and 灰 also takes the 止 group's closed readings). The division "
        "here always follows the modern rhyme base, never the Middle Chinese groups.",
  "n8": "<b>8. The readings follow the online database.</b> On loading, the page fetches the data file "
-       "of “Su–Hu Mixed Wu Character Lookup” (<code>data/DB_suhu.json</code>) and re-divides the "
+       "of the common language dictionary (<code>data/DB_suhu.json</code>) and re-divides the "
        "rhymes and re-lays the charts in the browser. So after characters or readings are added on "
        "the lookup site, reloading this page shows them. If the network is unavailable the page falls "
        "back to its built-in offline snapshot (<b>{chars}</b> characters) and says so at the top; "
@@ -412,16 +434,43 @@ EN = {
        "only the former (about 2 MB) is downloaded.",
 
  "lang_label": "Language", "lang_wu": "漢語", "lang_en": "English", "lang_ja": "日本語",
+
+ # ---------- Same-rhyme lookup ----------
+ "btn_same": "Same-rhyme lookup",
+ "sr_title": "Same-rhyme lookup",
+ "sr_sub": "Pick a character and this lists, reading by reading, every character that shares the "
+           "rhyme of that reading (all four divisions included).",
+ "sr_ph": "Enter characters (up to 8)",
+ "sr_go": "Look up",
+ "sr_hint": "Traditional and Simplified characters are both accepted; a Simplified character is "
+            "converted to its Traditional equivalents, and all of them are listed when there is "
+            "more than one.",
+ "sr_only": "This lookup covers the common language only.",
+ "sr_empty": "Please enter at least one character.",
+ "sr_max": "Up to 8 characters at a time.",
+ "sr_none": "“{c}” has no reading in the database.",
+ "sr_conv": "(from Simplified “{c}”)",
+ "sr_loading": "Loading the Traditional/Simplified table…",
+ "sr_reading": "reading",
+ "sr_rhyme": "rhyme",
+ "sr_words": "{n} characters",
+ "sr_close": "Close",
+
+ # ---------- Phonology note (panel content identical to the lookup site) ----------
+ "phon_intro": "<strong>Note:</strong> \"common language\" here refers to a hybrid accent blending "
+               "Suzhounese and Shanghainese (<a href=\"#\" onclick=\"openPhon();return false;\">"
+               "click to learn more</a>).",
+
  "list_sep": ", ",
 }
 
 JA = {
- "page_title": "蘇滬混合腔韻図",
- "h1": "蘇滬混合腔韻図",
+ "page_title": "呉越語共通語韻図（蘇州語と上海語の混合アクセント）",
+ "h1": "呉越語共通語韻図 <span class=\"clnote\">（蘇州語と上海語の混合アクセント）</span>",
  "tagline": "現代音の韻基で分韻し、開・合・斉・撮を一位ずつ掲げ、一位に一図",
  "based_on": "SiqYin の{dict}（字音検索）と{rime}により作成。本頁の収録字数 <b>{chars}</b>、"
              "読み <b>{records}</b> 件、合法音節（単音節・声調込み）<b>{syll}</b>。",
- "link_dict": "蘇滬混合腔オンライン字典",
+ "link_dict": "共通語オンライン字典",
  "link_rime": "RIME 輸入方案",
  "btn_sync": "オンライン字音庫を再同期",
  "btn_expand": "韻図をすべて展開",
@@ -457,12 +506,12 @@ JA = {
  "kind_shu": "舒声", "kind_ru": "入声",
  "tone_1": "陰平", "tone_2": "陽平", "tone_3": "陰上", "tone_5": "陰去",
  "tone_6": "陽上去", "tone_7": "陰入", "tone_8": "陽入",
- "tone_note": "蘇滬混合腔には陽上と陽去の区別がなく、この二類は現在どちらも調 6「陽上去」に"
+ "tone_note": "共通語には陽上と陽去の区別がなく、この二類は現在どちらも調 6「陽上去」に"
               "統合されている。したがって声調は全部で {total} つである。",
 
  "ov1": "<b>分韻は現代音の韻基による。</b>韻基とはその韻の母音と韻尾である。韻基が違えば、"
         "中古に同じ韻摂に属していても別の韻に分ける。韻基が同じなら、中古に別の韻摂から来ていても"
-        "同じ韻にまとめる。したがって <code>i[iᶽ]</code> と <code>iu[y]</code> は微韻と魚韻に、"
+        "同じ韻にまとめる。したがって <code>i[iᶽ]</code> と <code>iu[y]</code> は微韻と余韻に、"
         "<code>y[ɿ]</code> と <code>yu[ʮ]</code> は資韻と支韻に分かれる。入声では "
         "<code>eq[əʔ]</code>・<code>ueq[uəʔ]</code> が質韻に、<code>iq[iɪʔ]</code> が雪韻に、"
         "<code>iuq[yɪʔ]</code> が月韻になる。"
@@ -471,7 +520,7 @@ JA = {
         "その数の呼位を掲げ、<b>一位に一図</b>を描く。全部で <b>{units} の呼位</b>、"
         "うち開口 {n_kai}、合口 {n_he}、斉歯 {n_qi}、撮口 {n_cuo}、特例 {n_te}。"
         "四呼がそろうのは「八」韻ただ一つ。呼位が一つだけなのは十韻——"
-        "模（合）・魚（撮）・支（撮）・資（斉）・微（斉）・仙（斉）・侵（斉）・雲（撮）・"
+        "模（合）・余（撮）・支（撮）・資（斉）・微（斉）・仙（斉）・侵（斉）・雲（撮）・"
         "雪（斉）・月（撮）。",
  "ov3": "<b>韻目の代表字はすべて検証済みである。</b>各韻の名には、その韻に本当にその読みがある字を"
         "取り、しかもプログラムで一字ずつ確かめてある。たとえば「談」は現在 <code>de6</code>〔dᴇ〕で"
@@ -494,7 +543,7 @@ JA = {
         "この四韻は<b>開合斉撮に分かれず</b>、それぞれ呼位を一つだけもつので、"
         "入声韻の後に別に掲げる。",
  "ov7": "<b>一つの枠が一つの小韻、すなわち一つの合法音節である。</b>枠の上に代表字、下にローマ字を"
-        "示し、枠にマウスを乗せるとその小韻のすべての字が表示される。蘇滬混合腔の "
+        "示し、枠にマウスを乗せるとその小韻のすべての字が表示される。共通語の "
         "<b>{syll} の合法音節はすべて図の中にあり</b>、一枠に一韻、重複して置かれることはない。",
  "ov8": "<b>どの呼位にも小韻数と字数が付いており、どちらの数字も押せる。</b>"
         "<b>小韻数</b>を押すとその呼位の小韻一覧が開き、その中のどれかを押せばその小韻の"
@@ -562,7 +611,7 @@ JA = {
  "md_allchars_head": "全所属字<small>計 {nchars} 字（{nsys} 個の小韻）</small>",
  "md_etc": "…ほか",
 
- "footer": "蘇滬混合腔韻図 ・ 分韻 {rhymes}、呼位 {units}、韻母 {finals}"
+ "footer": "呉越語共通語韻図 ・ 分韻 {rhymes}、呼位 {units}、韻母 {finals}"
            " ・ 字音データは {link}（SiqYin）より同期",
 
  "n1": "<b>一、旧稿の「談韻」「歌韻」は韻目を誤っていた。</b>以前は「談」を −n 韻の韻目にしていたが、"
@@ -571,9 +620,9 @@ JA = {
        "陽は <code>yan2</code>〔iã〕で、ちょうどその斉歯の位にある。同様に「歌」は現在 "
        "<code>ku1</code>〔kuᵝ〕で模韻に属するため、〔o̝〕の韻は「<b>麻</b>」を韻目とし"
        "（麻は <code>mo2</code>）、〔uᵝ〕の韻は「<b>模</b>」を韻目とする（模は <code>mu2</code>）。",
- "n2": "<b>二、「支」「資」はそれぞれ独立した韻、「微」「魚」もそれぞれ独立した韻である。</b>"
+ "n2": "<b>二、「支」「資」はそれぞれ独立した韻、「微」「余」もそれぞれ独立した韻である。</b>"
        "「支」は <code>tsyu1</code>〔tsʮ〕、「資」は <code>tsy1</code>〔tsɿ〕で、"
-       "支韻は全体が撮口、資韻は全体が斉歯である。同様に「微」〔iᶽ〕と「魚」〔y〕も"
+       "支韻は全体が撮口、資韻は全体が斉歯である。同様に「微」〔iᶽ〕と「余」〔y〕も"
        "それぞれ独立した韻で、互いに包括関係にはない。",
  "n3": "<b>三、入声の六韻。</b>入声は別に掲げ、全部で六韻："
        "八〔aʔ〕・陌〔ɑʔ〕・質〔əʔ〕・雪〔iɪʔ〕・月〔yɪʔ〕・屋〔oʔ〕。"
@@ -599,7 +648,7 @@ JA = {
        "併せて収める（たとえば泰韻は麻韻の見系を兼ね、灰韻は止摂の合口を兼ねる）。"
        "本図の分韻はあくまで現代音の韻基を基準とし、中古の韻摂にはよらない。",
  "n8": "<b>八、本頁の字音はオンライン字音庫に追随する。</b>本頁は開いたときに"
-       "「蘇滬混合腔字音検索」のデータファイル（<code>data/DB_suhu.json</code>）を即時に読み込み、"
+       "「共通語字音検索」のデータファイル（<code>data/DB_suhu.json</code>）を即時に読み込み、"
        "ブラウザ内で分韻し直し、図を組み直す。したがって検索サイト側で字を追加したり読みを"
        "補ったりすれば、この頁を再読み込みするだけで最新の字が見られる。ネットワークに"
        "接続できない場合は、頁に内蔵されたオフラインスナップショット（<b>{chars}</b> 字）に"
@@ -610,6 +659,30 @@ JA = {
        "のみをダウンロードする。",
 
  "lang_label": "言語", "lang_wu": "漢語", "lang_en": "English", "lang_ja": "日本語",
+
+ # ---------- 同韻検索 ----------
+ "btn_same": "同韻検索",
+ "sr_title": "同韻検索",
+ "sr_sub": "字を選ぶと、その字の読みごとに、同じ韻に属するすべての字（開・合・斉・撮すべて）を一覧する。",
+ "sr_ph": "漢字を入力（最大 8 字）",
+ "sr_go": "検索",
+ "sr_hint": "繁体字・簡体字のどちらでも入力できる。簡体字は対応する繁体字に自動変換し、"
+            "一対多の場合はすべて表示する。",
+ "sr_only": "同韻検索は共通語のみを対象とする。",
+ "sr_empty": "漢字を入力してください。",
+ "sr_max": "一度に検索できるのは 8 字までです。",
+ "sr_none": "「{c}」は字音庫に読みが見つかりません。",
+ "sr_conv": "（簡体字「{c}」より）",
+ "sr_loading": "繁体字・簡体字の対照表を読み込んでいます……",
+ "sr_reading": "読み",
+ "sr_rhyme": "韻",
+ "sr_words": "計 {n} 字",
+ "sr_close": "閉じる",
+
+ # ---------- 音韻体系の注記（枠内の内容は字音検索サイトと同一） ----------
+ "phon_intro": "<strong>注：</strong> ここで言う「共通語」とは、蘇州語と上海語の混合アクセントを指します。 "
+               "(<a href=\"#\" onclick=\"openPhon();return false;\">クリックして詳細を見る</a>).",
+
  "list_sep": "・",
 }
 
