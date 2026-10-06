@@ -66,7 +66,7 @@ WU = {
         "雪（齊）、月（撮）。",
  "ov3": "<b>韻目代表字都經過核對。</b>每個韻的名字，都取一個本韻裡真的有這個讀音的字，"
         "而且由程式逐一驗證過。例如「歌」讀 <code>ku1</code>，有〔kuᵝ〕〔kəuᵝ〕兩讀，正合本韻〔uᵝ~əuᵝ〕；"
-        "「支」讀 <code>tsyu1</code>〔tsʮ〕，正好用來當開口擦化韻的韻目；"
+        "「支」讀 <code>tsyu1</code>〔tsʮ〕，正好用來當開口韻的韻目；"
         "「雪」讀 <code>siq7</code>〔siɪʔ〕是齊齒、「月」讀 <code>yuq8</code>〔yeʔ〕是撮口，"
         "各如其分。總表「韻目取字」那一欄的小字，就是這個韻目字的實際讀音。",
  "ov4": "<b>四呼怎麼判定。</b>有 <code>u</code> 介音或主元音是 <code>u</code> 的算合口，"
@@ -164,7 +164,9 @@ WU = {
        "兩字分屬兩韻，韻目也就各如其分。",
  "n2": "<b>二、「支」「資」各自成韻，「衣」「余」也各自成韻。</b>"
        "「支」讀 <code>tsyu1</code>〔tsʮ〕，「資」讀 <code>tsy1</code>〔tsɿ〕："
-       "支韻整個是開口，資韻整個也是開口。「衣」〔iᶽ〕和「余」〔y〕同樣各自成韻，不相統屬。",
+       "支韻整個是開口，資韻整個也是開口。「衣」〔iᶽ〕和「余」〔y〕同樣各自成韻，不相統屬。"
+       "<b>擦化元音是 iᶽ 和 uᵝ</b>，也就是衣韻和歌韻的韻基；"
+       "資韻〔ɿ〕與支韻〔ʮ〕雖有擦化成分，但不列入擦化元音。",
  "n3": "<b>三、入聲六韻。</b>入聲單獨列出，共六個韻："
        "襪〔aʔ〕、麥〔ɑʔ〕、質〔əʔ〕、雪〔iɪʔ~ieʔ〕、月〔yeʔ〕、屋〔oʔ〕。"
        "<b><code>iq</code>〔iɪʔ~ieʔ〕是「雪」韻（整個韻都是齊齒），"
@@ -334,7 +336,7 @@ EN = {
         "genuinely has that reading in the rhyme, verified one by one by the build script. "
         "歌, for instance, is <code>ku1</code> and has two readings, [kuᵝ] and [kəuᵝ], exactly the "
         "[uᵝ~əuᵝ] of this rhyme. "
-        "支 is <code>tsyu1</code> [tsʮ], a perfect label for the open fricated rhyme; "
+        "支 is <code>tsyu1</code> [tsʮ], a perfect label for the open rhyme; "
         "雪 is <code>siq7</code> [siɪʔ] (spread) and 月 is <code>yuq8</code> [yeʔ] (rounded). "
         "The small text under “Rhyme label” in the index is that character's actual reading.",
  "ov4": "<b>How the four divisions are decided.</b> A <code>u</code> medial or a main vowel "
@@ -448,7 +450,8 @@ EN = {
  "n2": "<b>2. 支 and 資 form separate rhymes; so do 衣 and 余.</b> 支 is <code>tsyu1</code> [tsʮ] "
        "and 資 is <code>tsy1</code> [tsɿ]: the 支 rhyme is open throughout, and so is the 資 rhyme. "
        "衣 [iᶽ] and 余 [y] likewise form rhymes of their own that do not subsume one "
-       "another.",
+       "another. <b>The fricative vowels are iᶽ and uᵝ</b>, that is, the rhyme bases of 衣 and 歌; "
+       "資 [ɿ] and 支 [ʮ] do carry fricative colouring, but they are not counted as fricative vowels.",
  "n3": "<b>3. The six checked rhymes.</b> Six checked rhymes are listed separately: "
        "襪 [aʔ], 麥 [ɑʔ], 質 [əʔ], 雪 [iɪʔ~ieʔ], 月 [yeʔ], 屋 [oʔ]. "
        "<b><code>iq</code> [iɪʔ~ieʔ] is the 雪 rhyme (spread throughout), and <code>iuq</code> "
@@ -638,7 +641,7 @@ JA = {
         "取り、しかもプログラムで一字ずつ確かめてある。たとえば「歌」は <code>ku1</code> で、"
         "〔kuᵝ〕〔kəuᵝ〕の二読みがあり、この韻の〔uᵝ~əuᵝ〕にちょうど合う。"
         "「支」は <code>tsyu1</code>〔tsʮ〕で、"
-        "開口の摩擦化韻の韻目にうってつけである。"
+        "開口の韻の韻目にうってつけである。"
         "「雪」は <code>siq7</code>〔siɪʔ〕で斉歯、「月」は <code>yuq8</code>〔yeʔ〕で撮口、"
         "それぞれ名実が一致する。一覧の「韻目取字」欄の小さい文字が、その韻目字の実際の読みである。",
  "ov4": "<b>四呼の判定。</b><code>u</code> の介音をもつもの、または主母音が <code>u</code> のものは"
@@ -740,7 +743,9 @@ JA = {
  "n2": "<b>二、「支」「資」はそれぞれ独立した韻、「衣」「余」もそれぞれ独立した韻である。</b>"
        "「支」は <code>tsyu1</code>〔tsʮ〕、「資」は <code>tsy1</code>〔tsɿ〕で、"
        "支韻は全体が開口、資韻も全体が開口である。同様に「衣」〔iᶽ〕と「余」〔y〕も"
-       "それぞれ独立した韻で、互いに包括関係にはない。",
+       "それぞれ独立した韻で、互いに包括関係にはない。"
+       "<b>摩擦化した母音は iᶽ と uᵝ</b>、すなわち衣韻と歌韻の韻母であり、"
+       "資韻〔ɿ〕と支韻〔ʮ〕には摩擦化の成分はあるが、摩擦化母音には数えない。",
  "n3": "<b>三、入声の六韻。</b>入声は別に掲げ、全部で六韻："
        "襪〔aʔ〕・麥〔ɑʔ〕・質〔əʔ〕・雪〔iɪʔ~ieʔ〕・月〔yeʔ〕・屋〔oʔ〕。"
        "<b><code>iq</code>〔iɪʔ~ieʔ〕は「雪」韻（韻全体が斉歯）、"
@@ -872,8 +877,8 @@ GLOSS = {
   "Shan group: 寒 桓 + Xian group: 覃 談 + Zhi group: closed readings",
   "Yu group: 模 魚 虞, plain-grade readings + Guo group: 歌 戈",
   "Yu group: 魚 虞, fine-grade readings",
-  "Zhi group: 支 脂 之, 知 照 日 series, fricated + Yu group: 魚 虞, 知 照 series",
-  "Zhi group: 支 脂 之, 精 series, fricated",
+  "Zhi group: 支 脂 之, 知 照 日 series + Yu group: 魚 虞, 知 照 series",
+  "Zhi group: 支 脂 之, 精 series",
   "Zhi group: 支 脂 之 微, open readings + Xie group: 齊 祭",
   "Xian group: 鹽 嚴 添 + Shan group: 仙 元 先, grades III–IV (nasal coda lost)",
   "Geng group: 庚 耕, colloquial + Dang group: 陽 唐, colloquial",
@@ -902,8 +907,8 @@ GLOSS = {
   "山摂 寒・桓＋咸摂 覃・談＋止摂の合口",
   "遇摂 模・魚・虞の洪音＋果摂 歌・戈",
   "遇摂 魚・虞の細音",
-  "止摂 支・脂・之の知・照・日組（摩擦化）＋遇摂 魚・虞の知・照組",
-  "止摂 支・脂・之の精組（摩擦化）",
+  "止摂 支・脂・之の知・照・日組＋遇摂 魚・虞の知・照組",
+  "止摂 支・脂・之の精組",
   "止摂 支・脂・之・微の開口＋蟹摂 斉・祭",
   "咸摂 塩・厳・添＋山摂 仙・元・先の三四等（鼻音韻尾の脱落）",
   "梗摂 庚・耕の白読＋宕摂 陽・唐の白読",
