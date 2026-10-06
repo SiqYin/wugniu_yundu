@@ -77,7 +77,11 @@ def main():
     a = ap.parse_args()
 
     repo = "%s/%s" % (a.owner, a.name)
-    tok = None if a.no_api else token()
+    # 權杖可有可無：--no-api 時只用來當 HTTPS 推送的回退；沒給也能純 SSH 推送。
+    tok = (os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN") or "").strip() or None
+    if not a.no_api and not tok:
+        print("找不到 GITHUB_TOKEN 環境變數（要建倉庫／開 Pages 必須提供）。")
+        sys.exit(1)
 
     # 1) 建倉庫（已存在就沿用）
     if a.no_api:
@@ -117,8 +121,31 @@ def main():
         git("remote", "set-url", "origin", ssh_url)
     else:
         git("remote", "add", "origin", ssh_url)
-    git("push", "-u", "origin", BRANCH)
-    print("· 已推送到 %s" % ssh_url)
+
+    # 先試 SSH；失敗（例如 sandbox 不讓讀 ~/.ssh/known_hosts）就用權杖走 HTTPS。
+    # 注意：權杖只出現在這一條指令裡，不會寫進 .git/config —— remote 仍是 ssh_url。
+    r = subprocess.run(["git", "push", "-u", "origin", BRANCH],
+                       cwd=HERE, capture_output=True, text=True)
+    if r.returncode == 0:
+        print("· 已推送（SSH）到 %s" % ssh_url)
+    else:
+        if not tok:
+            print("SSH 推送失敗，且沒有可用權杖可回退：\n%s%s" % (r.stdout, r.stderr))
+            sys.exit(1)
+        print("· SSH 推送不可用，改走 HTTPS 權杖通道……")
+        https_url = "https://x-access-token:%s@github.com/%s.git" % (tok, repo)
+        r2 = subprocess.run(
+            ["git", "-c", "credential.helper=", "push", https_url,
+             "%s:%s" % (BRANCH, BRANCH)],
+            cwd=HERE, capture_output=True, text=True)
+        if r2.returncode != 0:
+            print("HTTPS 推送也失敗：\n%s%s"
+                  % (r2.stdout.replace(tok, "<TOKEN>"),
+                     r2.stderr.replace(tok, "<TOKEN>")))
+            sys.exit(1)
+        print("· 已推送（HTTPS）到 %s" % repo)
+        # 讓本地 main 追蹤乾淨的 SSH remote
+        git("branch", "--set-upstream-to=origin/%s" % BRANCH, check=False)
 
     # 3) 開 GitHub Pages
     if a.no_api:

@@ -106,24 +106,39 @@ python measure_firstpaint.py  # 版面或介面文字改過之後，重測首屏
 
 ## 發佈
 
-本站以 GitHub Pages 發佈。倉庫第一次 push 後，`.github/workflows/pages.yml` 會自動
-**開啟 Pages 並部署**（用倉庫自帶的 `GITHUB_TOKEN`，不需要任何個人存取權杖）。
+線上網址：**<https://siqyin.github.io/wugniu_yundu/>**
+
+本站以 GitHub Pages 發佈，來源是 **`main` 分支根目錄**（分支模式）。也就是說
+**每次 push 到 `main` 就是直接上線**，不需要再跑任何建置步驟。
+
+> `.github/workflows/pages.yml` 是**備用**通道，平時不會自動觸發。
+> 只有在想改用 Actions 發佈時，才到 Actions 頁面手動 Run 一次；
+> 它會把 Pages 來源切成「GitHub Actions」。分支模式下若讓它在 push 時自動跑，
+> `actions/deploy-pages` 會因為來源不符而失敗，所以它只登記了 `workflow_dispatch`。
 
 若要從本機重新發布：
 
 ```bash
-export GITHUB_TOKEN=ghp_xxx      # 需要 repo + workflow 權限
+export GITHUB_TOKEN=ghp_xxx      # classic token，勾 repo + workflow
 python publish.py --name wugniu_yundu
 ```
 
-或用 SSH 金鑰推送、由 Actions 負責開 Pages：
+若倉庫已建好，只想推送（不呼叫 API）：
 
 ```bash
 python publish.py --no-api --name wugniu_yundu
 ```
 
-`publish.py` 只從環境變數讀取權杖，不寫入任何檔案；推送一律走 `git@github.com`。
-用完請到 <https://github.com/settings/tokens> 撤銷該權杖。
+推送預設走 `git@github.com`；若 SSH 不可用，也可直接用權杖經 HTTPS 推送：
+
+```bash
+git -c credential.helper= push \
+  "https://x-access-token:${GITHUB_TOKEN}@github.com/SiqYin/wugniu_yundu.git" main:main
+```
+
+`publish.py` 只從環境變數讀取權杖，不寫入任何檔案，也不會把權杖存進
+`.git/config`（remote 一律留 `git@github.com`）。用完請到
+<https://github.com/settings/tokens> 撤銷該權杖。
 
 ## 授權
 

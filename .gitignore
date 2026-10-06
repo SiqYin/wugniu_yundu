@@ -6,3 +6,8 @@ __pycache__/
 
 # 字型構建快取（本地重建用，不進版控）
 font_cache.json
+
+# 線上驗證時抓回的暫存檔
+live_index.html
+live_dom.html
+live_shot.png
