@@ -435,6 +435,15 @@ def main():
                             chars.append(ch)
                     snap_cells.append([c["ini"], fe["final"], c["tone"], c["ipa"],
                                        "".join(chars)])
+
+    in_cells = set()
+    for row in snap_cells:
+        in_cells.update(row[4])
+    db_chars = set()
+    for rec in db:
+        db_chars.update(rec["character"])
+    extra_chars = "".join(sorted(db_chars - in_cells))
+
     snapshot = {
         "source": "builtin",
         "chars": stats["chars"], "records": stats["records"],
@@ -442,11 +451,13 @@ def main():
         "strings": len(str_chars),
         "untone": [_pair(s) for s in str_untone],
         "words": [_pair(s) for s in str_words],
+        # 有收字、但因為沒有可入格的讀音而一個格子都沒進的字（例如只有無調讀音的「吧」）。
+        # 頁面要比對「線上抓回來的字庫是不是本快照的舊版子集」，需要完整的收字清單。
+        "extra_chars": extra_chars,
         "cells": snap_cells,
     }
     json.dump(snapshot, open(os.path.join(HERE, "snapshot.json"), "w", encoding="utf-8"),
               ensure_ascii=False, separators=(",", ":"))
-
     print("字符数           :", stats["chars"])
     print("读音条目         :", stats["records"])
     print("合法音节(带调)   :", stats["distinct_tone_syllables"])

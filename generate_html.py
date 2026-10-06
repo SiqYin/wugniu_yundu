@@ -514,7 +514,7 @@ function loadFromSnapshot(){
     var ini=row[0], fin=row[1], tone=row[2], ipa=row[3], chars=row[4];
     var slot=SLOT[fin]; if(!slot) return;
     var c = {ri:slot[0], hu:slot[1], fin:fin, ini:ini, tone:tone,
-             ipa:[ipa], chars:chars.split(''), syl:ini+fin+tone};
+             ipa:[ipa], chars:Array.from(chars), syl:ini+fin+tone};
     CELLKEY[slot[0]+'|'+slot[1]+'|'+fin+'|'+ini+'|'+tone]=c; CELLS.push(c);
   });
   META.syllables = CELLS.length;
@@ -1122,6 +1122,11 @@ function paintSync(){
       chars: META.chars, records: META.records, syll: META.syllables,
       stamp: SYNC.data.stamp ? n('sync_ok_stamp', {t:SYNC.data.stamp}) : ''
     }) + '</span>';
+  } else if (SYNC.type === 'stale'){
+    html = '<span class="dot">⚠️</span><span>' + n('sync_stale', {
+      link: '<a href="'+SCHEME.dict_url+'" target="_blank">'+esc(t('link_dict'))+'</a>',
+      live: SYNC.data.live, snap: META.chars, btn: esc(t('btn_sync'))
+    }) + '</span>';
   } else {
     html = '<span class="dot">⚠️</span><span>' + n('sync_fail', {
       err: esc(SYNC.data.err||''), chars: META.chars, records: META.records }) + '</span>';
@@ -1146,12 +1151,47 @@ function sync(){
     var stamp = r.headers.get('last-modified') || '';
     return r.json().then(function(db){ return {db:db, stamp:stamp}; });
   }).then(function(res){
+    /* 線上抓回來的若比內建快照還舊（見 liveOlderThanSnapshot），
+       就用內建快照，別拿舊的蓋掉新的。 */
+    if (liveOlderThanSnapshot(res.db)){
+      loadFromSnapshot(); renderAll();
+      SYNC = {type:'stale', data:{live:res.db.length}}; paintSync();
+      return;
+    }
     loadFromLive(res.db); renderAll();
     SYNC = {type:'ok', data:{stamp: fmtDate(res.stamp)}}; paintSync();
   }).catch(function(err){
     loadFromSnapshot(); renderAll();
     SYNC = {type:'fail', data:{err: err.message || String(err)}}; paintSync();
   });
+}
+
+var SNAP_CHARS = null;
+function snapCharSet(){
+  if (!SNAP_CHARS){
+    SNAP_CHARS = {};
+    SNAP.cells.forEach(function(row){
+      Array.from(row[4]).forEach(function(c){ SNAP_CHARS[c] = 1; });
+    });
+    if (SNAP.extra_chars) Array.from(SNAP.extra_chars).forEach(function(c){ SNAP_CHARS[c] = 1; });
+  }
+  return SNAP_CHARS;
+}
+
+/* 線上字庫是不是「內建快照的真子集」？是的話就代表線上那份是舊版
+   （字典網站的 Pages 還在部署，或 CDN 還在端十分鐘前的快取），
+   此時頁面寧可顯示較新的內建快照，也不要讓數字往回走。
+   若線上少了某些字、卻又多了快照沒有的字，那就不是舊版，照用線上。 */
+function liveOlderThanSnapshot(db){
+  if (!(SNAP.chars > db.length)) return false;
+  var have = snapCharSet();
+  /* 字典的 key 有多音節詞（如「如何」「如何然」）與兩字合收的條目（如「介兒」），
+     所以逐字比對；字串一律用 Array.from 按碼點切，才不會把擴展 B 區的字拆成代理對。 */
+  for (var i=0;i<db.length;i++){
+    var cs = Array.from(db[i].character);
+    for (var j=0;j<cs.length;j++) if (!have[cs[j]]) return false;
+  }
+  return true;
 }
 
 /* ---------- 渲染與語言切換 ---------- */

@@ -38,6 +38,11 @@ BASE_ARGS = [
 # 完整字集只取 CJK 及其相關區段（拉丁／音標已經全部在首屏字集裡了）
 EXT_MIN_CP = 0x2E80
 
+# 同步狀態條會出現的四種狀態：載入中／同步成功／抓到舊版／連不上。
+# 實測腳本跑的時候只會看到其中一種（通常是「同步成功」），但另外幾種一出現
+# 也是首屏可見的字，漏掉就會去拉 2 MB 的字典片，所以固定把它們算進首屏。
+SYNC_KEYS = ("sync_loading", "sync_ok", "sync_ok_stamp", "sync_fail", "sync_stale")
+
 
 # ---------------------------------------------------------------- 工具
 def cmap_codepoints(path):
@@ -118,6 +123,20 @@ def collect_online_dict():
     return online
 
 
+def sync_bar_chars():
+    """同步狀態條各狀態文案裡的字（三語），去掉標籤與 {佔位符}。"""
+    out = set()
+    sys.path.insert(0, HERE)
+    try:
+        import i18n_data
+        for L in (i18n_data.WU, i18n_data.EN, i18n_data.JA):
+            for k in SYNC_KEYS:
+                out.update(re.sub(r"<[^>]+>|\{\w+\}", " ", L.get(k, "")))
+    except Exception as e:
+        print("  ⚠ 無法載入 i18n_data.py：%s" % e)
+    return out
+
+
 def first_paint_chars():
     """首屏（預設收合、未開彈窗）真正會渲染到的字。
 
@@ -133,6 +152,10 @@ def first_paint_chars():
     if os.path.exists(p):
         s = set(open(p, encoding="utf-8").read())
         print("  首屏字表來自 firstpaint.txt（瀏覽器實測）")
+        extra = sync_bar_chars()
+        if extra - s:
+            print("  ＋ 同步狀態條其餘狀態的字 %d 個" % len(extra - s))
+        s |= extra
         return {c for c in s if ord(c) >= 0x20 and c != "\x7f"}
 
     print("  ⚠ 找不到 firstpaint.txt，改用保守估計（可跑 measure_firstpaint.py 重測）")

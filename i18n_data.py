@@ -25,6 +25,9 @@ WU = {
  "sync_ok": "已同步線上字音庫（{link}）：收字 <b>{chars}</b>，讀音 <b>{records}</b> 條，"
             "合法音節 <b>{syll}</b> 個{stamp}。字音查詢那邊一有更新，重新整理本頁就會跟著更新。",
  "sync_ok_stamp": "；線上資料檔最後更新於 {t}",
+ "sync_stale": "線上字音庫（{link}）目前還是上一版（收字 <b>{live}</b>），比本頁內建的快照"
+               "（<b>{snap}</b> 字）還少，所以先顯示快照。等線上那邊部署完成，"
+               "按下面的「{btn}」就會跟上。",
  "sync_fail": "目前連不上線上字音庫（{err}），顯示的是頁面內建的離線快照"
               "（{chars} 字 / {records} 條讀音）。連上網路後按下面的「重新同步」即可取得最新字音。",
 
@@ -214,6 +217,10 @@ EN = {
             "<b>{records}</b> readings, <b>{syll}</b> valid syllables{stamp}. "
             "Whenever the lookup site is updated, reloading this page brings the changes in.",
  "sync_ok_stamp": "; the online file was last updated on {t}",
+ "sync_stale": "The online reading database ({link}) is still on an earlier version "
+                "(<b>{live}</b> characters), fewer than this page’s built-in snapshot "
+                "(<b>{snap}</b> characters), so the snapshot is shown for now. Once the online "
+                "deployment finishes, press “{btn}” below to catch up.",
  "sync_fail": "The online reading database cannot be reached ({err}), so the built-in offline "
               "snapshot is being shown ({chars} characters / {records} readings). "
               "Press “Re-sync” once you are back online.",
@@ -427,6 +434,9 @@ JA = {
             "読み <b>{records}</b> 件、合法音節 <b>{syll}</b> 個{stamp}。"
             "検索サイト側で更新があれば、この頁を再読み込みすれば反映されます。",
  "sync_ok_stamp": "；オンラインデータの最終更新は {t}",
+ "sync_stale": "オンライン字音庫（{link}）はまだ旧版（収録 <b>{live}</b> 字）で、本頁に内蔵の"
+                "スナップショット（<b>{snap}</b> 字）より少ないため、当面はスナップショットを"
+                "表示する。オンライン側の配備が終わったら、下の「{btn}」を押せば追随する。",
  "sync_fail": "オンライン字音庫に接続できません（{err}）。表示しているのは頁に内蔵された"
               "オフラインスナップショット（{chars} 字／{records} 件の読み）です。"
               "接続できたら下の「再同期」を押してください。",
