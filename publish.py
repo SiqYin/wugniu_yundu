@@ -24,7 +24,7 @@ import argparse, json, os, subprocess, sys, time, urllib.request, urllib.error
 API = "https://api.github.com"
 HERE = os.path.dirname(os.path.abspath(__file__))
 BRANCH = "main"
-DESC = "吳語蘇滬混合腔現代韻圖：按今音韻基分韻，開合齊撮逐位列出，一位一圖"
+DESC = "吳語蘇滬混合腔韻圖：按今音韻基分韻，開合齊撮逐位列出，一位一圖"
 
 
 def token():
