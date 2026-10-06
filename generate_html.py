@@ -165,7 +165,9 @@ table.mtbl .dim{color:var(--ink3);font-size:13px}
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;flex:none}
 .rh-body{display:none;padding:12px 14px 6px}
 .rh.on>.rh-body{display:block}
-sup.mod,.mod{font-size:.74em;vertical-align:.46em;line-height:0}
+/* ᵝ／ᶽ 霞鶩文楷沒有，回退到系統字體取其字形（Segoe UI／Cambria／Times 都含） */
+sup.mod,.mod{font-size:.74em;vertical-align:.46em;line-height:0;
+  font-family:'LXGW WenKai','Segoe UI','Cambria','Times New Roman',sans-serif}
 .yt{margin:12px 0 22px}
 .yt-h{display:flex;align-items:baseline;gap:12px;padding:0 2px 6px;flex-wrap:wrap}
 .yt-t{font-size:17px;font-weight:700;letter-spacing:.05em}
@@ -285,6 +287,11 @@ footer a{color:var(--yinb);text-decoration:none}
  color:var(--ink3);font-family:var(--ui);letter-spacing:0;white-space:nowrap}
 .srchars .sc:hover{background:#e8f0f8}
 .srchars .sc.on{background:#d6e8f7}
+/* 韻目名：點了出該字自己的字音卡 */
+.rname{cursor:pointer;border-bottom:1px dashed var(--ink3)}
+a.rname{text-decoration:none;color:inherit}
+.rname:hover{color:var(--yinb);border-bottom-color:var(--yinb)}
+.rname.on{color:var(--yinb);border-bottom-color:var(--yinb);background:#e8f0f8}
 .cphint{font-size:12.5px;color:var(--ink3);font-family:var(--ui);margin:12px 0 0;line-height:1.7}
 /* 字音卡：点了结果里的字才出现 */
 #chinfo{position:fixed;z-index:620;display:none;background:#fff;border:1px solid var(--line);
@@ -557,11 +564,15 @@ function sylList(list){
   }).join(t('list_sep'));
 }
 
-/* 霞鶩文楷缺 U+1D5D（ᵝ）與 U+1DBD（ᶽ）兩個修飾字母，
-   改以上標的 β／ʐ 呈現，音值完全等價。 */
-var MODMAP = {'\u1d5d':'β', '\u1dbd':'\u0290'};
+/* 霞鶩文楷缺 U+1D5D（ᵝ）與 U+1DBD（ᶽ）兩個修飾字母。
+   早期版本把它們換成 β／ɐ 呈現，導致韻母 i 顯示成 [iʐ]、[iɐ] 之類，
+   與音系表的 [iᶽ] 不符。現在保留原字符，只縮小成上標顯示，
+   並由 .mod 的 font-family 回退到系統中含這些字形的字體。 */
+var MODMAP = {'\u1d5d':'ᵝ', '\u1dbd':'ᶽ'};
 function plainMod(s){
-  return String(s).replace(/\u1d5d/g,'β').replace(/\u1dbd/g,'\u0290');
+  /* 不再在此替換 ᵝ/ᶽ——保留原字符，交由 fixMods 統一包成 .mod（縮小上標）。
+     以前在這裡換成 β/全尺寸 ʐ，導致查詢結果與字音卡顯示 [iʐ] 而非 [iᶽ]。 */
+  return String(s);
 }
 function fixMods(root){
   if (!root) root = document.body;
@@ -859,7 +870,7 @@ function renderRhymeTable(){
       } else cells += '<td class="no">—</td>';
     });
     var clsShort = {'陰聲韻':'cls_yin','陽聲韻':'cls_yang','入聲韻':'cls_ru','特例韻':'cls_te'}[rh.cls];
-    rows.push('<tr><th class="rn"><a href="#r-'+ri+'">'+esc(rhName(rh))+'</a></th>'
+    rows.push('<tr><th class="rn"><a class="rname" data-ri="'+ri+'" data-ch="'+esc(RH[ri].name)+'" href="#r-'+ri+'">'+esc(rhName(rh))+'</a></th>'
       + '<td class="core">['+rh.core+']</td><td>'+esc(t(clsShort))+'</td>'
       + '<td class="lab">'+esc(rh.name)+'<span class="rd">'+esc(rh.label_read)+'</span></td>'
       + cells + '<td class="num">'+nHu+'</td><td class="num">'+nSys+'</td>'
@@ -891,7 +902,7 @@ function renderUnitTable(){
     }
     var clsShort = {'陰聲韻':'cls_yin','陽聲韻':'cls_yang','入聲韻':'cls_ru','特例韻':'cls_te'}[cls];
     rows.push('<tr><td class="num">'+(i+1)+'</td>'
-      + '<td class="rn"><a href="#r-'+u.ri+'-'+u.hu+'">'+esc(rhName(RH[u.ri]))+'</a></td>'
+      + '<td class="rn"><a class="rname" data-ri="'+u.ri+'" data-ch="'+esc(RH[u.ri].name)+'" href="#r-'+u.ri+'-'+u.hu+'">'+esc(rhName(RH[u.ri]))+'</a></td>'
       + '<td class="core">['+RH[u.ri].core+']</td><td>'+esc(t(clsShort))+'</td>'
       + '<td class="hu">'+esc(huFull(u.hu))+'</td><td class="fin">'+u.fin+'</td>'
       + '<td class="ipa">['+u.ipa+']</td>'
@@ -958,7 +969,7 @@ function rhymeBlock(rh, ri){
   return '<div class="rh" id="rh-'+ri+'">'
     + '<div class="rh-head" data-ri="'+ri+'">'
     + '<span class="rh-caret">▶</span>'
-    + '<span class="rh-name">'+esc(rhName(rh))+'</span>'
+    + '<span class="rh-name"><span class="rname" data-ri="'+ri+'" data-ch="'+esc(rh.name)+'">'+esc(rhName(rh))+'</span></span>'
     + '<span class="rh-meta">'+esc(t('lbl_core'))+' ['+rh.core+'] ・ '
     + esc(t({'陰聲韻':'div_shu_short','陽聲韻':'div_shu_short',
               '入聲韻':'div_ru_short','特例韻':'div_te_short'}[rh.cls]))+' ・ '
@@ -1342,11 +1353,11 @@ function renderSame(raw, out){
 
 /* ---------- 歌詞押韻查詢（同韻查詢 ＋ 近韻相押） ----------
    近韻相押：有星韻讀音接近，勒勿同人个語感裡向可能通押——有人押，有人勿押。
-   前四組（八陌／打黨／麻模／資支）是固定个兩韻組合，勾一个就當伊拉相押。
+   前四組（襪麥／打黨／麻模／資支）是固定个兩韻組合，勾一个就當伊拉相押。
    第五組「微余仙侵雲雪月」一韻一格：勾起來个韻混作一組、彼此相押；
    沒勾个就各論各个。無論勾著啥，結果一律仍按韻分列。 */
-var NEAR_FIX = [['八','陌'],['打','黨'],['麻','模'],['資','支']];
-var NEAR_CX  = ['微','余','仙','侵','雲','雪','月'];
+var NEAR_FIX = [['襪','麥'],['打','黨'],['麻','模'],['資','支']];
+var NEAR_CX  = ['衣','余','煙','侵','雲','雪','月'];
 var NEAR_ON  = {};                       /* 'f0'..'f3' -> true：前四組勾了沒 */
 var NEAR_SEL = {};                       /* '微' -> true：第五組勾起來个韻 */
 var SONG_LAST = '', SONG_TOKEN = 0;
@@ -1460,7 +1471,7 @@ function readBlock(ri, group, isNear){
   });
   return '<div class="srread'+(isNear ? ' near' : '')+'"><div class="hd">'
        + (isNear ? '<i class="ntag">'+esc(t('sg_tag'))+'</i>' : '')
-       + '<b>'+esc(rhName(RH[ri]))+'</b>'
+       + '<b><span class="rname" data-ri="'+ri+'" data-ch="'+esc(RH[ri].name)+'">'+esc(rhName(RH[ri]))+'</span></b>'
        + (syls.length ? ' ・ ' + syls.join(' ・ ') : '')
        + ' ・ ' + esc(n('sr_words', {n: chs.length}))
        + '</div><div class="srchars">'+charSpans(chs, ri)+'</div></div>';
@@ -1559,7 +1570,7 @@ function closeCharInfo(){
 }
 function ciRow(k, v){ return '<dt>' + esc(k) + '</dt><dd>' + v + '</dd>'; }
 function showCharInfo(sp){
-  var ch = sp.textContent, ri = +sp.dataset.ri, box = document.getElementById('chinfo');
+  var ch = sp.dataset.ch || sp.textContent, ri = +sp.dataset.ri, box = document.getElementById('chinfo');
   if (!box) return;
   var cs = cellsInRhyme(ch, ri);
   if (!cs.length){
@@ -1584,6 +1595,7 @@ function showCharInfo(sp){
     box.innerHTML = html;
   }
   box.classList.add('on');
+  fixMods(box);
   if (CI_ON) CI_ON.classList.remove('on');
   CI_ON = sp; sp.classList.add('on');
   var r = sp.getBoundingClientRect(), b = box.getBoundingClientRect();
@@ -1598,6 +1610,13 @@ function showCharInfo(sp){
 document.addEventListener('click', function(e){
   var sp = e.target.closest('.srchars .sc');
   if (sp){ if (sp === CI_ON) closeCharInfo(); else showCharInfo(sp); return; }
+  /* 韻目名點擊 → 該韻目字的字音卡 */
+  var rn = e.target.closest('.rname');
+  if (rn){
+    e.preventDefault();
+    if (rn === CI_ON) closeCharInfo(); else showCharInfo(rn);
+    return;
+  }
   if (!e.target.closest('#chinfo')) closeCharInfo();
 
   var hd = e.target.closest('.rh-head');
@@ -1644,7 +1663,7 @@ document.addEventListener('mouseover', function(e){
   var td = e.target.closest('td.c');
   if (!td) return;
   var tip = document.getElementById('tip');
-  tip.textContent = plainMod(td.dataset.tip); tip.style.display = 'block';
+  tip.textContent = td.dataset.tip; fixMods(tip); tip.style.display = 'block';
 });
 document.addEventListener('mousemove', function(e){
   var tip = document.getElementById('tip');
