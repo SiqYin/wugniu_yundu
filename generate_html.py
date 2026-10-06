@@ -51,11 +51,11 @@ body{margin:0;background:var(--bg);color:var(--ink);
  font-size:14.5px;line-height:1.75}
 .wrap{max-width:1500px;margin:0 auto;padding:26px 22px 90px;position:relative}
 header.top{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:20px}
-h1{font-size:29px;margin:0 0 6px;letter-spacing:.06em;padding-right:200px}
+h1{font-size:29px;margin:0 0 6px;letter-spacing:.06em;padding-right:345px}
 h1 small{font-size:13.5px;color:var(--ink2);font-weight:400;letter-spacing:0}
 .clnote{font-size:.56em;color:var(--ink3);font-weight:400;letter-spacing:0;white-space:nowrap}
-.sub{color:var(--ink2);font-size:13.5px;margin:4px 0;padding-right:200px}
-.phonintro{margin:7px 0 3px;font-size:12.8px;color:var(--ink2);padding-right:200px}
+.sub{color:var(--ink2);font-size:13.5px;margin:4px 0;padding-right:345px}
+.phonintro{margin:7px 0 3px;font-size:12.8px;color:var(--ink2);padding-right:345px}
 .phonintro a{color:var(--yinb);text-decoration:none;border-bottom:1px dotted var(--yinb)}
 .phonintro strong{color:var(--ink)}
 .sub a{color:var(--yinb);text-decoration:none;border-bottom:1px dotted var(--yinb)}
@@ -221,7 +221,7 @@ footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);
  font-size:12px;color:var(--ink3);
  font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
 footer a{color:var(--yinb);text-decoration:none}
-/* ---- 語言切換（右上角）＋ 同韻查詢按鈕（在它左邊） ---- */
+/* ---- 語言切換（右上角）＋ 同韻查詢、歌曲押韻查詢按鈕（在它左邊） ---- */
 .topbar{position:absolute;top:26px;right:22px;z-index:120;display:flex;gap:8px;align-items:flex-start}
 .lang-switcher{position:relative}
 .lang-btn{display:flex;align-items:center;gap:6px;font-size:12.5px;padding:5px 12px;
@@ -280,6 +280,56 @@ footer a{color:var(--yinb);text-decoration:none}
  font-family:var(--wk)}
 .srerr{padding:12px 16px;color:#a33;background:#fdeeea;border:1px solid #f2cdc4;border-radius:8px;
  margin:14px 0 0;font-family:var(--ui);font-size:13px}
+/* ---- 歌曲押韻查詢：近韻相押表 ---- */
+#song{position:fixed;inset:0;background:rgba(20,25,32,.5);display:none;z-index:400;
+ overflow:auto;padding:30px 16px 60px}
+#song.on{display:block}
+#songout{margin-top:6px}
+.nearhelp{margin:15px auto 0;max-width:900px;border:1px solid var(--line);border-radius:9px;
+ background:#fbfcfe;font-family:var(--ui)}
+.nearhelp>summary{cursor:pointer;padding:8px 15px;font-size:12.8px;color:#2c5f8d;font-weight:700;
+ list-style:none}
+.nearhelp>summary::-webkit-details-marker{display:none}
+.nearhelp>summary::before{content:"▶ ";font-size:9px;color:#7ba7cc}
+.nearhelp[open]>summary::before{content:"▼ "}
+.nearhelp[open]>summary{border-bottom:1px solid var(--line2)}
+.nearhelp>div{padding:11px 17px 15px;font-size:12.6px;line-height:1.9;color:var(--ink2)}
+.nearhelp>div b{color:var(--ink)}
+.nearhelp>div p{margin:0 0 8px}
+.nearhelp>div p:last-child{margin-bottom:0}
+.nearhelp>div ul{margin:4px 0 9px;padding-left:21px}
+.nearhelp>div li{margin:2px 0}
+.nearbox{border:1px solid var(--line);border-radius:11px;margin:16px 0 0;overflow:hidden}
+.nearhead{display:flex;align-items:baseline;gap:11px;padding:9px 16px;background:#f7f9fb;
+ border-bottom:1px solid var(--line);flex-wrap:wrap}
+.nearhead b{font-size:14.5px;letter-spacing:.04em}
+.nearhead .nn{font-size:12px;color:var(--ink2);font-family:var(--ui);flex:1;min-width:190px}
+.nearhead button{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:7px;
+ padding:4px 12px;font-size:12px;cursor:pointer;color:var(--ink2);white-space:nowrap;
+ font-family:var(--ui)}
+.nearhead button:hover{background:#f0f3f7}
+.nrrow{display:flex;align-items:center;gap:12px;padding:6px 16px;
+ border-top:1px solid var(--line2);flex-wrap:wrap}
+.nrrow:first-child{border-top:0}
+.nrrow label{display:flex;align-items:center;gap:7px;cursor:pointer}
+.nrrow .nrl{font-size:14px;letter-spacing:.04em;font-family:var(--wk)}
+.nrrow .nrn{font-size:12px;color:var(--ink3);font-family:var(--ui)}
+.nrrow input.nrcb{width:14px;height:14px;cursor:pointer;accent-color:#2c5f8d;margin:0}
+.nrcx{display:block;padding:8px 16px 13px}
+.nrhd{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:7px}
+.nrmx{display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap}
+.mxgrid{display:grid;grid-template-columns:30px repeat(7,26px);align-items:center;
+ justify-items:center;font-family:var(--wk);font-size:12.5px;line-height:1.6}
+.mxgrid .mxl{justify-self:end;padding-right:5px;color:var(--ink);letter-spacing:.03em}
+.mxgrid .mxh{color:var(--ink2)}
+.mxgrid input{width:13px;height:13px;margin:0;cursor:pointer;accent-color:#2c5f8d}
+.nrtip{font-size:12px;color:var(--ink3);font-family:var(--ui);line-height:1.8;
+ max-width:560px;margin:0;flex:1;min-width:260px}
+.srread.near{background:#fffdf6}
+.srread.near .hd b{color:#8a6d1c}
+.ntag{font-style:normal;display:inline-block;font-size:11px;background:#fdf1d6;color:#8a6d1c;
+ border:1px solid #eeddb0;border-radius:5px;padding:0 5px;margin-right:7px;letter-spacing:0;
+ font-family:var(--ui)}
 /* ---- 音系浮窗（內容照字音查詢網站） ---- */
 #phon{position:fixed;inset:0;background:rgba(20,25,32,.45);display:none;z-index:500;
  overflow:auto;padding:36px 16px 60px}
@@ -685,6 +735,7 @@ function renderChrome(){
   });
 
   document.getElementById('btnSame').textContent = t('btn_same');
+  document.getElementById('btnSong').textContent = t('btn_song');
   document.getElementById('i-phonintro').innerHTML = t('phon_intro');
   document.getElementById('btnSync').textContent = t('btn_sync');
   document.getElementById('btnAll').textContent  = ALLOPEN ? t('btn_collapse') : t('btn_expand');
@@ -1264,6 +1315,193 @@ function renderSame(raw, out){
   fixMods(out);
 }
 
+/* ---------- 歌曲押韻查詢（同韻查詢 ＋ 近韻相押） ----------
+   近韻相押：有星韻讀音接近，勒勿同人个語感裡向可能通押——有人押，有人勿押。
+   前四組（八陌／打黨／麻模／資支）是固定个兩韻組合，勾一个就當伊拉相押；
+   第五組「微余仙侵雲雪月」情形複雜，讓用戶自家勾兩韻之間个相押關係：
+   勾出來个關係連成一氣就成一組，好比勾「微仙」「微侵」「仙侵」＝ 微仙侵 三韻互押，
+   再勾「余雲」就是另外一組，兩組之間勿通。
+   無論勾著啥，結果一律仍按韻分列。 */
+var NEAR_FIX = [['八','陌'],['打','黨'],['麻','模'],['資','支']];
+var NEAR_CX  = ['微','余','仙','侵','雲','雪','月'];
+var NEAR_ON  = {};                       /* "微\u0001仙" -> true */
+var SONG_LAST = '', SONG_TOKEN = 0;
+var RH_IX = null;
+
+function rhIndex(){
+  if (!RH_IX){ RH_IX = {}; RH.forEach(function(r,i){ RH_IX[r.name] = i; }); }
+  return RH_IX;
+}
+/* 兩韻之間用固定次序拼鍵，正查反查同一个鍵：
+   微余仙侵雲雪月照 NEAR_CX 个次序；前四組固定配對就用伊个序號。 */
+function nearKey(a,b){
+  var ia = NEAR_CX.indexOf(a), ib = NEAR_CX.indexOf(b);
+  if (ia >= 0 && ib >= 0) return ia < ib ? a+'\u0001'+b : b+'\u0001'+a;
+  for (var i=0;i<NEAR_FIX.length;i++){
+    var p = NEAR_FIX[i];
+    if ((p[0]===a && p[1]===b) || (p[0]===b && p[1]===a)) return 'f'+i;
+  }
+  return a+'\u0001'+b;
+}
+function nearOn(a,b){ return !!NEAR_ON[nearKey(a,b)]; }
+
+/* 查某一韻時，連帶要列出个韻（含本身） */
+function nearSet(name){
+  var out = [name], ix = rhIndex(), add = function(n){
+    if (ix[n] == null || out.indexOf(n) >= 0) return;
+    out.push(n);
+  };
+  NEAR_FIX.forEach(function(p){
+    if (!nearOn(p[0], p[1])) return;          /* 沒勾就當勿相押 */
+    if (p[0] === name) add(p[1]);
+    else if (p[1] === name) add(p[0]);
+  });
+  if (NEAR_CX.indexOf(name) >= 0){          /* 在關係圖上走連通分量 */
+    var seen = {}, q = [name];
+    seen[name] = 1;
+    while (q.length){
+      var cur = q.shift();
+      NEAR_CX.forEach(function(o){
+        if (seen[o] || !nearOn(cur,o)) return;
+        seen[o] = 1; add(o); q.push(o);
+      });
+    }
+  }
+  return out;
+}
+
+function syncNearBoxes(){
+  document.querySelectorAll('#nearrows input.nrcb').forEach(function(b){
+    b.checked = nearOn(b.dataset.a, b.dataset.b);
+  });
+}
+function buildNear(){
+  var ix = rhIndex(), html = '';
+  NEAR_FIX.forEach(function(p, i){
+    html += '<div class="nrrow"><label><input type="checkbox" class="nrcb" data-a="'+esc(p[0])
+          + '" data-b="'+esc(p[1])+'"><span class="nrl">'
+          + esc(rhName(RH[ix[p[0]]]) + '／' + rhName(RH[ix[p[1]]]))
+          + '</span></label><span class="nrn">' + esc(t(i < 2 ? 'sg_g_often' : 'sg_g_tend'))
+          + '</span></div>';
+  });
+  /* 第五組：微余仙侵雲雪月 兩兩勾選（上三角，21 格） */
+  var grid = '<span class="mxl"></span>';
+  NEAR_CX.forEach(function(nm){ grid += '<span class="mxh">'+esc(nm)+'</span>'; });
+  NEAR_CX.forEach(function(a, i){
+    if (i === NEAR_CX.length - 1) return;   /* 最後一韻無右側組合 */
+    grid += '<span class="mxl">'+esc(a)+'</span>';
+    NEAR_CX.forEach(function(b, j){
+      grid += (j <= i) ? '<span></span>'
+        : '<span><input type="checkbox" class="nrcb" data-a="'+esc(a)+'" data-b="'+esc(b)
+          + '" data-cx="1"></span>';
+    });
+  });
+  html += '<div class="nrrow nrcx"><div class="nrhd">'
+        + '<span class="nrl">'+esc(NEAR_CX.join('／'))+'</span>'
+        + '<span class="nrn">'+esc(t('sg_g_mixed'))+'</span></div>'
+        + '<div class="nrmx"><div class="mxgrid">'+grid+'</div>'
+        + '<p class="nrtip">'+esc(t('sg_tip'))+'</p></div></div>';
+  document.getElementById('nearrows').innerHTML = html;
+  syncNearBoxes();
+}
+function clearNear(){
+  NEAR_ON = {}; syncNearBoxes();
+  if (SONG_LAST) doSong();
+}
+
+function renderSongChrome(){
+  document.getElementById('btnSong').textContent = t('btn_song');
+  document.getElementById('i-sg-title').textContent = t('sg_title');
+  document.getElementById('i-sg-sub').textContent = t('sg_sub');
+  document.getElementById('sgInput').placeholder = t('sg_ph');
+  document.getElementById('sgGo').textContent = t('sg_go');
+  document.getElementById('i-sg-hint').textContent = t('sg_hint');
+  document.getElementById('i-sg-near').textContent = t('sg_near');
+  document.getElementById('i-sg-nearnote').textContent = t('sg_nearnote');
+  document.getElementById('sgClear').textContent = t('sg_clear');
+  document.getElementById('i-sg-only').textContent = t('sg_only');
+  document.getElementById('i-sg-help').textContent = t('sg_help');
+  document.getElementById('i-sg-helpbody').innerHTML = t('sg_helpbody');
+  buildNear();
+}
+function openSong(){
+  loadS2T(); renderSongChrome();
+  document.getElementById('song').classList.add('on');
+  setTimeout(function(){
+    var i = document.getElementById('sgInput');
+    if (i) i.focus();
+  }, 40);
+  return false;
+}
+function closeSong(){ document.getElementById('song').classList.remove('on'); return false; }
+
+function doSong(){
+  var raw = (document.getElementById('sgInput').value || '').trim();
+  SONG_LAST = raw;
+  var out = document.getElementById('songout');
+  var cs = Array.from(raw).filter(function(c){ return /\S/.test(c); });
+  if (!cs.length){ out.innerHTML = '<div class="srerr">'+esc(t('sr_empty'))+'</div>'; return false; }
+  if (cs.length > 8){ out.innerHTML = '<div class="srerr">'+esc(t('sr_max'))+'</div>'; return false; }
+  var token = ++SONG_TOKEN;
+  out.innerHTML = '<div class="srerr">'+esc(t('sr_loading'))+'</div>';
+  loadS2T().then(function(){
+    if (token !== SONG_TOKEN) return;
+    renderSong(raw, out);
+  });
+  return false;
+}
+
+/* 一個韻一截；本韻照讀音資訊，近韻另外標出來 */
+function readBlock(ri, group, isNear){
+  var chs = rhymeChars(ri), syls = [], seen = {};
+  (group || []).forEach(function(cc){
+    if (seen[cc.syl]) return;
+    seen[cc.syl] = 1;
+    syls.push('<code>'+esc(cc.syl)+'</code> ['+esc(plainMod(cc.ipa.join('/')))+']');
+  });
+  return '<div class="srread'+(isNear ? ' near' : '')+'"><div class="hd">'
+       + (isNear ? '<i class="ntag">'+esc(t('sg_tag'))+'</i>' : '')
+       + '<b>'+esc(rhName(RH[ri]))+'</b>'
+       + (syls.length ? ' ・ ' + syls.join(' ・ ') : '')
+       + ' ・ ' + esc(n('sr_words', {n: chs.length}))
+       + '</div><div class="srchars">'+esc(chs.join(''))+'</div></div>';
+}
+
+function renderSong(raw, out){
+  var html = '', ix = rhIndex();
+  expandInput(raw).forEach(function(item){
+    var c = item.ch, rs = readingsOf(c);
+    if (!rs.length){
+      if (!item.from) html += '<div class="srerr">'+esc(n('sr_none', {c:c}))+'</div>';
+      return;
+    }
+    html += '<div class="srchar"><h3>'+esc(c)
+          + (item.from ? '<small>'+esc(n('sr_conv', {c:item.from}))+'</small>' : '')
+          + '</h3>';
+    var byR = {}, order = [];
+    rs.forEach(function(cc){
+      if (!byR[cc.ri]){ byR[cc.ri] = []; order.push(cc.ri); }
+      byR[cc.ri].push(cc);
+    });
+    order.sort(function(a,b){ return a - b; });
+    var own = {}, extra = [];
+    order.forEach(function(ri){ own[ri] = 1; });
+    order.forEach(function(ri){
+      nearSet(RH[ri].name).forEach(function(nm){
+        var j = ix[nm];
+        if (j == null || own[j] || extra.indexOf(j) >= 0) return;
+        extra.push(j);
+      });
+    });
+    extra.sort(function(a,b){ return a - b; });
+    order.forEach(function(ri){ html += readBlock(ri, byR[ri], false); });
+    extra.forEach(function(ri){ html += readBlock(ri, null, true); });
+    html += '</div>';
+  });
+  out.innerHTML = html || '<div class="srerr">'+esc(t('sr_empty'))+'</div>';
+  fixMods(out);
+}
+
 document.addEventListener('click', function(e){
   var hd = e.target.closest('.rh-head');
   if (hd && !e.target.closest('button')){ toggleRhyme(+hd.dataset.ri); return; }
@@ -1299,7 +1537,7 @@ document.addEventListener('click', function(e){
   if (e.target.id==='modal' || e.target.closest('#mclose')) closeModal();
 });
 document.addEventListener('keydown', function(e){
-  if (e.key === 'Escape'){ closeModal(); closeSame(); closePhon(); }
+  if (e.key === 'Escape'){ closeModal(); closeSame(); closeSong(); closePhon(); }
 });
 
 document.addEventListener('mouseover', function(e){
@@ -1430,9 +1668,11 @@ function applyLang(l){
   renderAll();
   opened.forEach(function(ri){ expandRhyme(ri, true); });
   if (document.getElementById('modal').classList.contains('on')) reopenModal();
-  /* 同韻查詢與音系浮窗的文字也要跟著換語言 */
+  /* 同韻查詢、歌曲押韻查詢與音系浮窗的文字也要跟著換語言 */
   renderSameChrome();
+  renderSongChrome();
   if (SAME_LAST) doSame();
+  if (SONG_LAST) doSong();
   if (document.getElementById('phon').classList.contains('on')) openPhon();
 }
 
@@ -1442,13 +1682,24 @@ buildUnits(); assignReps();
 if (!window.__yuntuLang.ready(applyLang)) applyLang('wu');
 sync();
 
-/* 同韻查詢：輸入框按 Enter 直接查；兩個浮層點背景關閉 */
+/* 同韻查詢、歌曲押韻查詢：輸入框按 Enter 直接查；三個浮層點背景關閉 */
 (function(){
-  var box = document.getElementById('srInput');
-  if (box) box.addEventListener('keydown', function(e){
-    if (e.key === 'Enter'){ e.preventDefault(); doSame(); }
+  [['srInput', doSame], ['sgInput', doSong]].forEach(function(p){
+    var box = document.getElementById(p[0]);
+    if (box) box.addEventListener('keydown', function(e){
+      if (e.key === 'Enter'){ e.preventDefault(); p[1](); }
+    });
   });
-  [['same', closeSame], ['phon', closePhon]].forEach(function(pair){
+  /* 近韻相押个勾選：改動就重出結果 */
+  var nr = document.getElementById('nearrows');
+  if (nr) nr.addEventListener('change', function(e){
+    var b = e.target.closest('input.nrcb');
+    if (!b) return;
+    var k = nearKey(b.dataset.a, b.dataset.b);
+    if (b.checked) NEAR_ON[k] = 1; else delete NEAR_ON[k];
+    if (SONG_LAST) doSong();
+  });
+  [['same', closeSame], ['song', closeSong], ['phon', closePhon]].forEach(function(pair){
     var el = document.getElementById(pair[0]);
     if (el) el.addEventListener('click', function(e){
       if (e.target === el) pair[1]();
@@ -1468,6 +1719,7 @@ HTML = """<!DOCTYPE html>
 
 <div class="topbar">
 <button class="lang-btn" id="btnSame" onclick="openSame()"></button>
+<button class="lang-btn" id="btnSong" onclick="openSong()"></button>
 <div class="lang-switcher">
 <button class="lang-btn" id="langBtn" onclick="toggleLangMenu()" aria-haspopup="true">
 <span id="langCur">漢語</span><span class="lang-caret" aria-hidden="true">▼</span></button>
@@ -1556,6 +1808,32 @@ HTML = """<!DOCTYPE html>
 <p class="samehint" id="i-sr-hint"></p>
 <p class="sameonly" id="i-sr-only"></p>
 <div id="sameout"></div>
+</div>
+</div></div>
+
+<div id="song"><div class="samebox">
+<div class="samehead">
+<b id="i-sg-title"></b>
+<span class="ss" id="i-sg-sub"></span>
+<button id="sgClose" onclick="closeSong()"></button>
+</div>
+<div class="samebody">
+<div class="sameform">
+<input id="sgInput" type="text" maxlength="8" autocomplete="off" spellcheck="false">
+<button id="sgGo" onclick="doSong()"></button>
+</div>
+<p class="samehint" id="i-sg-hint"></p>
+<details class="nearhelp">
+<summary id="i-sg-help"></summary>
+<div id="i-sg-helpbody"></div>
+</details>
+<div class="nearbox">
+<div class="nearhead"><b id="i-sg-near"></b><span class="nn" id="i-sg-nearnote"></span>
+<button id="sgClear" onclick="clearNear()"></button></div>
+<div id="nearrows"></div>
+</div>
+<p class="sameonly" id="i-sg-only"></p>
+<div id="songout"></div>
 </div>
 </div></div>
 
