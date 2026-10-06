@@ -61,11 +61,14 @@ phon_wu.html            音系簡介浮窗正文（漢語，取自字音查詢�
 phon_en.html            音系簡介浮窗正文（English，同上）
 phon_ja.html            音系簡介浮窗正文（日本語，同上）
 s2t.json                簡→繁對照表（僅收「有變化且轉換結果在本字典查得到」的字）
+favicon.ico             分頁圖示（16/32/48/64，取自字音查詢網站）
+apple-touch-icon.png    加到主畫面用的圖示（180×180，同上）
 firstpaint.txt          首屏會用到的字（由 measure_firstpaint.py 實測產生）
 font_report.json        字型分片的 unicode-range 報告（由 make_font.py 產生）
 build_data.py           由字典資料產生 scheme.json／snapshot.json／yuntu_data.json
 generate_html.py        產生 index.html（並內嵌三語詞表、音系浮窗正文、簡繁表）
 make_s2t.py             由字音查詢網站的 S2T.json 精簡出 s2t.json
+make_favicon.py         由字音查詢網站首頁的內嵌 base64 圖示切出 favicon.ico／apple-touch-icon.png
 make_font.py            產生 fonts/ 底下的字型子集
 measure_firstpaint.py   用無頭 Chrome 實測首屏可見字，重寫 firstpaint.txt
 fonts/                  霞鶩文楷子集（自託管）
@@ -133,17 +136,17 @@ python build_data.py && python generate_html.py \
 
 ### 表怎麼勾
 
-前四組是一組一格：勾了就把這兩韻當相押。第五組因為要能表現「多組並存」，
-做成**兩兩勾選**（上三角 7×7 的 21 格）：同一格勾出來的關係會**連成一氣成一組**。
-例如勾「微／仙」「微／侵」「仙／侵」＝ 微仙侵 三韻互押，再勾「余／雲」「余／月」
-就是另一組，與前一組互不相通。所以上面那三種常見分法都勾得出來。
+前四組是一組一格：勾了就把這兩韻當相押。第五組「微余仙侵雲雪月」**一韻一格**（七個勾）：
+勾選的韻合為一組、彼此相押；未勾選的則各自獨立。這樣就涵蓋了上面那幾種常見取向。
 
 實作在 `generate_html.py`：
 
-- `NEAR_FIX = [['八','陌'],['打','黨'],['麻','模'],['資','支']]`——固定配對。
-- `NEAR_CX = ['微','余','仙','侵','雲','雪','月']`——可兩兩勾選的那一組。
-- `nearSet(name)`：先看固定配對有沒有勾，再在微余仙侵雲雪月上跑**連通分量**（BFS），
-  回傳「查這一韻時要一併列出」的全部韻。查到的字若有多個讀音，每個讀音的韻各算一次。
+- `NEAR_FIX = [['八','陌'],['打','黨'],['麻','模'],['資','支']]`——固定配對，
+  `NEAR_ON['f0'..'f3']` 記哪幾組勾了。
+- `NEAR_CX = ['微','余','仙','侵','雲','雪','月']`——一韻一格的那七韻，
+  `NEAR_SEL` 記哪些韻勾了。
+- `nearSet(name)`：先看固定配對有沒有勾；再看 `NEAR_SEL`——查的韻本身若有勾，
+  就把所有勾起來的韻一併列出，沒勾就只列它自己。查到的字若有多個讀音，每個讀音各算一次。
 - **結果一律仍按韻分列**：本韻那一塊照舊顯示讀音，相押帶出來的韻另起一塊，
   標上「近韻」小標（`.srread.near` ＋ `.ntag`）。
 
@@ -151,6 +154,7 @@ python build_data.py && python generate_html.py \
 等價，界面上不必寫出來。
 
 三語文案在 `i18n_data.py` 的 `sg_*` 那批鍵（含 `sg_helpbody`：上面那段說明的全文）。
+**漢語一律用普通繁體中文，不掺吳語白話詞**（「个／勿／勒／裡向」這類字一概不用）。
 要調整分組，改 `NEAR_FIX`／`NEAR_CX` 與對應說明即可，兩邊要保持一致。
 
 ## 音系簡介
@@ -195,6 +199,32 @@ python build_data.py && python generate_html.py \
 3. `README.md` 第 15–20 行的分韻表。
 
 改完照〈重建流程〉那節的完整順序跑一遍。
+
+## 配色與圖示
+
+配色向**字音查詢網站**看齊，取它那套藍色系（`generate_html.py` 的 `:root`）：
+
+| 用途 | 色值 |
+|---|---|
+| 頁面底色 | `#eef3f9` |
+| 內文／次要／更淡 | `#1a2a3a`／`#5b7f9e`／`#7a99b5` |
+| 框線／細線 | `#c8dae8`／`#dbe7f2` |
+| 連結與強調（陰聲） | `#2980b9` |
+| 大標題／深藍（系統色） | `#1a5276` |
+| 表頭底色 | `#e8f0f8` |
+
+**語意色照舊不動**：陽聲綠 `#4aa96c`、入聲紅 `#e07a5f`、特例金 `#c2a24a`、
+近韻標記的琥珀色——這幾種帶著分類訊息，是頁面自己要用的，不隨主色調改。
+
+分頁圖示與 iOS 主畫面圖示直接沿用字音查詢網站那一顆（它把圖示內嵌成 base64 放在首頁，
+所以 `make_favicon.py` 是從該首頁把 base64 解出來再切尺寸）：
+
+```bash
+<venv python> make_favicon.py      # → favicon.ico ＋ apple-touch-icon.png（需要 Pillow）
+python generate_html.py            # 重建 index.html，讓 <link rel="icon"> 生效
+```
+
+換圖示之後記得重跑 `generate_html.py`。圖示本身不進字型子集，與 `firstpaint.txt` 無關。
 
 ## 字音資料同步
 

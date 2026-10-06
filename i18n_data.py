@@ -221,36 +221,37 @@ WU = {
  # ---------- 歌曲押韻查詢（同韻查詢 ＋ 近韻相押） ----------
  "btn_song": "歌曲押韻查詢",
  "sg_title": "歌曲押韻查詢",
- "sg_sub": "輸入漢字，按每個讀音列出押韻个全部字；下底好勾選自家接受个近韻相押組合，結果仍按韻分列。",
+ "sg_sub": "輸入漢字，按每個讀音列出押韻的全部字；下方可勾選自己接受的近韻相押組合，結果仍按韻分列。",
  "sg_ph": "輸入漢字（最多 8 個）",
  "sg_go": "查詢",
  "sg_hint": "可輸入繁體或簡體字；簡體字會自動轉成對應的繁體字查詢，一簡對多繁時全部列出。",
  "sg_only": "歌曲押韻查詢只針對蘇滬混合腔。",
  "sg_near": "近韻相押",
- "sg_nearnote": "勾選个組合，查到其中任何一韻，就會順帶列出相押韻个全部字。",
+ "sg_nearnote": "勾選的組合，查詢其中任何一韻時，都會一併列出相押韻的全部字。",
  "sg_clear": "全部清除",
- "sg_tip": "勾選兩韻即當作相押，好複選；譬如勾「微／仙」「微／侵」「仙／侵」，就是微仙侵三韻互押。",
+ "sg_tip": "這七韻一韻一格：勾選的韻合為一組、彼此相押；未勾選的則各自獨立。",
  "sg_tag": "近韻",
- "sg_help": "近韻相押是啥物事？",
+ "sg_help": "什麼是近韻相押？",
  "sg_g_often": "中新派北部吳語常相押",
  "sg_g_tend": "較新派北部吳語傾向相押",
  "sg_g_mixed": "情況複雜，因人而異",
  "sg_helpbody":
-   "<p><b>近韻相押</b>是指：勒蘇滬混合腔裡向，有星韻因為讀音接近，勒勿同人个語感裡向"
-   "可能通押。要留意「勿同人」——搿兩韻，有星人押，有星人勿押，嘸沒統一標準。下底五組"
-   "就是搿種情形，用戶可以照自家个語感，勾選自家接受个相押組合。</p>"
-   "<p><b>八／陌、打／黨</b>：勒中新派北部吳語口音裡向，這兩組經常相押。</p>"
-   "<p><b>麻／模、資／支</b>：勒較新派北部吳語口音裡向，傾向於相押。</p>"
-   "<p><b>微／余／仙／侵／雲／雪／月</b>：這一組情形複雜，因人而異。</p>"
+   "<p><b>近韻相押</b>是指：在蘇滬混合腔裡，有些韻因為讀音接近，在不同人的語感中"
+   "可能通押。要注意「不同人」——同一組韻，有人押、有人不押，沒有統一標準。以下五組"
+   "就是這種情形，使用者可以照自己的語感，勾選自己接受的相押組合。</p>"
+   "<p><b>八／陌、打／黨</b>：在中新派北部吳語口音中，這兩組經常相押。</p>"
+   "<p><b>麻／模、資／支</b>：在較新派北部吳語口音中，傾向於相押。</p>"
+   "<p><b>微／余／仙／侵／雲／雪／月</b>：這一組情況複雜，因人而異。</p>"
    "<ul>"
-   "<li>按圓脣勿圓脣，好分成功 <b>微仙侵雪／余雲月</b> 兩組：有人兩組內部相押，"
-   "兩組之間勿押。</li>"
-   "<li>也有人按舒聲入聲，分成功 <b>微余仙侵雲／雪月</b> 兩組：一樣是組內相押、組間勿押。</li>"
-   "<li>還有人分得更細，出現像 <b>微仙侵／余雲／雪月</b> 箇種多組个情形。</li>"
-   "<li>有人重視擦化，所以 <b>微／仙</b> 勿相押；不過勒上海等地个口音裡向，"
+   "<li>按圓脣與否，可分為 <b>微仙侵雪／余雲月</b> 兩組：有人兩組內部相押，"
+   "兩組之間不押。</li>"
+   "<li>也有人按舒聲入聲，分為 <b>微余仙侵雲／雪月</b> 兩組：同樣是組內相押、組間不押。</li>"
+   "<li>還有人分得更細，出現像 <b>微仙侵／余雲／雪月</b> 這樣的多組。</li>"
+   "<li>有人重視擦化，所以 <b>微／仙</b> 不相押；不過在上海等地的口音中，"
    "微、仙傾向於相押或者合併。</li>"
    "</ul>"
-   "<p>總體來講，這一組个押韻表現因人而異，所以本頁讓用戶自家勾選。</p>",
+   "<p>總體來說，這一組的押韻表現因人而異，所以本頁讓使用者自己勾選。"
+   "本頁把這一組簡化成一韻一格：勾選的韻合為一組、彼此相押，未勾選的則各自獨立。</p>",
 
  # ---------- 音系簡介（浮窗內容與字音查詢網站一致） ----------
  "phon_intro": "<a href=\"#\" onclick=\"openPhon();return false;\">請撳箇搭以瞭解蘇滬混合腔</a>",
@@ -511,8 +512,8 @@ EN = {
  "sg_near": "Near-rhyme rhyming",
  "sg_nearnote": "A ticked combination is brought in as soon as the queried rhyme is one of its two.",
  "sg_clear": "Clear all",
- "sg_tip": "Ticking two rhymes treats them as rhyming, and several ticks can be combined: ticking "
-           "微／仙, 微／侵 and 仙／侵 makes 微仙侵 one mutually rhyming set.",
+ "sg_tip": "One tick per rhyme: the rhymes you tick are treated as a single rhyming set, and the "
+           "ones you leave unticked keep to themselves.",
  "sg_tag": "near rhyme",
  "sg_help": "What is near-rhyme rhyming?",
  "sg_g_often": "rhyme very often in meso-new Northern Wu",
@@ -538,7 +539,8 @@ EN = {
    "however, 微 and 仙 tend to rhyme or even to merge.</li>"
    "</ul>"
    "<p>All in all this group rhymes differently from speaker to speaker, so the page lets you tick "
-   "your own set.</p>",
+   "your own set. The page simplifies the group to one tick per rhyme: whatever you tick counts "
+   "as one set, and whatever you leave unticked stands on its own.</p>",
 
  # ---------- Phonology note (panel content identical to the lookup site) ----------
  "phon_intro": "<strong>Note:</strong> \"common language\" here refers to a hybrid accent blending "
@@ -781,8 +783,8 @@ JA = {
  "sg_nearnote": "チェックした組み合わせは、そのいずれかの韻を照会すると、"
                 "対になる韻も合わせて一覧する。",
  "sg_clear": "すべて解除",
- "sg_tip": "二つの韻にチェックを入れると相押とみなす。複数チェックできる"
-           "（例：「微／仙」「微／侵」「仙／侵」で 微仙侵 が互いに押韻）。",
+ "sg_tip": "この七韻にはそれぞれ一つずつチェックを入れる。チェックした韻は一組として"
+           "互いに通韻し、入れなかった韻はそれぞれ独立である。",
  "sg_tag": "近韻",
  "sg_help": "近韻相押とは何か？",
  "sg_g_often": "中新型北部呉語ではしばしば通韻",
@@ -805,7 +807,9 @@ JA = {
    "<li>摩擦化を重視する人は <b>微／仙</b> を通韻させないが、上海などのアクセントでは "
    "微・仙 は通韻し、あるいは合流する傾向がある。</li>"
    "</ul>"
-   "<p>総じてこの組の押韻は話者によって異なるため、本ページでは利用者自身に選んでもらう。</p>",
+   "<p>総じてこの組の押韻は話者によって異なるため、本ページでは利用者自身に選んでもらう。"
+   "本頁ではこの組を「一韻に一チェック」に簡略化している：チェックした韻は一組にまとめ、"
+   "入れなかった韻はそれぞれ独立とする。</p>",
 
  # ---------- 音韻体系の注記（枠内の内容は字音検索サイトと同一） ----------
  "phon_intro": "<strong>注：</strong> ここで言う「共通語」とは、蘇州語と上海語の混合アクセントを指します。 "

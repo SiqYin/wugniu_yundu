@@ -42,16 +42,16 @@ PHON_EN = _read_file("phon_en.html")
 PHON_JA = _read_file("phon_ja.html")
 
 CSS = """
-:root{--ink:#1c1f23;--ink2:#5a6470;--ink3:#8b95a1;--line:#dfe4ea;--line2:#eef1f5;
---bg:#fbfcfd;--card:#fff;--yin:#e8f2fb;--yinb:#5b9bd5;--yang:#e9f6ee;--yangb:#4aa96c;
---ru:#fdeeea;--rub:#e07a5f;--te:#fdf6e3;--teb:#c2a24a;--sys:#3f6fa8}
+:root{--ink:#1a2a3a;--ink2:#5b7f9e;--ink3:#7a99b5;--line:#c8dae8;--line2:#dbe7f2;
+--bg:#eef3f9;--card:#fff;--yin:#e8f0f8;--yinb:#2980b9;--yang:#e9f6ee;--yangb:#4aa96c;
+--ru:#fdeeea;--rub:#e07a5f;--te:#fdf6e3;--teb:#c2a24a;--sys:#1a5276}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);
  font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,"SimSun",serif;
  font-size:14.5px;line-height:1.75}
 .wrap{max-width:1500px;margin:0 auto;padding:26px 22px 90px;position:relative}
-header.top{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:20px}
-h1{font-size:29px;margin:0 0 6px;letter-spacing:.06em;padding-right:345px}
+header.top{border-bottom:2px solid var(--sys);padding-bottom:14px;margin-bottom:20px}
+h1{color:var(--sys);font-size:29px;margin:0 0 6px;letter-spacing:.06em;padding-right:345px}
 h1 small{font-size:13.5px;color:var(--ink2);font-weight:400;letter-spacing:0}
 .clnote{font-size:.56em;color:var(--ink3);font-weight:400;letter-spacing:0;white-space:nowrap}
 .sub{color:var(--ink2);font-size:13.5px;margin:4px 0;padding-right:345px}
@@ -59,15 +59,15 @@ h1 small{font-size:13.5px;color:var(--ink2);font-weight:400;letter-spacing:0}
 .phonintro a{color:var(--yinb);text-decoration:none;border-bottom:1px dotted var(--yinb)}
 .phonintro strong{color:var(--ink)}
 .sub a{color:var(--yinb);text-decoration:none;border-bottom:1px dotted var(--yinb)}
-h2{font-size:20px;margin:30px 0 12px;padding-left:10px;border-left:4px solid var(--ink);
+h2{font-size:20px;margin:30px 0 12px;padding-left:10px;border-left:4px solid var(--sys);
  letter-spacing:.04em}
 h2 small{font-weight:400;font-size:13px;color:var(--ink2);margin-left:8px;letter-spacing:0}
 h2.cstitle{padding:6px 12px;border-left-width:6px;border-radius:0 8px 8px 0}
-h2.cls-shu{background:#eef4fa;border-left-color:var(--sys)}
+h2.cls-shu{background:#e8f0f8;border-left-color:var(--sys)}
 h2.cls-ru{background:var(--ru);border-left-color:var(--rub)}
 h2.cls-te{background:var(--te);border-left-color:var(--teb)}
 section.broad{margin-bottom:44px}
-p.broadnote{margin:2px 0 6px;font-size:13.5px;color:var(--ink2);background:#f6f8fb;
+p.broadnote{margin:2px 0 6px;font-size:13.5px;color:var(--ink2);background:#f4f8fd;
  border-left:3px solid var(--line);padding:8px 12px;border-radius:0 6px 6px 0}
 h3.subcls{font-size:15.5px;margin:26px 0 2px;padding:4px 12px;border-radius:0 6px 6px 0;
  letter-spacing:.08em;font-weight:700}
@@ -88,7 +88,7 @@ p.rsrc{margin:0 0 10px;font-size:12.5px;color:var(--ink2);
  padding:14px 16px 14px 36px;margin:12px 0;font-size:13.8px}
 .prose li{margin:8px 0}
 .prose p{margin:8px 0}
-code{background:#f2f5f8;border:1px solid var(--line2);border-radius:4px;padding:0 4px;
+code{background:#eef3f9;border:1px solid var(--line2);border-radius:4px;padding:0 4px;
  font-family:"SFMono-Regular",Consolas,monospace;font-size:12.5px}
 .tw{overflow:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
 table{border-collapse:separate;border-spacing:0;width:100%}
@@ -96,15 +96,15 @@ table.fenyun th,table.fenyun td,table.units th,table.units td{
  border-bottom:1px solid var(--line2);border-right:1px solid var(--line2);
  padding:4px 7px;font-size:12.5px;vertical-align:top;text-align:center;
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
-table.fenyun thead th,table.units thead th{background:#f3f6f9;font-weight:600;
+table.fenyun thead th,table.units thead th{background:#e8f0f8;font-weight:600;
  position:sticky;top:0;z-index:3;white-space:nowrap}
 table.fenyun td.core,table.units td.core{font-family:Georgia,serif;color:var(--ink2);
  white-space:nowrap}
 table.fenyun th.rn a,table.units th.rn a{font-family:"Songti SC","SimSun",serif;
  font-size:16px;font-weight:700;color:var(--ink);text-decoration:none;white-space:nowrap}
-td.yes{background:#f8fbf9}
+td.yes{background:#f2f8f6}
 td.yes .hu-t{display:block;font-size:11px;color:var(--ink3)}
-td.no{color:#c7ced6;background:#fafbfc}
+td.no{color:#c6d6e6;background:#f4f9fd}
 .ipa{color:var(--ink2);font-family:Georgia,serif}
 td.lab{font-family:"Songti SC","SimSun",serif;font-size:15px;white-space:nowrap}
 td.lab .rd{display:block;font-family:Georgia,serif;font-size:11px;color:var(--ink3)}
@@ -112,46 +112,46 @@ td.num{color:var(--ink2)}
 td.hu{white-space:nowrap;font-weight:600}
 td.fin,td.rn{white-space:nowrap}
 td.fin{font-weight:700}
-tr.div td{background:#e9eef4;color:#3f4a56;font-weight:600;font-size:12px;
+tr.div td{background:#dbe7f2;color:#1a5276;font-weight:600;font-size:12px;
  text-align:left;padding:5px 10px;letter-spacing:.06em;
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
 button.cnt,button.sys{border-radius:9px;cursor:pointer;font-size:11px;padding:0 7px;
  margin:2px 2px 0;line-height:17px;
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
-button.cnt{border:1px solid #d5dee8;background:#f4f8fc;color:#3a6a99}
+button.cnt{border:1px solid #c8dae8;background:#f0f6fb;color:#1a6da2}
 button.sys{border:1px solid #e2d6c0;background:#fdf8ef;color:#96702c}
-button.cnt:hover{background:#e6f0fa;border-color:#9fc2e2}
+button.cnt:hover{background:#e2edf8;border-color:#a3c1d9}
 button.sys:hover{background:#f8eed9;border-color:#d9bd85}
 .mhint{font-size:13px;color:var(--ink2);margin:2px 0 6px;
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
 table.mtbl{width:100%;border-collapse:collapse;
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
 table.mtbl tr.msysrow{cursor:pointer}
-table.mtbl tr.msysrow:hover{background:#f2f8ff}
+table.mtbl tr.msysrow:hover{background:#eef4fb}
 table.mtbl tr.msysrow td{border-bottom:1px solid var(--line2)}
 table.mtbl td{border-bottom:1px solid var(--line2);padding:5px 8px;font-size:12.8px;
  vertical-align:top}
 table.mtbl td.mi{width:96px;white-space:nowrap;color:var(--ink2);font-family:Georgia,serif}
-table.mtbl td.mp{width:180px;white-space:nowrap;font-family:Georgia,serif;color:#3a6a99}
+table.mtbl td.mp{width:180px;white-space:nowrap;font-family:Georgia,serif;color:#1a6da2}
 table.mtbl td.mc{font-family:"Songti SC","SimSun",serif;font-size:15.5px;line-height:1.9;
  letter-spacing:.18em;word-break:break-all}
 table.mtbl td.mn{width:88px;text-align:right;color:var(--ink3);font-size:11.5px;
  white-space:nowrap}
 table.mtbl .dim{color:var(--ink3);font-size:13px}
-.syschars{margin:4px 0 8px;background:#fbfcfe;border:1px solid var(--line2);
+.syschars{margin:4px 0 8px;background:#f8fbfe;border:1px solid var(--line2);
  border-radius:8px;padding:10px 12px;
  font-family:"Songti SC","SimSun",serif;font-size:21px;line-height:2.1;
  letter-spacing:.22em;word-break:break-all}
 .mback{border:1px solid var(--line);background:#fff;border-radius:7px;padding:4px 11px;
  cursor:pointer;font-size:12.5px;color:var(--ink2);white-space:nowrap}
-.mback:hover{background:#f0f3f7}
+.mback:hover{background:#dfe9f4}
 /* ---- 韻圖折疊區（預設收合，點標頭展開） ---- */
 .rh{border:1px solid var(--line);border-radius:10px;background:var(--card);
  margin:13px 0;overflow:hidden;scroll-margin-top:14px}
 .rh-head{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap;cursor:pointer;
- padding:9px 14px;background:#f7f9fb;border-left:5px solid var(--line)}
-.rh-head:hover{background:#eef4fa}
-.rh.on>.rh-head{background:#e9f2fa;border-left-color:var(--yinb)}
+ padding:9px 14px;background:#f0f5fb;border-left:5px solid var(--line)}
+.rh-head:hover{background:#e8f0f8}
+.rh.on>.rh-head{background:#e8f0f8;border-left-color:var(--yinb)}
 .rh-caret{font-size:12px;color:var(--ink3);width:11px;flex:none}
 .rh.on .rh-caret{color:var(--yinb)}
 .rh-name{font-size:18px;font-weight:700;letter-spacing:.06em;flex:none}
@@ -159,9 +159,9 @@ table.mtbl .dim{color:var(--ink3);font-size:13px}
 .rh-hus{font-size:12px;color:var(--ink2);
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;
  display:flex;gap:8px;flex-wrap:wrap}
-.rh-hus .rh-hu{background:#eef2f6;border-radius:5px;padding:0 6px;white-space:nowrap}
-.rh-hus .rh-hu b{font-family:Georgia,serif;color:#3a6a99}
-.rh-go{margin-left:auto;font-size:12px;color:#3a6a99;
+.rh-hus .rh-hu{background:#e8eef5;border-radius:5px;padding:0 6px;white-space:nowrap}
+.rh-hus .rh-hu b{font-family:Georgia,serif;color:#1a6da2}
+.rh-go{margin-left:auto;font-size:12px;color:#1a6da2;
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;flex:none}
 .rh-body{display:none;padding:12px 14px 6px}
 .rh.on>.rh-body{display:block}
@@ -174,17 +174,17 @@ sup.mod,.mod{font-size:.74em;vertical-align:.46em;line-height:0}
 .yt-s{margin-left:auto;display:flex;gap:7px;align-items:baseline}
 table.yuntu th,table.yuntu td{border-bottom:1px solid var(--line2);
  border-right:1px solid var(--line2);padding:2px 4px;text-align:center}
-table.yuntu thead th{background:#f3f6f9;font-size:11.5px;font-weight:600;
+table.yuntu thead th{background:#e8f0f8;font-size:11.5px;font-weight:600;
  position:sticky;top:0;z-index:2;white-space:nowrap;
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
 table.yuntu thead th .pt{display:block;font-weight:400;color:var(--ink3);font-size:10px}
-table.yuntu th.corner{background:#e9eef4;min-width:96px;position:sticky;left:0;z-index:4;
+table.yuntu th.corner{background:#dbe7f2;min-width:96px;position:sticky;left:0;z-index:4;
  font-size:11.5px;color:var(--ink2)}
-table.yuntu tr.grp th{background:#f7f9fb;font-size:11px;color:var(--ink3);
+table.yuntu tr.grp th{background:#f0f5fb;font-size:11px;color:var(--ink3);
  text-align:left;letter-spacing:.15em;padding:1px 6px;font-weight:500;
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
 table.yuntu tr.inirow.alle{opacity:.3}
-table.yuntu th.ini{background:#fafbfc;position:sticky;left:0;z-index:1;
+table.yuntu th.ini{background:#f4f9fd;position:sticky;left:0;z-index:1;
  font-family:Georgia,serif;font-size:12.5px;font-weight:600;white-space:nowrap;
  border-right:1px solid var(--line)}
 table.yuntu th.ini .iv{display:block;font-size:10px;color:var(--ink3);font-weight:400}
@@ -193,23 +193,23 @@ table.yuntu td.c .ch{display:block;font-family:"Songti SC","SimSun",serif;font-s
  line-height:1.3}
 table.yuntu td.c .py{display:block;font-family:Georgia,serif;font-size:9.5px;
  color:var(--ink3);line-height:1.1;white-space:nowrap}
-table.yuntu td.c:hover{background:#fff8e1;outline:1.5px solid #f0c040;outline-offset:-1.5px}
-table.yuntu td.e{color:#dde2e8;font-size:10px}
-#tip{position:fixed;pointer-events:none;background:#20262e;color:#fff;border-radius:6px;
+table.yuntu td.c:hover{background:#eaf3fb;outline:1.5px solid #7fb3dd;outline-offset:-1.5px}
+table.yuntu td.e{color:#d8e5f0;font-size:10px}
+#tip{position:fixed;pointer-events:none;background:#1a5276;color:#fff;border-radius:6px;
  padding:6px 9px;font-size:12px;max-width:460px;line-height:1.5;display:none;z-index:199;
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
 .bars{margin:8px 0 4px;font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
 .bar-row{display:flex;align-items:center;gap:8px;font-size:12px;margin:2px 0}
 .bar-row .bl{width:140px;text-align:right;color:var(--ink2);font-family:"Songti SC","SimSun",serif}
 .bar-row .bl i{font-style:normal;font-family:Georgia,serif;color:var(--ink3);margin-left:3px}
-.bar-row .bt{flex:1;height:11px;background:#f0f3f7;border-radius:6px;overflow:hidden}
-.bar-row .bt i{display:block;height:100%;background:linear-gradient(90deg,#8fb8e0,#5b9bd5)}
+.bar-row .bt{flex:1;height:11px;background:#dfe9f4;border-radius:6px;overflow:hidden}
+.bar-row .bt i{display:block;height:100%;background:linear-gradient(90deg,#7fb3dd,#2980b9)}
 .bar-row .bn{width:38px;color:var(--ink2);font-family:Georgia,serif}
 .tools{display:flex;gap:8px;margin:10px 0;flex-wrap:wrap}
 .tools button{border:1px solid var(--line);background:var(--card);border-radius:7px;
  padding:5px 11px;font-size:12.5px;cursor:pointer;color:var(--ink2);
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
-.tools button:hover{background:#f3f6f9}
+.tools button:hover{background:#e8f0f8}
 .syncbar{display:flex;align-items:flex-start;gap:9px;flex-wrap:wrap;
  border-radius:8px;padding:8px 13px;font-size:12.8px;margin:10px 0 0;line-height:1.7;
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
@@ -227,39 +227,39 @@ footer a{color:var(--yinb);text-decoration:none}
 .lang-btn{display:flex;align-items:center;gap:6px;font-size:12.5px;padding:5px 12px;
  border:1px solid var(--line);background:var(--card);border-radius:8px;cursor:pointer;
  color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
-.lang-btn:hover{background:#f3f6f9;border-color:#c3ced9}
+.lang-btn:hover{background:#e8f0f8;border-color:#a3c1d9}
 .lang-caret{font-size:9px;color:var(--ink3)}
 .lang-menu{display:none;position:absolute;top:calc(100% + 5px);right:0;background:var(--card);
  border:1px solid var(--line);border-radius:8px;overflow:hidden;min-width:132px;
- box-shadow:0 8px 22px rgba(20,30,45,.14)}
+ box-shadow:0 8px 22px rgba(26,42,58,.16)}
 .lang-menu.on{display:block}
 .lang-menu button{display:block;width:100%;text-align:left;padding:8px 14px;border:0;
  background:none;cursor:pointer;font-size:12.8px;color:var(--ink);
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
-.lang-menu button:hover{background:#f2f6fa}
-.lang-menu button.cur{background:#e9f2fa;font-weight:700;color:#2c5f8d}
+.lang-menu button:hover{background:#e8f0f8}
+.lang-menu button.cur{background:#e8f0f8;font-weight:700;color:#1a5276}
 /* ---- 同韻查詢（全螢幕浮層） ---- */
-#same{position:fixed;inset:0;background:rgba(20,25,32,.5);display:none;z-index:400;
+#same{position:fixed;inset:0;background:rgba(26,42,58,.42);display:none;z-index:400;
  overflow:auto;padding:30px 16px 60px}
 #same.on{display:block}
 .samebox{background:#fff;border-radius:14px;max-width:1180px;margin:0 auto;
- box-shadow:0 18px 50px rgba(0,0,0,.3);overflow:hidden}
+ box-shadow:0 18px 50px rgba(26,42,58,.24);overflow:hidden}
 .samehead{display:flex;align-items:baseline;gap:12px;padding:15px 22px;
- border-bottom:1px solid var(--line);background:#f7f9fb;flex-wrap:wrap}
+ border-bottom:1px solid var(--line);background:#f0f5fb;flex-wrap:wrap}
 .samehead b{font-size:20px;letter-spacing:.05em}
 .samehead .ss{font-size:12.5px;color:var(--ink2);font-family:var(--ui);flex:1;min-width:220px}
 .samehead button{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:7px;
  padding:5px 13px;cursor:pointer;font-size:12.5px;color:var(--ink2);white-space:nowrap;
  font-family:var(--ui)}
-.samehead button:hover{background:#f0f3f7}
+.samehead button:hover{background:#dfe9f4}
 .samebody{padding:22px 22px 28px}
 .sameform{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
 .sameform input{font-size:17px;padding:9px 14px;border:1px solid var(--line);border-radius:9px;
  width:min(360px,70vw);font-family:var(--wk);letter-spacing:.08em;color:var(--ink)}
-.sameform input:focus{outline:none;border-color:var(--yinb);box-shadow:0 0 0 3px #e3eefa}
-.sameform button{font-size:14px;padding:9px 24px;border:1px solid #9fc2e2;background:#f4f8fc;
- color:#2c5f8d;border-radius:9px;cursor:pointer;font-family:var(--ui);white-space:nowrap}
-.sameform button:hover{background:#e6f0fa}
+.sameform input:focus{outline:none;border-color:var(--yinb);box-shadow:0 0 0 3px #d6e8f7}
+.sameform button{font-size:14px;padding:9px 24px;border:1px solid #a3c1d9;background:#f0f6fb;
+ color:#1a5276;border-radius:9px;cursor:pointer;font-family:var(--ui);white-space:nowrap}
+.sameform button:hover{background:#e2edf8}
 .samehint{text-align:center;font-size:12.5px;color:var(--ink2);margin:10px 0 0;
  font-family:var(--ui);line-height:1.6}
 .sameonly{text-align:center;font-size:12.5px;color:#8a6d1c;background:#fdf8ef;
@@ -267,7 +267,7 @@ footer a{color:var(--yinb);text-decoration:none}
  font-family:var(--ui)}
 #sameout{margin-top:6px}
 .srchar{border:1px solid var(--line);border-radius:11px;margin:16px 0 0;overflow:hidden}
-.srchar>h3{margin:0;padding:8px 16px;background:#f7f9fb;border-left:5px solid var(--yinb);
+.srchar>h3{margin:0;padding:8px 16px;background:#f0f5fb;border-left:5px solid var(--yinb);
  font-size:17px;letter-spacing:.05em;font-weight:700}
 .srchar>h3 small{font-weight:400;font-size:12px;color:var(--ink3);margin-left:9px;letter-spacing:0}
 .srread{padding:10px 16px 12px;border-top:1px solid var(--line2)}
@@ -275,22 +275,22 @@ footer a{color:var(--yinb);text-decoration:none}
  line-height:1.7}
 .srread .hd b{color:var(--ink);font-size:14.5px;letter-spacing:.04em}
 .srread .hd code{font-size:12.5px}
-.srchars{background:#fbfcfe;border:1px solid var(--line2);border-radius:8px;
+.srchars{background:#f8fbfe;border:1px solid var(--line2);border-radius:8px;
  padding:8px 11px;font-size:19px;line-height:1.95;letter-spacing:.14em;word-break:break-all;
  font-family:var(--wk)}
-.srerr{padding:12px 16px;color:#a33;background:#fdeeea;border:1px solid #f2cdc4;border-radius:8px;
+.srerr{padding:12px 16px;color:#c0392b;background:#fdf0f0;border:1px solid #f5c6cb;border-radius:8px;
  margin:14px 0 0;font-family:var(--ui);font-size:13px}
 /* ---- 歌曲押韻查詢：近韻相押表 ---- */
-#song{position:fixed;inset:0;background:rgba(20,25,32,.5);display:none;z-index:400;
+#song{position:fixed;inset:0;background:rgba(26,42,58,.42);display:none;z-index:400;
  overflow:auto;padding:30px 16px 60px}
 #song.on{display:block}
 #songout{margin-top:6px}
 .nearhelp{margin:15px auto 0;max-width:900px;border:1px solid var(--line);border-radius:9px;
- background:#fbfcfe;font-family:var(--ui)}
-.nearhelp>summary{cursor:pointer;padding:8px 15px;font-size:12.8px;color:#2c5f8d;font-weight:700;
+ background:#f8fbfe;font-family:var(--ui)}
+.nearhelp>summary{cursor:pointer;padding:8px 15px;font-size:12.8px;color:#1a5276;font-weight:700;
  list-style:none}
 .nearhelp>summary::-webkit-details-marker{display:none}
-.nearhelp>summary::before{content:"▶ ";font-size:9px;color:#7ba7cc}
+.nearhelp>summary::before{content:"▶ ";font-size:9px;color:#7a99b5}
 .nearhelp[open]>summary::before{content:"▼ "}
 .nearhelp[open]>summary{border-bottom:1px solid var(--line2)}
 .nearhelp>div{padding:11px 17px 15px;font-size:12.6px;line-height:1.9;color:var(--ink2)}
@@ -300,29 +300,26 @@ footer a{color:var(--yinb);text-decoration:none}
 .nearhelp>div ul{margin:4px 0 9px;padding-left:21px}
 .nearhelp>div li{margin:2px 0}
 .nearbox{border:1px solid var(--line);border-radius:11px;margin:16px 0 0;overflow:hidden}
-.nearhead{display:flex;align-items:baseline;gap:11px;padding:9px 16px;background:#f7f9fb;
+.nearhead{display:flex;align-items:baseline;gap:11px;padding:9px 16px;background:#f0f5fb;
  border-bottom:1px solid var(--line);flex-wrap:wrap}
 .nearhead b{font-size:14.5px;letter-spacing:.04em}
 .nearhead .nn{font-size:12px;color:var(--ink2);font-family:var(--ui);flex:1;min-width:190px}
 .nearhead button{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:7px;
  padding:4px 12px;font-size:12px;cursor:pointer;color:var(--ink2);white-space:nowrap;
  font-family:var(--ui)}
-.nearhead button:hover{background:#f0f3f7}
+.nearhead button:hover{background:#dfe9f4}
 .nrrow{display:flex;align-items:center;gap:12px;padding:6px 16px;
  border-top:1px solid var(--line2);flex-wrap:wrap}
 .nrrow:first-child{border-top:0}
 .nrrow label{display:flex;align-items:center;gap:7px;cursor:pointer}
 .nrrow .nrl{font-size:14px;letter-spacing:.04em;font-family:var(--wk)}
 .nrrow .nrn{font-size:12px;color:var(--ink3);font-family:var(--ui)}
-.nrrow input.nrcb{width:14px;height:14px;cursor:pointer;accent-color:#2c5f8d;margin:0}
+.nrrow input.nrcb{width:14px;height:14px;cursor:pointer;accent-color:#1a5276;margin:0}
 .nrcx{display:block;padding:8px 16px 13px}
 .nrhd{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:7px}
-.nrmx{display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap}
-.mxgrid{display:grid;grid-template-columns:30px repeat(7,26px);align-items:center;
- justify-items:center;font-family:var(--wk);font-size:12.5px;line-height:1.6}
-.mxgrid .mxl{justify-self:end;padding-right:5px;color:var(--ink);letter-spacing:.03em}
-.mxgrid .mxh{color:var(--ink2)}
-.mxgrid input{width:13px;height:13px;margin:0;cursor:pointer;accent-color:#2c5f8d}
+.nrmx{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.cxrow{display:flex;gap:18px;flex-wrap:wrap}
+.cxrow .nrl{font-size:15px}
 .nrtip{font-size:12px;color:var(--ink3);font-family:var(--ui);line-height:1.8;
  max-width:560px;margin:0;flex:1;min-width:260px}
 .srread.near{background:#fffdf6}
@@ -331,11 +328,11 @@ footer a{color:var(--yinb);text-decoration:none}
  border:1px solid #eeddb0;border-radius:5px;padding:0 5px;margin-right:7px;letter-spacing:0;
  font-family:var(--ui)}
 /* ---- 音系浮窗（內容照字音查詢網站） ---- */
-#phon{position:fixed;inset:0;background:rgba(20,25,32,.45);display:none;z-index:500;
+#phon{position:fixed;inset:0;background:rgba(26,42,58,.38);display:none;z-index:500;
  overflow:auto;padding:36px 16px 60px}
 #phon.on{display:block}
 .phon-panel{max-width:830px;margin:0 auto;background:#fff;border-radius:12px;
- box-shadow:0 18px 50px rgba(0,0,0,.28);padding:26px 34px 30px;position:relative}
+ box-shadow:0 18px 50px rgba(26,42,58,.22);padding:26px 34px 30px;position:relative}
 .phon-panel h2{font-size:1.22em;color:#1a5276;margin:0 0 14px;padding:0 66px 8px 0;
  border-left:0;border-bottom:2px solid #c8dae8;letter-spacing:0}
 .phon-panel>div{font-family:var(--ipa);color:#1a2a3a;font-size:13.5px;line-height:1.8}
@@ -347,22 +344,22 @@ footer a{color:var(--yinb);text-decoration:none}
   h1,.sub,.phonintro{padding-right:0}
   .lang-menu{right:auto;left:0}
 }
-#modal{position:fixed;inset:0;background:rgba(20,25,32,.45);display:none;
+#modal{position:fixed;inset:0;background:rgba(26,42,58,.38);display:none;
  align-items:flex-start;justify-content:center;z-index:300;padding:36px 16px;overflow:auto}
 #modal.on{display:flex}
 .mbox{background:#fff;border-radius:12px;max-width:1080px;width:100%;
- box-shadow:0 18px 50px rgba(0,0,0,.28);overflow:hidden}
+ box-shadow:0 18px 50px rgba(26,42,58,.22);overflow:hidden}
 .mhead{display:flex;align-items:baseline;gap:12px;padding:14px 18px;
- border-bottom:1px solid var(--line);background:#f7f9fb;position:sticky;top:0;z-index:2}
+ border-bottom:1px solid var(--line);background:#f0f5fb;position:sticky;top:0;z-index:2}
 .mhead b{font-size:19px;letter-spacing:.05em}
 .mhead .ms{font-size:12.5px;color:var(--ink2);
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
 .mhead button{border:1px solid var(--line);background:#fff;border-radius:7px;
  padding:4px 12px;cursor:pointer;font-size:12.5px;color:var(--ink2);white-space:nowrap}
 .mhead #mclose{margin-left:auto}
-.mhead button:hover{background:#f0f3f7}
+.mhead button:hover{background:#dfe9f4}
 .mbody{padding:14px 18px 20px}
-.mtone{margin:12px 0 4px;font-size:13.5px;font-weight:700;color:#3a4a5c;
+.mtone{margin:12px 0 4px;font-size:13.5px;font-weight:700;color:#1a2a3a;
  border-left:4px solid var(--yinb);padding-left:9px}
 .mtone small{font-weight:400;color:var(--ink3);font-size:12px;margin-left:6px}
 """
@@ -772,7 +769,7 @@ function renderChrome(){
         var info = SCHEME.tone_info[tn], shu = info[2]==='舒';
         return '<tr><td class="num">'+tn+'</td><td>'+esc(t('tone_'+tn))+'</td>'
           + '<td class="ipa">'+info[1]+'</td><td style="background:'
-          + (shu?'#e8f2fb':'#fdeeea')+'">'+esc(shu?t('kind_shu'):t('kind_ru'))+'</td></tr>';
+          + (shu?'#e8f0f8':'#fdeeea')+'">'+esc(shu?t('kind_shu'):t('kind_ru'))+'</td></tr>';
       }).join('') + '</tbody>';
   document.getElementById('i-tonenote').textContent = n('tone_note', {total: TONES_ALL.length});
 
@@ -1102,9 +1099,9 @@ function showSysList(ri, hu){
     cs.forEach(function(c){
       html += '<tr class="msysrow" data-ri="'+ri+'" data-hu="'+hu+'" data-ini="'
         + c.ini+'" data-tone="'+c.tone+'">'
-        + '<td class="mi">'+esc(c.ini||'∅')+'<br><span style="font-size:10.5px;color:#8b95a1">'
+        + '<td class="mi">'+esc(c.ini||'∅')+'<br><span style="font-size:10.5px;color:#7a99b5">'
         + SCHEME.initials[c.ini][2]+'</span></td>'
-        + '<td class="mp">'+esc(c.syl)+'<br><span style="font-size:11px;color:#8b95a1">['
+        + '<td class="mp">'+esc(c.syl)+'<br><span style="font-size:11px;color:#7a99b5">['
         + esc(c.ipa.join('/'))+']</span></td>'
         + '<td class="mc">'+esc(c.chars.slice(0,14).join(' '))
         + (c.chars.length>14 ? ' <span class="dim">'+esc(t('md_etc'))+'</span>' : '')+'</td>'
@@ -1144,9 +1141,9 @@ function showUnitAllChars(ri, hu){
     }) + '</div><table class="mtbl"><tbody>';
     cs.forEach(function(c){
       html += '<tr><td class="mi">'+esc(c.ini||'∅')
-        + '<br><span style="font-size:10.5px;color:#8b95a1">'+SCHEME.initials[c.ini][2]
+        + '<br><span style="font-size:10.5px;color:#7a99b5">'+SCHEME.initials[c.ini][2]
         + '</span></td><td class="mp">'+esc(c.syl)
-        + '<br><span style="font-size:11px;color:#8b95a1">['
+        + '<br><span style="font-size:11px;color:#7a99b5">['
         + esc(c.ipa.join('/'))+']</span></td>'
         + '<td class="mc">'+esc(c.chars.join(' '))+'</td>'
         + '<td class="mn">'+c.chars.length+' '+esc(t('word_char'))+'</td></tr>';
@@ -1317,14 +1314,13 @@ function renderSame(raw, out){
 
 /* ---------- 歌曲押韻查詢（同韻查詢 ＋ 近韻相押） ----------
    近韻相押：有星韻讀音接近，勒勿同人个語感裡向可能通押——有人押，有人勿押。
-   前四組（八陌／打黨／麻模／資支）是固定个兩韻組合，勾一个就當伊拉相押；
-   第五組「微余仙侵雲雪月」情形複雜，讓用戶自家勾兩韻之間个相押關係：
-   勾出來个關係連成一氣就成一組，好比勾「微仙」「微侵」「仙侵」＝ 微仙侵 三韻互押，
-   再勾「余雲」就是另外一組，兩組之間勿通。
-   無論勾著啥，結果一律仍按韻分列。 */
+   前四組（八陌／打黨／麻模／資支）是固定个兩韻組合，勾一个就當伊拉相押。
+   第五組「微余仙侵雲雪月」一韻一格：勾起來个韻混作一組、彼此相押；
+   沒勾个就各論各个。無論勾著啥，結果一律仍按韻分列。 */
 var NEAR_FIX = [['八','陌'],['打','黨'],['麻','模'],['資','支']];
 var NEAR_CX  = ['微','余','仙','侵','雲','雪','月'];
-var NEAR_ON  = {};                       /* "微\u0001仙" -> true */
+var NEAR_ON  = {};                       /* 'f0'..'f3' -> true：前四組勾了沒 */
+var NEAR_SEL = {};                       /* '微' -> true：第五組勾起來个韻 */
 var SONG_LAST = '', SONG_TOKEN = 0;
 var RH_IX = null;
 
@@ -1332,18 +1328,6 @@ function rhIndex(){
   if (!RH_IX){ RH_IX = {}; RH.forEach(function(r,i){ RH_IX[r.name] = i; }); }
   return RH_IX;
 }
-/* 兩韻之間用固定次序拼鍵，正查反查同一个鍵：
-   微余仙侵雲雪月照 NEAR_CX 个次序；前四組固定配對就用伊个序號。 */
-function nearKey(a,b){
-  var ia = NEAR_CX.indexOf(a), ib = NEAR_CX.indexOf(b);
-  if (ia >= 0 && ib >= 0) return ia < ib ? a+'\u0001'+b : b+'\u0001'+a;
-  for (var i=0;i<NEAR_FIX.length;i++){
-    var p = NEAR_FIX[i];
-    if ((p[0]===a && p[1]===b) || (p[0]===b && p[1]===a)) return 'f'+i;
-  }
-  return a+'\u0001'+b;
-}
-function nearOn(a,b){ return !!NEAR_ON[nearKey(a,b)]; }
 
 /* 查某一韻時，連帶要列出个韻（含本身） */
 function nearSet(name){
@@ -1351,61 +1335,48 @@ function nearSet(name){
     if (ix[n] == null || out.indexOf(n) >= 0) return;
     out.push(n);
   };
-  NEAR_FIX.forEach(function(p){
-    if (!nearOn(p[0], p[1])) return;          /* 沒勾就當勿相押 */
+  NEAR_FIX.forEach(function(p, i){
+    if (!NEAR_ON['f' + i]) return;           /* 沒勾就當勿相押 */
     if (p[0] === name) add(p[1]);
     else if (p[1] === name) add(p[0]);
   });
-  if (NEAR_CX.indexOf(name) >= 0){          /* 在關係圖上走連通分量 */
-    var seen = {}, q = [name];
-    seen[name] = 1;
-    while (q.length){
-      var cur = q.shift();
-      NEAR_CX.forEach(function(o){
-        if (seen[o] || !nearOn(cur,o)) return;
-        seen[o] = 1; add(o); q.push(o);
-      });
-    }
+  if (NEAR_SEL[name]){                       /* 第五組：勾起來个全部混作一組 */
+    NEAR_CX.forEach(function(nm){ if (NEAR_SEL[nm]) add(nm); });
   }
   return out;
 }
 
 function syncNearBoxes(){
   document.querySelectorAll('#nearrows input.nrcb').forEach(function(b){
-    b.checked = nearOn(b.dataset.a, b.dataset.b);
+    var r = b.dataset.rhyme;
+    b.checked = r ? !!NEAR_SEL[r] : !!NEAR_ON['f' + b.dataset.fix];
   });
 }
 function buildNear(){
   var ix = rhIndex(), html = '';
   NEAR_FIX.forEach(function(p, i){
-    html += '<div class="nrrow"><label><input type="checkbox" class="nrcb" data-a="'+esc(p[0])
-          + '" data-b="'+esc(p[1])+'"><span class="nrl">'
+    html += '<div class="nrrow"><label><input type="checkbox" class="nrcb" data-fix="'+i
+          + '"><span class="nrl">'
           + esc(rhName(RH[ix[p[0]]]) + '／' + rhName(RH[ix[p[1]]]))
           + '</span></label><span class="nrn">' + esc(t(i < 2 ? 'sg_g_often' : 'sg_g_tend'))
           + '</span></div>';
   });
-  /* 第五組：微余仙侵雲雪月 兩兩勾選（上三角，21 格） */
-  var grid = '<span class="mxl"></span>';
-  NEAR_CX.forEach(function(nm){ grid += '<span class="mxh">'+esc(nm)+'</span>'; });
-  NEAR_CX.forEach(function(a, i){
-    if (i === NEAR_CX.length - 1) return;   /* 最後一韻無右側組合 */
-    grid += '<span class="mxl">'+esc(a)+'</span>';
-    NEAR_CX.forEach(function(b, j){
-      grid += (j <= i) ? '<span></span>'
-        : '<span><input type="checkbox" class="nrcb" data-a="'+esc(a)+'" data-b="'+esc(b)
-          + '" data-cx="1"></span>';
-    });
+  /* 第五組：微余仙侵雲雪月，一韻一格 */
+  var box = '';
+  NEAR_CX.forEach(function(nm){
+    box += '<label><input type="checkbox" class="nrcb" data-rhyme="'+esc(nm)+'">'
+         + '<span class="nrl">'+esc(nm)+'</span></label>';
   });
   html += '<div class="nrrow nrcx"><div class="nrhd">'
         + '<span class="nrl">'+esc(NEAR_CX.join('／'))+'</span>'
         + '<span class="nrn">'+esc(t('sg_g_mixed'))+'</span></div>'
-        + '<div class="nrmx"><div class="mxgrid">'+grid+'</div>'
+        + '<div class="nrmx"><div class="cxrow">'+box+'</div>'
         + '<p class="nrtip">'+esc(t('sg_tip'))+'</p></div></div>';
   document.getElementById('nearrows').innerHTML = html;
   syncNearBoxes();
 }
 function clearNear(){
-  NEAR_ON = {}; syncNearBoxes();
+  NEAR_ON = {}; NEAR_SEL = {}; syncNearBoxes();
   if (SONG_LAST) doSong();
 }
 
@@ -1695,8 +1666,10 @@ sync();
   if (nr) nr.addEventListener('change', function(e){
     var b = e.target.closest('input.nrcb');
     if (!b) return;
-    var k = nearKey(b.dataset.a, b.dataset.b);
-    if (b.checked) NEAR_ON[k] = 1; else delete NEAR_ON[k];
+    var r = b.dataset.rhyme;
+    if (r){ if (b.checked) NEAR_SEL[r] = 1; else delete NEAR_SEL[r]; }
+    else { var k = 'f' + b.dataset.fix;
+           if (b.checked) NEAR_ON[k] = 1; else delete NEAR_ON[k]; }
     if (SONG_LAST) doSong();
   });
   [['same', closeSame], ['song', closeSong], ['phon', closePhon]].forEach(function(pair){
@@ -1712,6 +1685,9 @@ HTML = """<!DOCTYPE html>
 <html lang="zh-Hant"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>__TITLE__</title>
+<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48 64x64">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#1a5276">
 <style>__CSS__</style>
 <script>__LANGDETECT__</script>
 </head><body>
