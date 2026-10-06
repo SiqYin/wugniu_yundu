@@ -84,15 +84,38 @@ def _read(name):
 
 
 def collect_online_dict():
-    """抓線上字典（抓不到就用本機副本），回傳 DB 資料。"""
+    """抓線上字典（抓不到就用本機副本），回傳 DB 資料。
+
+    網址帶一個時間戳，是為了繞過 GitHub Pages 的 CDN 快取：字典那邊剛 push
+    上去時，CDN 還可能端出十來分鐘前的舊檔，會把本機剛同步好的新資料覆蓋掉。
+    另外加了保險——若線上抓回來的比本機副本還少，就保留本機副本並出聲提醒。
+    """
+    local_path = os.path.join(HERE, "DB_suhu.json")
+    url = "%s%st=%d" % (LIVE_DB, "&" if "?" in LIVE_DB else "?", time.time())
+
+    def local_copy():
+        return json.load(open(local_path, encoding="utf-8"))
+
     try:
-        raw = urllib.request.urlopen(LIVE_DB, timeout=30).read()
-        open(os.path.join(HERE, "DB_suhu.json"), "wb").write(raw)
-        print("  已由線上更新 DB_suhu.json")
-        return json.loads(raw.decode("utf-8"))
+        raw = urllib.request.urlopen(url, timeout=30).read()
+        online = json.loads(raw.decode("utf-8"))
     except Exception as e:
         print("  線上字典抓取失敗（%s），改用本機副本" % e)
-        return json.load(open(os.path.join(HERE, "DB_suhu.json"), encoding="utf-8"))
+        return local_copy()
+
+    if os.path.exists(local_path):
+        try:
+            local = local_copy()
+        except Exception:
+            local = None
+        if local is not None and len(online) < len(local):
+            print("  線上字典比本機副本少（%d < %d），保留本機副本（線上大概是 CDN 舊版）"
+                  % (len(online), len(local)))
+            return local
+
+    open(local_path, "wb").write(raw)
+    print("  已由線上更新 DB_suhu.json（%d 字）" % len(online))
+    return online
 
 
 def first_paint_chars():

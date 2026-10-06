@@ -12,7 +12,7 @@ WU = {
  "h1": "蘇滬混合腔韻圖",
  "tagline": "按今音韻基分韻，開合齊撮逐位列出，一位一圖",
  "based_on": "依據 SiqYin 的 {dict}（字音查詢）與 {rime} 編製。本頁收字 <b>{chars}</b>，"
-             "讀音條目 <b>{records}</b>，合法音節（含聲調）<b>{syll}</b>。",
+             "讀音條目 <b>{records}</b>，合法音節（單音節・含聲調）<b>{syll}</b>。",
  "link_dict": "蘇滬混合腔線上字典",
  "link_rime": "RIME 輸入方案",
  "btn_sync": "重新同步線上字音庫",
@@ -172,10 +172,13 @@ WU = {
        "五 <code>ng</code>〔ŋ̩〕、而 <code>er</code>〔əl〕這四個韻，聲調屬於舒聲，"
        "但元音自成一套，沒有介音可言，<b>不分開合齊撮</b>，所以另外歸為「特例」一類，"
        "各只有一個呼位，不跟四呼混在一起列。",
- "n6": "<b>六、少數沒有收進圖裡的條目。</b>字典裡的 <code>ba</code>「吧」、<code>kha</code>「快」、"
-       "<code>don</code>「丼」三條沒有標聲調，另外「如何」「如何然」兩條是多音節詞，"
-       "都不是單音節的合法音節，所以不立格子；"
-       "其餘 <b>{syll} 個合法音節全部收進圖裡</b>。",
+ "n6": "<b>六、合法音節一共幾條。</b>字典和輸入方案裡的讀音，去重之後是 <b>{strings}</b> 條，"
+       "分成三類：其中 <b>{syll}</b> 條是單音節而且標了聲調的，"
+       "已經<b>全部收進圖裡</b>，一格一條；"
+       "另有 <b>{n_untone}</b> 條是單音節卻沒標聲調（{list_untone}），沒有聲調就排不進格子；"
+       "最後 <b>{n_word}</b> 條不是單音節（{list_word}），也不立格子。"
+       "所以圖裡的小韻格位是 <b>{syll}</b> 個；"
+       "如果把沒標聲調的那幾條也算作單音節，單音節一共 <b>{n_single}</b> 條。",
  "n7": "<b>七、中古來源只是參考。</b>每一韻的「中古可能的來源」那一欄，是為了方便跟傳統韻書對讀而設的。"
        "同一個韻常常同時收了幾個不同韻攝的字（例如泰韻兼收麻韻見系，灰韻兼收止攝合口），"
        "本圖分韻一律以今音韻基為準，不依中古韻攝。",
@@ -189,6 +192,7 @@ WU = {
        "正常只會下載前者（約 2 MB）。",
 
  "lang_label": "語言", "lang_wu": "漢語", "lang_en": "English", "lang_ja": "日本語",
+ "list_sep": "、",
 }
 
 EN = {
@@ -196,7 +200,7 @@ EN = {
  "h1": "Su–Hu Mixed Wu Rhyme Chart",
  "tagline": "Rhymes divided by modern rhyme base · the four divisions listed slot by slot · one chart per slot",
  "based_on": "Compiled from SiqYin's {dict} and the {rime}. This page contains "
-             "<b>{chars}</b> characters, <b>{records}</b> readings, and <b>{syll}</b> valid syllables (tones included).",
+             "<b>{chars}</b> characters, <b>{records}</b> readings, and <b>{syll}</b> valid syllables (monosyllabic, tones included).",
  "link_dict": "Su–Hu Mixed Wu online dictionary",
  "link_rime": "Rime input scheme",
  "btn_sync": "Re-sync the online reading database",
@@ -377,10 +381,13 @@ EN = {
        "tones, but their vowels form a set of their own with no medial, so they <b>take no part in "
        "the four divisions</b> and are classed as “special”, each with a single slot, listed apart "
        "from the four divisions.",
- "n6": "<b>6. The few entries left out.</b> In the dictionary, <code>ba</code> 吧, "
-       "<code>kha</code> 快 and <code>don</code> 丼 carry no tone mark, and 如何 and 如何然 are "
-       "polysyllabic words; none of them is a single-syllable legal syllable, so no cell is made for "
-       "them. The remaining <b>{syll} legal syllables are all in the charts</b>.",
+ "n6": "<b>6. How many legal syllables there are.</b> Deduplicated, the readings in the dictionary "
+       "and the input scheme come to <b>{strings}</b> strings in three kinds: <b>{syll}</b> are "
+       "monosyllabic and carry a tone, and <b>all of them are in the charts</b>, one cell each; "
+       "<b>{n_untone}</b> are monosyllabic but have no tone mark ({list_untone}), and without a tone "
+       "they cannot be placed in a tone grid; the remaining <b>{n_word}</b> are not monosyllabic "
+       "({list_word}) and get no cell. So the charts hold <b>{syll}</b> cells; counting the toneless "
+       "ones as syllables too gives <b>{n_single}</b> monosyllables.",
  "n7": "<b>7. Middle Chinese sources are only a reference.</b> The “probable Middle Chinese sources” "
        "line exists to make comparison with the traditional rhyme books easier. A single rhyme often "
        "gathers characters from several Middle Chinese groups (the 泰 rhyme also takes the 麻 rhyme's "
@@ -398,6 +405,7 @@ EN = {
        "only the former (about 2 MB) is downloaded.",
 
  "lang_label": "Language", "lang_wu": "漢語", "lang_en": "English", "lang_ja": "日本語",
+ "list_sep": ", ",
 }
 
 JA = {
@@ -405,7 +413,7 @@ JA = {
  "h1": "蘇滬混合腔韻図",
  "tagline": "現代音の韻基で分韻し、開・合・斉・撮を一位ずつ掲げ、一位に一図",
  "based_on": "SiqYin の{dict}（字音検索）と{rime}により作成。本頁の収録字数 <b>{chars}</b>、"
-             "読み <b>{records}</b> 件、合法音節（声調込み）<b>{syll}</b>。",
+             "読み <b>{records}</b> 件、合法音節（単音節・声調込み）<b>{syll}</b>。",
  "link_dict": "蘇滬混合腔オンライン字典",
  "link_rime": "RIME 輸入方案",
  "btn_sync": "オンライン字音庫を再同期",
@@ -570,10 +578,12 @@ JA = {
        "五 <code>ng</code>〔ŋ̩〕・而 <code>er</code>〔əl〕の四韻は、声調は舒声に属するが、"
        "母音が独自の体系をなし、介音もないため<b>開合斉撮に分かれず</b>、"
        "「特例」という別の類にまとめた。それぞれ呼位は一つだけで、四呼とは混ぜて並べない。",
- "n6": "<b>六、図に収めなかった少数の項目。</b>字典の <code>ba</code>「吧」・"
-       "<code>kha</code>「快」・<code>don</code>「丼」の三条は声調の記載がなく、"
-       "また「如何」「如何然」の二条は多音節語で、いずれも単音節の合法音節ではないため枠を設けない。"
-       "残る <b>{syll} の合法音節はすべて図に収めてある</b>。",
+ "n6": "<b>六、合法音節はいくつあるか。</b>字典と入力方案の読みは、重複を除くと <b>{strings}</b> 条で、"
+       "三つに分かれる。<b>{syll}</b> 条は単音節で声調があり、<b>すべて図に収めてある</b>（一枠一条）。"
+       "別に <b>{n_untone}</b> 条は単音節だが声調の記載がなく（{list_untone}）、"
+       "声調がなければ枠に収められない。残る <b>{n_word}</b> 条は単音節ではない（{list_word}）ので枠を設けない。"
+       "したがって図の小韻枠は <b>{syll}</b> であり、"
+       "声調のない分も単音節として数えれば単音節は <b>{n_single}</b> 条である。",
  "n7": "<b>七、中古の来源は参考にすぎない。</b>各韻の「中古の推定来源」の欄は、"
        "伝統的な韻書と対照しやすくするために設けたものである。一つの韻はしばしば複数の韻摂の字を"
        "併せて収める（たとえば泰韻は麻韻の見系を兼ね、灰韻は止摂の合口を兼ねる）。"
@@ -590,6 +600,7 @@ JA = {
        "のみをダウンロードする。",
 
  "lang_label": "言語", "lang_wu": "漢語", "lang_en": "English", "lang_ja": "日本語",
+ "list_sep": "・",
 }
 
 # 各韻的「中古可能的來源」逐韻譯文（順序與 scheme.json 的 rhymes 一致）

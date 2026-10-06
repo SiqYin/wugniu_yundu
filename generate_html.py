@@ -406,6 +406,14 @@ function n(k, o){
 var LANG_LABEL = {wu:'lang_wu', en:'lang_en', ja:'lang_ja'};
 function langLabel(l){ return t(LANG_LABEL[l]); }
 
+/* 把 [[读音, 代表字], …] 排成「讀音「字」」並以該語言的頓號相連 */
+function sylList(list){
+  var op = (LANG === 'en') ? ' ' : '「', cl = (LANG === 'en') ? '' : '」';
+  return list.map(function(x){
+    return '<code>'+esc(x[0])+'</code>' + (x[1] ? op+esc(x[1])+cl : '');
+  }).join(t('list_sep'));
+}
+
 /* 霞鶩文楷缺 U+1D5D（ᵝ）與 U+1DBD（ᶽ）兩個修飾字母，
    改以上標的 β／ʐ 呈現，音值完全等價。 */
 var MODMAP = {'\u1d5d':'β', '\u1dbd':'\u0290'};
@@ -500,7 +508,8 @@ function addReading(syl, tone, ipa, ch){
 
 function loadFromSnapshot(){
   CELLS=[]; CELLKEY={};
-  META = {chars:SNAP.chars, records:SNAP.records, syllables:0, skipped:0};
+  META = {chars:SNAP.chars, records:SNAP.records, syllables:0, skipped:0,
+          untone:SNAP.untone||[], words:SNAP.words||[], strings:SNAP.strings||0};
   SNAP.cells.forEach(function(row){
     var ini=row[0], fin=row[1], tone=row[2], ipa=row[3], chars=row[4];
     var slot=SLOT[fin]; if(!slot) return;
@@ -509,21 +518,45 @@ function loadFromSnapshot(){
     CELLKEY[slot[0]+'|'+slot[1]+'|'+fin+'|'+ini+'|'+tone]=c; CELLS.push(c);
   });
   META.syllables = CELLS.length;
+  META.single = META.syllables + META.untone.length;
+}
+
+/* 读音串去重后分三类：单音节带调（＝格位）／单音节无调／非单音节。
+   无调与非单音节的条目单独收起来，供补充说明逐条列出。 */
+function finishMeta(){
+  var all = Object.keys(META.strSeen), unt=[], wrd=[];
+  META.strings = all.length;
+  all.forEach(function(s){
+    var chars = META.strChars[s].join(''), mm = /^(.*?)([0-9])$/.exec(s);
+    if (!mm) unt.push([s, chars]);
+    else {
+      var p = parseSyl(mm[1]);
+      if (!p || !SLOT[p[1]]) wrd.push([s, chars]);
+    }
+  });
+  function bySyl(a,b){ return a[0] < b[0] ? -1 : (a[0] > b[0] ? 1 : 0); }
+  META.untone = unt.sort(bySyl); META.words = wrd.sort(bySyl);
+  META.single = META.syllables + META.untone.length;
 }
 
 function loadFromLive(db){
   CELLS=[]; CELLKEY={};
-  META = {chars:db.length, records:0, syllables:0, skipped:0};
+  META = {chars:db.length, records:0, syllables:0, skipped:0,
+          strSeen:{}, strChars:{}};
   db.forEach(function(rec){
     var ch = rec.character, ms = rec.meaning || [];
     META.records += ms.length;
     ms.forEach(function(m){
-      var mm = /^(.*?)([0-9])$/.exec(m[0]);
+      var s = String(m[0]);
+      if (META.strSeen[s] === undefined){ META.strSeen[s]=1; META.strChars[s]=[]; }
+      if (META.strChars[s].indexOf(ch) < 0) META.strChars[s].push(ch);
+      var mm = /^(.*?)([0-9])$/.exec(s);
       if (!mm) { META.skipped++; return; }
       addReading(mm[1], mm[2], m[1]||'', ch);
     });
   });
   META.syllables = CELLS.length;
+  finishMeta();
 }
 
 /* ---------- 代表字：按小韵字数升序贪心分配，尽量不重复 ---------- */
@@ -623,6 +656,9 @@ function renderChrome(){
   /* 音系總覽要點 */
   var hc = huCount();
   var ovv = {rhymes:RH.length, units:UNIT.length, syll:META.syllables, chars:META.chars,
+             strings:META.strings, n_untone:META.untone.length, n_word:META.words.length,
+             n_single:META.single,
+             list_untone:sylList(META.untone), list_word:sylList(META.words),
              n_kai:hc['開']||0, n_he:hc['合']||0, n_qi:hc['齊']||0,
              n_cuo:hc['撮']||0, n_te:hc['特']||0, btn_expand:t('btn_expand')};
   document.getElementById('i-ovlist').innerHTML =

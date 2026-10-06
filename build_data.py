@@ -11,9 +11,8 @@
    例：an[ã]／ian[iã] 同韵基，为一韵之开・齐；en[ən]／in[in]／iun[yn] 分立三韵。
    入声六韵：八 aʔ、陌 ɑʔ、質 əʔ、雪 iɪʔ、月 yɪʔ、屋 oʔ；
    其中 iq[iɪʔ] 归雪韵、iuq[yɪʔ] 归月韵。
-   注：本页列出的都是【音值】（实际读音），音值未必等于音位
-   （例如 iq 音值 [iɪʔ]、音位 /iʔ/，理论主元音是 i 而不是 ɪ）。
-   所以页面上的分韵说明只陈述事实，不拿音值去推理由。
+   注：本页的音标一律标【音值】（实际读音），不列音位；
+   分韵说明只陈述事实，不拿音值去推理由。
 2. 呼 = 介音或主元音之性质：有 u 介音或主元音为 u 者合口，i 介音或
    主元音为 i 者为齐齿，yu 介音或主元音为 yu（[y]）者为撮口，余为开口。
    擦化元音 [ɿ] 计作 i 之擦化（齐齿），[ʮ] 计作 [y] 之擦化（撮口）。
@@ -236,6 +235,34 @@ def main():
             inst[(ini, fin, tone)]["ipa"].add(m[1])
             inst[(ini, fin, tone)]["chars"].append((ch, syl))
 
+    # ---- 全部读音串的口径统计（供页面说明用） ----
+    # 字典里的读音串去重后分三类：①单音节且带调（＝图里的小韵格位）
+    # ②单音节但没标声调（入不了按声调排的格子）③不是单音节（多音节词）
+    str_chars = collections.defaultdict(set)
+    for rec in db:
+        for m in rec["meaning"]:
+            str_chars[m[0]].add(rec["character"])
+
+    def _splits(s):
+        mm = re.match(r"^(.*?)([0-9])$", s)
+        if not mm:
+            return None
+        p = parse_syllable(mm.group(1))
+        return p if (p and p[1] in FINALS) else False
+
+    str_tones, str_untone, str_words = [], [], []
+    for s in sorted(str_chars):
+        if _splits(s) is None:
+            str_untone.append(s)
+        elif _splits(s) is False:
+            str_words.append(s)
+        else:
+            str_tones.append(s)
+    assert len(str_tones) == len(inst), (len(str_tones), len(inst))
+
+    def _pair(s):
+        return [s, "".join(sorted(str_chars[s]))]
+
     # 韵母 -> (韵目, 呼)
     fin_slot = {}
     for name, core, ref, src, hus in RHYME_TABLE:
@@ -297,8 +324,14 @@ def main():
         "hu_units": sum(len(h) for _, _, _, _, h in RHYME_TABLE),
         "finals": len(FINALS),
         "initials": len(INITIALS),
+        "strings_all": len(str_chars),
+        "strings_syllable": len(str_tones),
+        "strings_untone": [_pair(s) for s in str_untone],
+        "strings_word": [_pair(s) for s in str_words],
+        "single_total": len(str_tones) + len(str_untone),
         "bad": bad,
     }
+    assert len(str_tones) + len(str_untone) + len(str_words) == len(str_chars)
 
     # ---- 校验：舒声韵只含 1/2/3/5/6，入声韵只含 7/8 ----
     tone_violation = []
@@ -406,6 +439,9 @@ def main():
         "source": "builtin",
         "chars": stats["chars"], "records": stats["records"],
         "syllables": stats["distinct_tone_syllables"],
+        "strings": len(str_chars),
+        "untone": [_pair(s) for s in str_untone],
+        "words": [_pair(s) for s in str_words],
         "cells": snap_cells,
     }
     json.dump(snapshot, open(os.path.join(HERE, "snapshot.json"), "w", encoding="utf-8"),
@@ -418,6 +454,12 @@ def main():
     print("分韵数           :", stats["rhymes"], " / 呼位数:", stats["hu_units"],
           " / 韵母:", stats["finals"])
     print("构拟格位         :", stats["cells_built"])
+    print("读音串(去重)     :", stats["strings_all"],
+          "= 单音节带调", stats["strings_syllable"],
+          "+ 单音节无调", len(str_untone),
+          "+ 非单音节", len(str_words))
+    print("  无调单音节     :", [_pair(s) for s in str_untone])
+    print("  非单音节       :", [_pair(s) for s in str_words])
     print("无法归韵/非单音节:", len(bad))
     for b in bad[:15]:
         print("   ", b)
