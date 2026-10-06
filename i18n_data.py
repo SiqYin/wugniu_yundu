@@ -47,13 +47,13 @@ WU = {
  "tone_note": "蘇滬混合腔沒有陽上和陽去的分別，這兩類現在的讀音合併成調 6「陽上去」，"
               "所以總共只有 {total} 個聲調。",
 
- "ov1": "<b>分韻只看今音的韻基。</b>韻基就是主元音加韻尾。韻基不同，就算中古時屬於同一韻攝，"
-        "也要分成不同的韻；韻基相同，就算中古時來自不同韻攝，也歸為同一個韻。"
-        "所以 <code>i[iᶽ]</code> 和 <code>iu[y]</code> 分成微韻和魚韻，"
+ "ov1": "<b>分韻以今音的韻基為準。</b>韻基是這個韻的元音加韻尾。"
+        "韻基不同的，就算是中古同一韻攝，也分成不同的韻；"
+        "韻基相同的，就算是中古不同韻攝，也歸為同一個韻。"
+        "依此，<code>i[iᶽ]</code> 和 <code>iu[y]</code> 分成微韻和魚韻，"
         "<code>y[ɿ]</code> 和 <code>yu[ʮ]</code> 分成資韻和支韻；"
-        "入聲的 <code>eq[əʔ]</code>、<code>ueq[uəʔ]</code>（主元音是 <code>ə</code>）和 "
-        "<code>iq[iɪʔ]</code>（主元音是 <code>ɪ</code>）分成質韻和雪韻，"
-        "<code>iuq[yɪʔ]</code> 另立為月韻。"
+        "入聲的 <code>eq[əʔ]</code>、<code>ueq[uəʔ]</code> 歸質韻，"
+        "<code>iq[iɪʔ]</code> 歸雪韻，<code>iuq[yɪʔ]</code> 歸月韻。"
         "合起來一共 <b>{rhymes} 個韻</b>。",
  "ov2": "<b>開合齊撮逐位列出。</b>一個韻裡面佔了幾個呼，就列出幾個呼位，"
         "<b>一個呼位畫一張圖</b>。全部共 <b>{units} 個呼位</b>，其中開口 {n_kai} 位、"
@@ -118,8 +118,8 @@ WU = {
  "yt_yin_note": "沒有韻尾（開音節）", "yt_yang_note": "鼻音韻尾或鼻化",
  "yt_ru_note": "入聲韻和舒聲韻分開排列，收喉塞尾 <code>[ʔ]</code>，圖裡只列陰入、陽入兩個調。"
                "入聲韻同樣有開、合、齊、撮的差別，所以也逐位畫圖。"
-               "<code>iq</code>〔ɪʔ〕屬<b>雪</b>韻（全韻齊齒），<code>iuq</code>〔yɪʔ〕屬<b>月</b>韻"
-               "（全韻撮口），所以各立一韻。",
+               "<code>iq</code>〔iɪʔ〕是<b>雪</b>韻（全韻齊齒），"
+               "<code>iuq</code>〔yɪʔ〕是<b>月</b>韻（全韻撮口）。",
  "yt_te_note": "這四個韻的聲調屬於舒聲（1、2、3、5、6），但元音自成一套，<b>不分開合齊撮</b>，"
                "所以另外列成一區：<code>m</code>〔m̩〕、<code>n</code>〔n̩〕、<code>ng</code>〔ŋ̩〕"
                "是成音節鼻音，<code>er</code>〔əl〕是捲舌元音。四個韻各只有一個呼位，"
@@ -156,18 +156,18 @@ WU = {
        "陽讀 <code>yan2</code>〔iã〕，正好在它的齊齒位上。同樣地，「歌」現在讀 "
        "<code>ku1</code>〔kuᵝ〕，屬於模韻，所以〔o̝〕這個韻改用「<b>麻</b>」當韻目"
        "（麻讀 <code>mo2</code>），〔uᵝ〕這個韻就用「<b>模</b>」當韻目（模讀 <code>mu2</code>）。",
- "n2": "<b>二、「支」和「資」為什麼要分開。</b>「支」讀 <code>tsyu1</code>〔tsʮ〕，"
-       "「資」讀 <code>tsy1</code>〔tsɿ〕，主元音一個是 ʮ、一個是 ɿ，韻基不同，所以各立一韻："
-       "支韻整個是撮口，資韻整個是齊齒。同樣地，「微」〔iᶽ〕和「魚」〔y〕也各自立韻，不相統屬。",
+ "n2": "<b>二、「支」「資」各自成韻，「微」「魚」也各自成韻。</b>"
+       "「支」讀 <code>tsyu1</code>〔tsʮ〕，「資」讀 <code>tsy1</code>〔tsɿ〕："
+       "支韻整個是撮口，資韻整個是齊齒。「微」〔iᶽ〕和「魚」〔y〕同樣各自成韻，不相統屬。",
  "n3": "<b>三、入聲六韻。</b>入聲單獨列出，共六個韻："
-       "八〔aʔ〕、陌〔ɑʔ〕、質〔əʔ〕、雪〔ɪʔ〕、月〔yɪʔ〕、屋〔oʔ〕。"
-       "<b><code>iq</code>〔iɪʔ〕歸「雪」韻（整個韻都是齊齒），"
-       "<code>iuq</code>〔yɪʔ〕另立「月」韻（整個韻都是撮口）</b>。"
+       "八〔aʔ〕、陌〔ɑʔ〕、質〔əʔ〕、雪〔iɪʔ〕、月〔yɪʔ〕、屋〔oʔ〕。"
+       "<b><code>iq</code>〔iɪʔ〕是「雪」韻（整個韻都是齊齒），"
+       "<code>iuq</code>〔yɪʔ〕是「月」韻（整個韻都是撮口）</b>。"
        "韻目也很貼切：「雪」讀 <code>siq7</code>〔siɪʔ〕，「月」讀 <code>yuq8</code>〔yɪʔ〕。"
        "（<code>iuq</code> 的音值以前誤標成〔yeʔ〕，現在已經改正為〔yɪʔ〕。）",
  "n4": "<b>四、陽韻齊齒位的 iã／iɛ̃ 是文白異讀。</b>陽韻齊齒的 <code>ian</code> 這個位子，"
        "字典裡同時記了〔iã〕和〔iɛ̃〕兩種音值，例如「羊」讀〔iã〕、「良」讀〔liɛ̃〕。"
-       "這是文讀和白讀的差別，韻基沒有變，所以仍然算同一個韻、同一個呼位。",
+       "這是文讀和白讀的差別，兩者仍然是同一個韻、同一個呼位。",
  "n5": "<b>五、特例四韻是怎麼來的。</b>嘸 <code>m</code>〔m̩〕、唔 <code>n</code>〔n̩〕、"
        "五 <code>ng</code>〔ŋ̩〕、而 <code>er</code>〔əl〕這四個韻，聲調屬於舒聲，"
        "但元音自成一套，沒有介音可言，<b>不分開合齊撮</b>，所以另外歸為「特例」一類，"
@@ -234,15 +234,13 @@ EN = {
  "tone_note": "Su–Hu Mixed Wu does not distinguish Yang Shang from Yang Qu; the two have merged "
               "into tone 6, “Yang Shang–Qu”. That leaves {total} tones in all.",
 
- "ov1": "<b>Rhymes are divided by the modern rhyme base alone.</b> The rhyme base is the main vowel "
-        "plus the coda. Different bases are split into different rhymes even if they belonged to the "
-        "same rhyme group in Middle Chinese; the same base is one rhyme even if it came from different "
-        "Middle Chinese groups. Thus <code>i[iᶽ]</code> and <code>iu[y]</code> split into the "
-        "微 and 魚 rhymes, and <code>y[ɿ]</code> and <code>yu[ʮ]</code> into 資 and 支; among the "
-        "checked rhymes, <code>eq[əʔ]</code> and <code>ueq[uəʔ]</code> (main vowel <code>ə</code>) "
-        "and <code>iq[iɪʔ]</code> (main vowel <code>ɪ</code>) split into 質 and 雪, and "
-        "<code>iuq[yɪʔ]</code> is set up as its own rhyme 月. "
-        "In total there are <b>{rhymes} rhymes</b>.",
+ "ov1": "<b>Rhymes follow the modern rhyme base.</b> The base is the rhyme's vowel plus its "
+        "coda. A different base means a different rhyme even if the characters belonged to the same "
+        "Middle Chinese group; the same base means one rhyme even if they came from different groups. "
+        "Thus <code>i[iᶽ]</code> and <code>iu[y]</code> split into 微 and 魚, and "
+        "<code>y[ɿ]</code> and <code>yu[ʮ]</code> into 資 and 支; among the checked rhymes, "
+        "<code>eq[əʔ]</code> and <code>ueq[uəʔ]</code> go to 質, <code>iq[iɪʔ]</code> to 雪, and "
+        "<code>iuq[yɪʔ]</code> to 月. In total there are <b>{rhymes} rhymes</b>.",
  "ov2": "<b>Open, closed, spread and rounded are listed slot by slot.</b> However many divisions a "
         "rhyme occupies, that many slots are listed, <b>one chart per slot</b>. All told there are "
         "<b>{units} slots</b>: open {n_kai}, closed {n_he}, spread {n_qi}, rounded {n_cuo}, "
@@ -320,8 +318,8 @@ EN = {
  "yt_ru_note": "Checked rhymes are kept apart from unchecked ones. They take the glottal-stop coda "
                "<code>[ʔ]</code> and their charts list only Yin Ru and Yang Ru. They show the same "
                "open／closed／spread／rounded distinctions, so they are charted slot by slot too. "
-               "<code>iq</code> [ɪʔ] belongs to the 雪 rhyme (spread throughout) and "
-               "<code>iuq</code> [yɪʔ] to the 月 rhyme (rounded throughout), so each is its own rhyme.",
+               "<code>iq</code> [iɪʔ] is the 雪 rhyme (spread throughout) and "
+               "<code>iuq</code> [yɪʔ] the 月 rhyme (rounded throughout).",
  "yt_te_note": "These four rhymes have unchecked tones (1, 2, 3, 5, 6), but their vowels stand "
                "apart and they have no medial, so they <b>take no part in the four divisions</b> and "
                "are listed as a separate block: <code>m</code> [m̩], <code>n</code> [n̩] and "
@@ -360,20 +358,20 @@ EN = {
        "陽 is <code>yan2</code> [iã], right in its spread slot. Likewise 歌 is now "
        "<code>ku1</code> [kuᵝ] and belongs to 模, so the [o̝] rhyme takes <b>麻</b> as its label "
        "(麻 is <code>mo2</code>) and the [uᵝ] rhyme takes <b>模</b> (模 is <code>mu2</code>).",
- "n2": "<b>2. Why 支 and 資 are separate.</b> 支 is <code>tsyu1</code> [tsʮ] and 資 is "
-       "<code>tsy1</code> [tsɿ]: one has ʮ as its main vowel and the other ɿ, so the bases differ and "
-       "each forms its own rhyme — 支 rounded throughout, 資 spread throughout. In the same way "
-       "微 [iᶽ] and 魚 [y] are separate rhymes that do not subsume one another.",
+ "n2": "<b>2. 支 and 資 form separate rhymes; so do 微 and 魚.</b> 支 is <code>tsyu1</code> [tsʮ] "
+       "and 資 is <code>tsy1</code> [tsɿ]: the 支 rhyme is rounded throughout, the 資 rhyme spread "
+       "throughout. 微 [iᶽ] and 魚 [y] likewise form rhymes of their own that do not subsume one "
+       "another.",
  "n3": "<b>3. The six checked rhymes.</b> Six checked rhymes are listed separately: "
-       "八 [aʔ], 陌 [ɑʔ], 質 [əʔ], 雪 [ɪʔ], 月 [yɪʔ], 屋 [oʔ]. "
-       "<b><code>iq</code> [iɪʔ] goes to the 雪 rhyme (spread throughout), and <code>iuq</code> [yɪʔ] "
-       "forms its own 月 rhyme (rounded throughout).</b> The labels fit too: 雪 is <code>siq7</code> "
+       "八 [aʔ], 陌 [ɑʔ], 質 [əʔ], 雪 [iɪʔ], 月 [yɪʔ], 屋 [oʔ]. "
+       "<b><code>iq</code> [iɪʔ] is the 雪 rhyme (spread throughout), and <code>iuq</code> [yɪʔ] "
+       "the 月 rhyme (rounded throughout).</b> The labels fit too: 雪 is <code>siq7</code> "
        "[siɪʔ], 月 is <code>yuq8</code> [yɪʔ]. (The value of <code>iuq</code> was once mis-written "
        "[yeʔ]; it has been corrected to [yɪʔ].)",
  "n4": "<b>4. iã／iɛ̃ in the 陽 rhyme's spread slot are literary versus colloquial readings.</b> "
        "For <code>ian</code> in the 陽 rhyme the dictionary records both [iã] and [iɛ̃] — for example "
-       "羊 [iã] and 良 [liɛ̃]. That is a literary/colloquial difference; the base is unchanged, so it "
-       "remains one rhyme and one slot.",
+       "羊 [iã] and 良 [liɛ̃]. That is a literary/colloquial difference; both readings remain one "
+       "rhyme and one slot.",
  "n5": "<b>5. Where the four special rhymes come from.</b> 嘸 <code>m</code> [m̩], "
        "唔 <code>n</code> [n̩], 五 <code>ng</code> [ŋ̩] and 而 <code>er</code> [əl] have unchecked "
        "tones, but their vowels form a set of their own with no medial, so they <b>take no part in "
@@ -444,13 +442,12 @@ JA = {
  "tone_note": "蘇滬混合腔には陽上と陽去の区別がなく、この二類は現在どちらも調 6「陽上去」に"
               "統合されている。したがって声調は全部で {total} つである。",
 
- "ov1": "<b>分韻は現代音の韻基だけで決める。</b>韻基とは主母音と韻尾のことである。韻基が違えば、"
+ "ov1": "<b>分韻は現代音の韻基による。</b>韻基とはその韻の母音と韻尾である。韻基が違えば、"
         "中古に同じ韻摂に属していても別の韻に分ける。韻基が同じなら、中古に別の韻摂から来ていても"
         "同じ韻にまとめる。したがって <code>i[iᶽ]</code> と <code>iu[y]</code> は微韻と魚韻に、"
         "<code>y[ɿ]</code> と <code>yu[ʮ]</code> は資韻と支韻に分かれる。入声では "
-        "<code>eq[əʔ]</code>・<code>ueq[uəʔ]</code>（主母音は <code>ə</code>）と "
-        "<code>iq[iɪʔ]</code>（主母音は <code>ɪ</code>）が質韻と雪韻に分かれ、"
-        "<code>iuq[yɪʔ]</code> は独立して月韻となる。"
+        "<code>eq[əʔ]</code>・<code>ueq[uəʔ]</code> が質韻に、<code>iq[iɪʔ]</code> が雪韻に、"
+        "<code>iuq[yɪʔ]</code> が月韻になる。"
         "合わせて <b>{rhymes} 韻</b>。",
  "ov2": "<b>開・合・斉・撮を一位ずつ掲げる。</b>一つの韻がいくつの呼を占めるかによって、"
         "その数の呼位を掲げ、<b>一位に一図</b>を描く。全部で <b>{units} の呼位</b>、"
@@ -517,9 +514,8 @@ JA = {
  "yt_yin_note": "韻尾なし（開音節）", "yt_yang_note": "鼻音韻尾または鼻母音化",
  "yt_ru_note": "入声韻は舒声韻と分けて並べる。喉塞尾 <code>[ʔ]</code> をもち、"
                "図には陰入と陽入の二調だけを並べる。入声韻にも開・合・斉・撮の区別があるので、"
-               "同じく一位ずつ図を描く。<code>iq</code>〔ɪʔ〕は<b>雪</b>韻（韻全体が斉歯）、"
-               "<code>iuq</code>〔yɪʔ〕は<b>月</b>韻（韻全体が撮口）に属し、"
-               "それぞれ別の韻とする。",
+               "同じく一位ずつ図を描く。<code>iq</code>〔iɪʔ〕は<b>雪</b>韻（韻全体が斉歯）、"
+               "<code>iuq</code>〔yɪʔ〕は<b>月</b>韻（韻全体が撮口）である。",
  "yt_te_note": "この四韻の声調は舒声（1・2・3・5・6）に属するが、母音が独自の体系をなし、"
                "介音もないため<b>開合斉撮に分かれず</b>、別の区として掲げる："
                "<code>m</code>〔m̩〕・<code>n</code>〔n̩〕・<code>ng</code>〔ŋ̩〕は成節鼻音、"
@@ -557,20 +553,19 @@ JA = {
        "陽は <code>yan2</code>〔iã〕で、ちょうどその斉歯の位にある。同様に「歌」は現在 "
        "<code>ku1</code>〔kuᵝ〕で模韻に属するため、〔o̝〕の韻は「<b>麻</b>」を韻目とし"
        "（麻は <code>mo2</code>）、〔uᵝ〕の韻は「<b>模</b>」を韻目とする（模は <code>mu2</code>）。",
- "n2": "<b>二、「支」と「資」を分ける理由。</b>「支」は <code>tsyu1</code>〔tsʮ〕、"
-       "「資」は <code>tsy1</code>〔tsɿ〕で、主母音が一方は ʮ、他方は ɿ であり韻基が異なるため、"
-       "それぞれ別の韻とする：支韻は全体が撮口、資韻は全体が斉歯である。同様に「微」〔iᶽ〕と"
-       "「魚」〔y〕もそれぞれ独立した韻で、互いに包括関係にはない。",
+ "n2": "<b>二、「支」「資」はそれぞれ独立した韻、「微」「魚」もそれぞれ独立した韻である。</b>"
+       "「支」は <code>tsyu1</code>〔tsʮ〕、「資」は <code>tsy1</code>〔tsɿ〕で、"
+       "支韻は全体が撮口、資韻は全体が斉歯である。同様に「微」〔iᶽ〕と「魚」〔y〕も"
+       "それぞれ独立した韻で、互いに包括関係にはない。",
  "n3": "<b>三、入声の六韻。</b>入声は別に掲げ、全部で六韻："
-       "八〔aʔ〕・陌〔ɑʔ〕・質〔əʔ〕・雪〔ɪʔ〕・月〔yɪʔ〕・屋〔oʔ〕。"
-       "<b><code>iq</code>〔iɪʔ〕は「雪」韻（韻全体が斉歯）に、"
-       "<code>iuq</code>〔yɪʔ〕は独立して「月」韻（韻全体が撮口）とする。</b>"
+       "八〔aʔ〕・陌〔ɑʔ〕・質〔əʔ〕・雪〔iɪʔ〕・月〔yɪʔ〕・屋〔oʔ〕。"
+       "<b><code>iq</code>〔iɪʔ〕は「雪」韻（韻全体が斉歯）、"
+       "<code>iuq</code>〔yɪʔ〕は「月」韻（韻全体が撮口）である。</b>"
        "韻目もよく合う：「雪」は <code>siq7</code>〔siɪʔ〕、「月」は <code>yuq8</code>〔yɪʔ〕。"
        "（<code>iuq</code> の音価は以前〔yeʔ〕と誤記していたが、現在は〔yɪʔ〕に訂正済み。）",
  "n4": "<b>四、陽韻斉歯位の iã／iɛ̃ は文白異読である。</b>陽韻斉歯の <code>ian</code> の位には、"
        "字典が〔iã〕と〔iɛ̃〕の二つの音価を併記している。たとえば「羊」は〔iã〕、"
-       "「良」は〔liɛ̃〕。これは文読と白読の違いであり、韻基は変わっていないので、"
-       "依然として同じ韻・同じ呼位である。",
+       "「良」は〔liɛ̃〕。これは文読と白読の違いであり、両者は依然として同じ韻・同じ呼位である。",
  "n5": "<b>五、特例の四韻の由来。</b>嘸 <code>m</code>〔m̩〕・唔 <code>n</code>〔n̩〕・"
        "五 <code>ng</code>〔ŋ̩〕・而 <code>er</code>〔əl〕の四韻は、声調は舒声に属するが、"
        "母音が独自の体系をなし、介音もないため<b>開合斉撮に分かれず</b>、"
