@@ -5,6 +5,7 @@ __pycache__/
 *.pyc
 __sr_probe.py
 __sr_probe.html
+__live_probe.py
 __fp_probe.html
 
 # 字型構建快取（本地重建用，不進版控）
@@ -14,6 +15,7 @@ font_cache.json
 live_index.html
 live_dom.html
 live_shot.png
+live_dump_*.html
 
 # 線上驗證截圖
 shot_*.png

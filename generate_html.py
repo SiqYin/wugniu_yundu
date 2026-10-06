@@ -1145,14 +1145,16 @@ function closePhon(){ document.getElementById('phon').classList.remove('on'); }
 /* ---------- 同韻查詢 ----------
    輸入漢字 -> 逐一取其在韻圖裡的每個讀音 -> 列出該讀音所屬韻的全部字（不分呼）。
    簡繁對照表 s2t.json 只在第一次打開時抓一次，抓不到就只支援繁體輸入。 */
-var S2T = null, S2T_DONE = false, SAME_LAST = '';
+var S2T = null, S2T_P = null, SAME_LAST = '', SAME_TOKEN = 0;
 function loadS2T(){
-  if (S2T_DONE) return;
-  S2T_DONE = true;
-  fetch('s2t.json', {cache:'force-cache'}).then(function(r){
-    if (!r.ok) throw new Error('HTTP '+r.status);
-    return r.json();
-  }).then(function(j){ S2T = j || {}; }).catch(function(){ S2T = {}; });
+  if (!S2T_P){
+    S2T_P = fetch('s2t.json', {cache:'force-cache'}).then(function(r){
+      if (!r.ok) throw new Error('HTTP '+r.status);
+      return r.json();
+    }).then(function(j){ S2T = j || {}; return S2T; })
+      .catch(function(){ S2T = {}; return S2T; });   /* 抓不到就只支援繁體輸入 */
+  }
+  return S2T_P;
 }
 
 /* 一個字在韻圖裡的全部讀音（每個讀音就是一個小韻格） */
@@ -1219,8 +1221,17 @@ function doSame(){
   var cs = Array.from(raw).filter(function(c){ return /\S/.test(c); });
   if (!cs.length){ out.innerHTML = '<div class="srerr">'+esc(t('sr_empty'))+'</div>'; return false; }
   if (cs.length > 8){ out.innerHTML = '<div class="srerr">'+esc(t('sr_max'))+'</div>'; return false; }
-  loadS2T();
+  /* 簡繁對照表是非同步抓的，必須等它到位才能展開簡體字，否則第一次查簡體字會誤報「查不到」 */
+  var token = ++SAME_TOKEN;
+  out.innerHTML = '<div class="srerr">'+esc(t('sr_loading'))+'</div>';
+  loadS2T().then(function(){
+    if (token !== SAME_TOKEN) return;          /* 期間又查了別的，這次作廢 */
+    renderSame(raw, out);
+  });
+  return false;
+}
 
+function renderSame(raw, out){
   var html = '', any = false;
   expandInput(raw).forEach(function(item){
     var c = item.ch, rs = readingsOf(c);
@@ -1251,7 +1262,6 @@ function doSame(){
   });
   out.innerHTML = html || '<div class="srerr">'+esc(t('sr_empty'))+'</div>';
   fixMods(out);
-  return false;
 }
 
 document.addEventListener('click', function(e){
