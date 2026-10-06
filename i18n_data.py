@@ -56,7 +56,7 @@ WU = {
         "依此，<code>i[iᶽ]</code> 和 <code>iu[y]</code> 分成微韻和余韻，"
         "<code>y[ɿ]</code> 和 <code>yu[ʮ]</code> 分成資韻和支韻；"
         "入聲的 <code>eq[əʔ]</code>、<code>ueq[uəʔ]</code> 歸質韻，"
-        "<code>iq[iɪʔ]</code> 歸雪韻，<code>iuq[yɪʔ]</code> 歸月韻。"
+        "<code>iq[iɪʔ~ieʔ]</code> 歸雪韻，<code>iuq[yeʔ]</code> 歸月韻。"
         "合起來一共 <b>{rhymes} 個韻</b>。",
  "ov2": "<b>開合齊撮逐位列出。</b>一個韻裡面佔了幾個呼，就列出幾個呼位，"
         "<b>一個呼位畫一張圖</b>。全部共 <b>{units} 個呼位</b>，其中開口 {n_kai} 位、"
@@ -65,10 +65,10 @@ WU = {
         "模（合）、余（撮）、支（撮）、資（齊）、微（齊）、仙（齊）、侵（齊）、雲（撮）、"
         "雪（齊）、月（撮）。",
  "ov3": "<b>韻目代表字都經過核對。</b>每個韻的名字，都取一個本韻裡真的有這個讀音的字，"
-        "而且由程式逐一驗證過。例如「談」現在讀 <code>de6</code>〔dᴇ〕，屬於灰韻，"
-        "所以不再拿它來當 －n 韻的韻目；「歌」現在讀 <code>ku1</code>〔kuᵝ〕，屬於模韻；"
+        "而且由程式逐一驗證過。例如「談」現在讀 <code>de6</code>〔de̞〕，屬於灰韻，"
+        "所以不再拿它來當 －n 韻的韻目；「歌」現在讀 <code>ku1</code>〔kəuᵝ〕，屬於模韻；"
         "「支」讀 <code>tsyu1</code>〔tsʮ〕，正好用來當撮口擦化韻的韻目；"
-        "「雪」讀 <code>siq7</code>〔siɪʔ〕是齊齒，「月」讀 <code>yuq8</code>〔yɪʔ〕是撮口，"
+        "「雪」讀 <code>siq7</code>〔siɪʔ〕是齊齒、「月」讀 <code>yuq8</code>〔yeʔ〕是撮口，"
         "各如其分。總表「韻目取字」那一欄的小字，就是這個韻目字的實際讀音。",
  "ov4": "<b>四呼怎麼判定。</b>有 <code>u</code> 介音或主元音是 <code>u</code> 的算合口，"
         "有 <code>i</code> 介音或主元音是 <code>i</code> 的算齊齒，"
@@ -121,8 +121,8 @@ WU = {
  "yt_yin_note": "沒有韻尾（開音節）", "yt_yang_note": "鼻音韻尾或鼻化",
  "yt_ru_note": "入聲韻和舒聲韻分開排列，收喉塞尾 <code>[ʔ]</code>，圖裡只列陰入、陽入兩個調。"
                "入聲韻同樣有開、合、齊、撮的差別，所以也逐位畫圖。"
-               "<code>iq</code>〔iɪʔ〕是<b>雪</b>韻（全韻齊齒），"
-               "<code>iuq</code>〔yɪʔ〕是<b>月</b>韻（全韻撮口）。",
+               "<code>iq</code>〔iɪʔ~ieʔ〕是<b>雪</b>韻（全韻齊齒），"
+               "<code>iuq</code>〔yeʔ〕是<b>月</b>韻（全韻撮口）。",
  "yt_te_note": "這四個韻的聲調屬於舒聲（1、2、3、5、6），但元音自成一套，<b>不分開合齊撮</b>，"
                "所以另外列成一區：<code>m</code>〔m̩〕、<code>n</code>〔n̩〕、<code>ng</code>〔ŋ̩〕"
                "是成音節鼻音，<code>er</code>〔əl〕是捲舌元音。四個韻各只有一個呼位，"
@@ -154,11 +154,12 @@ WU = {
            " ・ 字音資料同步自 {link}（SiqYin）",
 
  "n1": "<b>一、舊稿的「談韻」和「歌韻」用錯了韻目。</b>早先拿「談」當 －n 韻的韻目，"
-       "但「談」現在讀 <code>de6</code>〔dᴇ〕，跟「戴」「帶」「來」「海」是同一個韻（灰韻），"
+       "但「談」現在讀 <code>de6</code>〔de̞〕，跟「戴」「帶」「來」「海」是同一個韻（灰韻），"
        "名實不符。現在 <code>an／uan／ian</code> 這個韻改用「<b>打</b>」當韻目："
        "打讀 <code>tan3</code>〔tã〕，正好在它的開口位上。同樣地，「歌」現在讀 "
-       "<code>ku1</code>〔kuᵝ〕，屬於模韻，所以〔o̝〕這個韻改用「<b>麻</b>」當韻目"
-       "（麻讀 <code>mo2</code>），〔uᵝ〕這個韻就用「<b>模</b>」當韻目（模讀 <code>mu2</code>）。"
+       "<code>ku1</code>〔kəuᵝ〕，屬於模韻，所以〔o̝〕這個韻改用「<b>麻</b>」當韻目"
+       "（麻讀 <code>mo2</code>），〔uᵝ~əuᵝ〕這個韻就用「<b>模</b>」當韻目"
+       "（模讀 <code>mu2</code>〔muᵝ〕）。"
        "另外，<code>ɑ̃</code> 韻的韻目由「江」改成「<b>黨</b>」：<code>an</code> 韻取「打」、"
        "<code>aon</code> 韻取「黨」，正好呼應吳語裡有名的「分黨打」——"
        "「打」讀 <code>tan3</code>〔tã〕、「黨」讀 <code>taon5</code>〔tɑ̃〕，"
@@ -167,14 +168,20 @@ WU = {
        "「支」讀 <code>tsyu1</code>〔tsʮ〕，「資」讀 <code>tsy1</code>〔tsɿ〕："
        "支韻整個是撮口，資韻整個是齊齒。「微」〔iᶽ〕和「余」〔y〕同樣各自成韻，不相統屬。",
  "n3": "<b>三、入聲六韻。</b>入聲單獨列出，共六個韻："
-       "八〔aʔ〕、陌〔ɑʔ〕、質〔əʔ〕、雪〔iɪʔ〕、月〔yɪʔ〕、屋〔oʔ〕。"
-       "<b><code>iq</code>〔iɪʔ〕是「雪」韻（整個韻都是齊齒），"
-       "<code>iuq</code>〔yɪʔ〕是「月」韻（整個韻都是撮口）</b>。"
-       "韻目也很貼切：「雪」讀 <code>siq7</code>〔siɪʔ〕，「月」讀 <code>yuq8</code>〔yɪʔ〕。"
-       "（<code>iuq</code> 的音值以前誤標成〔yeʔ〕，現在已經改正為〔yɪʔ〕。）",
- "n4": "<b>四、打韻齊齒位的 iã／iɛ̃ 是文白異讀。</b>打韻齊齒的 <code>ian</code> 這個位子，"
-       "字典裡同時記了〔iã〕和〔iɛ̃〕兩種音值，例如「羊」讀〔iã〕、「良」讀〔liɛ̃〕。"
-       "這是文讀和白讀的差別，兩者仍然是同一個韻、同一個呼位。",
+       "八〔aʔ〕、陌〔ɑʔ〕、質〔əʔ〕、雪〔iɪʔ~ieʔ〕、月〔yeʔ〕、屋〔oʔ〕。"
+       "<b><code>iq</code>〔iɪʔ~ieʔ〕是「雪」韻（整個韻都是齊齒），"
+       "<code>iuq</code>〔yeʔ〕是「月」韻（整個韻都是撮口）</b>。"
+       "韻目也很貼切：「雪」讀 <code>siq7</code>〔siɪʔ〕，「月」讀 <code>yuq8</code>〔yeʔ〕。",
+ "n4": "<b>四、韻母音值一律依字音查詢站「蘇滬混合腔——音韻體系」的韻母表。</b>"
+       "表裡寫「~」的，是<b>同一個韻母按條件分工、讀不同的音值</b>，本頁也一樣列兩值："
+       "<br>・<code>u</code>〔uᵝ~əuᵝ〕：脣音聲母 <code>p ph b m f v</code> 與零聲母"
+       "（<code>wu</code>）後讀〔uᵝ〕，其餘聲母後讀〔əuᵝ〕——"
+       "「布」<code>pu5</code>〔puᵝ〕、「歌」<code>ku1</code>〔kəuᵝ〕。"
+       "<br>・<code>iq</code>〔iɪʔ~ieʔ〕：<code>ciq</code>、<code>chiq</code>、<code>jiq</code>、"
+       "<code>shiq</code>、<code>iq／yiq</code>、<code>gniq</code> 讀〔ieʔ〕，其餘情況讀〔iɪʔ〕——"
+       "「吉」<code>ciq7</code>〔tɕieʔ〕、「雪」<code>siq7</code>〔siɪʔ〕。"
+       "<br>這一欄（韻基、音值）與「音系簡介」浮窗從此同出一源。字典對個別字另有記法"
+       "（例如「良」記作〔liɛ̃〕、灰韻個別格位記作〔ᴇ〕），本頁一律依音韻體系作〔iã〕、〔e̞〕。",
  "n5": "<b>五、特例四韻是怎麼來的。</b>嘸 <code>m</code>〔m̩〕、唔 <code>n</code>〔n̩〕、"
        "五 <code>ng</code>〔ŋ̩〕、而 <code>er</code>〔əl〕這四個韻，聲調屬於舒聲，"
        "但元音自成一套，沒有介音可言，<b>不分開合齊撮</b>，所以另外歸為「特例」一類，"
@@ -253,6 +260,12 @@ WU = {
    "<p>總體來說，這一組的押韻表現因人而異，所以本頁讓使用者自己勾選。"
    "本頁把這一組簡化成一韻一格：勾選的韻合為一組、彼此相押，未勾選的則各自獨立。</p>",
 
+ # ---------- 查詢結果：字上的拼音標注與點擊看字音 ----------
+ "cp_hu": "呼", "cp_fin": "韻母", "cp_ini": "聲母", "cp_tone": "聲調",
+ "cp_syl": "拼音", "cp_ipa": "音值", "cp_toneval": "{name}（{val}）",
+ "cp_hint": "結果裡的每個字，上方小字是它在本韻的音（多音字才標）；點字可看它的字音與韻。",
+ "cp_none": "這個字在本韻查不到讀音。",
+
  # ---------- 音系簡介（浮窗內容與字音查詢網站一致） ----------
  "phon_intro": "<a href=\"#\" onclick=\"openPhon();return false;\">請撳箇搭以瞭解蘇滬混合腔</a>",
 
@@ -311,8 +324,8 @@ EN = {
         "Middle Chinese group; the same base means one rhyme even if they came from different groups. "
         "Thus <code>i[iᶽ]</code> and <code>iu[y]</code> split into 微 and 余, and "
         "<code>y[ɿ]</code> and <code>yu[ʮ]</code> into 資 and 支; among the checked rhymes, "
-        "<code>eq[əʔ]</code> and <code>ueq[uəʔ]</code> go to 質, <code>iq[iɪʔ]</code> to 雪, and "
-        "<code>iuq[yɪʔ]</code> to 月. In total there are <b>{rhymes} rhymes</b>.",
+        "<code>eq[əʔ]</code> and <code>ueq[uəʔ]</code> go to 質, <code>iq[iɪʔ~ieʔ]</code> to 雪, and "
+        "<code>iuq[yeʔ]</code> to 月. In total there are <b>{rhymes} rhymes</b>.",
  "ov2": "<b>Open, closed, spread and rounded are listed slot by slot.</b> However many divisions a "
         "rhyme occupies, that many slots are listed, <b>one chart per slot</b>. All told there are "
         "<b>{units} slots</b>: open {n_kai}, closed {n_he}, spread {n_qi}, rounded {n_cuo}, "
@@ -321,10 +334,10 @@ EN = {
         "侵 (spread), 雲 (rounded), 雪 (spread), 月 (rounded).",
  "ov3": "<b>Every rhyme name has been checked.</b> Each rhyme takes its name from a character that "
         "genuinely has that reading in the rhyme, verified one by one by the build script. "
-        "談, for instance, is now read <code>de6</code> [dᴇ] and belongs to the 灰 rhyme, so it is no "
-        "longer used as the label of the −n rhyme; 歌 is now <code>ku1</code> [kuᵝ] and belongs to 模; "
-        "支 is <code>tsyu1</code> [tsʮ], a perfect label for the rounded fricated rhyme; "
-        "雪 is <code>siq7</code> [siɪʔ] (spread) and 月 is <code>yuq8</code> [yɪʔ] (rounded). "
+       "談, for instance, is now read <code>de6</code> [de̞] and belongs to the 灰 rhyme, so it is no "
+       "longer used as the label of the −n rhyme; 歌 is now <code>ku1</code> [kəuᵝ] and belongs to 模; "
+       "支 is <code>tsyu1</code> [tsʮ], a perfect label for the rounded fricated rhyme; "
+       "雪 is <code>siq7</code> [siɪʔ] (spread) and 月 is <code>yuq8</code> [yeʔ] (rounded). "
         "The small text under “Rhyme label” in the index is that character's actual reading.",
  "ov4": "<b>How the four divisions are decided.</b> A <code>u</code> medial or a main vowel "
         "<code>u</code> counts as closed; <code>i</code> as spread; <code>yu</code> ([y]) as rounded; "
@@ -390,8 +403,8 @@ EN = {
  "yt_ru_note": "Checked rhymes are kept apart from unchecked ones. They take the glottal-stop coda "
                "<code>[ʔ]</code> and their charts list only Yin Ru and Yang Ru. They show the same "
                "open／closed／spread／rounded distinctions, so they are charted slot by slot too. "
-               "<code>iq</code> [iɪʔ] is the 雪 rhyme (spread throughout) and "
-               "<code>iuq</code> [yɪʔ] the 月 rhyme (rounded throughout).",
+               "<code>iq</code> [iɪʔ~ieʔ] is the 雪 rhyme (spread throughout) and "
+               "<code>iuq</code> [yeʔ] the 月 rhyme (rounded throughout).",
  "yt_te_note": "These four rhymes have unchecked tones (1, 2, 3, 5, 6), but their vowels stand "
                "apart and they have no medial, so they <b>take no part in the four divisions</b> and "
                "are listed as a separate block: <code>m</code> [m̩], <code>n</code> [n̩] and "
@@ -425,11 +438,12 @@ EN = {
            "· readings synced from {link} (SiqYin)",
 
  "n1": "<b>1. The old labels 談 and 歌 were wrong.</b> 談 was once used as the label of the −n rhyme, "
-       "but 談 is now read <code>de6</code> [dᴇ] and belongs with 戴, 帶, 來 and 海 in the 灰 rhyme, "
+       "but 談 is now read <code>de6</code> [de̞] and belongs with 戴, 帶, 來 and 海 in the 灰 rhyme, "
        "so the name did not fit. The <code>an／uan／ian</code> rhyme now takes <b>打</b> as its label: "
        "打 is <code>tan3</code> [tã], right in its open slot. Likewise 歌 is now "
-       "<code>ku1</code> [kuᵝ] and belongs to 模, so the [o̝] rhyme takes <b>麻</b> as its label "
-       "(麻 is <code>mo2</code>) and the [uᵝ] rhyme takes <b>模</b> (模 is <code>mu2</code>). "
+       "<code>ku1</code> [kəuᵝ] and belongs to 模, so the [o̝] rhyme takes <b>麻</b> as its label "
+       "(麻 is <code>mo2</code>) and the [uᵝ~əuᵝ] rhyme takes <b>模</b> "
+       "(模 is <code>mu2</code> [muᵝ]). "
        "The [ɑ̃] rhyme, in turn, drops 江 in favour of <b>黨</b>: naming the <code>an</code> rhyme 打 "
        "and the <code>aon</code> rhyme 黨 echoes the classic Wu shibboleth <b>分黨打</b> — 打 is "
        "<code>tan3</code> [tã] and 黨 is <code>taon5</code> [tɑ̃], one character to a rhyme.",
@@ -438,15 +452,22 @@ EN = {
        "throughout. 微 [iᶽ] and 余 [y] likewise form rhymes of their own that do not subsume one "
        "another.",
  "n3": "<b>3. The six checked rhymes.</b> Six checked rhymes are listed separately: "
-       "八 [aʔ], 陌 [ɑʔ], 質 [əʔ], 雪 [iɪʔ], 月 [yɪʔ], 屋 [oʔ]. "
-       "<b><code>iq</code> [iɪʔ] is the 雪 rhyme (spread throughout), and <code>iuq</code> [yɪʔ] "
-       "the 月 rhyme (rounded throughout).</b> The labels fit too: 雪 is <code>siq7</code> "
-       "[siɪʔ], 月 is <code>yuq8</code> [yɪʔ]. (The value of <code>iuq</code> was once mis-written "
-       "[yeʔ]; it has been corrected to [yɪʔ].)",
- "n4": "<b>4. iã／iɛ̃ in the 打 rhyme's spread slot are literary versus colloquial readings.</b> "
-       "For <code>ian</code> in the 打 rhyme the dictionary records both [iã] and [iɛ̃] — for example "
-       "羊 [iã] and 良 [liɛ̃]. That is a literary/colloquial difference; both readings remain one "
-       "rhyme and one slot.",
+       "八 [aʔ], 陌 [ɑʔ], 質 [əʔ], 雪 [iɪʔ~ieʔ], 月 [yeʔ], 屋 [oʔ]. "
+       "<b><code>iq</code> [iɪʔ~ieʔ] is the 雪 rhyme (spread throughout), and <code>iuq</code> "
+       "[yeʔ] the 月 rhyme (rounded throughout).</b> The labels fit too: 雪 is <code>siq7</code> "
+       "[siɪʔ], 月 is <code>yuq8</code> [yeʔ].",
+ "n4": "<b>4. Final values follow the 韻母表 of “Wu Common Language — Phonological System” on the "
+       "lookup site.</b> Where that table writes “~”, one final has two values divided by condition, "
+       "and this page lists both as well:"
+       "<br>· <code>u</code> [uᵝ~əuᵝ]: after the labial initials <code>p ph b m f v</code> and the "
+       "zero initial (<code>wu</code>) it is [uᵝ]; after all other initials it is [əuᵝ] — "
+       "布 <code>pu5</code> [puᵝ] against 歌 <code>ku1</code> [kəuᵝ]."
+       "<br>· <code>iq</code> [iɪʔ~ieʔ]: <code>ciq</code>, <code>chiq</code>, <code>jiq</code>, "
+       "<code>shiq</code>, <code>iq／yiq</code> and <code>gniq</code> are [ieʔ]; every other case is "
+       "[iɪʔ] — 吉 <code>ciq7</code> [tɕieʔ] against 雪 <code>siq7</code> [siɪʔ]."
+       "<br>This column and the “Phonological system” panel now come from one and the same source. "
+       "The dictionary records a few individual characters by other means (良 as [liɛ̃], some 灰-rhyme "
+       "slots as [ᴇ]); this page follows the phonological system throughout — [iã] and [e̞].",
  "n5": "<b>5. Where the four special rhymes come from.</b> 嘸 <code>m</code> [m̩], "
        "唔 <code>n</code> [n̩], 五 <code>ng</code> [ŋ̩] and 而 <code>er</code> [əl] have unchecked "
        "tones, but their vowels form a set of their own with no medial, so they <b>take no part in "
@@ -542,6 +563,13 @@ EN = {
    "your own set. The page simplifies the group to one tick per rhyme: whatever you tick counts "
    "as one set, and whatever you leave unticked stands on its own.</p>",
 
+ # ---------- Lookup results: reading above the character, click for its reading ----------
+ "cp_hu": "Division", "cp_fin": "Final", "cp_ini": "Initial", "cp_tone": "Tone",
+ "cp_syl": "Romanization", "cp_ipa": "IPA", "cp_toneval": "{name} ({val})",
+ "cp_hint": "In the results the small text above a character is its reading in this rhyme "
+            "(marked for polyphones only); click a character to see its reading and rhyme.",
+ "cp_none": "No reading for this character in this rhyme.",
+
  # ---------- Phonology note (panel content identical to the lookup site) ----------
  "phon_intro": "<strong>Note:</strong> \"common language\" here refers to a hybrid accent blending "
                "Suzhounese and Shanghainese (<a href=\"#\" onclick=\"openPhon();return false;\">"
@@ -599,8 +627,8 @@ JA = {
         "中古に同じ韻摂に属していても別の韻に分ける。韻基が同じなら、中古に別の韻摂から来ていても"
         "同じ韻にまとめる。したがって <code>i[iᶽ]</code> と <code>iu[y]</code> は微韻と余韻に、"
         "<code>y[ɿ]</code> と <code>yu[ʮ]</code> は資韻と支韻に分かれる。入声では "
-        "<code>eq[əʔ]</code>・<code>ueq[uəʔ]</code> が質韻に、<code>iq[iɪʔ]</code> が雪韻に、"
-        "<code>iuq[yɪʔ]</code> が月韻になる。"
+        "<code>eq[əʔ]</code>・<code>ueq[uəʔ]</code> が質韻に、<code>iq[iɪʔ~ieʔ]</code> が雪韻に、"
+        "<code>iuq[yeʔ]</code> が月韻になる。"
         "合わせて <b>{rhymes} 韻</b>。",
  "ov2": "<b>開・合・斉・撮を一位ずつ掲げる。</b>一つの韻がいくつの呼を占めるかによって、"
         "その数の呼位を掲げ、<b>一位に一図</b>を描く。全部で <b>{units} の呼位</b>、"
@@ -609,10 +637,10 @@ JA = {
         "模（合）・余（撮）・支（撮）・資（斉）・微（斉）・仙（斉）・侵（斉）・雲（撮）・"
         "雪（斉）・月（撮）。",
  "ov3": "<b>韻目の代表字はすべて検証済みである。</b>各韻の名には、その韻に本当にその読みがある字を"
-        "取り、しかもプログラムで一字ずつ確かめてある。たとえば「談」は現在 <code>de6</code>〔dᴇ〕で"
-        "灰韻に属するため、もはや −n 韻の韻目にはしない。「歌」は現在 <code>ku1</code>〔kuᵝ〕で"
+        "取り、しかもプログラムで一字ずつ確かめてある。たとえば「談」は現在 <code>de6</code>〔de̞〕で"
+        "灰韻に属するため、もはや −n 韻の韻目にはしない。「歌」は現在 <code>ku1</code>〔kəuᵝ〕で"
         "模韻に属する。「支」は <code>tsyu1</code>〔tsʮ〕で、撮口の摩擦化韻の韻目にうってつけである。"
-        "「雪」は <code>siq7</code>〔siɪʔ〕で斉歯、「月」は <code>yuq8</code>〔yɪʔ〕で撮口、"
+        "「雪」は <code>siq7</code>〔siɪʔ〕で斉歯、「月」は <code>yuq8</code>〔yeʔ〕で撮口、"
         "それぞれ名実が一致する。一覧の「韻目取字」欄の小さい文字が、その韻目字の実際の読みである。",
  "ov4": "<b>四呼の判定。</b><code>u</code> の介音をもつもの、または主母音が <code>u</code> のものは"
         "合口。<code>i</code> の介音、または主母音が <code>i</code> のものは斉歯。"
@@ -667,8 +695,8 @@ JA = {
  "yt_yin_note": "韻尾なし（開音節）", "yt_yang_note": "鼻音韻尾または鼻母音化",
  "yt_ru_note": "入声韻は舒声韻と分けて並べる。喉塞尾 <code>[ʔ]</code> をもち、"
                "図には陰入と陽入の二調だけを並べる。入声韻にも開・合・斉・撮の区別があるので、"
-               "同じく一位ずつ図を描く。<code>iq</code>〔iɪʔ〕は<b>雪</b>韻（韻全体が斉歯）、"
-               "<code>iuq</code>〔yɪʔ〕は<b>月</b>韻（韻全体が撮口）である。",
+               "同じく一位ずつ図を描く。<code>iq</code>〔iɪʔ~ieʔ〕は<b>雪</b>韻（韻全体が斉歯）、"
+               "<code>iuq</code>〔yeʔ〕は<b>月</b>韻（韻全体が撮口）である。",
  "yt_te_note": "この四韻の声調は舒声（1・2・3・5・6）に属するが、母音が独自の体系をなし、"
                "介音もないため<b>開合斉撮に分かれず</b>、別の区として掲げる："
                "<code>m</code>〔m̩〕・<code>n</code>〔n̩〕・<code>ng</code>〔ŋ̩〕は成節鼻音、"
@@ -701,11 +729,12 @@ JA = {
            " ・ 字音データは {link}（SiqYin）より同期",
 
  "n1": "<b>一、旧稿の「談韻」「歌韻」は韻目を誤っていた。</b>以前は「談」を −n 韻の韻目にしていたが、"
-       "「談」は現在 <code>de6</code>〔dᴇ〕で「戴」「帶」「來」「海」と同じ韻（灰韻）に属し、"
+       "「談」は現在 <code>de6</code>〔de̞〕で「戴」「帶」「來」「海」と同じ韻（灰韻）に属し、"
        "名実が伴わない。そこで <code>an／uan／ian</code> の韻は「<b>打</b>」を韻目とした："
        "打は <code>tan3</code>〔tã〕で、ちょうどその開口の位にある。同様に「歌」は現在 "
-       "<code>ku1</code>〔kuᵝ〕で模韻に属するため、〔o̝〕の韻は「<b>麻</b>」を韻目とし"
-       "（麻は <code>mo2</code>）、〔uᵝ〕の韻は「<b>模</b>」を韻目とする（模は <code>mu2</code>）。"
+       "<code>ku1</code>〔kəuᵝ〕で模韻に属するため、〔o̝〕の韻は「<b>麻</b>」を韻目とし"
+       "（麻は <code>mo2</code>）、〔uᵝ~əuᵝ〕の韻は「<b>模</b>」を韻目とする"
+       "（模は <code>mu2</code>〔muᵝ〕）。"
        "また <code>ɑ̃</code> 韻の韻目は「江」から「<b>黨</b>」に改めた：<code>an</code> 韻に「打」、"
        "<code>aon</code> 韻に「黨」を与えることは、呉越語で名高い「分黨打」に呼応する——"
        "「打」は <code>tan3</code>〔tã〕、「黨」は <code>taon5</code>〔tɑ̃〕で、"
@@ -715,14 +744,22 @@ JA = {
        "支韻は全体が撮口、資韻は全体が斉歯である。同様に「微」〔iᶽ〕と「余」〔y〕も"
        "それぞれ独立した韻で、互いに包括関係にはない。",
  "n3": "<b>三、入声の六韻。</b>入声は別に掲げ、全部で六韻："
-       "八〔aʔ〕・陌〔ɑʔ〕・質〔əʔ〕・雪〔iɪʔ〕・月〔yɪʔ〕・屋〔oʔ〕。"
-       "<b><code>iq</code>〔iɪʔ〕は「雪」韻（韻全体が斉歯）、"
-       "<code>iuq</code>〔yɪʔ〕は「月」韻（韻全体が撮口）である。</b>"
-       "韻目もよく合う：「雪」は <code>siq7</code>〔siɪʔ〕、「月」は <code>yuq8</code>〔yɪʔ〕。"
-       "（<code>iuq</code> の音価は以前〔yeʔ〕と誤記していたが、現在は〔yɪʔ〕に訂正済み。）",
- "n4": "<b>四、打韻斉歯位の iã／iɛ̃ は文白異読である。</b>打韻斉歯の <code>ian</code> の位には、"
-       "字典が〔iã〕と〔iɛ̃〕の二つの音価を併記している。たとえば「羊」は〔iã〕、"
-       "「良」は〔liɛ̃〕。これは文読と白読の違いであり、両者は依然として同じ韻・同じ呼位である。",
+       "八〔aʔ〕・陌〔ɑʔ〕・質〔əʔ〕・雪〔iɪʔ~ieʔ〕・月〔yeʔ〕・屋〔oʔ〕。"
+       "<b><code>iq</code>〔iɪʔ~ieʔ〕は「雪」韻（韻全体が斉歯）、"
+       "<code>iuq</code>〔yeʔ〕は「月」韻（韻全体が撮口）である。</b>"
+       "韻目もよく合う：「雪」は <code>siq7</code>〔siɪʔ〕、「月」は <code>yuq8</code>〔yeʔ〕。",
+ "n4": "<b>四、韻母の音価は字音検索サイト「共通語——音韻体系」の韻母表に従う。</b>"
+       "同表で「~」とあるのは、<b>同じ韻母が条件によって異なる音価で実現する</b>という意味で、"
+       "本頁も同じく二つの値を並べる："
+       "<br>・<code>u</code>〔uᵝ~əuᵝ〕：唇音声母 <code>p ph b m f v</code> とゼロ声母"
+       "（<code>wu</code>）の後では〔uᵝ〕、それ以外の声母の後では〔əuᵝ〕——"
+       "「布」<code>pu5</code>〔puᵝ〕、「歌」<code>ku1</code>〔kəuᵝ〕。"
+       "<br>・<code>iq</code>〔iɪʔ~ieʔ〕：<code>ciq</code>・<code>chiq</code>・<code>jiq</code>・"
+       "<code>shiq</code>・<code>iq／yiq</code>・<code>gniq</code> は〔ieʔ〕、それ以外は〔iɪʔ〕——"
+       "「吉」<code>ciq7</code>〔tɕieʔ〕、「雪」<code>siq7</code>〔siɪʔ〕。"
+       "<br>この欄と「音韻体系」の浮窓はこれで同じ出所による。字典は個々の字に別の記法を用いる"
+       "ことがある（「良」を〔liɛ̃〕、灰韻の一部の枠を〔ᴇ〕とするなど）が、本頁は音韻体系に従い"
+       "〔iã〕・〔e̞〕とする。",
  "n5": "<b>五、特例の四韻の由来。</b>嘸 <code>m</code>〔m̩〕・唔 <code>n</code>〔n̩〕・"
        "五 <code>ng</code>〔ŋ̩〕・而 <code>er</code>〔əl〕の四韻は、声調は舒声に属するが、"
        "母音が独自の体系をなし、介音もないため<b>開合斉撮に分かれず</b>、"
@@ -810,6 +847,13 @@ JA = {
    "<p>総じてこの組の押韻は話者によって異なるため、本ページでは利用者自身に選んでもらう。"
    "本頁ではこの組を「一韻に一チェック」に簡略化している：チェックした韻は一組にまとめ、"
    "入れなかった韻はそれぞれ独立とする。</p>",
+
+ # ---------- 検索結果：字の上のローマ字と、押すと見られる字音 ----------
+ "cp_hu": "呼", "cp_fin": "韻母", "cp_ini": "声母", "cp_tone": "声調",
+ "cp_syl": "ローマ字", "cp_ipa": "音価", "cp_toneval": "{name}（{val}）",
+ "cp_hint": "結果の各字の上の小さい文字は、その韻での読み（多音字のみ表示）。"
+            "字を押すと、その字音と韻が表示される。",
+ "cp_none": "この字はこの韻に読みが見つかりません。",
 
  # ---------- 音韻体系の注記（枠内の内容は字音検索サイトと同一） ----------
  "phon_intro": "<strong>注：</strong> ここで言う「共通語」とは、蘇州語と上海語の混合アクセントを指します。 "

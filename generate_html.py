@@ -276,8 +276,34 @@ footer a{color:var(--yinb);text-decoration:none}
 .srread .hd b{color:var(--ink);font-size:14.5px;letter-spacing:.04em}
 .srread .hd code{font-size:12.5px}
 .srchars{background:#f8fbfe;border:1px solid var(--line2);border-radius:8px;
- padding:8px 11px;font-size:19px;line-height:1.95;letter-spacing:.14em;word-break:break-all;
- font-family:var(--wk)}
+ padding:5px 10px 6px;font-size:19px;line-height:1.3;letter-spacing:0;
+ font-family:var(--wk);display:flex;flex-wrap:wrap;align-items:flex-end}
+/* 一个字：多音字在上方标它在本韵的拼音；点字看它的字音 */
+.srchars .sc{display:inline-flex;flex-direction:column;align-items:center;cursor:pointer;
+ padding:0 1.5px 1px;border-radius:5px;letter-spacing:.14em}
+.srchars .sc::before{content:attr(data-py);display:block;height:13px;font-size:9.5px;line-height:13px;
+ color:var(--ink3);font-family:var(--ui);letter-spacing:0;white-space:nowrap}
+.srchars .sc:hover{background:#e8f0f8}
+.srchars .sc.on{background:#d6e8f7}
+.cphint{font-size:12.5px;color:var(--ink3);font-family:var(--ui);margin:12px 0 0;line-height:1.7}
+/* 字音卡：点了结果里的字才出现 */
+#chinfo{position:fixed;z-index:620;display:none;background:#fff;border:1px solid var(--line);
+ border-radius:10px;box-shadow:0 12px 32px rgba(26,42,58,.24);padding:9px 14px 11px;
+ max-width:min(340px,92vw);font-family:var(--ui);color:var(--ink)}
+#chinfo.on{display:block}
+#chinfo .cih{display:flex;align-items:baseline;gap:9px;padding:0 0 6px;margin-bottom:7px;
+ border-bottom:1px solid var(--line2)}
+#chinfo .cih b{font-family:var(--wk);font-size:21px;letter-spacing:.05em}
+#chinfo .cih span{font-size:12px;color:var(--ink2);flex:1}
+#chinfo .cih button{border:0;background:none;color:var(--ink3);font-size:14px;cursor:pointer;
+ padding:0 2px;line-height:1}
+#chinfo .cih button:hover{color:var(--ink)}
+#chinfo .cir+.cir{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line2)}
+#chinfo dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:1px 12px;font-size:12.5px;
+ line-height:1.75}
+#chinfo dt{color:var(--ink3);white-space:nowrap}
+#chinfo dd{margin:0}
+#chinfo code{font-family:var(--ipa)}
 .srerr{padding:12px 16px;color:#c0392b;background:#fdf0f0;border:1px solid #f5c6cb;border-radius:8px;
  margin:14px 0 0;font-family:var(--ui);font-size:13px}
 /* ---- 歌詞押韻查詢：近韻相押表 ---- */
@@ -1260,7 +1286,7 @@ function openSame(){
   }, 40);
   return false;
 }
-function closeSame(){ document.getElementById('same').classList.remove('on'); return false; }
+function closeSame(){ closeCharInfo(); document.getElementById('same').classList.remove('on'); return false; }
 
 function doSame(){
   var raw = (document.getElementById('srInput').value || '').trim();
@@ -1280,6 +1306,7 @@ function doSame(){
 }
 
 function renderSame(raw, out){
+  closeCharInfo();
   var html = '', any = false;
   expandInput(raw).forEach(function(item){
     var c = item.ch, rs = readingsOf(c);
@@ -1304,11 +1331,12 @@ function renderSame(raw, out){
       html += '<div class="srread"><div class="hd">'
             + '<b>'+esc(rhName(RH[ri]))+'</b> ・ ' + syls.join(' ・ ')
             + ' ・ ' + esc(n('sr_words', {n: chs.length}))
-            + '</div><div class="srchars">'+esc(chs.join(''))+'</div></div>';
+            + '</div><div class="srchars">'+charSpans(chs, ri)+'</div></div>';
     });
     html += '</div>';
   });
-  out.innerHTML = html || '<div class="srerr">'+esc(t('sr_empty'))+'</div>';
+  out.innerHTML = (any ? '<p class="cphint">'+esc(t('cp_hint'))+'</p>' : '')
+                + (html || '<div class="srerr">'+esc(t('sr_empty'))+'</div>');
   fixMods(out);
 }
 
@@ -1404,7 +1432,7 @@ function openSong(){
   }, 40);
   return false;
 }
-function closeSong(){ document.getElementById('song').classList.remove('on'); return false; }
+function closeSong(){ closeCharInfo(); document.getElementById('song').classList.remove('on'); return false; }
 
 function doSong(){
   var raw = (document.getElementById('sgInput').value || '').trim();
@@ -1435,17 +1463,19 @@ function readBlock(ri, group, isNear){
        + '<b>'+esc(rhName(RH[ri]))+'</b>'
        + (syls.length ? ' ・ ' + syls.join(' ・ ') : '')
        + ' ・ ' + esc(n('sr_words', {n: chs.length}))
-       + '</div><div class="srchars">'+esc(chs.join(''))+'</div></div>';
+       + '</div><div class="srchars">'+charSpans(chs, ri)+'</div></div>';
 }
 
 function renderSong(raw, out){
-  var html = '', ix = rhIndex();
+  closeCharInfo();
+  var html = '', any = false, ix = rhIndex();
   expandInput(raw).forEach(function(item){
     var c = item.ch, rs = readingsOf(c);
     if (!rs.length){
       if (!item.from) html += '<div class="srerr">'+esc(n('sr_none', {c:c}))+'</div>';
       return;
     }
+    any = true;
     html += '<div class="srchar"><h3>'+esc(c)
           + (item.from ? '<small>'+esc(n('sr_conv', {c:item.from}))+'</small>' : '')
           + '</h3>';
@@ -1469,11 +1499,107 @@ function renderSong(raw, out){
     extra.forEach(function(ri){ html += readBlock(ri, null, true); });
     html += '</div>';
   });
-  out.innerHTML = html || '<div class="srerr">'+esc(t('sr_empty'))+'</div>';
+  out.innerHTML = (any ? '<p class="cphint">'+esc(t('cp_hint'))+'</p>' : '')
+                + (html || '<div class="srerr">'+esc(t('sr_empty'))+'</div>');
   fixMods(out);
 }
 
+/* ---------- 結果裡的字：拼音標注 ＋ 點擊看字音 ----------
+   標注：只有多音字（全圖有兩個以上小韻）才在字的上方標出**它在本韻裡的讀音**；
+   只標拼音，不加備註和音標——目的就是讓使用者看清是哪一個音壓得上。
+   點擊：只有點了才顯示字音卡（韻、呼、韻母、聲母、聲調、拼音、音值），不點不顯示。 */
+var CH_IX = null, CI_ON = null;
+function charCells(ch){
+  if (!CH_IX){
+    CH_IX = {};
+    CELLS.forEach(function(c){
+      c.chars.forEach(function(x){ (CH_IX[x] = CH_IX[x] || []).push(c); });
+    });
+  }
+  return CH_IX[ch] || [];
+}
+function cellsInRhyme(ch, ri){
+  return charCells(ch).filter(function(c){ return c.ri === ri; });
+}
+/* 這個字在本韻裡的讀音（拼音，去重） */
+function rhymePys(ch, ri){
+  var seen = {}, out = [];
+  cellsInRhyme(ch, ri).forEach(function(c){
+    if (!seen[c.syl]){ seen[c.syl] = 1; out.push(c.syl); }
+  });
+  return out;
+}
+/* 全圖有兩個以上讀音（＝多音字）才標，其餘不標 */
+function charPy(ch, ri){
+  return charCells(ch).length > 1 ? rhymePys(ch, ri).join('/') : '';
+}
+function charSpans(chs, ri){
+  var h = '';
+  chs.forEach(function(ch){
+    var py = charPy(ch, ri);
+    h += '<span class="sc" data-ri="' + ri + '"'
+       + (py ? ' data-py="' + esc(py) + '"' : '') + '>' + esc(ch) + '</span>';
+  });
+  return h;
+}
+/* 韻母音值：取自該呼位的韻母表（＝音系表的值） */
+function finalIpa(ri, hu, fin){
+  var hus = RH[ri].hus;
+  for (var i = 0; i < hus.length; i++){
+    if (hus[i].hu !== hu) continue;
+    for (var j = 0; j < hus[i].finals.length; j++)
+      if (hus[i].finals[j].final === fin) return hus[i].finals[j].ipa;
+  }
+  return '';
+}
+function closeCharInfo(){
+  var box = document.getElementById('chinfo');
+  if (box) box.classList.remove('on');
+  if (CI_ON){ CI_ON.classList.remove('on'); CI_ON = null; }
+}
+function ciRow(k, v){ return '<dt>' + esc(k) + '</dt><dd>' + v + '</dd>'; }
+function showCharInfo(sp){
+  var ch = sp.textContent, ri = +sp.dataset.ri, box = document.getElementById('chinfo');
+  if (!box) return;
+  var cs = cellsInRhyme(ch, ri);
+  if (!cs.length){
+    box.innerHTML = '<div class="cih"><b>' + esc(ch) + '</b></div><div class="cir">'
+                  + esc(t('cp_none')) + '</div>';
+  } else {
+    var html = '<div class="cih"><b>' + esc(ch) + '</b><span>' + esc(rhName(RH[ri]))
+             + '</span><button type="button" id="ciClose">✕</button></div>';
+    cs.forEach(function(c){
+      html += '<div class="cir"><dl">'
+            + ciRow(t('cp_hu'), esc(huFull(c.hu)))
+            + ciRow(t('cp_fin'), '<code>' + esc(c.fin) + '</code> ['
+                     + esc(plainMod(finalIpa(c.ri, c.hu, c.fin))) + ']')
+            + ciRow(t('cp_ini'), c.ini ? esc(c.ini) + ' [' + esc(SCHEME.initials[c.ini][2]) + ']'
+                                       : '∅')
+            + ciRow(t('cp_tone'), n('cp_toneval', {name: t('tone_' + c.tone),
+                     val: SCHEME.tone_info[c.tone][1]}))
+            + ciRow(t('cp_syl'), '<code>' + esc(c.syl) + '</code>')
+            + ciRow(t('cp_ipa'), '[' + esc(plainMod(c.ipa.join('/'))) + ']')
+            + '</dl></div>';
+    });
+    box.innerHTML = html;
+  }
+  box.classList.add('on');
+  if (CI_ON) CI_ON.classList.remove('on');
+  CI_ON = sp; sp.classList.add('on');
+  var r = sp.getBoundingClientRect(), b = box.getBoundingClientRect();
+  var x = r.left + r.width / 2 - b.width / 2, y = r.bottom + 8;
+  x = Math.max(8, Math.min(x, window.innerWidth - b.width - 8));
+  if (y + b.height > window.innerHeight - 8) y = Math.max(8, r.top - b.height - 8);
+  box.style.left = Math.round(x) + 'px'; box.style.top = Math.round(y) + 'px';
+  var cb = document.getElementById('ciClose');
+  if (cb) cb.onclick = function(){ closeCharInfo(); };
+}
+
 document.addEventListener('click', function(e){
+  var sp = e.target.closest('.srchars .sc');
+  if (sp){ if (sp === CI_ON) closeCharInfo(); else showCharInfo(sp); return; }
+  if (!e.target.closest('#chinfo')) closeCharInfo();
+
   var hd = e.target.closest('.rh-head');
   if (hd && !e.target.closest('button')){ toggleRhyme(+hd.dataset.ri); return; }
 
@@ -1510,6 +1636,9 @@ document.addEventListener('click', function(e){
 document.addEventListener('keydown', function(e){
   if (e.key === 'Escape'){ closeModal(); closeSame(); closeSong(); closePhon(); }
 });
+/* 字音卡是固定定位的，浮層一捲動就會跟字分家，索性關掉 */
+window.addEventListener('scroll', function(){ closeCharInfo(); }, true);
+window.addEventListener('resize', function(){ closeCharInfo(); });
 
 document.addEventListener('mouseover', function(e){
   var td = e.target.closest('td.c');
@@ -1773,6 +1902,7 @@ HTML = """<!DOCTYPE html>
 <div class="mbody" id="mbody"></div>
 </div></div>
 <div id="tip"></div>
+<div id="chinfo"></div>
 
 <div id="same"><div class="samebox">
 <div class="samehead">

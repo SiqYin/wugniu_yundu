@@ -31,27 +31,31 @@ FINALS = ("a ua ia o io y yu i u iu ie e ue au iau eu ieu oe uoe ioe "
           "an uan ian aon uaon iaon on ion en uen in iun "
           "aeq uaeq iaeq iuaeq aq iaq eq ueq iq iuq oq ioq er n m ng").split()
 
-# 韵母音值。ian、u 從字音查询网站「蘇滬混合腔——音韻體系」的韻母表：
-#   ian[iã]；u[uᵝ~əuᵝ]——「~」示同一韻母按聲母分工之異值
-#   （脣音聲母 p ph b m f v 與零聲母後讀 uᵝ，其餘聲母後讀 əuᵝ）。
-#   其餘韻母沿用據字典 IPA 欄歸納之值。
+# 韵母音值：一律照字音查询网站「蘇滬混合腔——音韻體系」的韻母表（48 隻），
+# 不再从字典的 IPA 栏归纳。凡音系表写「~」的，是**同一个韵母按条件分工之异值**，
+# 本表照样保留两值，条件写在 i18n 的 n4 里（三语）：
+#   u   [uᵝ~əuᵝ]  脣音声母 p ph b m f v 与零声母（[wu]）后读 uᵝ，其余声母后读 əuᵝ（可拼作 ou）
+#   iq  [iɪʔ~ieʔ] ciq chiq jiq shiq iq/yiq gniq 读 ieʔ，其余情况读 iɪʔ
+# 音系表注 4 的行文把 eu／ieu 写作 [ɤ]／[iɤ]，与主表 [ɤɯ]／[iɤɯ] 不一致；
+# 本表以主表（48 隻韻母那一段）为准。
+# 【易错】改这里的值只需 build_data.py -> generate_html.py，不必重跑字型。
 IPA_OF_FINAL = {
     "a": "ɑ", "ua": "uɑ", "ia": "iɑ",
     "o": "o̝", "io": "io̝",
     "y": "ɿ", "yu": "ʮ",
     "i": "iᶽ", "u": "uᵝ~əuᵝ", "iu": "y",
     "ie": "i",
-    "e": "ᴇ", "ue": "uᴇ",
+    "e": "e̞", "ue": "ue̞",
     "au": "ɔ", "iau": "iɔ",
-    "eu": "ɤ", "ieu": "iɤ",
+    "eu": "ɤɯ", "ieu": "iɤɯ",
     "oe": "ø", "uoe": "uø", "ioe": "iø",
     "an": "ã", "uan": "uã", "ian": "iã",
     "aon": "ɑ̃", "uaon": "uɑ̃", "iaon": "iɑ̃",
     "on": "oŋ", "ion": "ioŋ",
-    "en": "ən", "uen": "uən", "in": "in", "iun": "yn",
+    "en": "ən", "uen": "uən", "in": "iɲ", "iun": "yɲ",
     "aeq": "aʔ", "uaeq": "uaʔ", "iaeq": "iaʔ", "iuaeq": "yaʔ",
     "aq": "ɑʔ", "iaq": "iɑʔ",
-    "eq": "əʔ", "ueq": "uəʔ", "iq": "iɪʔ", "iuq": "yɪʔ",
+    "eq": "əʔ", "ueq": "uəʔ", "iq": "iɪʔ~ieʔ", "iuq": "yeʔ",
     "oq": "oʔ", "ioq": "ioʔ",
     "er": "əl", "n": "n̩", "m": "m̩", "ng": "ŋ̩",
 }
