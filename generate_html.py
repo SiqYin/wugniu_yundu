@@ -569,6 +569,11 @@ function sylList(list){
    與音系表的 [iᶽ] 不符。現在保留原字符，只縮小成上標顯示，
    並由 .mod 的 font-family 回退到系統中含這些字形的字體。 */
 var MODMAP = {'\u1d5d':'ᵝ', '\u1dbd':'ᶽ'};
+function coreCell(v){
+  /* 韻基欄。兩讀的韻（模 uᵝ~əuᵝ、雪 iɪʔ~ieʔ）顯示完整的兩讀，
+     讀者一眼看得出這個韻母有兩個值；其餘韻就是單值。 */
+  return '['+esc(v)+']';
+}
 function plainMod(s){
   /* 不再在此替換 ᵝ/ᶽ——保留原字符，交由 fixMods 統一包成 .mod（縮小上標）。
      以前在這裡換成 β/全尺寸 ʐ，導致查詢結果與字音卡顯示 [iʐ] 而非 [iᶽ]。 */
@@ -871,7 +876,7 @@ function renderRhymeTable(){
     });
     var clsShort = {'陰聲韻':'cls_yin','陽聲韻':'cls_yang','入聲韻':'cls_ru','特例韻':'cls_te'}[rh.cls];
     rows.push('<tr><th class="rn"><a class="rname" data-ri="'+ri+'" data-ch="'+esc(RH[ri].name)+'" href="#r-'+ri+'">'+esc(rhName(rh))+'</a></th>'
-      + '<td class="core">['+rh.core+']</td><td>'+esc(t(clsShort))+'</td>'
+      + '<td class="core">'+coreCell(rh.core_full)+'</td><td>'+esc(t(clsShort))+'</td>'
       + '<td class="lab">'+esc(rh.name)+'<span class="rd">'+esc(rh.label_read)+'</span></td>'
       + cells + '<td class="num">'+nHu+'</td><td class="num">'+nSys+'</td>'
       + '<td class="num">'+nChar+'</td></tr>');
@@ -903,7 +908,7 @@ function renderUnitTable(){
     var clsShort = {'陰聲韻':'cls_yin','陽聲韻':'cls_yang','入聲韻':'cls_ru','特例韻':'cls_te'}[cls];
     rows.push('<tr><td class="num">'+(i+1)+'</td>'
       + '<td class="rn"><a class="rname" data-ri="'+u.ri+'" data-ch="'+esc(RH[u.ri].name)+'" href="#r-'+u.ri+'-'+u.hu+'">'+esc(rhName(RH[u.ri]))+'</a></td>'
-      + '<td class="core">['+RH[u.ri].core+']</td><td>'+esc(t(clsShort))+'</td>'
+      + '<td class="core">'+coreCell(RH[u.ri].core_full)+'</td><td>'+esc(t(clsShort))+'</td>'
       + '<td class="hu">'+esc(huFull(u.hu))+'</td><td class="fin">'+u.fin+'</td>'
       + '<td class="ipa">['+u.ipa+']</td>'
       + '<td class="num">'+sysBtn(u.ri,u.hu,u.nSys)+'</td>'
@@ -970,7 +975,7 @@ function rhymeBlock(rh, ri){
     + '<div class="rh-head" data-ri="'+ri+'">'
     + '<span class="rh-caret">▶</span>'
     + '<span class="rh-name"><span class="rname" data-ri="'+ri+'" data-ch="'+esc(rh.name)+'">'+esc(rhName(rh))+'</span></span>'
-    + '<span class="rh-meta">'+esc(t('lbl_core'))+' ['+rh.core+'] ・ '
+    + '<span class="rh-meta">'+esc(t('lbl_core'))+' '+coreCell(rh.core_full)+' ・ '
     + esc(t({'陰聲韻':'div_shu_short','陽聲韻':'div_shu_short',
               '入聲韻':'div_ru_short','特例韻':'div_te_short'}[rh.cls]))+' ・ '
     + esc(t('lbl_hu'))+' '+nu+' ・ '+esc(t('lbl_sys'))+' '+nSys

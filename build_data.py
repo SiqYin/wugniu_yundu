@@ -298,10 +298,30 @@ def main():
         if not ok:
             print("!! 韵目取字不在本韵内：", name, ref, file=sys.stderr)
 
+    def core_full(core, hus):
+        """韻基欄要顯示的音值。
+
+        一般韻就等於 core（主元音＋韻尾）。但若該韻的韻母本身帶 `~` 兩讀
+        （按音系表只有 u[uᵝ~əuᵝ] 與 iq[iɪʔ~ieʔ] 兩個），就顯示完整的兩讀，
+        例如模韻顯示 uᵝ~əuᵝ、雪韻顯示 iɪʔ~ieʔ。
+
+        **不是**把各呼位格位的音值都列出來：像泰韻的 ɑ / uɑ / iɑ 是開口／合口／
+        齊齒三個格位各自的值，不是「同一韻母的兩讀」，那屬於韻圖格位表裡的內容。
+        """
+        for f in sum(hus.values(), []):
+            v = IPA_OF_FINAL[f]
+            if "~" in v and v.split("~")[0] == core:
+                return v
+        return core
+
+    CORE_FULL = {name: core_full(core, hus)
+                 for name, core, ref, src, hus in RHYME_TABLE}
+
     # ---- 构建韵图结构 ----
     by_rhyme = collections.OrderedDict()
     for name, core, ref, src, hus in RHYME_TABLE:
-        by_rhyme[name] = {"name": name, "core": core, "label_read": ref,
+        by_rhyme[name] = {"name": name, "core": core, "core_full": CORE_FULL[name],
+                          "label_read": ref,
                           "src": src, "cls": CLASS_OF[name],
                           "hus": collections.OrderedDict()}
         for hu in HU_ORDER:
@@ -391,7 +411,8 @@ def main():
             fe_list = rh["hus"][hu]["finals"]
             n = sum(len(fe.get("cells", [])) for fe in fe_list)
             hu_units.append({
-                "rhyme": name, "core": core, "cls": CLASS_OF[name],
+                "rhyme": name, "core": core, "core_full": CORE_FULL[name],
+                "cls": CLASS_OF[name],
                 "hu": hu, "desc": HU_DESC[hu],
                 "finals": [fe["final"] for fe in fe_list],
                 "ipa": [fe["ipa"] for fe in fe_list],
@@ -400,6 +421,8 @@ def main():
 
     # 韻基必須是該韻某個韻母音值的成員（含 `A~B` 兩讀中的任一個），
     # 也就是音系表更新 IPA_OF_FINAL 時要同步更新 RHYME_TABLE 第 2 欄。
+    # 同時產出 core_full：把該韻所有格位的完整音值依「core 在前」排序，
+    # 兩讀的韻（模 uᵝ~əuᵝ、雪 iɪʔ~ieʔ）在總表就顯示兩個值，不只顯示主元音。
     core_bad = []
     for name, core, ref, src, hus in RHYME_TABLE:
         vals = set()
@@ -434,7 +457,8 @@ def main():
         "hu_order": HU_ORDER, "hu_desc": HU_DESC, "class_order": CLASS_ORDER,
         "finals": FINALS, "ipa_of_final": IPA_OF_FINAL,
         "zero_map": ZERO_MAP, "pal_map": PAL_MAP, "plain": PLAIN,
-        "rhymes": [{"name": n, "core": c, "cls": CLASS_OF[n], "label_read": r, "src": s,
+        "rhymes": [{"name": n, "core": c, "core_full": CORE_FULL[n],
+                    "cls": CLASS_OF[n], "label_read": r, "src": s,
                     "hus": [{"hu": hu, "finals": [{"final": f, "ipa": IPA_OF_FINAL[f]}
                                                   for f in hus[hu]]}
                             for hu in HU_ORDER if hu in hus]}
