@@ -73,8 +73,7 @@ WU = {
  "ov4": "<b>四呼怎麼判定。</b>有 <code>u</code> 介音或主元音是 <code>u</code> 的算合口，"
         "有 <code>i</code> 介音或主元音是 <code>i</code> 的算齊齒，"
         "有 <code>iu</code> 介音或主元音是 <code>iu</code>（〔y〕）的算撮口，其餘算開口。"
-        "<b>擦化元音按它原本的元音來算</b>：y〔ɿ〕是〔i〕的擦化，所以整個韻都是齊齒；"
-        "yu〔ʮ〕是〔y〕的擦化，所以整個韻都是撮口。",
+        "y〔ɿ〕整個韻都視作齊齒；yu〔ʮ〕整個韻都視作撮口。",
  "ov5": "<b>舒聲韻和入聲韻分開。</b><b>舒聲韻是聲調 1、2、3、5、6</b>，"
         "<b>入聲韻是聲調 7、8</b>。舒聲韻內部不再分平上去，一張圖橫向列出五個舒聲調，"
         "這個韻平上去的字都在同一張圖裡；入聲韻單獨列成一區，收喉塞尾 <code>[ʔ]</code>，"
@@ -341,9 +340,8 @@ EN = {
         "The small text under “Rhyme label” in the index is that character's actual reading.",
  "ov4": "<b>How the four divisions are decided.</b> A <code>u</code> medial or a main vowel "
         "<code>u</code> counts as closed; <code>i</code> as spread; <code>iu</code> ([y]) as rounded; "
-        "everything else is open. <b>Fricated vowels count as the vowel they come from</b>: "
-        "y [ɿ] is the fricated form of [i], so that whole rhyme is spread; yu [ʮ] is the fricated form "
-        "of [y], so that whole rhyme is rounded.",
+        "everything else is open. The whole rhyme of y [ɿ] counts as spread; the whole rhyme of "
+        "yu [ʮ] counts as rounded.",
  "ov5": "<b>Unchecked and checked rhymes are kept apart.</b> <b>Unchecked rhymes are tones "
         "1, 2, 3, 5 and 6</b>; <b>checked rhymes are tones 7 and 8</b>. Within an unchecked rhyme the "
         "level, rising and departing tones are no longer separated: one chart across the page lists "
@@ -645,8 +643,7 @@ JA = {
  "ov4": "<b>四呼の判定。</b><code>u</code> の介音をもつもの、または主母音が <code>u</code> のものは"
         "合口。<code>i</code> の介音、または主母音が <code>i</code> のものは斉歯。"
         "<code>iu</code> の介音、または主母音が <code>iu</code>（〔y〕）のものは撮口。"
-        "残りは開口とする。<b>摩擦化した母音は元の母音で数える</b>：y〔ɿ〕は〔i〕の摩擦化なので"
-        "その韻全体が斉歯、yu〔ʮ〕は〔y〕の摩擦化なのでその韻全体が撮口である。",
+        "残りは開口とする。y〔ɿ〕の韻全体を斉歯とみなす。yu〔ʮ〕の韻全体を撮口とみなす。",
  "ov5": "<b>舒声韻と入声韻は分けて並べる。</b><b>舒声韻は声調 1・2・3・5・6</b>、"
         "<b>入声韻は声調 7・8</b>。舒声韻の内部では平・上・去をさらに分けない。一つの図に"
         "五つの舒声調を横に並べ、その韻の平・上・去の字はすべて同じ図に入る。入声韻は別の区として"
