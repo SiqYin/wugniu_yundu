@@ -155,10 +155,14 @@ WU = {
 
  "n1": "<b>一、舊稿的「談韻」和「歌韻」用錯了韻目。</b>早先拿「談」當 －n 韻的韻目，"
        "但「談」現在讀 <code>de6</code>〔dᴇ〕，跟「戴」「帶」「來」「海」是同一個韻（灰韻），"
-       "名實不符。現在 <code>an／uan／ian</code> 這個韻改用「<b>陽</b>」當韻目："
-       "陽讀 <code>yan2</code>〔iã〕，正好在它的齊齒位上。同樣地，「歌」現在讀 "
+       "名實不符。現在 <code>an／uan／ian</code> 這個韻改用「<b>打</b>」當韻目："
+       "打讀 <code>tan3</code>〔tã〕，正好在它的開口位上。同樣地，「歌」現在讀 "
        "<code>ku1</code>〔kuᵝ〕，屬於模韻，所以〔o̝〕這個韻改用「<b>麻</b>」當韻目"
-       "（麻讀 <code>mo2</code>），〔uᵝ〕這個韻就用「<b>模</b>」當韻目（模讀 <code>mu2</code>）。",
+       "（麻讀 <code>mo2</code>），〔uᵝ〕這個韻就用「<b>模</b>」當韻目（模讀 <code>mu2</code>）。"
+       "另外，<code>ɑ̃</code> 韻的韻目由「江」改成「<b>黨</b>」：<code>an</code> 韻取「打」、"
+       "<code>aon</code> 韻取「黨」，正好呼應吳語裡有名的「分黨打」——"
+       "「打」讀 <code>tan3</code>〔tã〕、「黨」讀 <code>taon5</code>〔tɑ̃〕，"
+       "兩字分屬兩韻，韻目也就各如其分。",
  "n2": "<b>二、「支」「資」各自成韻，「微」「余」也各自成韻。</b>"
        "「支」讀 <code>tsyu1</code>〔tsʮ〕，「資」讀 <code>tsy1</code>〔tsɿ〕："
        "支韻整個是撮口，資韻整個是齊齒。「微」〔iᶽ〕和「余」〔y〕同樣各自成韻，不相統屬。",
@@ -168,7 +172,7 @@ WU = {
        "<code>iuq</code>〔yɪʔ〕是「月」韻（整個韻都是撮口）</b>。"
        "韻目也很貼切：「雪」讀 <code>siq7</code>〔siɪʔ〕，「月」讀 <code>yuq8</code>〔yɪʔ〕。"
        "（<code>iuq</code> 的音值以前誤標成〔yeʔ〕，現在已經改正為〔yɪʔ〕。）",
- "n4": "<b>四、陽韻齊齒位的 iã／iɛ̃ 是文白異讀。</b>陽韻齊齒的 <code>ian</code> 這個位子，"
+ "n4": "<b>四、打韻齊齒位的 iã／iɛ̃ 是文白異讀。</b>打韻齊齒的 <code>ian</code> 這個位子，"
        "字典裡同時記了〔iã〕和〔iɛ̃〕兩種音值，例如「羊」讀〔iã〕、「良」讀〔liɛ̃〕。"
        "這是文讀和白讀的差別，兩者仍然是同一個韻、同一個呼位。",
  "n5": "<b>五、特例四韻是怎麼來的。</b>嘸 <code>m</code>〔m̩〕、唔 <code>n</code>〔n̩〕、"
@@ -387,10 +391,13 @@ EN = {
 
  "n1": "<b>1. The old labels 談 and 歌 were wrong.</b> 談 was once used as the label of the −n rhyme, "
        "but 談 is now read <code>de6</code> [dᴇ] and belongs with 戴, 帶, 來 and 海 in the 灰 rhyme, "
-       "so the name did not fit. The <code>an／uan／ian</code> rhyme now takes <b>陽</b> as its label: "
-       "陽 is <code>yan2</code> [iã], right in its spread slot. Likewise 歌 is now "
+       "so the name did not fit. The <code>an／uan／ian</code> rhyme now takes <b>打</b> as its label: "
+       "打 is <code>tan3</code> [tã], right in its open slot. Likewise 歌 is now "
        "<code>ku1</code> [kuᵝ] and belongs to 模, so the [o̝] rhyme takes <b>麻</b> as its label "
-       "(麻 is <code>mo2</code>) and the [uᵝ] rhyme takes <b>模</b> (模 is <code>mu2</code>).",
+       "(麻 is <code>mo2</code>) and the [uᵝ] rhyme takes <b>模</b> (模 is <code>mu2</code>). "
+       "The [ɑ̃] rhyme, in turn, drops 江 in favour of <b>黨</b>: naming the <code>an</code> rhyme 打 "
+       "and the <code>aon</code> rhyme 黨 echoes the classic Wu shibboleth <b>分黨打</b> — 打 is "
+       "<code>tan3</code> [tã] and 黨 is <code>taon5</code> [tɑ̃], one character to a rhyme.",
  "n2": "<b>2. 支 and 資 form separate rhymes; so do 微 and 余.</b> 支 is <code>tsyu1</code> [tsʮ] "
        "and 資 is <code>tsy1</code> [tsɿ]: the 支 rhyme is rounded throughout, the 資 rhyme spread "
        "throughout. 微 [iᶽ] and 余 [y] likewise form rhymes of their own that do not subsume one "
@@ -401,8 +408,8 @@ EN = {
        "the 月 rhyme (rounded throughout).</b> The labels fit too: 雪 is <code>siq7</code> "
        "[siɪʔ], 月 is <code>yuq8</code> [yɪʔ]. (The value of <code>iuq</code> was once mis-written "
        "[yeʔ]; it has been corrected to [yɪʔ].)",
- "n4": "<b>4. iã／iɛ̃ in the 陽 rhyme's spread slot are literary versus colloquial readings.</b> "
-       "For <code>ian</code> in the 陽 rhyme the dictionary records both [iã] and [iɛ̃] — for example "
+ "n4": "<b>4. iã／iɛ̃ in the 打 rhyme's spread slot are literary versus colloquial readings.</b> "
+       "For <code>ian</code> in the 打 rhyme the dictionary records both [iã] and [iɛ̃] — for example "
        "羊 [iã] and 良 [liɛ̃]. That is a literary/colloquial difference; both readings remain one "
        "rhyme and one slot.",
  "n5": "<b>5. Where the four special rhymes come from.</b> 嘸 <code>m</code> [m̩], "
@@ -616,10 +623,14 @@ JA = {
 
  "n1": "<b>一、旧稿の「談韻」「歌韻」は韻目を誤っていた。</b>以前は「談」を −n 韻の韻目にしていたが、"
        "「談」は現在 <code>de6</code>〔dᴇ〕で「戴」「帶」「來」「海」と同じ韻（灰韻）に属し、"
-       "名実が伴わない。そこで <code>an／uan／ian</code> の韻は「<b>陽</b>」を韻目とした："
-       "陽は <code>yan2</code>〔iã〕で、ちょうどその斉歯の位にある。同様に「歌」は現在 "
+       "名実が伴わない。そこで <code>an／uan／ian</code> の韻は「<b>打</b>」を韻目とした："
+       "打は <code>tan3</code>〔tã〕で、ちょうどその開口の位にある。同様に「歌」は現在 "
        "<code>ku1</code>〔kuᵝ〕で模韻に属するため、〔o̝〕の韻は「<b>麻</b>」を韻目とし"
-       "（麻は <code>mo2</code>）、〔uᵝ〕の韻は「<b>模</b>」を韻目とする（模は <code>mu2</code>）。",
+       "（麻は <code>mo2</code>）、〔uᵝ〕の韻は「<b>模</b>」を韻目とする（模は <code>mu2</code>）。"
+       "また <code>ɑ̃</code> 韻の韻目は「江」から「<b>黨</b>」に改めた：<code>an</code> 韻に「打」、"
+       "<code>aon</code> 韻に「黨」を与えることは、呉越語で名高い「分黨打」に呼応する——"
+       "「打」は <code>tan3</code>〔tã〕、「黨」は <code>taon5</code>〔tɑ̃〕で、"
+       "一字ずつそれぞれの韻に収まる。",
  "n2": "<b>二、「支」「資」はそれぞれ独立した韻、「微」「余」もそれぞれ独立した韻である。</b>"
        "「支」は <code>tsyu1</code>〔tsʮ〕、「資」は <code>tsy1</code>〔tsɿ〕で、"
        "支韻は全体が撮口、資韻は全体が斉歯である。同様に「微」〔iᶽ〕と「余」〔y〕も"
@@ -630,7 +641,7 @@ JA = {
        "<code>iuq</code>〔yɪʔ〕は「月」韻（韻全体が撮口）である。</b>"
        "韻目もよく合う：「雪」は <code>siq7</code>〔siɪʔ〕、「月」は <code>yuq8</code>〔yɪʔ〕。"
        "（<code>iuq</code> の音価は以前〔yeʔ〕と誤記していたが、現在は〔yɪʔ〕に訂正済み。）",
- "n4": "<b>四、陽韻斉歯位の iã／iɛ̃ は文白異読である。</b>陽韻斉歯の <code>ian</code> の位には、"
+ "n4": "<b>四、打韻斉歯位の iã／iɛ̃ は文白異読である。</b>打韻斉歯の <code>ian</code> の位には、"
        "字典が〔iã〕と〔iɛ̃〕の二つの音価を併記している。たとえば「羊」は〔iã〕、"
        "「良」は〔liɛ̃〕。これは文読と白読の違いであり、両者は依然として同じ韻・同じ呼位である。",
  "n5": "<b>五、特例の四韻の由来。</b>嘸 <code>m</code>〔m̩〕・唔 <code>n</code>〔n̩〕・"
