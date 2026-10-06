@@ -11,3 +11,6 @@ font_cache.json
 live_index.html
 live_dom.html
 live_shot.png
+
+# 線上驗證截圖
+shot_*.png
