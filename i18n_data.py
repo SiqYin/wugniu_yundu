@@ -62,18 +62,18 @@ WU = {
         "<b>一個呼位畫一張圖</b>。全部共 <b>{units} 個呼位</b>，其中開口 {n_kai} 位、"
         "合口 {n_he} 位、齊齒 {n_qi} 位、撮口 {n_cuo} 位、特例 {n_te} 位。"
         "四個呼都齊全的只有「襪」韻一個；只佔一個呼位的有十個韻——"
-        "模（合）、余（撮）、支（撮）、資（齊）、衣（齊）、煙（齊）、侵（齊）、雲（撮）、"
+        "模（合）、余（撮）、支（開）、資（開）、衣（齊）、煙（齊）、侵（齊）、雲（撮）、"
         "雪（齊）、月（撮）。",
  "ov3": "<b>韻目代表字都經過核對。</b>每個韻的名字，都取一個本韻裡真的有這個讀音的字，"
         "而且由程式逐一驗證過。例如「談」現在讀 <code>de6</code>〔de̞〕，屬於灰韻，"
         "所以不再拿它來當 －n 韻的韻目；「歌」現在讀 <code>ku1</code>〔kəuᵝ〕，屬於模韻；"
-        "「支」讀 <code>tsyu1</code>〔tsʮ〕，正好用來當撮口擦化韻的韻目；"
+        "「支」讀 <code>tsyu1</code>〔tsʮ〕，正好用來當開口擦化韻的韻目；"
         "「雪」讀 <code>siq7</code>〔siɪʔ〕是齊齒、「月」讀 <code>yuq8</code>〔yeʔ〕是撮口，"
         "各如其分。總表「韻目取字」那一欄的小字，就是這個韻目字的實際讀音。",
  "ov4": "<b>四呼怎麼判定。</b>有 <code>u</code> 介音或主元音是 <code>u</code> 的算合口，"
         "有 <code>i</code> 介音或主元音是 <code>i</code> 的算齊齒，"
         "有 <code>iu</code> 介音或主元音是 <code>iu</code>（〔y〕）的算撮口，其餘算開口。"
-        "y〔ɿ〕整個韻都視作齊齒；yu〔ʮ〕整個韻都視作撮口。",
+        "y〔ɿ〕和 yu〔ʮ〕整個韻都視作開口。",
  "ov5": "<b>舒聲韻和入聲韻分開。</b><b>舒聲韻是聲調 1、2、3、5、6</b>，"
         "<b>入聲韻是聲調 7、8</b>。舒聲韻內部不再分平上去，一張圖橫向列出五個舒聲調，"
         "這個韻平上去的字都在同一張圖裡；入聲韻單獨列成一區，收喉塞尾 <code>[ʔ]</code>，"
@@ -165,7 +165,7 @@ WU = {
        "兩字分屬兩韻，韻目也就各如其分。",
  "n2": "<b>二、「支」「資」各自成韻，「衣」「余」也各自成韻。</b>"
        "「支」讀 <code>tsyu1</code>〔tsʮ〕，「資」讀 <code>tsy1</code>〔tsɿ〕："
-       "支韻整個是撮口，資韻整個是齊齒。「衣」〔iᶽ〕和「余」〔y〕同樣各自成韻，不相統屬。",
+       "支韻整個是開口，資韻整個也是開口。「衣」〔iᶽ〕和「余」〔y〕同樣各自成韻，不相統屬。",
  "n3": "<b>三、入聲六韻。</b>入聲單獨列出，共六個韻："
        "襪〔aʔ〕、麥〔ɑʔ〕、質〔əʔ〕、雪〔iɪʔ~ieʔ〕、月〔yeʔ〕、屋〔oʔ〕。"
        "<b><code>iq</code>〔iɪʔ~ieʔ〕是「雪」韻（整個韻都是齊齒），"
@@ -329,19 +329,19 @@ EN = {
         "rhyme occupies, that many slots are listed, <b>one chart per slot</b>. All told there are "
         "<b>{units} slots</b>: open {n_kai}, closed {n_he}, spread {n_qi}, rounded {n_cuo}, "
         "special {n_te}. Only the 襪 rhyme fills all four; ten rhymes have just one slot — "
-        "模 (closed), 余 (rounded), 支 (rounded), 資 (spread), 衣 (spread), 煙 (spread), "
+        "模 (closed), 余 (rounded), 支 (open), 資 (open), 衣 (spread), 煙 (spread), "
         "侵 (spread), 雲 (rounded), 雪 (spread), 月 (rounded).",
  "ov3": "<b>Every rhyme name has been checked.</b> Each rhyme takes its name from a character that "
         "genuinely has that reading in the rhyme, verified one by one by the build script. "
        "談, for instance, is now read <code>de6</code> [de̞] and belongs to the 灰 rhyme, so it is no "
        "longer used as the label of the −n rhyme; 歌 is now <code>ku1</code> [kəuᵝ] and belongs to 模; "
-       "支 is <code>tsyu1</code> [tsʮ], a perfect label for the rounded fricated rhyme; "
+       "支 is <code>tsyu1</code> [tsʮ], a perfect label for the open fricated rhyme; "
        "雪 is <code>siq7</code> [siɪʔ] (spread) and 月 is <code>yuq8</code> [yeʔ] (rounded). "
         "The small text under “Rhyme label” in the index is that character's actual reading.",
  "ov4": "<b>How the four divisions are decided.</b> A <code>u</code> medial or a main vowel "
         "<code>u</code> counts as closed; <code>i</code> as spread; <code>iu</code> ([y]) as rounded; "
-        "everything else is open. The whole rhyme of y [ɿ] counts as spread; the whole rhyme of "
-        "yu [ʮ] counts as rounded.",
+        "everything else is open. The whole rhyme of y [ɿ] and the whole rhyme of yu [ʮ] both count "
+        "as open.",
  "ov5": "<b>Unchecked and checked rhymes are kept apart.</b> <b>Unchecked rhymes are tones "
         "1, 2, 3, 5 and 6</b>; <b>checked rhymes are tones 7 and 8</b>. Within an unchecked rhyme the "
         "level, rising and departing tones are no longer separated: one chart across the page lists "
@@ -446,8 +446,8 @@ EN = {
        "and the <code>aon</code> rhyme 黨 echoes the classic Wu shibboleth <b>分黨打</b> — 打 is "
        "<code>tan3</code> [tã] and 黨 is <code>taon5</code> [tɑ̃], one character to a rhyme.",
  "n2": "<b>2. 支 and 資 form separate rhymes; so do 衣 and 余.</b> 支 is <code>tsyu1</code> [tsʮ] "
-       "and 資 is <code>tsy1</code> [tsɿ]: the 支 rhyme is rounded throughout, the 資 rhyme spread "
-       "throughout. 衣 [iᶽ] and 余 [y] likewise form rhymes of their own that do not subsume one "
+       "and 資 is <code>tsy1</code> [tsɿ]: the 支 rhyme is open throughout, and so is the 資 rhyme. "
+       "衣 [iᶽ] and 余 [y] likewise form rhymes of their own that do not subsume one "
        "another.",
  "n3": "<b>3. The six checked rhymes.</b> Six checked rhymes are listed separately: "
        "襪 [aʔ], 麥 [ɑʔ], 質 [əʔ], 雪 [iɪʔ~ieʔ], 月 [yeʔ], 屋 [oʔ]. "
@@ -632,18 +632,18 @@ JA = {
         "その数の呼位を掲げ、<b>一位に一図</b>を描く。全部で <b>{units} の呼位</b>、"
         "うち開口 {n_kai}、合口 {n_he}、斉歯 {n_qi}、撮口 {n_cuo}、特例 {n_te}。"
         "四呼がそろうのは「襪」韻ただ一つ。呼位が一つだけなのは十韻——"
-        "模（合）・余（撮）・支（撮）・資（斉）・衣（斉）・煙（斉）・侵（斉）・雲（撮）・"
+        "模（合）・余（撮）・支（開）・資（開）・衣（斉）・煙（斉）・侵（斉）・雲（撮）・"
         "雪（斉）・月（撮）。",
  "ov3": "<b>韻目の代表字はすべて検証済みである。</b>各韻の名には、その韻に本当にその読みがある字を"
         "取り、しかもプログラムで一字ずつ確かめてある。たとえば「談」は現在 <code>de6</code>〔de̞〕で"
         "灰韻に属するため、もはや −n 韻の韻目にはしない。「歌」は現在 <code>ku1</code>〔kəuᵝ〕で"
-        "模韻に属する。「支」は <code>tsyu1</code>〔tsʮ〕で、撮口の摩擦化韻の韻目にうってつけである。"
+        "模韻に属する。「支」は <code>tsyu1</code>〔tsʮ〕で、開口の摩擦化韻の韻目にうってつけである。"
         "「雪」は <code>siq7</code>〔siɪʔ〕で斉歯、「月」は <code>yuq8</code>〔yeʔ〕で撮口、"
         "それぞれ名実が一致する。一覧の「韻目取字」欄の小さい文字が、その韻目字の実際の読みである。",
  "ov4": "<b>四呼の判定。</b><code>u</code> の介音をもつもの、または主母音が <code>u</code> のものは"
         "合口。<code>i</code> の介音、または主母音が <code>i</code> のものは斉歯。"
         "<code>iu</code> の介音、または主母音が <code>iu</code>（〔y〕）のものは撮口。"
-        "残りは開口とする。y〔ɿ〕の韻全体を斉歯とみなす。yu〔ʮ〕の韻全体を撮口とみなす。",
+        "残りは開口とする。y〔ɿ〕の韻全体も yu〔ʮ〕の韻全体も、開口とみなす。",
  "ov5": "<b>舒声韻と入声韻は分けて並べる。</b><b>舒声韻は声調 1・2・3・5・6</b>、"
         "<b>入声韻は声調 7・8</b>。舒声韻の内部では平・上・去をさらに分けない。一つの図に"
         "五つの舒声調を横に並べ、その韻の平・上・去の字はすべて同じ図に入る。入声韻は別の区として"
@@ -738,7 +738,7 @@ JA = {
        "一字ずつそれぞれの韻に収まる。",
  "n2": "<b>二、「支」「資」はそれぞれ独立した韻、「衣」「余」もそれぞれ独立した韻である。</b>"
        "「支」は <code>tsyu1</code>〔tsʮ〕、「資」は <code>tsy1</code>〔tsɿ〕で、"
-       "支韻は全体が撮口、資韻は全体が斉歯である。同様に「衣」〔iᶽ〕と「余」〔y〕も"
+       "支韻は全体が開口、資韻も全体が開口である。同様に「衣」〔iᶽ〕と「余」〔y〕も"
        "それぞれ独立した韻で、互いに包括関係にはない。",
  "n3": "<b>三、入声の六韻。</b>入声は別に掲げ、全部で六韻："
        "襪〔aʔ〕・麥〔ɑʔ〕・質〔əʔ〕・雪〔iɪʔ~ieʔ〕・月〔yeʔ〕・屋〔oʔ〕。"
