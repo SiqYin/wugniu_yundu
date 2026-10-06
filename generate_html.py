@@ -1249,4 +1249,4 @@ OUT = (HTML.replace("__CSS__", CSS)
            .replace("__TITLE__", I18N["wu"]["page_title"]))
 
 open(os.path.join(HERE, "index.html"), "w", encoding="utf-8").write(OUT)
-print("written index.html", len(OUT), "bytes")
+print("written index.html", len(OUT.encode("utf-8")), "bytes (%d chars)" % len(OUT))

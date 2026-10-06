@@ -159,13 +159,10 @@ WU = {
  "n2": "<b>二、「支」和「資」為什麼要分開。</b>「支」讀 <code>tsyu1</code>〔tsʮ〕，"
        "「資」讀 <code>tsy1</code>〔tsɿ〕，主元音一個是 ʮ、一個是 ɿ，韻基不同，所以各立一韻："
        "支韻整個是撮口，資韻整個是齊齒。同樣地，「微」〔iᶽ〕和「魚」〔y〕也各自立韻，不相統屬。",
- "n3": "<b>三、入聲六韻，以及 iq 和 iuq 為什麼要分開。</b>入聲單獨列出，共六個韻："
+ "n3": "<b>三、入聲六韻。</b>入聲單獨列出，共六個韻："
        "八〔aʔ〕、陌〔ɑʔ〕、質〔əʔ〕、雪〔ɪʔ〕、月〔yɪʔ〕、屋〔oʔ〕。"
        "<b><code>iq</code>〔iɪʔ〕歸「雪」韻（整個韻都是齊齒），"
        "<code>iuq</code>〔yɪʔ〕另立「月」韻（整個韻都是撮口）</b>。"
-       "理由是：這兩個韻母的主元音是 <code>ɪ</code>，跟質韻的 <code>eq</code>〔əʔ〕、"
-       "<code>ueq</code>〔uəʔ〕（主元音是 <code>ə</code>）明顯不同，按「韻基相同才同韻」的原則，"
-       "不能跟質韻混在一起；而 iq 只有齊齒、iuq 只有撮口，所以各自立韻，一個韻一個呼位。"
        "韻目也很貼切：「雪」讀 <code>siq7</code>〔siɪʔ〕，「月」讀 <code>yuq8</code>〔yɪʔ〕。"
        "（<code>iuq</code> 的音值以前誤標成〔yeʔ〕，現在已經改正為〔yɪʔ〕。）",
  "n4": "<b>四、陽韻齊齒位的 iã／iɛ̃ 是文白異讀。</b>陽韻齊齒的 <code>ian</code> 這個位子，"
@@ -367,16 +364,12 @@ EN = {
        "<code>tsy1</code> [tsɿ]: one has ʮ as its main vowel and the other ɿ, so the bases differ and "
        "each forms its own rhyme — 支 rounded throughout, 資 spread throughout. In the same way "
        "微 [iᶽ] and 魚 [y] are separate rhymes that do not subsume one another.",
- "n3": "<b>3. The six checked rhymes, and why iq and iuq are split.</b> Six checked rhymes are "
-       "listed separately: 八 [aʔ], 陌 [ɑʔ], 質 [əʔ], 雪 [ɪʔ], 月 [yɪʔ], 屋 [oʔ]. "
+ "n3": "<b>3. The six checked rhymes.</b> Six checked rhymes are listed separately: "
+       "八 [aʔ], 陌 [ɑʔ], 質 [əʔ], 雪 [ɪʔ], 月 [yɪʔ], 屋 [oʔ]. "
        "<b><code>iq</code> [iɪʔ] goes to the 雪 rhyme (spread throughout), and <code>iuq</code> [yɪʔ] "
-       "forms its own 月 rhyme (rounded throughout).</b> The reason: their main vowel is "
-       "<code>ɪ</code>, plainly different from the <code>ə</code> of <code>eq</code> [əʔ] and "
-       "<code>ueq</code> [uəʔ] in the 質 rhyme, so by the rule “same base, same rhyme” they cannot be "
-       "lumped in with 質; and since iq is only spread while iuq is only rounded, each becomes its own "
-       "rhyme with a single slot. The labels fit too: 雪 is <code>siq7</code> [siɪʔ], 月 is "
-       "<code>yuq8</code> [yɪʔ]. (The value of <code>iuq</code> was once mis-written [yeʔ]; it has "
-       "been corrected to [yɪʔ].)",
+       "forms its own 月 rhyme (rounded throughout).</b> The labels fit too: 雪 is <code>siq7</code> "
+       "[siɪʔ], 月 is <code>yuq8</code> [yɪʔ]. (The value of <code>iuq</code> was once mis-written "
+       "[yeʔ]; it has been corrected to [yɪʔ].)",
  "n4": "<b>4. iã／iɛ̃ in the 陽 rhyme's spread slot are literary versus colloquial readings.</b> "
        "For <code>ian</code> in the 陽 rhyme the dictionary records both [iã] and [iɛ̃] — for example "
        "羊 [iã] and 良 [liɛ̃]. That is a literary/colloquial difference; the base is unchanged, so it "
@@ -568,14 +561,10 @@ JA = {
        "「資」は <code>tsy1</code>〔tsɿ〕で、主母音が一方は ʮ、他方は ɿ であり韻基が異なるため、"
        "それぞれ別の韻とする：支韻は全体が撮口、資韻は全体が斉歯である。同様に「微」〔iᶽ〕と"
        "「魚」〔y〕もそれぞれ独立した韻で、互いに包括関係にはない。",
- "n3": "<b>三、入声の六韻、および iq と iuq を分ける理由。</b>入声は別に掲げ、全部で六韻："
+ "n3": "<b>三、入声の六韻。</b>入声は別に掲げ、全部で六韻："
        "八〔aʔ〕・陌〔ɑʔ〕・質〔əʔ〕・雪〔ɪʔ〕・月〔yɪʔ〕・屋〔oʔ〕。"
        "<b><code>iq</code>〔iɪʔ〕は「雪」韻（韻全体が斉歯）に、"
        "<code>iuq</code>〔yɪʔ〕は独立して「月」韻（韻全体が撮口）とする。</b>"
-       "理由は、この二つの韻母の主母音が <code>ɪ</code> であり、質韻の <code>eq</code>〔əʔ〕・"
-       "<code>ueq</code>〔uəʔ〕（主母音は <code>ə</code>）とは明らかに異なるため、"
-       "「韻基が同じものだけを同韻とする」原則から質韻に混ぜられないこと、"
-       "そして iq は斉歯のみ、iuq は撮口のみであるため、それぞれ独立した韻とし、一韻に一呼位とする。"
        "韻目もよく合う：「雪」は <code>siq7</code>〔siɪʔ〕、「月」は <code>yuq8</code>〔yɪʔ〕。"
        "（<code>iuq</code> の音価は以前〔yeʔ〕と誤記していたが、現在は〔yɪʔ〕に訂正済み。）",
  "n4": "<b>四、陽韻斉歯位の iã／iɛ̃ は文白異読である。</b>陽韻斉歯の <code>ian</code> の位には、"
