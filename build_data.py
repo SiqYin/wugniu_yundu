@@ -61,20 +61,29 @@ IPA_OF_FINAL = {
 }
 
 # 声母：字素 -> (五音, 中古字母, 音值)
+# 聲母名依用戶 2026-10-07 定案：p幫 ph滂 b並 m明 f非 v奉／t端 th透 d定 n儂 l來／
+# k該 kh開 g搿 ng牙 h好 gh匣／c見 ch溪 j群 sh曉 gn孃／ts精 tsh親 s心 z邪／∅零。
+# 語法鍵「gn」是為了匹配字典寫法與 PLAIN 表，**顯示層**才寫成 ȵ（見 `INITIAL_LABEL`）。
 INITIALS = {
-    "":   ("喉", "影／喻", "∅"),
+    "":   ("喉", "零", "∅"),
     "p":  ("唇", "幫", "p"),   "ph": ("唇", "滂", "pʰ"), "b": ("唇", "並", "b"),
     "m":  ("唇", "明", "m"),   "f":  ("唇", "非", "f"),  "v": ("唇", "奉", "v"),
     "t":  ("舌", "端", "t"),   "th": ("舌", "透", "tʰ"), "d": ("舌", "定", "d"),
-    "n":  ("舌", "泥", "n"),   "l":  ("舌", "來", "l"),  "gn": ("舌", "日", "ɲ"),
-    "k":  ("牙", "見", "k"),   "kh": ("牙", "溪", "kʰ"), "g":  ("牙", "群", "ɡ"),
-    "ng": ("牙", "疑", "ŋ"),
-    "ts": ("齒", "精／照", "ts"), "tsh": ("齒", "清／穿", "tsʰ"),
-    "s":  ("齒", "心／審", "s"),  "z":   ("齒", "從／邪／澄／床／禪", "z"),
-    "ci": ("腭", "見(細)", "tɕ"), "chi": ("腭", "溪(細)", "tɕʰ"),
-    "ji": ("腭", "群(細)", "dʑ"), "shi": ("腭", "曉(細)", "ɕ"),
-    "h":  ("喉", "曉", "h"),   "gh": ("喉", "匣", "ɦ"),
+    "n":  ("舌", "儂", "n"),   "l":  ("舌", "來", "l"),
+    "k":  ("牙", "該", "k"),   "kh": ("牙", "開", "kʰ"), "g":  ("牙", "搿", "ɡ"),
+    "ng": ("牙", "牙", "ŋ"),
+    "ts": ("齒", "精", "ts"), "tsh": ("齒", "親", "tsʰ"),
+    "s":  ("齒", "心", "s"),  "z":   ("齒", "邪", "z"),
+    "ci": ("腭", "見", "tɕ"), "chi": ("腭", "溪", "tɕʰ"),
+    "ji": ("腭", "群", "dʑ"), "shi": ("腭", "曉", "ɕ"),
+    "gn": ("腭", "孃", "ȵ"),
+    "h":  ("喉", "好", "h"),   "gh": ("喉", "匣", "ɦ"),
 }
+
+# 零聲母分清濁（用戶 2026-10-07）：陰調 1 3 5 7 為清零，陽調 2 6 8 為濁零。
+# 只用於判定，不寫進韻母音值。
+CLEAR_ZERO_TONES = ("1", "3", "5", "7")      # 陰平・陰上・陰去・陰入 → 清零
+MURDUR_ZERO_TONES = ("2", "6", "8")           # 陽平・陽上去・陽入 → 濁零
 
 INITIAL_ORDER = ["", "p", "ph", "b", "m", "f", "v",
                  "t", "th", "d", "n", "l", "gn",
@@ -82,6 +91,20 @@ INITIAL_ORDER = ["", "p", "ph", "b", "m", "f", "v",
                  "ci", "chi", "ji", "shi",
                  "ts", "tsh", "s", "z",
                  "h", "gh"]
+
+# 聲母表的排列順序，用戶 2026-10-07 明文給的清單順序：
+#   p幫 ph滂 b並 m明 f非 v奉／t端 th透 d定 n儂 l來／k該 kh開 g搿 ng牙 h好 gh匣／
+#   c見 ch溪 j群 sh曉 gn孃／ts精 tsh親 s心 z邪／零。
+# 與 INITIAL_ORDER（韻圖格位的排序基準）分開，不要合併。
+INITIAL_TABLE_ORDER = ["p", "ph", "b", "m", "f", "v",
+                       "t", "th", "d", "n", "l",
+                       "k", "kh", "g", "ng", "h", "gh",
+                       "ci", "chi", "ji", "shi", "gn",
+                       "ts", "tsh", "s", "z",
+                       ""]
+
+# 聲母注音的顯示字形：語法鍵 gn 一律寫成 ȵ
+INITIAL_LABEL = {"": "∅", "gn": "ȵ"}
 
 PAL_MAP = {"": "i", "a": "ia", "aeq": "iaeq", "an": "ian", "aon": "iaon",
            "aq": "iaq", "au": "iau", "e": "ie", "eu": "ieu", "n": "in",
@@ -317,6 +340,23 @@ def main():
     CORE_FULL = {name: core_full(core, hus)
                  for name, core, ref, src, hus in RHYME_TABLE}
 
+    # ---- 「音节 → 韻圖位置」對照表（給字音查詢網站與本站搜索條用）----
+    # 位置串格式：<聲母><韻目><呼><聲調>，如 san1 → 心打開陰平、yuq8 → 濁零月撮陽入。
+    # 聲母部分：零聲母要分清濁（陰調 1357 清零、陽調 268 濁零），非零聲母直接用名稱。
+    def ini_label(ini, tone):
+        if ini:
+            return INITIALS[ini][1]
+        return "清零" if tone in CLEAR_ZERO_TONES else "濁零"
+
+    syl_pos = {}
+    for (ini, fin, tone), v in inst.items():
+        name, hu = fin_slot[fin]
+        pos = ini_label(ini, tone) + name + hu + TONE_INFO[tone][0]
+        for _c, s in v["chars"]:
+            key = s + tone
+            if pos not in syl_pos.setdefault(key, []):
+                syl_pos[key].append(pos)
+
     # ---- 构建韵图结构 ----
     by_rhyme = collections.OrderedDict()
     for name, core, ref, src, hus in RHYME_TABLE:
@@ -437,6 +477,8 @@ def main():
             "source": ["https://siqyin.github.io/wugniu_zyinzozin/",
                        "https://github.com/SiqYin/wugniu_suwu"],
             "initials": INITIALS, "initial_order": INITIAL_ORDER,
+            "initial_table_order": INITIAL_TABLE_ORDER,
+            "initial_label": INITIAL_LABEL,
             "finals": FINALS, "ipa_of_final": IPA_OF_FINAL,
             "tone_info": TONE_INFO, "shu_tones": SHU_TONES, "ru_tones": RU_TONES,
             "hu_order": HU_ORDER, "hu_desc": HU_DESC,
@@ -445,6 +487,7 @@ def main():
         },
         "rhymes": list(by_rhyme.values()),
         "hu_units": hu_units,
+        "syl_pos": syl_pos,
         "label_check": lab_check,
     }
     json.dump(out, open(os.path.join(HERE, "yuntu_data.json"), "w", encoding="utf-8"),
@@ -452,7 +495,11 @@ def main():
 
     # ---- 供网页使用的两部分：分韵方案（静态）+ 紧凑字音快照（离线兜底） ----
     scheme = {
-        "initials": INITIALS, "initial_order": INITIAL_ORDER, "groups": GROUPS,
+        "initials": INITIALS, "initial_order": INITIAL_ORDER,
+        "initial_table_order": INITIAL_TABLE_ORDER,
+        "initial_label": INITIAL_LABEL,
+        "clear_zero_tones": list(CLEAR_ZERO_TONES),
+        "groups": GROUPS,
         "tone_info": TONE_INFO, "shu_tones": SHU_TONES, "ru_tones": RU_TONES,
         "hu_order": HU_ORDER, "hu_desc": HU_DESC, "class_order": CLASS_ORDER,
         "finals": FINALS, "ipa_of_final": IPA_OF_FINAL,
@@ -501,9 +548,18 @@ def main():
         # 頁面要比對「線上抓回來的字庫是不是本快照的舊版子集」，需要完整的收字清單。
         "extra_chars": extra_chars,
         "cells": snap_cells,
+        # 音節 → 韻圖位置，給「漢字韻圖位置查詢」離線用
+        "syl_pos": syl_pos,
     }
     json.dump(snapshot, open(os.path.join(HERE, "snapshot.json"), "w", encoding="utf-8"),
               ensure_ascii=False, separators=(",", ":"))
+
+    # ---- 給字音查詢網站用的位置表（複製過去後由那邊單獨抓）----
+    # 形狀 {"san1": "心打開陰平", ...}；字音站查字時在蘇滬混合腔那一欄把位置標在音標後面。
+    pos_map = {k: v[0] for k, v in syl_pos.items() if v}
+    json.dump(pos_map, open(os.path.join(HERE, "yuntu_pos.json"), "w", encoding="utf-8"),
+              ensure_ascii=False, separators=(",", ":"))
+    print("位置表(音節→位置):", len(pos_map), "條 -> yuntu_pos.json")
     print("字符数           :", stats["chars"])
     print("读音条目         :", stats["records"])
     print("合法音节(带调)   :", stats["distinct_tone_syllables"])

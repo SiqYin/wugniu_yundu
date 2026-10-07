@@ -124,6 +124,40 @@ button.cnt:hover{background:#e2edf8;border-color:#a3c1d9}
 button.sys:hover{background:#f8eed9;border-color:#d9bd85}
 .mhint{font-size:13px;color:var(--ink2);margin:2px 0 6px;
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+/* ---- 聲母表（27 聲母，含零聲母清濁） ---- */
+table.itbl{width:auto;min-width:min(420px,100%);border-collapse:collapse;margin:6px 0 4px;
+ font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+table.itbl th{background:#dbe7f2;color:#1a5276;font-weight:600;font-size:12px;
+ text-align:left;padding:5px 10px;letter-spacing:.06em;white-space:nowrap}
+table.itbl td{padding:4px 10px;border-bottom:1px solid var(--line2);
+ text-align:left;white-space:nowrap}
+table.itbl th:first-child,table.itbl td.iwei{width:3em}
+table.itbl th:last-child,table.itbl td.ilab{width:5em}
+table.itbl tr.izero td{background:#f4f9fd}
+table.itbl td.iwei{color:var(--ink2);font-size:12.5px}
+table.itbl td.iname{font-weight:700;font-size:15px;color:var(--ink);
+ font-family:"Songti SC","SimSun",serif}
+table.itbl td.ilab{font-family:Georgia,serif;font-size:15px;color:var(--ink2)}
+table.itbl tr.iznote td{background:#f4f9fd;color:var(--ink2);font-size:12.5px;
+ text-align:center;letter-spacing:.04em}
+/* ---- 漢字韻圖位置查詢 ---- */
+section.posfind{margin:-6px 0 30px;padding:14px 16px 4px;background:var(--card);
+ border:1px solid var(--line);border-radius:10px}
+#pfInput{width:min(420px,72vw);padding:9px 14px;font-size:15px;font-family:var(--wk);
+ color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:8px}
+#pfInput:focus{outline:none;border-color:var(--yinb);box-shadow:0 0 0 3px rgba(41,128,185,.14)}
+.pfres{margin:14px 0 6px}
+.pfchar{font-size:26px;font-weight:700;color:var(--ink);letter-spacing:.04em}
+.pfchar small{font-size:12.5px;font-weight:400;color:var(--ink3);margin-left:8px;letter-spacing:0}
+.pfrow{display:flex;align-items:baseline;gap:12px;padding:7px 2px;
+ border-bottom:1px solid var(--line2);flex-wrap:wrap}
+.pfrow:last-child{border-bottom:0}
+.pfrow.hit{background:#fdf6e0;box-shadow:inset 3px 0 0 #d9a441}
+.pfrow.hit .pfsyl code{background:#f6e3b4}
+.pfpos{font-weight:700;font-size:15px;color:var(--sys);min-width:9em;letter-spacing:.04em}
+.pfsyl{font-family:var(--mono);font-size:14px;color:var(--ink)}
+.pfipa{color:var(--ink2);font-family:Georgia,serif;font-size:13.5px}
+.pfnone{font-size:13px;color:var(--ink3);padding:4px 2px}
 table.mtbl{width:100%;border-collapse:collapse;
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
 table.mtbl tr.msysrow{cursor:pointer}
@@ -376,6 +410,10 @@ a.rname{text-decoration:none;color:inherit}
   .topbar{position:static;margin:0 0 10px}
   h1,.sub,.phonintro{padding-right:0}
   .lang-menu{right:auto;left:0}
+  section.posfind .sameform{gap:8px}
+  #pfInput{width:100%}
+  .pfrow{gap:4px 10px}
+  .pfpos{min-width:0;flex:1 0 100%}
 }
 #modal{position:fixed;inset:0;background:rgba(26,42,58,.38);display:none;
  align-items:flex-start;justify-content:center;z-index:300;padding:36px 16px;overflow:auto}
@@ -793,6 +831,9 @@ function renderChrome(){
   document.getElementById('i-sec-yuntu').textContent    = t('sec_yuntu');
   document.getElementById('i-sec-bars').textContent     = t('sec_bars');
   document.getElementById('i-sec-notes').textContent    = t('sec_notes');
+  document.getElementById('i-ini-title').textContent    = t('ini_title');
+  document.getElementById('i-ini-note').textContent     = n('ini_24_note', {n: SCHEME.initial_order.length});
+  renderPfChrome();
 
   function stat(v, label){ return '<div class="stat"><b>'+v+'</b><span>'+esc(label)+'</span></div>'; }
   document.getElementById('i-stats').innerHTML =
@@ -1084,6 +1125,29 @@ function renderYuntu(){
   document.getElementById('sections').innerHTML = parts.join('');
 }
 
+/* ---------- 聲母表（27 聲母） ----------
+   零聲母分清濁：陰調 1 3 5 7 為清零，陽調 2 6 8 為濁零（用戶 2026-10-07 定）。 */
+function renderInitials(){
+  var lab = SCHEME.initial_label || {}, rows = [];
+  (SCHEME.initial_table_order || SCHEME.initial_order || []).forEach(function(k){
+    var v = SCHEME.initials[k]; if (!v) return;
+    var isZero = (k === '');
+    rows.push('<tr' + (isZero ? ' class="izero"' : '') + '>'
+      + '<td class="iwei">' + esc(v[0]) + '</td>'
+      + '<td class="iname">' + esc(v[1]) + '</td>'
+      + '<td class="ilab">' + esc(lab[k] || v[2]) + '</td>'
+      + '</tr>');
+  });
+  /* 零聲母的清濁說明放在表末一整行（用戶：只說有清濁之分，不作解釋） */
+  rows.push('<tr class="iznote"><td colspan="3">' + esc(t('ini_zero_note')) + '</td></tr>');
+  document.getElementById('tbl-initials').innerHTML =
+      '<table class="itbl"><thead><tr>'
+    + '<th>' + esc(t('ini_col_wei')) + '</th>'
+    + '<th>' + esc(t('ini_col_name')) + '</th>'
+    + '<th>' + esc(t('ini_col_ipa')) + '</th>'
+    + '</tr></thead><tbody>' + rows.join('') + '</tbody></table>';
+}
+
 function renderBars(){
   var top = UNIT.slice().sort(function(a,b){return b.nChar-a.nChar;}).slice(0,24);
   var max = top.length ? top[0].nChar : 1;
@@ -1354,6 +1418,95 @@ function renderSame(raw, out){
   out.innerHTML = (any ? '<p class="cphint">'+esc(t('cp_hint'))+'</p>' : '')
                 + (html || '<div class="srerr">'+esc(t('sr_empty'))+'</div>');
   fixMods(out);
+}
+
+/* ---------- 漢字韻圖位置查詢 ----------
+   輸入漢字 -> 取其每個讀音 -> 依「韻圖位置」（聲母／韻目／呼／聲調）分條列出，
+   每條後面註該位置的讀音串與音標。同一位置有多個讀音時並列在一條。
+   例：聲 san1 → 心打開陰平，sen1 → 心真開陰平。 */
+var PF_TOKEN = 0, PF_LAST = '', PF_HL = '';
+
+/* 位置字串：聲母（或清零／濁零）＋韻目＋呼＋聲調名。
+   聲母名、韻目、呼、調名都是韻圖本身的專有名，三語一律不譯，
+   所以這裡直接取 SCHEME 裡的中文，不走 t()。 */
+function posLabel(c){
+  var ini = c.ini ? SCHEME.initials[c.ini][1]
+                  : (SCHEME.clear_zero_tones.indexOf(c.tone) >= 0 ? '清零' : '濁零');
+  return ini + RH[c.ri].name + c.hu + SCHEME.tone_info[c.tone][0];
+}
+
+/* 把每個讀音按位置分組；回傳 [{pos, cells:[...]}]，順序依讀音首次出現 */
+function groupByPos(cells){
+  var order = [], by = {};
+  cells.forEach(function(c){
+    var p = posLabel(c);
+    if (!by[p]){ by[p] = []; order.push(p); }
+    by[p].push(c);
+  });
+  return order.map(function(p){ return {pos:p, cells:by[p]}; });
+}
+
+function renderPfChrome(){
+  document.getElementById('i-pf-title').textContent = t('pf_title');
+  document.getElementById('pfInput').placeholder  = t('pf_ph');
+  document.getElementById('pfGo').textContent     = t('pf_go');
+  document.getElementById('i-pf-hint').textContent = t('pf_hint');
+  document.getElementById('i-pf-only').textContent = t('pf_only');
+}
+
+function doPosFind(){
+  var raw = (document.getElementById('pfInput').value || '').trim();
+  PF_LAST = raw;
+  var out = document.getElementById('pfout');
+  var cs = Array.from(raw).filter(function(c){ return /\S/.test(c); });
+  if (!cs.length){ out.innerHTML = '<div class="srerr">'+esc(t('pf_empty'))+'</div>'; return false; }
+  if (cs.length > 8){ out.innerHTML = '<div class="srerr">'+esc(t('pf_max'))+'</div>'; return false; }
+  var token = ++PF_TOKEN;
+  out.innerHTML = '<div class="srerr">'+esc(t('pf_loading'))+'</div>';
+  loadS2T().then(function(){
+    if (token !== PF_TOKEN) return;
+    renderPosFind(raw, out);
+  });
+  return false;
+}
+
+function renderPosFind(raw, out){
+  var html = '', any = false;
+  expandInput(raw).forEach(function(item){
+    var c = item.ch, rs = readingsOf(c);
+    if (!rs.length){
+      if (!item.from) html += '<div class="srerr">'+esc(n('pf_none', {c:c}))+'</div>';
+      return;
+    }
+    any = true;
+    /* 同一個讀音只算一次（CELLS 裡一個格位一條，不會重複，但保險） */
+    var seen = {}, uniq = [];
+    rs.forEach(function(cc){ if (!seen[cc.syl]){ seen[cc.syl] = 1; uniq.push(cc); } });
+    html += '<div class="pfres"><div class="pfchar">'+esc(c)
+          + (item.from ? '<small>'+esc(n('sr_conv', {c:item.from}))+'</small>' : '')
+          + '</div>';
+    groupByPos(uniq).forEach(function(g){
+      html += '<div class="pfrow"><span class="pfpos">'+esc(g.pos)+'</span>'
+            + '<span class="pfsyl">'+g.cells.map(function(cc){
+                return '<code data-syl="'+esc(cc.syl)+'">'+esc(cc.syl)+'</code> ['
+                     + esc(plainMod(cc.ipa.join('/')))+']';
+              }).join(' ・ ')
+            + '</span></div>';
+    });
+    html += '</div>';
+  });
+  out.innerHTML = html || '<div class="srerr">'+esc(t('pf_empty'))+'</div>';
+  fixMods(out);
+  /* 從字音查詢網站跳過來時（?pf=<字>&syl=<讀音>）把對應那一條標出來 */
+  if (PF_HL){
+    var hl = PF_HL; PF_HL = '';
+    var hit = out.querySelector('code[data-syl="' + hl + '"]');
+    if (hit){
+      var row = hit.closest('.pfrow');
+      if (row) row.classList.add('hit');
+      hit.scrollIntoView({block:'center'});
+    }
+  }
 }
 
 /* ---------- 歌詞押韻查詢（同韻查詢 ＋ 近韻相押） ----------
@@ -1771,7 +1924,7 @@ function liveOlderThanSnapshot(db){
 function renderAll(){
   assignReps(); buildUnits();
   RH_CHARS = [];              /* 資料源換了（線上／內建快照），韻→字的快取要重算 */
-  renderChrome(); renderRhymeTable(); renderUnitTable(); renderYuntu(); renderBars();
+  renderChrome(); renderRhymeTable(); renderUnitTable(); renderYuntu(); renderInitials(); renderBars();
   fixMods(document.body);
 }
 
@@ -1797,6 +1950,7 @@ function applyLang(l){
   renderSongChrome();
   if (SAME_LAST) doSame();
   if (SONG_LAST) doSong();
+  if (PF_LAST) doPosFind();
   if (document.getElementById('phon').classList.contains('on')) openPhon();
 }
 
@@ -1810,9 +1964,27 @@ sync();
    網址寫 ?song=1（或 #song）即可，不必先載入頁面再手動點按鈕。 */
 if (/[?&]song\b/i.test(location.search) || /^#song$/i.test(location.hash)) openSong();
 
+/* 從字音查詢網站點「韻圖位置」跳過來：?pf=<漢字>&syl=<讀音>&lang=<語言>
+   自動填入並查詢，且把該讀音那一條標出來。syl 可省略，只查字。 */
+(function(){
+  var q = new URLSearchParams(location.search);
+  var w = q.get('pf');
+  if (!w) return;
+  var box = document.getElementById('pfInput');
+  if (!box) return;
+  box.value = w;
+  PF_HL = q.get('syl') || '';
+  if (PF_HL) doPosFind();
+  else loadS2T().then(function(){
+    var o = document.getElementById('pfout');
+    renderPosFind(w, o);
+    PF_LAST = w;
+  });
+})();
+
 /* 同韻查詢、歌詞押韻查詢：輸入框按 Enter 直接查；三個浮層點背景關閉 */
 (function(){
-  [['srInput', doSame], ['sgInput', doSong]].forEach(function(p){
+  [['srInput', doSame], ['sgInput', doSong], ['pfInput', doPosFind]].forEach(function(p){
     var box = document.getElementById(p[0]);
     if (box) box.addEventListener('keydown', function(e){
       if (e.key === 'Enter'){ e.preventDefault(); p[1](); }
@@ -1876,6 +2048,23 @@ HTML = """<!DOCTYPE html>
 <button id="btnE" onclick="return toggleEmpty()"></button>
 </div>
 </header>
+
+<section class="posfind">
+<h3 class="subcls" id="i-pf-title" style="background:#eef4fb;border-left:5px solid var(--sys)"></h3>
+<div class="sameform">
+  <input type="text" id="pfInput" maxlength="8" autocomplete="off">
+  <button id="pfGo" class="samebtn" onclick="return doPosFind()"></button>
+</div>
+<p class="samehint" id="i-pf-hint"></p>
+<p class="samehint" id="i-pf-only"></p>
+<div id="pfout"></div>
+</section>
+
+<section>
+<h3 class="subcls" id="i-ini-title" style="background:#eef4fb;border-left:5px solid var(--sys)"></h3>
+<div class="tw" id="tbl-initials"></div>
+<p class="sub" id="i-ini-note" style="margin-top:8px"></p>
+</section>
 
 <section>
 <h2 id="i-sec-overview"></h2>

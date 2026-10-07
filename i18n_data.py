@@ -38,6 +38,14 @@ WU = {
  "sec_bars": "各呼位字數",
  "sec_notes": "補充說明",
 
+ # ---------- 聲母表 ----------
+ "ini_title": "聲母表",
+ "ini_col_wei": "五音",
+ "ini_col_name": "聲母",
+ "ini_col_ipa": "注音",
+ "ini_zero_note": "零聲母有清濁之分",
+ "ini_24_note": "全站 {n} 個聲母（含零聲母）。",
+
  "st_initials": "聲母", "st_finals": "韻母", "st_rhymes": "韻（按韻基分）",
  "st_units": "呼位（韻 × 呼）", "st_tones": "聲調（{shu} 舒 {ru} 入）", "st_cells": "小韻格位",
 
@@ -225,6 +233,17 @@ WU = {
  "sr_words": "共 {n} 字",
  "sr_close": "關閉",
 
+ # ---------- 漢字韻圖位置查詢 ----------
+ "pf_title": "漢字韻圖位置查詢",
+ "pf_ph": "輸入漢字（最多 8 個）",
+ "pf_go": "查詢",
+ "pf_hint": "輸入漢字後，按韻圖位置分條列出該字的每一個讀音；同一位置的讀音並列在一條。",
+ "pf_only": "本查詢只針對蘇滬混合腔。",
+ "pf_empty": "請先輸入漢字。",
+ "pf_max": "一次最多查 8 個字。",
+ "pf_none": "「{c}」在字音庫裡查不到讀音。",
+ "pf_loading": "正在讀取簡繁對照表……",
+
  # ---------- 歌詞押韻查詢（同韻查詢 ＋ 近韻相押） ----------
  "btn_song": "歌詞押韻查詢",
  "sg_title": "歌詞押韻查詢",
@@ -305,6 +324,14 @@ EN = {
  "sec_yuntu": "Rhyme charts",
  "sec_bars": "Characters per division slot",
  "sec_notes": "Notes",
+
+ # ---------- 聲母表 ----------
+ "ini_title": "Initials",
+ "ini_col_wei": "Place of articulation",
+ "ini_col_name": "Initial",
+ "ini_col_ipa": "Symbol",
+ "ini_zero_note": "the zero initial has voiced and voiceless kinds",
+ "ini_24_note": "{n} initials in all (the zero initial included).",
 
  "st_initials": "initials", "st_finals": "finals", "st_rhymes": "rhymes (by base)",
  "st_units": "division slots", "st_tones": "tones ({shu} unchecked · {ru} checked)",
@@ -520,6 +547,18 @@ EN = {
  "sr_words": "{n} characters",
  "sr_close": "Close",
 
+ # ---------- Character position lookup ----------
+ "pf_title": "Character position lookup",
+ "pf_ph": "Enter characters (up to 8)",
+ "pf_go": "Look up",
+ "pf_hint": "Enter characters and this lists, position by position, every reading of those characters; "
+            "readings that share a position are listed together.",
+ "pf_only": "This lookup covers the common language only.",
+ "pf_empty": "Please enter at least one character.",
+ "pf_max": "Up to 8 characters at a time.",
+ "pf_none": "“{c}” has no reading in the database.",
+ "pf_loading": "Loading the Traditional/Simplified table…",
+
  # ---------- Lyric rhyme lookup (same-rhyme lookup + near-rhyme rhyming) ----------
  "btn_song": "Lyric rhyme lookup",
  "sg_title": "Lyric rhyme lookup",
@@ -611,6 +650,14 @@ JA = {
  "sec_yuntu": "韻図",
  "sec_bars": "呼位ごとの字数",
  "sec_notes": "補足説明",
+
+ # ---------- 聲母表 ----------
+ "ini_title": "声母表",
+ "ini_col_wei": "五音",
+ "ini_col_name": "声母",
+ "ini_col_ipa": "転写",
+ "ini_zero_note": "零声母に清濁がある",
+ "ini_24_note": "声母は {n} 種（零声母を含む）。",
 
  "st_initials": "声母", "st_finals": "韻母", "st_rhymes": "韻（韻基による）",
  "st_units": "呼位（韻×呼）", "st_tones": "声調（舒 {shu}・入 {ru}）", "st_cells": "小韻の枠",
@@ -808,6 +855,17 @@ JA = {
  "sr_rhyme": "韻",
  "sr_words": "計 {n} 字",
  "sr_close": "閉じる",
+
+ # ---------- 漢字韻図位置検索 ----------
+ "pf_title": "漢字韻図位置検索",
+ "pf_ph": "漢字を入力（最大 8 字）",
+ "pf_go": "検索",
+ "pf_hint": "漢字を入力すると、韻図上の位置ごとにその字の読みを一覧する。同じ位置の読みはまとめて表示する。",
+ "pf_only": "本検索は共通語のみを対象とする。",
+ "pf_empty": "漢字を入力してください。",
+ "pf_max": "一度に検索できるのは 8 字までです。",
+ "pf_none": "「{c}」は字音庫に読みが見つかりません。",
+ "pf_loading": "繁体字・簡体字の対照表を読み込んでいます……",
 
  # ---------- 歌詞押韻検索（同韻検索＋近韻相押） ----------
  "btn_song": "歌詞押韻検索",
