@@ -3,14 +3,11 @@ t_*.html
 L_*.png
 __pycache__/
 *.pyc
-__sr_probe.py
-__sr_probe.html
-__live_probe.py
-__fp_probe.html
-__sg_probe.py
-__sg_probe.html
-__shot.py
-__shot.html
+index.probe.html
+__dump.txt
+__dump.err
+__mkprobe.js
+__probe.sh
 
 # 字型構建快取（本地重建用，不進版控）
 font_cache.json
@@ -23,3 +20,4 @@ live_dump_*.html
 
 # 線上驗證截圖
 shot_*.png
+__shot*.png
