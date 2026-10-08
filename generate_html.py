@@ -865,7 +865,7 @@ function renderChrome(){
              n_kai:hc['開']||0, n_he:hc['合']||0, n_qi:hc['齊']||0,
              n_cuo:hc['撮']||0, n_te:hc['特']||0, btn_expand:t('btn_expand')};
   document.getElementById('i-ovlist').innerHTML =
-    ['ov1','ov2','ov3','ov4','ov5','ov6','ov7','ov8','ov9']
+    ['ov1','ov2','ov3','ov3b','ov4','ov5','ov6','ov7','ov8','ov9']
       .map(function(k){ return '<li>'+n(k, ovv)+'</li>'; }).join('');
 
   document.getElementById('i-rt-note').innerHTML = t('rt_note');

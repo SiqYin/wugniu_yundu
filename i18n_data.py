@@ -11,7 +11,7 @@ WU = {
  "page_title": "蘇滬混合腔韻圖",
  "h1": "蘇滬混合腔韻圖",
  "tagline": "按今音韻基分韻，開合齊撮逐位列出，一位一圖",
- "based_on": "依據 SiqYin 的 {dict}（字音查詢）與 {rime} 編製。本頁收字 <b>{chars}</b>，"
+ "based_on": "依據 雪螢SiqYin 的 {dict}（字音查詢）與 {rime} 編製。本頁收字 <b>{chars}</b>，"
              "讀音條目 <b>{records}</b>，合法音節（單音節・含聲調）<b>{syll}</b>。",
  "link_dict": "蘇滬混合腔線上字典",
  "link_rime": "RIME 輸入方案",
@@ -77,6 +77,15 @@ WU = {
         "「支」讀 <code>tsyu1</code>〔tsʮ〕，正好用來當開口韻的韻目；"
         "「雪」讀 <code>siq7</code>〔siɪʔ〕是齊齒、「月」讀 <code>yuq8</code>〔yeʔ〕是撮口，"
         "各如其分。總表「韻目取字」那一欄的小字，就是這個韻目字的實際讀音。",
+ "ov3b": "<b>韻目的名稱。</b>吳語蘇滬混合腔的聲韻母名稱由雪螢在 2026 年 10 月 7 日命名。"
+         "該名稱<b>非強制</b>，但雪螢建議大家使用。命名的選字依據蘇滬混合腔的實際讀音，"
+         "原則上<b>不採用可能造成歧義的多音字</b>。例外有月韻與質韻："
+         "「月」字的 <code>gniuq8</code>、<code>yuq8</code> 兩音均為月韻，"
+         "但另有 <code>ngeq8</code>（蘇州音白讀）、<code>gnioq8</code>（上海音白讀變體）兩音，"
+         "分別為質韻、屋韻。由於蘇滬混合腔推薦使用白讀 <code>gniuq8</code>、"
+         "文讀 <code>yuq8</code> 兩音，故特此命名；"
+         "「質」傳統吳語讀 <code>tseq7</code>，但有 <code>tsyu5</code> 的後起另讀，"
+         "為尊重吳語傳統讀音，將 <code>eq</code> 韻命名為質韻。",
  "ov4": "<b>四呼怎麼判定。</b>有 <code>u</code> 介音或主元音是 <code>u</code> 的算合口，"
         "有 <code>i</code> 介音或主元音是 <code>i</code> 的算齊齒，"
         "有 <code>iu</code> 介音或主元音是 <code>iu</code>（〔y〕）的算撮口，其餘算開口。"
@@ -295,7 +304,7 @@ EN = {
  "page_title": "Wu Common Language Rhyme Chart (Shanghainese-Suzhounese Mixed Wu language dialect)",
  "h1": "Wu Common Language Rhyme Chart <span class=\"clnote\">(Shanghainese-Suzhounese Mixed Wu language dialect)</span>",
  "tagline": "Rhymes divided by modern rhyme base · the four divisions listed slot by slot · one chart per slot",
- "based_on": "Compiled from SiqYin's {dict} and the {rime}. This page contains "
+ "based_on": "Compiled from 雪螢SiqYin's {dict} and the {rime}. This page contains "
              "<b>{chars}</b> characters, <b>{records}</b> readings, and <b>{syll}</b> valid syllables (monosyllabic, tones included).",
  "link_dict": "the common language online dictionary",
  "link_rime": "Rime input scheme",
@@ -366,6 +375,18 @@ EN = {
         "支 is <code>tsyu1</code> [tsʮ], a perfect label for the open rhyme; "
         "雪 is <code>siq7</code> [siɪʔ] (spread) and 月 is <code>yuq8</code> [yeʔ] (rounded). "
         "The small text under “Rhyme label” in the index is that character's actual reading.",
+ "ov3b": "<b>The rhyme names.</b> The names of the initials and rhymes of Wu Common Language were "
+         "settled by 雪螢 on 7 October 2026. The names are <b>not compulsory</b>, but 雪螢 recommends "
+         "using them. Each name was chosen from the actual readings of Wu Common Language, and "
+         "characters that would be ambiguous because they are polyread are avoided as a rule. "
+         "There are two exceptions, 月 and 質. 月 has two readings, <code>gniuq8</code> and "
+         "<code>yuq8</code>, both in the 月 rhyme, but it also has <code>ngeq8</code> "
+         "(Suzhou phonetic reading) and <code>gnioq8</code> (a variant of the Shanghainese phonetic "
+         "reading), which belong to the 質 rhyme and the 屋 rhyme respectively. Wu Common Language "
+         "recommends the colloquial <code>gniuq8</code> and the literary <code>yuq8</code>, so the "
+         "name is given here on that basis; 質 is traditionally read <code>tseq7</code> in Wu, but it "
+         "has a later separate reading <code>tsyu5</code>, so out of respect for the traditional Wu "
+         "reading the <code>eq</code> rhyme is named 質.",
  "ov4": "<b>How the four divisions are decided.</b> A <code>u</code> medial or a main vowel "
         "<code>u</code> counts as closed; <code>i</code> as spread; <code>iu</code> ([y]) as rounded; "
         "everything else is open. The whole rhyme of y [ɿ] and the whole rhyme of yu [ʮ] both count "
@@ -622,7 +643,7 @@ JA = {
  "page_title": "呉越語共通語韻図（蘇州語と上海語の混合アクセント）",
  "h1": "呉越語共通語韻図 <span class=\"clnote\">（蘇州語と上海語の混合アクセント）</span>",
  "tagline": "現代音の韻基で分韻し、開・合・斉・撮を一位ずつ掲げ、一位に一図",
- "based_on": "SiqYin の{dict}（字音検索）と{rime}により作成。本頁の収録字数 <b>{chars}</b>、"
+ "based_on": "雪螢SiqYin の{dict}（字音検索）と{rime}により作成。本頁の収録字数 <b>{chars}</b>、"
              "読み <b>{records}</b> 件、合法音節（単音節・声調込み）<b>{syll}</b>。",
  "link_dict": "共通語オンライン字典",
  "link_rime": "RIME 輸入方案",
@@ -691,6 +712,15 @@ JA = {
         "開口の韻の韻目にうってつけである。"
         "「雪」は <code>siq7</code>〔siɪʔ〕で斉歯、「月」は <code>yuq8</code>〔yeʔ〕で撮口、"
         "それぞれ名実が一致する。一覧の「韻目取字」欄の小さい文字が、その韻目字の実際の読みである。",
+ "ov3b": "<b>韻目の名称。</b>呉越語共通語の声韻母の名称は、雪螢が 2026 年 10 月 7 日に定めた。"
+         "この名称は<b>強制ではない</b>が、雪螢は使用を勧める。名称の字は呉越語共通語の実際の読みに基づき、"
+         "原則として<b>多読字で意味の紛らわしさが生じそうな字は採用しない</b>。"
+         "例外が「月」と「質」の二韻。「月」の <code>gniuq8</code>・<code>yuq8</code> の二読みはいずれも月韻に属するが、"
+         "ほかに <code>ngeq8</code>（蘇州音の白読み）、<code>gnioq8</code>（上海音の白読みの変体）の二読みがあり、"
+         "それぞれ質韻・屋韻に属する。呉越語共通語は白読みの <code>gniuq8</code> と文読みの <code>yuq8</code> を"
+         "推奨しているため、ここではこの基準で名称を付す。「質」は呉語の伝統的には <code>tseq7</code> と読むが、"
+         "後発の別読み <code>tsyu5</code> もあるため、呉語の伝統的読みに敬意をもって、"
+         "<code>eq</code> 韻を質韻と名付ける。",
  "ov4": "<b>四呼の判定。</b><code>u</code> の介音をもつもの、または主母音が <code>u</code> のものは"
         "合口。<code>i</code> の介音、または主母音が <code>i</code> のものは斉歯。"
         "<code>iu</code> の介音、または主母音が <code>iu</code>（〔y〕）のものは撮口。"
