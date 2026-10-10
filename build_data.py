@@ -62,7 +62,7 @@ IPA_OF_FINAL = {
 
 # 声母：字素 -> (五音, 中古字母, 音值)
 # 聲母名依用戶 2026-10-07 定案：p幫 ph滂 b並 m明 f非 v奉／t端 th透 d定 n儂 l來／
-# k該 kh開 g搿 ng牙 h好 gh匣／c見 ch溪 j群 sh曉 gn孃／ts精 tsh親 s心 z邪／∅零。
+# k該 kh開 g搿 ng牙 h好 gh匣／c見 ch溪 j群 sh曉 gn娘／ts精 tsh親 s心 z邪／∅零。
 # 語法鍵「gn」是為了匹配字典寫法與 PLAIN 表，**顯示層**才寫成 ȵ（見 `INITIAL_LABEL`）。
 INITIALS = {
     "":   ("喉", "零", "∅"),
@@ -76,7 +76,7 @@ INITIALS = {
     "s":  ("齒", "心", "s"),  "z":   ("齒", "邪", "z"),
     "ci": ("腭", "見", "tɕ"), "chi": ("腭", "溪", "tɕʰ"),
     "ji": ("腭", "群", "dʑ"), "shi": ("腭", "曉", "ɕ"),
-    "gn": ("腭", "孃", "ȵ"),
+    "gn": ("腭", "娘", "ȵ"),
     "h":  ("喉", "好", "h"),   "gh": ("喉", "匣", "ɦ"),
 }
 
@@ -94,7 +94,7 @@ INITIAL_ORDER = ["", "p", "ph", "b", "m", "f", "v",
 
 # 聲母表的排列順序，用戶 2026-10-07 明文給的清單順序：
 #   p幫 ph滂 b並 m明 f非 v奉／t端 th透 d定 n儂 l來／k該 kh開 g搿 ng牙 h好 gh匣／
-#   c見 ch溪 j群 sh曉 gn孃／ts精 tsh親 s心 z邪／零。
+#   c見 ch溪 j群 sh曉 gn娘／ts精 tsh親 s心 z邪／零。
 # 與 INITIAL_ORDER（韻圖格位的排序基準）分開，不要合併。
 INITIAL_TABLE_ORDER = ["p", "ph", "b", "m", "f", "v",
                        "t", "th", "d", "n", "l",
