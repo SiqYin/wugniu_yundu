@@ -29,7 +29,7 @@ DB = os.path.join(HERE, "DB_suhu.json")
 # ---------------- 音系定义 ----------------
 FINALS = ("a ua ia o io y yu i u iu ie e ue au iau eu ieu oe uoe ioe "
           "an uan ian aon uaon iaon on ion en uen in iun "
-          "aeq uaeq iaeq iuaeq aq iaq eq ueq iq iuq oq ioq er n m ng").split()
+          "aeq uaeq iaeq iuaeq aq iaq eq ueq iq iuq oq ioq er n m ng ou").split()
 
 # 韵母音值：一律照字音查询网站「蘇滬混合腔——音韻體系」的韻母表（48 隻），
 # 不再从字典的 IPA 栏归纳。凡音系表写「~」的，是**同一个韵母按条件分工之异值**，
@@ -43,7 +43,7 @@ IPA_OF_FINAL = {
     "a": "ɑ", "ua": "uɑ", "ia": "iɑ",
     "o": "o̝", "io": "io̝",
     "y": "ɿ", "yu": "ʮ",
-    "i": "iᶽ", "u": "uᵝ~əuᵝ", "iu": "y",
+    "i": "iᶽ", "u": "uᵝ", "iu": "y", "ou": "əuᵝ",
     "ie": "i",
     "e": "e̞", "ue": "ue̞",
     "au": "ɔ", "iau": "iɔ",
@@ -142,8 +142,11 @@ RU_TONES = ["7", "8"]
 HU_ORDER = ["開", "合", "齊", "撮", "特"]
 HU_DESC = {"開": "開口", "合": "合口", "齊": "齊齒", "撮": "撮口", "特": "特例"}
 
-# ---------------- 分韵（28 韵 · 48 呼位） ----------------
+# ---------------- 分韵（28 韵 · 49 呼位） ----------------
+# 湖韻（原歌韻）的開口呼 ou 是湖韻合口的變體（河），不構成對立，總韻數不變。
 # (韵目, 韵基, 韵目取字之读音, 中古大概来源（仅供参考）, {呼: [韵母]})
+# HU_RHYME_NAME：個別呼位在位置字串中改用另一個韻目字（湖韻開口呼稱「河」）。
+HU_RHYME_NAME = {("湖", "開"): "河"}
 RHYME_TABLE = [
     # —— 陰聲韻（無韻尾）——
     ("泰", "ɑ",   "tha5",  "蟹攝泰佳皆夬（開合）＋假攝麻韻見系（齊齒）＋果攝歌韻白讀",
@@ -158,8 +161,8 @@ RHYME_TABLE = [
      {"開": ["eu"], "齊": ["ieu"]}),
     ("寒", "ø",   "ghoe2", "山攝寒桓＋咸攝覃談＋止攝合口",
      {"開": ["oe"], "合": ["uoe"], "齊": ["ioe"]}),
-    ("歌", "uᵝ",  "ku1",   "遇攝模魚虞洪音＋果攝歌戈",
-     {"合": ["u"]}),
+    ("湖", "uᵝ",  "wu2",   "遇攝模魚虞洪音＋果攝歌戈",
+     {"合": ["u"], "開": ["ou"]}),
     ("余", "y",   "yu2",   "遇攝魚虞細音",
      {"撮": ["iu"]}),
     ("支", "ʮ",   "tsyu1", "止攝支脂之知照日組＋遇攝魚虞知照組",
@@ -326,7 +329,7 @@ def main():
 
         一般韻就等於 core（主元音＋韻尾）。但若該韻的韻母本身帶 `~` 兩讀
         （按音系表只有 u[uᵝ~əuᵝ] 與 iq[iɪʔ~ieʔ] 兩個），就顯示完整的兩讀，
-        例如歌韻顯示 uᵝ~əuᵝ、雪韻顯示 iɪʔ~ieʔ。
+        例如雪韻顯示 iɪʔ~ieʔ（湖韻已按音節拆分為湖〔uᵝ〕與河〔əuᵝ〕兩韻目寫法，不再兩讀）。
 
         **不是**把各呼位格位的音值都列出來：像泰韻的 ɑ / uɑ / iɑ 是開口／合口／
         齊齒三個格位各自的值，不是「同一韻母的兩讀」，那屬於韻圖格位表裡的內容。
@@ -351,6 +354,7 @@ def main():
     syl_pos = {}
     for (ini, fin, tone), v in inst.items():
         name, hu = fin_slot[fin]
+        name = HU_RHYME_NAME.get((name, hu), name)
         pos = ini_label(ini, tone) + name + hu + TONE_INFO[tone][0]
         for _c, s in v["chars"]:
             key = s + tone
@@ -462,7 +466,8 @@ def main():
     # 韻基必須是該韻某個韻母音值的成員（含 `A~B` 兩讀中的任一個），
     # 也就是音系表更新 IPA_OF_FINAL 時要同步更新 RHYME_TABLE 第 2 欄。
     # 同時產出 core_full：把該韻所有格位的完整音值依「core 在前」排序，
-    # 兩讀的韻（歌 uᵝ~əuᵝ、雪 iɪʔ~ieʔ）在總表就顯示兩個值，不只顯示主元音。
+    # 兩讀的韻（雪 iɪʔ~ieʔ）在總表就顯示兩個值，不只顯示主元音。
+    # 湖韻已按音節拆分（湖〔uᵝ〕／河〔əuᵝ〕變體），總表不再顯示兩讀。
     core_bad = []
     for name, core, ref, src, hus in RHYME_TABLE:
         vals = set()
@@ -482,6 +487,7 @@ def main():
             "finals": FINALS, "ipa_of_final": IPA_OF_FINAL,
             "tone_info": TONE_INFO, "shu_tones": SHU_TONES, "ru_tones": RU_TONES,
             "hu_order": HU_ORDER, "hu_desc": HU_DESC,
+            "hu_rhyme_name": {"%s·%s" % k: v for k, v in HU_RHYME_NAME.items()},
             "class_order": CLASS_ORDER,
             "stats": stats,
         },
@@ -502,6 +508,7 @@ def main():
         "groups": GROUPS,
         "tone_info": TONE_INFO, "shu_tones": SHU_TONES, "ru_tones": RU_TONES,
         "hu_order": HU_ORDER, "hu_desc": HU_DESC, "class_order": CLASS_ORDER,
+        "hu_rhyme_name": {"%s·%s" % k: v for k, v in HU_RHYME_NAME.items()},
         "finals": FINALS, "ipa_of_final": IPA_OF_FINAL,
         "zero_map": ZERO_MAP, "pal_map": PAL_MAP, "plain": PLAIN,
         "rhymes": [{"name": n, "core": c, "core_full": CORE_FULL[n],

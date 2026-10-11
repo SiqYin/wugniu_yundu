@@ -608,7 +608,7 @@ function sylList(list){
    並由 .mod 的 font-family 回退到系統中含這些字形的字體。 */
 var MODMAP = {'\u1d5d':'ᵝ', '\u1dbd':'ᶽ'};
 function coreCell(v){
-  /* 韻基欄。兩讀的韻（歌 uᵝ~əuᵝ、雪 iɪʔ~ieʔ）顯示完整的兩讀，
+  /* 韻基欄。兩讀的韻（雪 iɪʔ~ieʔ）顯示完整的兩讀，
      讀者一眼看得出這個韻母有兩個值；其餘韻就是單值。 */
   return '['+esc(v)+']';
 }
@@ -1432,7 +1432,9 @@ var PF_TOKEN = 0, PF_LAST = '', PF_HL = '';
 function posLabel(c){
   var ini = c.ini ? SCHEME.initials[c.ini][1]
                   : (SCHEME.clear_zero_tones.indexOf(c.tone) >= 0 ? '清零' : '濁零');
-  return ini + RH[c.ri].name + c.hu + SCHEME.tone_info[c.tone][0];
+  var nm = RH[c.ri].name;
+  var hn = SCHEME.hu_rhyme_name && SCHEME.hu_rhyme_name[nm + '·' + c.hu];
+  return ini + (hn || nm) + c.hu + SCHEME.tone_info[c.tone][0];
 }
 
 /* 把每個讀音按位置分組；回傳 [{pos, cells:[...]}]，順序依讀音首次出現 */
@@ -1511,10 +1513,10 @@ function renderPosFind(raw, out){
 
 /* ---------- 歌詞押韻查詢（同韻查詢 ＋ 近韻相押） ----------
    近韻相押：有星韻讀音接近，勒勿同人个語感裡向可能通押——有人押，有人勿押。
-   前四組（襪麥／打黨／麻歌／資支）是固定个兩韻組合，勾一个就當伊拉相押。
+   前四組（襪麥／打黨／麻湖／資支）是固定个兩韻組合，勾一个就當伊拉相押。
    第五組「微余仙侵雲雪月」一韻一格：勾起來个韻混作一組、彼此相押；
    沒勾个就各論各个。無論勾著啥，結果一律仍按韻分列。 */
-var NEAR_FIX = [['襪','麥'],['打','黨'],['麻','歌'],['資','支']];
+var NEAR_FIX = [['襪','麥'],['打','黨'],['麻','湖'],['資','支']];
 var NEAR_CX  = ['衣','余','煙','侵','雲','雪','月'];
 var NEAR_ON  = {};                       /* 'f0'..'f3' -> true：前四組勾了沒 */
 var NEAR_SEL = {};                       /* '微' -> true：第五組勾起來个韻 */
