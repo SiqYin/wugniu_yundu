@@ -916,7 +916,8 @@ function renderRhymeTable(){
       } else cells += '<td class="no">—</td>';
     });
     var clsShort = {'陰聲韻':'cls_yin','陽聲韻':'cls_yang','入聲韻':'cls_ru','特例韻':'cls_te'}[rh.cls];
-    rows.push('<tr><th class="rn"><a class="rname" data-ri="'+ri+'" data-ch="'+esc(RH[ri].name)+'" href="#r-'+ri+'">'+esc(rhName(rh))+'</a></th>'
+    var vtag = rh.variant ? '<span class="rd">'+esc(t('rh_variant'))+'</span>' : '';
+    rows.push('<tr><th class="rn"><a class="rname" data-ri="'+ri+'" data-ch="'+esc(RH[ri].name)+'" href="#r-'+ri+'">'+esc(rhName(rh))+vtag+'</a></th>'
       + '<td class="core">'+coreCell(rh.core_full)+'</td><td>'+esc(t(clsShort))+'</td>'
       + '<td class="lab">'+esc(rh.name)+'<span class="rd">'+esc(rh.label_read)+'</span></td>'
       + cells + '<td class="num">'+nHu+'</td><td class="num">'+nSys+'</td>'
@@ -1432,9 +1433,7 @@ var PF_TOKEN = 0, PF_LAST = '', PF_HL = '';
 function posLabel(c){
   var ini = c.ini ? SCHEME.initials[c.ini][1]
                   : (SCHEME.clear_zero_tones.indexOf(c.tone) >= 0 ? '清零' : '濁零');
-  var nm = RH[c.ri].name;
-  var hn = SCHEME.hu_rhyme_name && SCHEME.hu_rhyme_name[nm + '·' + c.hu];
-  return ini + (hn || nm) + c.hu + SCHEME.tone_info[c.tone][0];
+  return ini + RH[c.ri].name + c.hu + SCHEME.tone_info[c.tone][0];
 }
 
 /* 把每個讀音按位置分組；回傳 [{pos, cells:[...]}]，順序依讀音首次出現 */

@@ -71,8 +71,8 @@ WU = {
         "合口 {n_he} 位、齊齒 {n_qi} 位、撮口 {n_cuo} 位、特例 {n_te} 位。"
         "四個呼都齊全的只有「襪」韻一個；只佔一個呼位的有九個韻——"
         "余（撮）、支（開）、資（開）、衣（齊）、煙（齊）、侵（齊）、雲（撮）、"
-        "雪（齊）、月（撮）。湖韻佔兩呼——合口稱「湖」、開口稱「河」，"
-        "兩者互為變體，不構成對立。",
+        "雪（齊）、月（撮）。湖韻下另有其開口變體「河」（湖合口、河開口，"
+        "兩者互為變體，不構成對立）。",
  "ov3": "<b>韻目代表字都經過核對。</b>每個韻的名字，都取一個本韻裡真的有這個讀音的字，"
         "而且由程式逐一驗證過。例如「湖」讀 <code>wu2</code>〔uᵝ〕，其變體「河」讀 "
         "<code>ghou2</code>〔ɦəuᵝ〕，恰好一合一開；"
@@ -191,6 +191,7 @@ WU = {
        "<b><code>iq</code>〔iɪʔ~ieʔ〕是「雪」韻（整個韻都是齊齒），"
        "<code>iuq</code>〔yeʔ〕是「月」韻（整個韻都是撮口）</b>。"
        "韻目也很貼切：「雪」讀 <code>siq7</code>〔siɪʔ〕，「月」讀 <code>yuq8</code>〔yeʔ〕。",
+ "rh_variant": "湖韻變體",
  "n4": "<b>四、韻母音值一律依字音查詢站「蘇滬混合腔——音韻體系」的韻母表。</b>"
        "表裡寫「~」的（現在只剩雪韻 <code>iq</code>），是<b>同一個韻按音節條件分工、"
        "讀不同的音值</b>，格位裡只寫該音節實際讀的那個音："
@@ -509,6 +510,7 @@ EN = {
        "<b><code>iq</code> [iɪʔ~ieʔ] is the 雪 rhyme (spread throughout), and <code>iuq</code> "
        "[yeʔ] the 月 rhyme (rounded throughout).</b> The labels fit too: 雪 is <code>siq7</code> "
        "[siɪʔ], 月 is <code>yuq8</code> [yeʔ].",
+ "rh_variant": "variant of the 湖 rhyme",
  "n4": "<b>4. Final values follow the 韻母表 of “Wu Common Language — Phonological System” on the "
        "lookup site.</b> Where that table writes “~” (now only the 雪 rhyme <code>iq</code>), "
        "one final has different values depending on the syllable; each slot shows only the "
@@ -834,6 +836,7 @@ JA = {
        "<b><code>iq</code>〔iɪʔ~ieʔ〕は「雪」韻（韻全体が斉歯）、"
        "<code>iuq</code>〔yeʔ〕は「月」韻（韻全体が撮口）である。</b>"
        "韻目もよく合う：「雪」は <code>siq7</code>〔siɪʔ〕、「月」は <code>yuq8</code>〔yeʔ〕。",
+ "rh_variant": "湖韻の異体",
  "n4": "<b>四、韻母の音価は字音検索サイト「共通語——音韻体系」の韻母表に従う。</b>"
        "同表で「~」とあるのは（今は雪韻 <code>iq</code> のみ）、<b>同じ韻が音節によって"
        "異なる音価で実現する</b>という意味で、各マスにはその音節が実際に取る音だけを書く："
@@ -970,6 +973,8 @@ GLOSS = {
   "Liu group: 侯 尤 幽",
   "Shan group: 寒 桓 + Xian group: 覃 談 + Zhi group: closed readings",
   "Yu group: 模 魚 虞, plain-grade readings + Guo group: 歌 戈",
+  "Variant of the 湖 rhyme (no contrast); Yu group: 模 魚 虞, plain-grade readings "
+  "+ Guo group: 歌 戈",
   "Yu group: 魚 虞, fine-grade readings",
   "Zhi group: 支 脂 之, 知 照 日 series + Yu group: 魚 虞, 知 照 series",
   "Zhi group: 支 脂 之, 精 series",
@@ -1000,6 +1005,7 @@ GLOSS = {
   "流摂 侯・尤・幽",
   "山摂 寒・桓＋咸摂 覃・談＋止摂の合口",
   "遇摂 模・魚・虞の洪音＋果摂 歌・戈",
+  "湖韻の異体（対立しない）；遇摂 模・魚・虞の洪音＋果摂 歌・戈",
   "遇摂 魚・虞の細音",
   "止摂 支・脂・之の知・照・日組＋遇摂 魚・虞の知・照組",
   "止摂 支・脂・之の精組",

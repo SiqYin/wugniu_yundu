@@ -143,10 +143,10 @@ HU_ORDER = ["開", "合", "齊", "撮", "特"]
 HU_DESC = {"開": "開口", "合": "合口", "齊": "齊齒", "撮": "撮口", "特": "特例"}
 
 # ---------------- 分韵（28 韵 · 49 呼位） ----------------
-# 湖韻（原歌韻）的開口呼 ou 是湖韻合口的變體（河），不構成對立，總韻數不變。
+# 湖韻（原歌韻）與河韻互為變體（湖＝合口、河＝開口），不構成對立，總韻數 28 不變
+# （河為變體韻目，不計入韻數統計，見 VARIANT_RHYMES）。
 # (韵目, 韵基, 韵目取字之读音, 中古大概来源（仅供参考）, {呼: [韵母]})
-# HU_RHYME_NAME：個別呼位在位置字串中改用另一個韻目字（湖韻開口呼稱「河」）。
-HU_RHYME_NAME = {("湖", "開"): "河"}
+VARIANT_RHYMES = {"河"}
 RHYME_TABLE = [
     # —— 陰聲韻（無韻尾）——
     ("泰", "ɑ",   "tha5",  "蟹攝泰佳皆夬（開合）＋假攝麻韻見系（齊齒）＋果攝歌韻白讀",
@@ -162,7 +162,9 @@ RHYME_TABLE = [
     ("寒", "ø",   "ghoe2", "山攝寒桓＋咸攝覃談＋止攝合口",
      {"開": ["oe"], "合": ["uoe"], "齊": ["ioe"]}),
     ("湖", "uᵝ",  "wu2",   "遇攝模魚虞洪音＋果攝歌戈",
-     {"合": ["u"], "開": ["ou"]}),
+     {"合": ["u"]}),
+    ("河", "əuᵝ", "ghou2", "湖韻變體（與湖韻不構成對立）——遇攝模魚虞洪音＋果攝歌戈",
+     {"開": ["ou"]}),
     ("余", "y",   "yu2",   "遇攝魚虞細音",
      {"撮": ["iu"]}),
     ("支", "ʮ",   "tsyu1", "止攝支脂之知照日組＋遇攝魚虞知照組",
@@ -354,7 +356,6 @@ def main():
     syl_pos = {}
     for (ini, fin, tone), v in inst.items():
         name, hu = fin_slot[fin]
-        name = HU_RHYME_NAME.get((name, hu), name)
         pos = ini_label(ini, tone) + name + hu + TONE_INFO[tone][0]
         for _c, s in v["chars"]:
             key = s + tone
@@ -367,6 +368,7 @@ def main():
         by_rhyme[name] = {"name": name, "core": core, "core_full": CORE_FULL[name],
                           "label_read": ref,
                           "src": src, "cls": CLASS_OF[name],
+                          "variant": name in VARIANT_RHYMES,
                           "hus": collections.OrderedDict()}
         for hu in HU_ORDER:
             if hu not in hus:
@@ -395,7 +397,7 @@ def main():
         "records": sum(len(r["meaning"]) for r in db),
         "distinct_tone_syllables": len(inst),
         "distinct_base_syllables": len({(i, f) for (i, f, t) in inst}),
-        "rhymes": len(RHYME_TABLE),
+        "rhymes": len(RHYME_TABLE) - len(VARIANT_RHYMES),
         "hu_units": sum(len(h) for _, _, _, _, h in RHYME_TABLE),
         "finals": len(FINALS),
         "initials": len(INITIALS),
@@ -487,7 +489,6 @@ def main():
             "finals": FINALS, "ipa_of_final": IPA_OF_FINAL,
             "tone_info": TONE_INFO, "shu_tones": SHU_TONES, "ru_tones": RU_TONES,
             "hu_order": HU_ORDER, "hu_desc": HU_DESC,
-            "hu_rhyme_name": {"%s·%s" % k: v for k, v in HU_RHYME_NAME.items()},
             "class_order": CLASS_ORDER,
             "stats": stats,
         },
@@ -508,7 +509,6 @@ def main():
         "groups": GROUPS,
         "tone_info": TONE_INFO, "shu_tones": SHU_TONES, "ru_tones": RU_TONES,
         "hu_order": HU_ORDER, "hu_desc": HU_DESC, "class_order": CLASS_ORDER,
-        "hu_rhyme_name": {"%s·%s" % k: v for k, v in HU_RHYME_NAME.items()},
         "finals": FINALS, "ipa_of_final": IPA_OF_FINAL,
         "zero_map": ZERO_MAP, "pal_map": PAL_MAP, "plain": PLAIN,
         "rhymes": [{"name": n, "core": c, "core_full": CORE_FULL[n],
