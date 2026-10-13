@@ -12,7 +12,7 @@ WU = {
  "h1": "蘇滬混合腔韻圖",
  "tagline": "按今音韻基分韻，開合齊撮逐位列出，一位一圖",
  "based_on": "依據 雪螢SiqYin 的 {dict}（字音查詢）與 {rime} 編製。本頁收字 <b>{chars}</b>，"
-             "讀音條目 <b>{records}</b>，合法音節（單音節・含聲調）<b>{syll}</b>。",
+             "讀音條目 <b>{records}</b>，合法音節（單音節・不含聲調）<b>{syll}</b>。",
  "link_dict": "蘇滬混合腔線上字典",
  "link_rime": "RIME 輸入方案",
  "btn_sync": "重新同步線上字音庫",
@@ -22,8 +22,7 @@ WU = {
  "btn_hide": "隱藏全空的聲母行",
  "btn_show": "顯示全空的聲母行",
  "sync_loading": "正在讀取線上字音庫……",
- "sync_ok": "已同步線上字音庫（{link}）：收字 <b>{chars}</b>，讀音 <b>{records}</b> 條，"
-            "合法音節 <b>{syll}</b> 個{stamp}。字音查詢那邊一有更新，重新整理本頁就會跟著更新。",
+ "sync_ok": "已同步線上字音庫（{link}）：收字 <b>{chars}</b>，讀音 <b>{records}</b> 條，合法音節 <b>{syll}</b> 個{stamp}。字音查詢那邊一有更新，重新整理本頁就會跟著更新。",
  "sync_ok_stamp": "；線上資料檔最後更新於 {t}",
  "sync_stale": "線上字音庫（{link}）目前還是上一版（收字 <b>{live}</b>），比本頁內建的快照"
                "（<b>{snap}</b> 字）還少，所以先顯示快照。等線上那邊部署完成，"
@@ -47,7 +46,7 @@ WU = {
  "ini_24_note": "全站 {n} 個聲母（含零聲母）。",
 
  "st_initials": "聲母", "st_finals": "韻母", "st_rhymes": "韻（按韻基分）",
- "st_units": "呼位（韻 × 呼）", "st_tones": "聲調（{shu} 舒 {ru} 入）", "st_cells": "小韻格位",
+ "st_units": "呼位（韻 × 呼）", "st_tones": "聲調（{shu} 舒 {ru} 入）", "st_cells": "合法音節",
 
  "th_no": "調號", "th_cls": "調類", "th_val": "調值", "th_kind": "舒／入",
  "th_class": "類",
@@ -309,7 +308,7 @@ EN = {
  "h1": "Wu Common Language Rhyme Chart <span class=\"clnote\">(Shanghainese-Suzhounese Mixed Wu language dialect)</span>",
  "tagline": "Rhymes divided by modern rhyme base · the four divisions listed slot by slot · one chart per slot",
  "based_on": "Compiled from 雪螢SiqYin's {dict} and the {rime}. This page contains "
-             "<b>{chars}</b> characters, <b>{records}</b> readings, and <b>{syll}</b> valid syllables (monosyllabic, tones included).",
+             "<b>{chars}</b> characters, <b>{records}</b> readings, and <b>{syll}</b> valid syllables (monosyllabic, tones not counted).",
  "link_dict": "the common language online dictionary",
  "link_rime": "Rime input scheme",
  "btn_sync": "Re-sync the online reading database",
@@ -348,7 +347,7 @@ EN = {
 
  "st_initials": "initials", "st_finals": "finals", "st_rhymes": "rhymes (by base)",
  "st_units": "division slots", "st_tones": "tones ({shu} unchecked · {ru} checked)",
- "st_cells": "homophone groups",
+ "st_cells": "valid syllables",
 
  "th_no": "Tone", "th_cls": "Register", "th_val": "Value", "th_kind": "Type",
  "th_class": "Class",
@@ -651,7 +650,7 @@ JA = {
  "h1": "呉越共通語韻図 <span class=\"clnote\">（蘇州語と上海語の混合アクセント）</span>",
  "tagline": "現代音の韻基で分韻し、開・合・斉・撮を一位ずつ掲げ、一位に一図",
  "based_on": "雪螢SiqYin の{dict}（字音検索）と{rime}により作成。本頁の収録字数 <b>{chars}</b>、"
-             "読み <b>{records}</b> 件、合法音節（単音節・声調込み）<b>{syll}</b>。",
+             "読み <b>{records}</b> 件、合法音節（単音節・声調を除く）<b>{syll}</b>。",
  "link_dict": "共通語オンライン字典",
  "link_rime": "RIME 輸入方案",
  "btn_sync": "オンライン字音庫を再同期",
@@ -688,7 +687,7 @@ JA = {
  "ini_24_note": "声母は {n} 種（零声母を含む）。",
 
  "st_initials": "声母", "st_finals": "韻母", "st_rhymes": "韻（韻基による）",
- "st_units": "呼位（韻×呼）", "st_tones": "声調（舒 {shu}・入 {ru}）", "st_cells": "小韻の枠",
+ "st_units": "呼位（韻×呼）", "st_tones": "声調（舒 {shu}・入 {ru}）", "st_cells": "合法音節",
 
  "th_no": "調号", "th_cls": "調類", "th_val": "調値", "th_kind": "舒／入",
  "th_class": "類",

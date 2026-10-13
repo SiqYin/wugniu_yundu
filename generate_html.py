@@ -705,7 +705,7 @@ function addReading(syl, tone, ipa, ch){
 
 function loadFromSnapshot(){
   CELLS=[]; CELLKEY={};
-  META = {chars:SNAP.chars, records:SNAP.records, syllables:0, skipped:0,
+  META = {chars:SNAP.chars, records:SNAP.records, syllables:SNAP.syllables||0, skipped:0,
           untone:SNAP.untone||[], words:SNAP.words||[], strings:SNAP.strings||0};
   SNAP.cells.forEach(function(row){
     var ini=row[0], fin=row[1], tone=row[2], ipa=row[3], chars=row[4];
@@ -714,7 +714,7 @@ function loadFromSnapshot(){
              ipa:[ipa], chars:Array.from(chars), syl:ini+fin+tone};
     CELLKEY[slot[0]+'|'+slot[1]+'|'+fin+'|'+ini+'|'+tone]=c; CELLS.push(c);
   });
-  META.syllables = CELLS.length;
+  META.cells = CELLS.length;
   META.single = META.syllables + META.untone.length;
 }
 
@@ -738,13 +738,16 @@ function finishMeta(){
 
 function loadFromLive(db){
   CELLS=[]; CELLKEY={};
-  META = {chars:db.length, records:0, syllables:0, skipped:0,
-          strSeen:{}, strChars:{}};
-  db.forEach(function(rec){
+  /* 口径同 build_data：多字条目不算「字」，收字／读音／合法音节只看单字条目。 */
+  var single = db.filter(function(r){ return Array.from(String(r.character||'')).length === 1; });
+  META = {chars:single.length, records:0, syllables:0, skipped:0,
+          strSeen:{}, strChars:{}, baseSyl:{}};
+  single.forEach(function(rec){
     var ch = rec.character, ms = rec.meaning || [];
     META.records += ms.length;
     ms.forEach(function(m){
       var s = String(m[0]);
+      META.baseSyl[s.replace(/[0-9]$/, '')] = 1;
       if (META.strSeen[s] === undefined){ META.strSeen[s]=1; META.strChars[s]=[]; }
       if (META.strChars[s].indexOf(ch) < 0) META.strChars[s].push(ch);
       var mm = /^(.*?)([0-9])$/.exec(s);
@@ -752,7 +755,8 @@ function loadFromLive(db){
       addReading(mm[1], mm[2], m[1]||'', ch);
     });
   });
-  META.syllables = CELLS.length;
+  META.syllables = Object.keys(META.baseSyl).length;
+  META.cells = CELLS.length;
   finishMeta();
 }
 

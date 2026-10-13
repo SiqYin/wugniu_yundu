@@ -392,11 +392,14 @@ def main():
                 break
 
     # 统计
+    # 口径：多字条目（如「如何」「如何然」「介兒」）不算「字」，计数一律排除。
+    single_db = [r for r in db if len(r["character"]) == 1]
     stats = {
-        "chars": len(db),
-        "records": sum(len(r["meaning"]) for r in db),
+        "chars": len(single_db),
+        "records": sum(len(r["meaning"]) for r in single_db),
         "distinct_tone_syllables": len(inst),
         "distinct_base_syllables": len({(i, f) for (i, f, t) in inst}),
+        "legal_syllables": len({re.sub(r"[0-9]$", "", m[0]) for r in single_db for m in r["meaning"]}),
         "rhymes": len(RHYME_TABLE) - len(VARIANT_RHYMES),
         "hu_units": sum(len(h) for _, _, _, _, h in RHYME_TABLE),
         "finals": len(FINALS),
@@ -547,7 +550,8 @@ def main():
     snapshot = {
         "source": "builtin",
         "chars": stats["chars"], "records": stats["records"],
-        "syllables": stats["distinct_tone_syllables"],
+        "syllables": stats["legal_syllables"],
+        "cells_count": stats["distinct_tone_syllables"],
         "strings": len(str_chars),
         "untone": [_pair(s) for s in str_untone],
         "words": [_pair(s) for s in str_words],
@@ -567,10 +571,11 @@ def main():
     json.dump(pos_map, open(os.path.join(HERE, "yuntu_pos.json"), "w", encoding="utf-8"),
               ensure_ascii=False, separators=(",", ":"))
     print("位置表(音節→位置):", len(pos_map), "條 -> yuntu_pos.json")
-    print("字符数           :", stats["chars"])
-    print("读音条目         :", stats["records"])
-    print("合法音节(带调)   :", stats["distinct_tone_syllables"])
-    print("合法音节(不带调) :", stats["distinct_base_syllables"])
+    print("字符数(单字)     :", stats["chars"])
+    print("读音条目(单字)   :", stats["records"])
+    print("合法音节(不带调) :", stats["legal_syllables"])
+    print("小韵格位(带调)   :", stats["distinct_tone_syllables"])
+    print("表内韵母音节     :", stats["distinct_base_syllables"])
     print("分韵数           :", stats["rhymes"], " / 呼位数:", stats["hu_units"],
           " / 韵母:", stats["finals"])
     print("构拟格位         :", stats["cells_built"])
