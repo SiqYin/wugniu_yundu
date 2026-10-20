@@ -124,22 +124,21 @@ button.cnt:hover{background:#e2edf8;border-color:#a3c1d9}
 button.sys:hover{background:#f8eed9;border-color:#d9bd85}
 .mhint{font-size:13px;color:var(--ink2);margin:2px 0 6px;
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
-/* ---- 聲母表（27 聲母，含零聲母清濁） ---- */
-table.itbl{width:auto;min-width:min(420px,100%);border-collapse:collapse;margin:6px 0 4px;
+/* ---- 聲母表（按五音排成格表） ---- */
+table.itbl{width:auto;border-collapse:collapse;margin:6px 0 4px;
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
-table.itbl th{background:#dbe7f2;color:#1a5276;font-weight:600;font-size:12px;
- text-align:left;padding:5px 10px;letter-spacing:.06em;white-space:nowrap}
-table.itbl td{padding:4px 10px;border-bottom:1px solid var(--line2);
- text-align:left;white-space:nowrap}
-table.itbl th:first-child,table.itbl td.iwei{width:3em}
-table.itbl th:last-child,table.itbl td.ilab{width:5em}
-table.itbl tr.izero td{background:#f4f9fd}
-table.itbl td.iwei{color:var(--ink2);font-size:12.5px}
-table.itbl td.iname{font-weight:700;font-size:15px;color:var(--ink);
- font-family:"Songti SC","SimSun",serif}
-table.itbl td.ilab{font-family:Georgia,serif;font-size:15px;color:var(--ink2)}
+table.itbl td{border:1px solid var(--line2);text-align:center;vertical-align:middle;
+ padding:5px 7px;white-space:nowrap}
+table.itbl td.iwei{background:#dbe7f2;color:#1a5276;font-weight:600;font-size:13px;
+ letter-spacing:.06em;padding:5px 12px}
+table.itbl td.icell{min-width:3.2em}
+table.itbl span.iname{display:block;font-weight:700;font-size:15px;color:var(--ink);
+ font-family:"Songti SC","SimSun",serif;line-height:1.25}
+table.itbl span.ilab{display:block;font-family:Georgia,serif;font-size:12.5px;
+ color:var(--ink2);line-height:1.25}
+table.itbl td.izero{background:#f4f9fd}
 table.itbl tr.iznote td{background:#f4f9fd;color:var(--ink2);font-size:12.5px;
- text-align:center;letter-spacing:.04em}
+ text-align:center;letter-spacing:.04em;border:0}
 /* ---- 漢字韻圖位置查詢 ---- */
 section.posfind{margin:-6px 0 30px;padding:14px 16px 4px;background:var(--card);
  border:1px solid var(--line);border-radius:10px}
@@ -1133,24 +1132,31 @@ function renderYuntu(){
 /* ---------- 聲母表（27 聲母） ----------
    零聲母分清濁：陰調 1 3 5 7 為清零，陽調 2 6 8 為濁零（用戶 2026-10-07 定）。 */
 function renderInitials(){
-  var lab = SCHEME.initial_label || {}, rows = [];
+  var lab = SCHEME.initial_label || {}, rows = [], ncol = 0;
+  /* 五音行序（上→下）：唇、舌、牙、腭、齒、喉 */
+  var weis = ['唇', '舌', '牙', '腭', '齒', '喉'], byWei = {};
+  weis.forEach(function(w){ byWei[w] = []; });
   (SCHEME.initial_table_order || SCHEME.initial_order || []).forEach(function(k){
     var v = SCHEME.initials[k]; if (!v) return;
-    var isZero = (k === '');
-    rows.push('<tr' + (isZero ? ' class="izero"' : '') + '>'
-      + '<td class="iwei">' + esc(v[0]) + '</td>'
-      + '<td class="iname">' + esc(v[1]) + '</td>'
-      + '<td class="ilab">' + esc(lab[k] || v[2]) + '</td>'
-      + '</tr>');
+    if (!byWei[v[0]]) { byWei[v[0]] = []; weis.push(v[0]); }
+    byWei[v[0]].push(k);
+  });
+  weis.forEach(function(w){ if (byWei[w].length > ncol) ncol = byWei[w].length; });
+  weis.forEach(function(w){
+    var tds = ['<td class="iwei">' + esc(w) + '</td>'];
+    byWei[w].forEach(function(k){
+      var v = SCHEME.initials[k];
+      tds.push('<td class="icell' + (k === '' ? ' izero' : '') + '">'
+        + '<span class="iname">' + esc(v[1]) + '</span>'
+        + '<span class="ilab">' + esc(lab[k] || v[2]) + '</span></td>');
+    });
+    for (var i = byWei[w].length; i < ncol; i++) tds.push('<td class="icell iempty"></td>');
+    rows.push('<tr>' + tds.join('') + '</tr>');
   });
   /* 零聲母的清濁說明放在表末一整行（用戶：只說有清濁之分，不作解釋） */
-  rows.push('<tr class="iznote"><td colspan="3">' + esc(t('ini_zero_note')) + '</td></tr>');
+  rows.push('<tr class="iznote"><td colspan="' + (ncol + 1) + '">' + esc(t('ini_zero_note')) + '</td></tr>');
   document.getElementById('tbl-initials').innerHTML =
-      '<table class="itbl"><thead><tr>'
-    + '<th>' + esc(t('ini_col_wei')) + '</th>'
-    + '<th>' + esc(t('ini_col_name')) + '</th>'
-    + '<th>' + esc(t('ini_col_ipa')) + '</th>'
-    + '</tr></thead><tbody>' + rows.join('') + '</tbody></table>';
+      '<table class="itbl"><tbody>' + rows.join('') + '</tbody></table>';
 }
 
 function renderBars(){

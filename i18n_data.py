@@ -39,7 +39,6 @@ WU = {
 
  # ---------- 聲母表 ----------
  "ini_title": "聲母表",
- "ini_col_wei": "五音",
  "ini_col_name": "聲母",
  "ini_col_ipa": "注音",
  "ini_zero_note": "零聲母有清濁之分",
@@ -339,7 +338,6 @@ EN = {
 
  # ---------- 聲母表 ----------
  "ini_title": "Initials",
- "ini_col_wei": "Place of articulation",
  "ini_col_name": "Initial",
  "ini_col_ipa": "Symbol",
  "ini_zero_note": "the zero initial has voiced and voiceless kinds",
@@ -680,7 +678,6 @@ JA = {
 
  # ---------- 聲母表 ----------
  "ini_title": "声母表",
- "ini_col_wei": "五音",
  "ini_col_name": "声母",
  "ini_col_ipa": "転写",
  "ini_zero_note": "零声母に清濁がある",
