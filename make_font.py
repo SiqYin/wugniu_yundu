@@ -25,7 +25,7 @@ from fontTools import subset
 from fontTools.ttLib import TTFont
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SRC = r"D:\Wu\NetDisk Download\lxgw-wenkai-v1.522\lxgw-wenkai-v1.522\LXGWWenKai-Regular.ttf"
+SRC = r"D:\Wu\NetDisk Download\lxgw-wenkai-v1.530\lxgw-wenkai-v1.530\LXGWWenKai-Regular.ttf"
 LIVE_DB = "https://siqyin.github.io/wugniu_zyinzozin/data/DB_suhu.json"
 OUT = os.path.join(HERE, "fonts")
 

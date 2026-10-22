@@ -451,7 +451,7 @@ if os.path.exists(_rep):
         FONT_FACES.append(
             '@font-face{font-family:"%s";font-style:normal;font-weight:400;'
             'font-display:swap;src:local("LXGW WenKai"),local("霞鶩文楷"),'
-            'url("fonts/%s?v=1522b") format("woff2");unicode-range:%s}'
+            'url("fonts/%s?v=1530b") format("woff2");unicode-range:%s}'
             % (_it["family"], _it["file"], ",".join(_it["range"])))
 FONTFACE_CSS = "\n".join(FONT_FACES)
 
