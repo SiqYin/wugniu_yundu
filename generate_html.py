@@ -2063,7 +2063,7 @@ HTML = """<!DOCTYPE html>
 <section class="posfind">
 <h3 class="subcls" id="i-pf-title" style="background:#eef4fb;border-left:5px solid var(--sys)"></h3>
 <div class="sameform">
-  <input type="text" id="pfInput" maxlength="8" autocomplete="off">
+  <input type="text" id="pfInput" maxlength="30" autocomplete="off">
   <button id="pfGo" class="samebtn" onclick="return doPosFind()"></button>
 </div>
 <p class="samehint" id="i-pf-hint"></p>
@@ -2136,7 +2136,7 @@ HTML = """<!DOCTYPE html>
 </div>
 <div class="samebody">
 <div class="sameform">
-<input id="srInput" type="text" maxlength="8" autocomplete="off" spellcheck="false">
+<input id="srInput" type="text" maxlength="30" autocomplete="off" spellcheck="false">
 <button id="srGo" onclick="doSame()"></button>
 </div>
 <p class="samehint" id="i-sr-hint"></p>
@@ -2153,7 +2153,7 @@ HTML = """<!DOCTYPE html>
 </div>
 <div class="samebody">
 <div class="sameform">
-<input id="sgInput" type="text" maxlength="8" autocomplete="off" spellcheck="false">
+<input id="sgInput" type="text" maxlength="30" autocomplete="off" spellcheck="false">
 <button id="sgGo" onclick="doSong()"></button>
 </div>
 <p class="samehint" id="i-sg-hint"></p>

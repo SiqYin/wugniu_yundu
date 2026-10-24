@@ -230,12 +230,12 @@ WU = {
  "btn_same": "同韻查詢",
  "sr_title": "同韻查詢",
  "sr_sub": "選一個字，按這個字有幾個音，逐個音列出該音所屬韻的全部字（開合齊撮都收）。",
- "sr_ph": "輸入漢字（最多 8 個）",
+ "sr_ph": "輸入漢字（最多 30 個）",
  "sr_go": "查詢",
  "sr_hint": "可輸入繁體或簡體字；簡體字會自動轉成對應的繁體字查詢，一簡對多繁時全部列出。",
  "sr_only": "同韻查詢只針對蘇滬混合腔。",
  "sr_empty": "請先輸入漢字。",
- "sr_max": "一次最多查 8 個字。",
+ "sr_max": "一次最多查 30 個字。",
  "sr_none": "「{c}」在字音庫裡查不到讀音。",
  "sr_conv": "（簡體「{c}」對應）",
  "sr_loading": "正在讀取簡繁對照表……",
@@ -246,12 +246,12 @@ WU = {
 
  # ---------- 漢字韻圖位置查詢 ----------
  "pf_title": "漢字韻圖位置查詢",
- "pf_ph": "輸入漢字（最多 8 個）",
+ "pf_ph": "輸入漢字（最多 30 個）",
  "pf_go": "查詢",
  "pf_hint": "輸入漢字後，按韻圖位置分條列出該字的每一個讀音；同一位置的讀音並列在一條。",
  "pf_only": "本查詢只針對蘇滬混合腔。",
  "pf_empty": "請先輸入漢字。",
- "pf_max": "一次最多查 8 個字。",
+ "pf_max": "一次最多查 30 個字。",
  "pf_none": "「{c}」在字音庫裡查不到讀音。",
  "pf_loading": "正在讀取簡繁對照表……",
 
@@ -259,7 +259,7 @@ WU = {
  "btn_song": "歌詞押韻查詢",
  "sg_title": "歌詞押韻查詢",
  "sg_sub": "輸入漢字，按每個讀音列出押韻的全部字；下方可勾選自己接受的近韻相押組合，結果仍按韻分列。",
- "sg_ph": "輸入漢字（最多 8 個）",
+ "sg_ph": "輸入漢字（最多 30 個）",
  "sg_go": "查詢",
  "sg_hint": "可輸入繁體或簡體字；簡體字會自動轉成對應的繁體字查詢，一簡對多繁時全部列出。",
  "sg_only": "歌詞押韻查詢只針對蘇滬混合腔。",
@@ -556,14 +556,14 @@ EN = {
  "sr_title": "Same-rhyme lookup",
  "sr_sub": "Pick a character and this lists, reading by reading, every character that shares the "
            "rhyme of that reading (all four divisions included).",
- "sr_ph": "Enter characters (up to 8)",
+ "sr_ph": "Enter characters (up to 30)",
  "sr_go": "Look up",
  "sr_hint": "Traditional and Simplified characters are both accepted; a Simplified character is "
             "converted to its Traditional equivalents, and all of them are listed when there is "
             "more than one.",
  "sr_only": "This lookup covers the common language only.",
  "sr_empty": "Please enter at least one character.",
- "sr_max": "Up to 8 characters at a time.",
+ "sr_max": "Up to 30 characters at a time.",
  "sr_none": "“{c}” has no reading in the database.",
  "sr_conv": "(from Simplified “{c}”)",
  "sr_loading": "Loading the Traditional/Simplified table…",
@@ -574,13 +574,13 @@ EN = {
 
  # ---------- Character position lookup ----------
  "pf_title": "Character position lookup",
- "pf_ph": "Enter characters (up to 8)",
+ "pf_ph": "Enter characters (up to 30)",
  "pf_go": "Look up",
  "pf_hint": "Enter characters and this lists, position by position, every reading of those characters; "
             "readings that share a position are listed together.",
  "pf_only": "This lookup covers the common language only.",
  "pf_empty": "Please enter at least one character.",
- "pf_max": "Up to 8 characters at a time.",
+ "pf_max": "Up to 30 characters at a time.",
  "pf_none": "“{c}” has no reading in the database.",
  "pf_loading": "Loading the Traditional/Simplified table…",
 
@@ -589,7 +589,7 @@ EN = {
  "sg_title": "Lyric rhyme lookup",
  "sg_sub": "Enter characters and this lists, reading by reading, every character that rhymes; tick "
            "the near-rhyme combinations you accept below. Results are still listed rhyme by rhyme.",
- "sg_ph": "Enter characters (up to 8)",
+ "sg_ph": "Enter characters (up to 30)",
  "sg_go": "Look up",
  "sg_hint": "Traditional and Simplified characters are both accepted; a Simplified character is "
             "converted to its Traditional equivalents, and all of them are listed when there is "
@@ -876,13 +876,13 @@ JA = {
  "btn_same": "同韻検索",
  "sr_title": "同韻検索",
  "sr_sub": "字を選ぶと、その字の読みごとに、同じ韻に属するすべての字（開・合・斉・撮すべて）を一覧する。",
- "sr_ph": "漢字を入力（最大 8 字）",
+ "sr_ph": "漢字を入力（最大 30 字）",
  "sr_go": "検索",
  "sr_hint": "繁体字・簡体字のどちらでも入力できる。簡体字は対応する繁体字に自動変換し、"
             "一対多の場合はすべて表示する。",
  "sr_only": "同韻検索は共通語のみを対象とする。",
  "sr_empty": "漢字を入力してください。",
- "sr_max": "一度に検索できるのは 8 字までです。",
+ "sr_max": "一度に検索できるのは 30 字までです。",
  "sr_none": "「{c}」は字音庫に読みが見つかりません。",
  "sr_conv": "（簡体字「{c}」より）",
  "sr_loading": "繁体字・簡体字の対照表を読み込んでいます……",
@@ -893,12 +893,12 @@ JA = {
 
  # ---------- 漢字韻図位置検索 ----------
  "pf_title": "漢字韻図位置検索",
- "pf_ph": "漢字を入力（最大 8 字）",
+ "pf_ph": "漢字を入力（最大 30 字）",
  "pf_go": "検索",
  "pf_hint": "漢字を入力すると、韻図上の位置ごとにその字の読みを一覧する。同じ位置の読みはまとめて表示する。",
  "pf_only": "本検索は共通語のみを対象とする。",
  "pf_empty": "漢字を入力してください。",
- "pf_max": "一度に検索できるのは 8 字までです。",
+ "pf_max": "一度に検索できるのは 30 字までです。",
  "pf_none": "「{c}」は字音庫に読みが見つかりません。",
  "pf_loading": "繁体字・簡体字の対照表を読み込んでいます……",
 
@@ -907,7 +907,7 @@ JA = {
  "sg_title": "歌詞押韻検索",
  "sg_sub": "漢字を入力すると、読みごとに押韻するすべての字を一覧する。下で自分が認める"
            "近韻相押の組み合わせにチェックを入れる。結果は韻ごとに分けて表示する。",
- "sg_ph": "漢字を入力（最大 8 字）",
+ "sg_ph": "漢字を入力（最大 30 字）",
  "sg_go": "検索",
  "sg_hint": "繁体字・簡体字のどちらでも入力できる。簡体字は対応する繁体字に自動変換し、"
             "一対多の場合はすべて表示する。",
