@@ -436,13 +436,19 @@ def main():
             for fe in h["finals"]:
                 for c in fe.get("cells", []):
                     all_cells.append(c)
-    used = set()
+    # 指定代表字：用戶點名某格用哪個字，先把這些字占住，貪心就不會再分給別的格。
+    REP_OVERRIDE = {"gue6": "愧", "jiu6": "跪"}
+    used = set(REP_OVERRIDE.values())
     for c in sorted(all_cells, key=lambda x: len(x["chars"])):
         rep = next((ch for ch in c["chars"] if ch not in used), c["chars"][0])
         c["rep"] = rep
         used.add(rep)
     for c in all_cells:
         c.setdefault("rep", c["chars"][0])
+    for c in all_cells:
+        for _syl, _ch in REP_OVERRIDE.items():
+            if _syl in c["syl"] and _ch in c["chars"]:
+                c["rep"] = _ch
 
     cells_seen = sum(len(fe.get("cells", []))
                      for rh in by_rhyme.values()

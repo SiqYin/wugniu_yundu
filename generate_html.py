@@ -761,8 +761,11 @@ function loadFromLive(db){
 
 /* ---------- 代表字：按小韵字数升序贪心分配，尽量不重复 ---------- */
 function assignReps(){
+  /* 指定代表字：與 build_data.py 的 REP_OVERRIDE 保持一致 */
+  var REP_OVERRIDE = {'gue6':'愧', 'jiu6':'跪'};
   var order = CELLS.slice().sort(function(a,b){return a.chars.length-b.chars.length;});
   var used = {};
+  for (var _k in REP_OVERRIDE) used[REP_OVERRIDE[_k]] = 1;
   order.forEach(function(c){
     var rep = null;
     for (var i=0;i<c.chars.length;i++) if(!used[c.chars[i]]){rep=c.chars[i];break;}
@@ -770,6 +773,10 @@ function assignReps(){
     c.rep = rep; used[rep]=1;
   });
   CELLS.forEach(function(c){ if(!c.rep) c.rep = c.chars[0]||''; });
+  CELLS.forEach(function(c){
+    var v = REP_OVERRIDE[c.syl];
+    if (v && c.chars.indexOf(v) >= 0) c.rep = v;
+  });
 }
 
 /* ---------- 呼位（韵 × 呼）索引 ---------- */
