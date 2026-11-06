@@ -884,7 +884,7 @@ function renderChrome(){
   document.getElementById('i-barsnote').textContent = t('bars_note');
 
   document.getElementById('i-notelist').innerHTML =
-    ['n1','n2','n3','n4','n5','n6','n7','n8','n9']
+    ['n2','n3','n4','n5','n6','n7','n8','n9']
       .map(function(k){ return '<p>'+n(k, ovv)+'</p>'; }).join('');
 
   document.getElementById('i-footer').innerHTML = n('footer', {
@@ -1441,7 +1441,7 @@ function renderSame(raw, out){
 /* ---------- 漢字韻圖位置查詢 ----------
    輸入漢字 -> 取其每個讀音 -> 依「韻圖位置」（聲母／韻目／呼／聲調）分條列出，
    每條後面註該位置的讀音串與音標。同一位置有多個讀音時並列在一條。
-   例：聲 san1 → 心打開陰平，sen1 → 心真開陰平。 */
+   例：聲 san1 → 心陽開陰平，sen1 → 心真開陰平。 */
 var PF_TOKEN = 0, PF_LAST = '', PF_HL = '';
 
 /* 位置字串：聲母（或清零／濁零）＋韻目＋呼＋聲調名。

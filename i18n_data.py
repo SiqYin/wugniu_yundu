@@ -168,29 +168,18 @@ WU = {
  "footer": "蘇滬混合腔韻圖 ・ 分韻 {rhymes} 個，呼位 {units} 個，韻母 {finals} 個"
            " ・ 字音資料同步自 {link}（SiqYin）",
 
- "n1": "<b>一、韻目按今音重新釐清。</b>早先拿「談」當 －n 韻的韻目，"
-       "但「談」現在讀 <code>de6</code>〔de̞〕，跟「戴」「帶」「來」「海」是同一個韻（灰韻），"
-       "名實不符。現在 <code>an／uan／ian</code> 這個韻改用「<b>打</b>」當韻目："
-       "打讀 <code>tan3</code>〔tã〕，正好在它的開口位上。〔o̝〕這個韻用「<b>麻</b>」當韻目"
-       "（麻讀 <code>mo2</code>〔o̝〕）；〔uᵝ〕這個韻就用「<b>湖</b>」當韻目"
-       "（湖讀 <code>wu2</code>〔uᵝ〕），其開口變體稱「<b>河</b>」"
-       "（河讀 <code>ghou2</code>〔ɦəuᵝ〕）——湖河互為變體，不構成對立。"
-       "另外，<code>ɑ̃</code> 韻的韻目由「江」改成「<b>黨</b>」：<code>an</code> 韻取「打」、"
-       "<code>aon</code> 韻取「黨」，正好呼應吳語裡有名的「分黨打」——"
-       "「打」讀 <code>tan3</code>〔tã〕、「黨」讀 <code>taon5</code>〔tɑ̃〕，"
-       "兩字分屬兩韻，韻目也就各如其分。",
- "n2": "<b>二、「支」「資」各自成韻，「衣」「余」也各自成韻。</b>"
+ "n2": "<b>一、「支」「資」各自成韻，「衣」「余」也各自成韻。</b>"
        "「支」讀 <code>tsyu1</code>〔tsʮ〕，「資」讀 <code>tsy1</code>〔tsɿ〕："
        "支韻整個是開口，資韻整個也是開口。「衣」〔iᶽ〕和「余」〔y〕同樣各自成韻，不相統屬。"
        "<b>擦化元音是 iᶽ 和 uᵝ</b>，也就是衣韻和湖韻的韻基；"
        "資韻〔ɿ〕與支韻〔ʮ〕雖有擦化成分，但不列入擦化元音。",
- "n3": "<b>三、入聲六韻。</b>入聲單獨列出，共六個韻："
+ "n3": "<b>二、入聲六韻。</b>入聲單獨列出，共六個韻："
        "襪〔aʔ〕、麥〔ɑʔ〕、質〔əʔ〕、雪〔iɪʔ~ieʔ〕、月〔yeʔ〕、屋〔oʔ〕。"
        "<b><code>iq</code>〔iɪʔ~ieʔ〕是「雪」韻（整個韻都是齊齒），"
        "<code>iuq</code>〔yeʔ〕是「月」韻（整個韻都是撮口）</b>。"
        "韻目也很貼切：「雪」讀 <code>siq7</code>〔siɪʔ〕，「月」讀 <code>yuq8</code>〔yeʔ〕。",
  "rh_variant": "湖韻變體",
- "n4": "<b>四、韻母音值一律依字音查詢站「蘇滬混合腔——音韻體系」的韻母表。</b>"
+ "n4": "<b>三、韻母音值一律依字音查詢站「蘇滬混合腔——音韻體系」的韻母表。</b>"
        "表裡寫「~」的（現在只剩雪韻 <code>iq</code>），是<b>同一個韻按音節條件分工、"
        "讀不同的音值</b>，格位裡只寫該音節實際讀的那個音："
        "<br>・湖韻與河韻互為變體：合口讀〔uᵝ〕——「布」<code>pu5</code>〔puᵝ〕；"
@@ -201,26 +190,26 @@ WU = {
        "「吉」<code>ciq7</code>〔tɕieʔ〕、「雪」<code>siq7</code>〔siɪʔ〕。"
        "<br>這一欄（韻基、音值）與「音系簡介」浮窗從此同出一源。字典對個別字另有記法"
        "（例如「良」記作〔liɛ̃〕、灰韻個別格位記作〔ᴇ〕），本頁一律依音韻體系作〔iã〕、〔e̞〕。",
- "n5": "<b>五、特例四韻是怎麼來的。</b>嘸 <code>m</code>〔m̩〕、唔 <code>n</code>〔n̩〕、"
+ "n5": "<b>四、特例四韻是怎麼來的。</b>嘸 <code>m</code>〔m̩〕、唔 <code>n</code>〔n̩〕、"
        "五 <code>ng</code>〔ŋ̩〕、而 <code>er</code>〔əl〕這四個韻，聲調屬於舒聲，"
        "但元音自成一套，沒有介音可言，<b>不分開合齊撮</b>，所以另外歸為「特例」一類，"
        "各只有一個呼位，不跟四呼混在一起列。",
- "n6": "<b>六、合法音節一共幾條。</b>字典和輸入方案裡的讀音，去重之後是 <b>{strings}</b> 條，"
+ "n6": "<b>五、合法音節一共幾條。</b>字典和輸入方案裡的讀音，去重之後是 <b>{strings}</b> 條，"
        "分成三類：其中 <b>{syll}</b> 條是單音節而且標了聲調的，"
        "已經<b>全部收進圖裡</b>，一格一條；"
        "另有 <b>{n_untone}</b> 條是單音節卻沒標聲調（{list_untone}），沒有聲調就排不進格子；"
        "最後 <b>{n_word}</b> 條不是單音節（{list_word}），也不立格子。"
        "所以圖裡的小韻格位是 <b>{syll}</b> 個；"
        "如果把沒標聲調的那幾條也算作單音節，單音節一共 <b>{n_single}</b> 條。",
- "n7": "<b>七、中古來源只是參考。</b>每一韻的「中古可能的來源」那一欄，是為了方便跟傳統韻書對讀而設的。"
-       "同一個韻常常同時收了幾個不同韻攝的字（例如泰韻兼收麻韻見系，灰韻兼收止攝合口），"
+ "n7": "<b>六、中古來源只是參考。</b>每一韻的「中古可能的來源」那一欄，是為了方便跟傳統韻書對讀而設的。"
+       "同一個韻常常同時收了幾個不同韻攝的字（例如皆韻兼收麻韻見系，灰韻兼收止攝合口），"
        "本圖分韻一律以今音韻基為準，不依中古韻攝。",
- "n8": "<b>八、本頁的字音會跟著線上字音庫更新。</b>本頁開啟時會即時讀取"
+ "n8": "<b>七、本頁的字音會跟著線上字音庫更新。</b>本頁開啟時會即時讀取"
        "「蘇滬混合腔字音查詢」的資料檔（<code>data/DB_suhu.json</code>），在瀏覽器裡重新分韻排圖。"
        "所以字音查詢那邊新增字或是補上讀音之後，重新整理本頁就會看到最新的字。"
        "如果連不上網路，頁面會改用內建的離線快照（<b>{chars}</b> 字），"
        "並在上方顯示提示；連上網路後按「重新同步線上字音庫」即可。",
- "n9": "<b>九、字型。</b>本頁預設使用<b>霞鶩文楷</b>（LXGW WenKai）顯示，因為字典收了大量生僻字，"
+ "n9": "<b>八、字型。</b>本頁預設使用<b>霞鶩文楷</b>（LXGW WenKai）顯示，因為字典收了大量生僻字，"
        "一般系統字型顯示不出來。字型已子集化後隨頁面一起提供，分「核心字集」與「完整字集」兩級，"
        "正常只會下載前者（約 2 MB）。",
 
@@ -276,7 +265,7 @@ WU = {
    "<p><b>近韻相押</b>是指：在蘇滬混合腔裡，有些韻因為讀音接近，在不同人的語感中"
    "可能通押。要注意「不同人」——同一組韻，有人押、有人不押，沒有統一標準。以下五組"
    "就是這種情形，使用者可以照自己的語感，勾選自己接受的相押組合。</p>"
-   "<p><b>襪／麥、打／黨</b>：在中新派北部吳語口音中，這兩組經常相押。</p>"
+   "<p><b>襪／麥、陽／唐</b>：在中新派北部吳語口音中，這兩組經常相押。</p>"
    "<p><b>麻／湖、資／支</b>：在較新派北部吳語口音中，傾向於相押。</p>"
    "<p><b>衣／余／煙／侵／雲／雪／月</b>：這一組情況複雜，因人而異。</p>"
    "<ul>"
@@ -486,29 +475,18 @@ EN = {
  "footer": "Wu Common Language Rhyme Chart · {rhymes} rhymes, {units} division slots, {finals} finals "
            "· readings synced from {link} (SiqYin)",
 
- "n1": "<b>1. The rhyme labels have been settled afresh by present-day readings.</b> 談 was once used as "
-       "the label of the −n rhyme, "
-       "but 談 is now read <code>de6</code> [de̞] and belongs with 戴, 帶, 來 and 海 in the 灰 rhyme, "
-       "so the name did not fit. The <code>an／uan／ian</code> rhyme now takes <b>打</b> as its label: "
-       "打 is <code>tan3</code> [tã], right in its open slot. The [o̝] rhyme takes "
-       "<b>麻</b> as its label (麻 is <code>mo2</code> [o̝]); the [uᵝ] rhyme takes <b>湖</b> "
-       "(湖 is <code>wu2</code> [uᵝ]), and its open variant is <b>河</b> "
-       "(河 is <code>ghou2</code> [ɦəuᵝ]) — the two are variants and do not contrast. "
-       "The [ɑ̃] rhyme, in turn, drops 江 in favour of <b>黨</b>: naming the <code>an</code> rhyme 打 "
-       "and the <code>aon</code> rhyme 黨 echoes the classic Wu shibboleth <b>分黨打</b> — 打 is "
-       "<code>tan3</code> [tã] and 黨 is <code>taon5</code> [tɑ̃], one character to a rhyme.",
- "n2": "<b>2. 支 and 資 form separate rhymes; so do 衣 and 余.</b> 支 is <code>tsyu1</code> [tsʮ] "
+ "n2": "<b>1. 支 and 資 form separate rhymes; so do 衣 and 余.</b> 支 is <code>tsyu1</code> [tsʮ] "
        "and 資 is <code>tsy1</code> [tsɿ]: the 支 rhyme is open throughout, and so is the 資 rhyme. "
        "衣 [iᶽ] and 余 [y] likewise form rhymes of their own that do not subsume one "
        "another. <b>The fricative vowels are iᶽ and uᵝ</b>, that is, the rhyme bases of 衣 and 湖; "
        "資 [ɿ] and 支 [ʮ] do carry fricative colouring, but they are not counted as fricative vowels.",
- "n3": "<b>3. The six checked rhymes.</b> Six checked rhymes are listed separately: "
+ "n3": "<b>2. The six checked rhymes.</b> Six checked rhymes are listed separately: "
        "襪 [aʔ], 麥 [ɑʔ], 質 [əʔ], 雪 [iɪʔ~ieʔ], 月 [yeʔ], 屋 [oʔ]. "
        "<b><code>iq</code> [iɪʔ~ieʔ] is the 雪 rhyme (spread throughout), and <code>iuq</code> "
        "[yeʔ] the 月 rhyme (rounded throughout).</b> The labels fit too: 雪 is <code>siq7</code> "
        "[siɪʔ], 月 is <code>yuq8</code> [yeʔ].",
  "rh_variant": "variant of the 湖 rhyme",
- "n4": "<b>4. Final values follow the 韻母表 of “Wu Common Language — Phonological System” on the "
+ "n4": "<b>3. Final values follow the 韻母表 of “Wu Common Language — Phonological System” on the "
        "lookup site.</b> Where that table writes “~” (now only the 雪 rhyme <code>iq</code>), "
        "one final has different values depending on the syllable; each slot shows only the "
        "value its syllable actually takes:"
@@ -521,30 +499,30 @@ EN = {
        "<br>This column and the “Phonological system” panel now come from one and the same source. "
        "The dictionary records a few individual characters by other means (良 as [liɛ̃], some 灰-rhyme "
        "slots as [ᴇ]); this page follows the phonological system throughout — [iã] and [e̞].",
- "n5": "<b>5. Where the four special rhymes come from.</b> 嘸 <code>m</code> [m̩], "
+ "n5": "<b>4. Where the four special rhymes come from.</b> 嘸 <code>m</code> [m̩], "
        "唔 <code>n</code> [n̩], 五 <code>ng</code> [ŋ̩] and 而 <code>er</code> [əl] have unchecked "
        "tones, but their vowels form a set of their own with no medial, so they <b>take no part in "
        "the four divisions</b> and are classed as “special”, each with a single slot, listed apart "
        "from the four divisions.",
- "n6": "<b>6. How many legal syllables there are.</b> Deduplicated, the readings in the dictionary "
+ "n6": "<b>5. How many legal syllables there are.</b> Deduplicated, the readings in the dictionary "
        "and the input scheme come to <b>{strings}</b> strings in three kinds: <b>{syll}</b> are "
        "monosyllabic and carry a tone, and <b>all of them are in the charts</b>, one cell each; "
        "<b>{n_untone}</b> are monosyllabic but have no tone mark ({list_untone}), and without a tone "
        "they cannot be placed in a tone grid; the remaining <b>{n_word}</b> are not monosyllabic "
        "({list_word}) and get no cell. So the charts hold <b>{syll}</b> cells; counting the toneless "
        "ones as syllables too gives <b>{n_single}</b> monosyllables.",
- "n7": "<b>7. Middle Chinese sources are only a reference.</b> The “probable Middle Chinese sources” "
+ "n7": "<b>6. Middle Chinese sources are only a reference.</b> The “probable Middle Chinese sources” "
        "line exists to make comparison with the traditional rhyme books easier. A single rhyme often "
-       "gathers characters from several Middle Chinese groups (the 泰 rhyme also takes the 麻 rhyme's "
+       "gathers characters from several Middle Chinese groups (the 皆 rhyme also takes the 麻 rhyme's "
        "velar series, for instance, and 灰 also takes the 止 group's closed readings). The division "
        "here always follows the modern rhyme base, never the Middle Chinese groups.",
- "n8": "<b>8. The readings follow the online database.</b> On loading, the page fetches the data file "
+ "n8": "<b>7. The readings follow the online database.</b> On loading, the page fetches the data file "
        "of the common language dictionary (<code>data/DB_suhu.json</code>) and re-divides the "
        "rhymes and re-lays the charts in the browser. So after characters or readings are added on "
        "the lookup site, reloading this page shows them. If the network is unavailable the page falls "
        "back to its built-in offline snapshot (<b>{chars}</b> characters) and says so at the top; "
        "press “Re-sync the online reading database” once you are back online.",
- "n9": "<b>9. Typeface.</b> The page uses <b>LXGW WenKai</b> by default, because the dictionary "
+ "n9": "<b>8. Typeface.</b> The page uses <b>LXGW WenKai</b> by default, because the dictionary "
        "contains a great many rare characters that ordinary system fonts cannot show. The font is "
        "shipped with the site as a subset in two tiers — a core set and a full set — and normally "
        "only the former (about 2 MB) is downloaded.",
@@ -611,7 +589,7 @@ EN = {
    "<i>depending on the speaker</i>: for a given pair some people rhyme it and others do not — "
    "there is no single standard. The five groups below are just such cases, so the page lets you "
    "tick whichever combinations you accept.</p>"
-   "<p><b>襪／麥 and 打／黨</b>: in meso-new Northern Wu accents these two pairs rhyme very often.</p>"
+   "<p><b>襪／麥 and 陽／唐</b>: in meso-new Northern Wu accents these two pairs rhyme very often.</p>"
    "<p><b>麻／湖 and 資／支</b>: in newer Northern Wu accents they tend to rhyme.</p>"
    "<p><b>衣／余／煙／侵／雲／雪／月</b>: this group is complex and varies from speaker to speaker.</p>"
    "<ul>"
@@ -810,30 +788,19 @@ JA = {
  "footer": "呉越共通語韻図 ・ 分韻 {rhymes}、呼位 {units}、韻母 {finals}"
            " ・ 字音データは {link}（SiqYin）より同期",
 
- "n1": "<b>一、旧稿の韻目を今音の読みに合わせて改めた。</b>以前は「談」を −n 韻の韻目にしていたが、"
-       "「談」は現在 <code>de6</code>〔de̞〕で「戴」「帶」「來」「海」と同じ韻（灰韻）に属し、"
-       "名実が伴わない。そこで <code>an／uan／ian</code> の韻は「<b>打</b>」を韻目とした："
-       "打は <code>tan3</code>〔tã〕で、ちょうどその開口の位にある。〔o̝〕の韻は「<b>麻</b>」を"
-       "韻目とし（麻は <code>mo2</code>〔o̝〕）、〔uᵝ〕の韻は「<b>湖</b>」を韻目とする"
-       "（湖は <code>wu2</code>〔uᵝ〕）、その開口の異体は「<b>河</b>」と称する"
-       "（河は <code>ghou2</code>〔ɦəuᵝ〕）——湖と河は異体の関係で対立しない。"
-       "また <code>ɑ̃</code> 韻の韻目は「江」から「<b>黨</b>」に改めた：<code>an</code> 韻に「打」、"
-       "<code>aon</code> 韻に「黨」を与えることは、呉越語で名高い「分黨打」に呼応する——"
-       "「打」は <code>tan3</code>〔tã〕、「黨」は <code>taon5</code>〔tɑ̃〕で、"
-       "一字ずつそれぞれの韻に収まる。",
- "n2": "<b>二、「支」「資」はそれぞれ独立した韻、「衣」「余」もそれぞれ独立した韻である。</b>"
+ "n2": "<b>一、「支」「資」はそれぞれ独立した韻、「衣」「余」もそれぞれ独立した韻である。</b>"
        "「支」は <code>tsyu1</code>〔tsʮ〕、「資」は <code>tsy1</code>〔tsɿ〕で、"
        "支韻は全体が開口、資韻も全体が開口である。同様に「衣」〔iᶽ〕と「余」〔y〕も"
        "それぞれ独立した韻で、互いに包括関係にはない。"
        "<b>摩擦化した母音は iᶽ と uᵝ</b>、すなわち衣韻と歌韻の韻母であり、"
        "資韻〔ɿ〕と支韻〔ʮ〕には摩擦化の成分はあるが、摩擦化母音には数えない。",
- "n3": "<b>三、入声の六韻。</b>入声は別に掲げ、全部で六韻："
+ "n3": "<b>二、入声の六韻。</b>入声は別に掲げ、全部で六韻："
        "襪〔aʔ〕・麥〔ɑʔ〕・質〔əʔ〕・雪〔iɪʔ~ieʔ〕・月〔yeʔ〕・屋〔oʔ〕。"
        "<b><code>iq</code>〔iɪʔ~ieʔ〕は「雪」韻（韻全体が斉歯）、"
        "<code>iuq</code>〔yeʔ〕は「月」韻（韻全体が撮口）である。</b>"
        "韻目もよく合う：「雪」は <code>siq7</code>〔siɪʔ〕、「月」は <code>yuq8</code>〔yeʔ〕。",
  "rh_variant": "湖韻の異体",
- "n4": "<b>四、韻母の音価は字音検索サイト「共通語——音韻体系」の韻母表に従う。</b>"
+ "n4": "<b>三、韻母の音価は字音検索サイト「共通語——音韻体系」の韻母表に従う。</b>"
        "同表で「~」とあるのは（今は雪韻 <code>iq</code> のみ）、<b>同じ韻が音節によって"
        "異なる音価で実現する</b>という意味で、各マスにはその音節が実際に取る音だけを書く："
        "<br>・湖韻と河韻は互いに異体である：合口は〔uᵝ〕——「布」<code>pu5</code>〔puᵝ〕；"
@@ -845,27 +812,27 @@ JA = {
        "<br>この欄と「音韻体系」の浮窓はこれで同じ出所による。字典は個々の字に別の記法を用いる"
        "ことがある（「良」を〔liɛ̃〕、灰韻の一部の枠を〔ᴇ〕とするなど）が、本頁は音韻体系に従い"
        "〔iã〕・〔e̞〕とする。",
- "n5": "<b>五、特例の四韻の由来。</b>嘸 <code>m</code>〔m̩〕・唔 <code>n</code>〔n̩〕・"
+ "n5": "<b>四、特例の四韻の由来。</b>嘸 <code>m</code>〔m̩〕・唔 <code>n</code>〔n̩〕・"
        "五 <code>ng</code>〔ŋ̩〕・而 <code>er</code>〔əl〕の四韻は、声調は舒声に属するが、"
        "母音が独自の体系をなし、介音もないため<b>開合斉撮に分かれず</b>、"
        "「特例」という別の類にまとめた。それぞれ呼位は一つだけで、四呼とは混ぜて並べない。",
- "n6": "<b>六、合法音節はいくつあるか。</b>字典と入力方案の読みは、重複を除くと <b>{strings}</b> 条で、"
+ "n6": "<b>五、合法音節はいくつあるか。</b>字典と入力方案の読みは、重複を除くと <b>{strings}</b> 条で、"
        "三つに分かれる。<b>{syll}</b> 条は単音節で声調があり、<b>すべて図に収めてある</b>（一枠一条）。"
        "別に <b>{n_untone}</b> 条は単音節だが声調の記載がなく（{list_untone}）、"
        "声調がなければ枠に収められない。残る <b>{n_word}</b> 条は単音節ではない（{list_word}）ので枠を設けない。"
        "したがって図の小韻枠は <b>{syll}</b> であり、"
        "声調のない分も単音節として数えれば単音節は <b>{n_single}</b> 条である。",
- "n7": "<b>七、中古の来源は参考にすぎない。</b>各韻の「中古の推定来源」の欄は、"
+ "n7": "<b>六、中古の来源は参考にすぎない。</b>各韻の「中古の推定来源」の欄は、"
        "伝統的な韻書と対照しやすくするために設けたものである。一つの韻はしばしば複数の韻摂の字を"
-       "併せて収める（たとえば泰韻は麻韻の見系を兼ね、灰韻は止摂の合口を兼ねる）。"
+       "併せて収める（たとえば皆韻は麻韻の見系を兼ね、灰韻は止摂の合口を兼ねる）。"
        "本図の分韻はあくまで現代音の韻基を基準とし、中古の韻摂にはよらない。",
- "n8": "<b>八、本頁の字音はオンライン字音庫に追随する。</b>本頁は開いたときに"
+ "n8": "<b>七、本頁の字音はオンライン字音庫に追随する。</b>本頁は開いたときに"
        "「共通語字音検索」のデータファイル（<code>data/DB_suhu.json</code>）を即時に読み込み、"
        "ブラウザ内で分韻し直し、図を組み直す。したがって検索サイト側で字を追加したり読みを"
        "補ったりすれば、この頁を再読み込みするだけで最新の字が見られる。ネットワークに"
        "接続できない場合は、頁に内蔵されたオフラインスナップショット（<b>{chars}</b> 字）に"
        "切り替わり、上部にその旨を表示する。接続後は「オンライン字音庫を再同期」を押せばよい。",
- "n9": "<b>九、書体。</b>本頁は既定で<b>霞鶩文楷</b>（LXGW WenKai）で表示する。字典が多数の"
+ "n9": "<b>八、書体。</b>本頁は既定で<b>霞鶩文楷</b>（LXGW WenKai）で表示する。字典が多数の"
        "生僻字を収めており、一般的なシステム書体では表示できないためである。書体はサブセット化して"
        "頁と一緒に配信し、「核心字集」と「完全字集」の二段構えとしている。通常は前者（約 2 MB）"
        "のみをダウンロードする。",
@@ -928,7 +895,7 @@ JA = {
    "ある、ということである。要点は「話者によって」で、ある組について押韻する人もいれば"
    "押韻しない人もおり、統一された基準はない。以下の五組はいずれもそうした例であり、"
    "自分が認める組み合わせにチェックを入れる。</p>"
-   "<p><b>襪／麥・打／黨</b>：中新型北部呉越語のアクセントでは、この二組はしばしば通韻する。</p>"
+   "<p><b>襪／麥・陽／唐</b>：中新型北部呉越語のアクセントでは、この二組はしばしば通韻する。</p>"
    "<p><b>麻／湖・資／支</b>：より新しい北部呉越語のアクセントでは通韻する傾向がある。</p>"
    "<p><b>衣／余／煙／侵／雲／雪／月</b>：この組は複雑で、話者によって異なる。</p>"
    "<ul>"
