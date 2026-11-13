@@ -1096,8 +1096,11 @@ function loadFromSnapshot(){
   SNAP.cells.forEach(function(row){
     var ini=row[0], fin=row[1], tone=row[2], ipa=row[3], chars=row[4];
     var slot=SLOT[fin]; if(!slot) return;
+    /* 聲母尾與韻首都是 i 時（如 shi＋io、tshi＋i）只留一個，否則會拼出 shiio1 這類非法音節 */
+    var sylBase = ini + fin;
+    if (ini && fin && ini.charAt(ini.length-1) === fin.charAt(0)) sylBase = ini + fin.slice(1);
     var c = {ri:slot[0], hu:slot[1], fin:fin, ini:ini, tone:tone,
-             ipa:[ipa], chars:Array.from(chars), syl:ini+fin+tone};
+             ipa:[ipa], chars:Array.from(chars), syl:sylBase+tone};
     CELLKEY[slot[0]+'|'+slot[1]+'|'+fin+'|'+ini+'|'+tone]=c; CELLS.push(c);
   });
   META.cells = CELLS.length;
