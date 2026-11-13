@@ -69,7 +69,7 @@
 | 韻目 | 韻基 | 韻目字讀音 | 呼位（韻母〔音值〕） |
 |---|---|---|---|
 | 陽 | ã | `tan3` | 開 an〔ã〕　合 uan〔uã〕　齊 ian〔iã〕 |
-| 唐 | ɑ̃ | `taon5` | 開 aon〔ɑ̃〕　合 uaon〔uɑ̃〕　齊 iaon〔iɑ̃〕 |
+| 江 | ɑ̃ | `taon5` | 開 aon〔ɑ̃〕　合 uaon〔uɑ̃〕　齊 iaon〔iɑ̃〕 |
 | 真 | ən | `tsen1` | 開 en〔ən〕　合 uen〔uən〕 |
 | 侵 | iɲ | `tshin1` | 齊 in〔iɲ〕 |
 | 雲 | yɲ | `yun2` | 撮 iun〔yɲ〕 |

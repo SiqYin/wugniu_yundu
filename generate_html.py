@@ -245,13 +245,6 @@ table.yuntu td.e{color:#d8e5f0;font-size:10px}
  padding:5px 11px;font-size:12.5px;cursor:pointer;color:var(--ink2);
  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
 .tools button:hover{background:#e8f0f8}
-.syncbar{display:flex;align-items:flex-start;gap:9px;flex-wrap:wrap;
- border-radius:8px;padding:8px 13px;font-size:12.8px;margin:10px 0 0;line-height:1.7;
- font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
-.syncbar.ok{background:#eef7f1;border:1px solid #c8e3d3;color:#2c6a45}
-.syncbar.builtin{background:#fff8e8;border:1px solid #eeddb0;color:#8a6d1c}
-.syncbar .dot{font-size:14px;line-height:1.5}
-.syncbar a{color:inherit;font-weight:700}
 footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);
  font-size:12px;color:var(--ink3);
  font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -892,7 +885,6 @@ function renderChrome(){
     link: '<a href="'+SCHEME.dict_url+'?lang='+LANG+'" target="_blank">'+esc(t('link_dict'))+'</a>'
   });
 
-  paintSync();
 }
 
 /* ---------- 表格按钮 ---------- */
@@ -995,7 +987,7 @@ function yuntuTable(u){
           var tip = c.rep+'　'+c.syl+'　['+c.ipa.join('/')+']　'
                   + n('md_n_chars', {n:c.chars.length}) + '：'+c.chars.slice(0,80).join('');
           tds.push('<td class="c" data-tip="'+esc(tip)+'"><span class="ch">'+esc(c.rep)
-                 + '</span><span class="py">'+esc(c.syl.slice(0,-1))+'</span></td>');
+                 + '</span><span class="py">'+esc((c.syl[0]||'').slice(0,-1))+'</span></td>');
         } else tds.push('<td class="e">·</td>');
       });
       body.push('<tr class="inirow'+(empty?' alle':'')+'"><th class="ini">'+esc(ini||'∅')
@@ -1853,31 +1845,6 @@ document.addEventListener('mouseout', function(e){
   if (e.target.closest('td.c')) document.getElementById('tip').style.display='none';
 });
 
-/* ---------- 同步狀態條 ---------- */
-var SYNC = {type:'loading', data:{}};
-function paintSync(){
-  var el = document.getElementById('syncbar'), cls = 'builtin', html = '';
-  if (SYNC.type === 'loading'){
-    html = '<span class="dot">⏳</span><span>'+esc(t('sync_loading'))+'</span>';
-  } else if (SYNC.type === 'ok'){
-    cls = 'ok';
-    html = '<span class="dot">✅</span><span>' + n('sync_ok', {
-      link: '<a href="'+SCHEME.dict_url+'" target="_blank">'+esc(t('link_dict'))+'</a>',
-      chars: META.chars, records: META.records, syll: META.syllables,
-      stamp: SYNC.data.stamp ? n('sync_ok_stamp', {t:SYNC.data.stamp}) : ''
-    }) + '</span>';
-  } else if (SYNC.type === 'stale'){
-    html = '<span class="dot">⚠️</span><span>' + n('sync_stale', {
-      link: '<a href="'+SCHEME.dict_url+'" target="_blank">'+esc(t('link_dict'))+'</a>',
-      live: SYNC.data.live, snap: META.chars, btn: esc(t('btn_sync'))
-    }) + '</span>';
-  } else {
-    html = '<span class="dot">⚠️</span><span>' + n('sync_fail', {
-      err: esc(SYNC.data.err||''), chars: META.chars, records: META.records }) + '</span>';
-  }
-  el.className = 'syncbar ' + cls;
-  el.innerHTML = html;
-}
 
 function fmtDate(s){
   if (!s) return '';
@@ -1889,25 +1856,7 @@ function fmtDate(s){
 }
 
 function sync(){
-  SYNC = {type:'loading', data:{}}; paintSync();
-  fetch(SCHEME.live_url, {cache:'no-store'}).then(function(r){
-    if (!r.ok) throw new Error('HTTP '+r.status);
-    var stamp = r.headers.get('last-modified') || '';
-    return r.json().then(function(db){ return {db:db, stamp:stamp}; });
-  }).then(function(res){
-    /* 線上抓回來的若比內建快照還舊（見 liveOlderThanSnapshot），
-       就用內建快照，別拿舊的蓋掉新的。 */
-    if (liveOlderThanSnapshot(res.db)){
-      loadFromSnapshot(); renderAll();
-      SYNC = {type:'stale', data:{live:res.db.length}}; paintSync();
-      return;
-    }
-    loadFromLive(res.db); renderAll();
-    SYNC = {type:'ok', data:{stamp: fmtDate(res.stamp)}}; paintSync();
-  }).catch(function(err){
-    loadFromSnapshot(); renderAll();
-    SYNC = {type:'fail', data:{err: err.message || String(err)}}; paintSync();
-  });
+  loadFromSnapshot(); renderAll();
 }
 
 var SNAP_CHARS = null;
@@ -2058,7 +2007,6 @@ HTML = """<!DOCTYPE html>
 <h1 id="i-h1"></h1>
 <p class="phonintro" id="i-phonintro"></p>
 <p class="sub" id="i-based"></p>
-<div class="syncbar builtin" id="syncbar"></div>
 <div class="tools">
 <button id="btnSync" onclick="sync()"></button>
 <button id="btnAll" onclick="return allRhymes(!ALLOPEN)"></button>
