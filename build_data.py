@@ -271,6 +271,11 @@ def main():
                 bad.append((ch, m[0], "韵母不在表内: " + fin))
                 continue
             raw_syllables.add(syl)
+            # 用戶 2026-11-16 定案：韻圖格子只放「一字一音」的單字，
+            # 多字條目（如何／如何然／介兒）即使讀音合某一格也不入圖，
+            # 免得格子裡出現兩三個字組成的詞。字典本身仍保留這些條目。
+            if len(ch) != 1:
+                continue
             inst[(ini, fin, tone)]["ipa"].add(m[1])
             inst[(ini, fin, tone)]["chars"].append((ch, syl))
 
