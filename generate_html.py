@@ -758,7 +758,7 @@ function loadFromLive(db){
 /* ---------- 代表字：按小韵字数升序贪心分配，尽量不重复 ---------- */
 function assignReps(){
   /* 指定代表字：與 build_data.py 的 REP_OVERRIDE 保持一致 */
-  var REP_OVERRIDE = {"yin2":"寅","bi2":"鈹","pin3":"餅","ho1":"花",'gue6':'愧', 'jiu6':'跪', 'ji6':'忌', 'tsoe3':'展', 'seu3':'溲'};
+  var REP_OVERRIDE = {"yin2":"寅","bi2":"鈹","pin3":"餅","ho1":"花",'gue6':'愧', 'jiu6':'跪', 'ji6':'忌', 'tsoe3':'展', 'seu3':'溲', 'faon5':'放'};
   var order = CELLS.slice().sort(function(a,b){return a.chars.length-b.chars.length;});
   var used = {};
   for (var _k in REP_OVERRIDE) used[REP_OVERRIDE[_k]] = 1;
