@@ -443,7 +443,8 @@ def main():
                     all_cells.append(c)
     # 指定代表字：用戶點名某格用哪個字，先把這些字占住，貪心就不會再分給別的格。
     REP_OVERRIDE = {"yin2": "寅", "bi2": "鈹", "pin3": "餅", "ho1": "花", "gue6": "愧", "jiu6": "跪",
-                    "ji6": "忌", "tsoe3": "展", "seu3": "溲", "faon5": "放"}
+                    "ji6": "忌", "tsoe3": "展", "seu3": "溲", "faon5": "放",
+                    "shie1": "掀"}
     used = set(REP_OVERRIDE.values())
     for c in sorted(all_cells, key=lambda x: len(x["chars"])):
         rep = next((ch for ch in c["chars"] if ch not in used), c["chars"][0])
